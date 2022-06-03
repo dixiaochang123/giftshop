@@ -1,0 +1,455 @@
+
+@import "base";
+
+//头部样式
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.page_header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  height: 70px;
+  line-height: 70px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+
+
+  .nav {
+    display: flex;
+
+    .nav_logo {
+      flex: 1;
+      width: 195px;
+      height: 70px;
+      line-height: 70px;
+
+      img {
+        margin: 10px 0;
+        height: 50px;
+      }
+    }
+
+    .nav_link {
+      flex: 1;
+
+      span {
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        position: relative;
+
+        a {
+          color: #777;
+          font-weight: bold;
+        }
+
+        i {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 3px;
+          background-color: #b9965e;
+          -webkit-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s;
+        }
+      }
+
+      span:hover a {
+        color: #b9965e;
+        font-weight: bold;
+      }
+
+      span:hover i {
+        width: 100px;
+      }
+    }
+
+    .nav_phone {
+      margin-right: 20px;
+    }
+  }
+}
+
+//轮播图部分
+.swipe {
+  margin-top: 70px;
+
+  .swipe_img {
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    //opacity: 1;
+  }
+}
+
+//正文内容部分区域
+.page_title {
+  width: 100%;
+  text-align: center;
+  margin: 35px 0;
+  font-size: 40px;
+  color: #b9965e;
+  font-weight: bold;
+}
+
+.page_four {
+  text-align: center;
+
+  .page_circle {
+    color: #ffbe5a;
+    font-size: 32px;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    border-radius: 50%;
+    margin-left: 80px;
+    background: #fff2de;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  p {
+    width: 200px;
+    margin: 20px auto;
+  }
+}
+
+.page_scope {
+  .grid-content {
+    width: 300px;
+    height: 250px;
+    margin: 40px 0;
+    border-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transform: translate3d(0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0.18) 0 1px 10px 0;
+    //border-radius: 50%;
+    transition-property: box-shadow, transform;
+    transition-duration: 800ms;
+    transition-timing-function: cubic-bezier(.16, 1, .29, .99);
+
+    h2 {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      margin: 50px 0 30px 0;
+    }
+
+    h5 {
+      width: 85%;
+      margin: 0 auto;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+
+  .grid-content:hover {
+    transform: translate3d(0px, -4px, 0px);
+    box-shadow: 0px 10px 30px -10px rgba(0, 0, 0, 0.5);
+    transition-property: box-shadow, transform;
+    transition-duration: 800ms;
+    transition-timing-function: cubic-bezier(.16, 1, .29, .99);
+    z-index: 999;
+    opacity: 0.7;
+
+  }
+}
+
+//新闻中心部分
+.page_news {
+  display: flex;
+  padding: 20px 50px;
+
+  .news_img {
+    //flex: 1;
+    width: 280px;
+    height: 440px;
+    border: 10px solid #b9965e;
+    position: relative;
+
+    p:nth-child(1) {
+      width: 270px;
+      text-align: center;
+      font-size: 32px;
+      padding: 10px 0;
+    }
+
+    p:nth-child(2) {
+      width: 270px;
+      overflow: hidden;
+      text-align: left;
+      font-size: 52px;
+      padding-left: 15px;
+      margin: 0 0 15px 0;
+    }
+
+    .img_inner {
+      width: 320px;
+      height: 200px;
+      background: #6e9fe2;
+      position: absolute;
+      top: 170px;
+      left: 50px;
+      z-index: 99;
+      overflow: hidden;
+      padding: 25px;
+
+      .img {
+        height: 65px;
+        line-height: 65px;
+        display: flex;
+
+        .logo_img {
+          line-height: 65px;
+
+          img {
+            width: 50px;
+            height: 50px;
+          }
+        }
+
+        .logo_font {
+          .font {
+            font-size: 12px !important;
+            color: #ffffff !important;
+          }
+        }
+      }
+
+      div:nth-child(1) {
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+      }
+
+      div:nth-child(3) {
+        font-size: 15px;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .page_toutiao {
+    flex: 1;
+    margin-left: 200px;
+
+    .toutiao_title {
+      font-size: 36px;
+      color: #b9965e;
+      text-align: right;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #b9965e;
+    }
+
+    .toutiao_swipe {
+      margin-top: 50px;
+
+      .toutiao_info {
+        margin: 35px 25px;
+        display: flex;
+
+        .info_font {
+          flex: 1;
+          margin-left: 20px;
+
+          .info_time {
+            height: 30px;
+            line-height: 30px;
+            font-size: 16px;
+            opacity: 0.6;
+            color: #ff9500;
+          }
+
+          .info_title {
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+
+          .info_show {
+            font-size: 14px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//底部广告
+.page_banner{
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: 40px 0;
+
+  .container{
+    h1{
+      width: 800px;
+      margin: 100px auto;
+      text-align: center;
+      color: #fff;
+    }
+
+    h3{
+      width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      color: #fff;
+      font-weight: normal;
+      line-height: 30px;
+      font-size:16px;
+    }
+  }
+}
+
+//联系我们
+.contact_inner{
+  display: flex;
+  .contact_about{
+    flex: 1;
+    height:300px;
+    line-height: 300px;
+    padding: 170px 0;
+    overflow: hidden;
+    p{
+      line-height: 40px;
+    }
+    p:nth-child(1){
+      font-size: 26px;
+      font-weight: bold;
+    }
+    p:nth-child(2){
+      font-size: 16px;
+    }
+
+    p:nth-child(3) span{
+      color: #ff9500;
+      font-size: 26px;;
+    }
+
+    p:nth-child(4) span{
+      color: #ff9500;
+      font-size: 26px;
+    }
+  }
+  .contact{
+    margin-bottom: 50px;
+    flex: 1;
+
+    .toutiao_title {
+      font-size: 36px;
+      color: #b9965e;
+      text-align: right;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #b9965e;
+    }
+
+    .wire{
+      text-align: right;
+      overflow: hidden;
+      padding-right: 60px;
+    }
+
+    .map_box{
+      margin-top: -5px;
+      width: 590px;
+      height: 330px;
+      border: 10px solid #EAEAEA;
+      background: #EAEAEA;
+      filter: alpha(opacity=100);
+      -moz-opacity: 1;
+      -khtml-opacity: 1;
+      opacity: 1;
+      -moz-border-radius: 80px;
+      -webkit-border-radius: 80px;
+      border-radius: 80px;
+      overflow: hidden;
+    }
+
+  }
+
+}
+
+//底部样式
+.page_footer{
+  width: 100%;
+  background: #000;
+
+  .footer_container{
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 50px 0;
+
+    .footer_top{
+      color: #696969;
+      text-align: right;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #696969;
+
+      .button{
+        color: #fff;
+        background-color: #484848;
+        border-color: #484848;
+        display: inline-block;
+        padding: 2px 28px;
+        margin-bottom: 0;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.82857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 1000px;
+        margin-left: 10px;
+      }
+    }
+
+    .footer_info{
+      h3{
+        text-align: center;
+        width: 1000px;
+        color: white;
+        font-size: 24px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      h5{
+        text-align: center;
+        width: 1000px;
+        color: #696969;
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: normal;
+        a{
+          color:#696969;
+        }
+        a:hover{
+          text-decoration: underline;
+          color:#b9965e;
+        }
+      }
+    }
+  }
+}
+
