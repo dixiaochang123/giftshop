@@ -24,6 +24,10 @@ npm run test
 ```
 npm run lint
 ```
+### Git :fatal: refusing to merge unrelated histories解决 强制合并命令
+```
+git pull origin master --allow-unrelated-histories
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
