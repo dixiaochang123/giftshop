@@ -28,9 +28,9 @@
         <div class="bd"></div>
         <div class="right">
             <p class="p1"><span>操作指南</span><span>售后服务</span><span>帮助中心</span></p>
-            <p><span>账户注销</span><span>问题反馈</span><span>官网</span></p>
-            <p><span>密码找回</span><span>投诉建议</span><span>常见Q&A</span></p>
-            <p><span>下单流程</span><span>在线客服</span><span>帮助中心</span></p>
+            <p><a href="javaScript:void(0);">账户注销</a><a href="javaScript:void(0);">问题反馈</a><a href="javaScript:void(0);">官网</a></p>
+            <p><a href="javaScript:void(0);">密码找回</a><a href="javaScript:void(0);">投诉建议</a><a href="javaScript:void(0);">常见Q&A</a></p>
+            <p><a href="javaScript:void(0);">下单流程</a><a href="javaScript:void(0);">在线客服</a><a href="javaScript:void(0);">帮助中心</a></p>
 
         </div>
       </div>
@@ -123,9 +123,11 @@ $height: 350px;
         display: flex;
         justify-content: space-between;
         padding-bottom: 24px;
-        span {
+        a {
             display: inline-block;
             width:100px;
+            color: #73757D;
+            text-decoration:none
         }
   }
   .p1 {
