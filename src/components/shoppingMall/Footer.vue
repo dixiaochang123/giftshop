@@ -4,7 +4,8 @@
       <div class="container">
         <div class="left">
           <div class="icon-text">
-            <div>
+            <img width="494px" height="110px" src="../../assets/img/slices/slogan.png" alt="" sizes="" srcset="">
+            <!-- <div>
               <img src="../../assets/img/slices/icon-design-1.png" alt="" sizes="" srcset="">
               <div>年轻</div>
             </div>
@@ -17,7 +18,7 @@
             <div>
               <img src="../../assets/img/slices/icon-design-1.png" alt="" sizes="" srcset="">
               <div>高效</div>
-            </div>
+            </div> -->
           </div>
           <div class="foot-text">
             <p>©2018-2021 &nbsp; &nbsp;版权所有 &nbsp;北京春湘科技有限公司 &nbsp; &nbsp; 京ICP备19049540号-1</p>
@@ -80,15 +81,15 @@ $height: 350px;
     font-weight: normal;
     color: #bcbec6;
     display: flex;
-    > div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    img {
-      width: 44px;
-      height: 44px;
-    }
+    // > div {
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    // }
+    // img {
+    //   width: 44px;
+    //   height: 44px;
+    // }
   }
   .foot-text {
     text-align: left;
