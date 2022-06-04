@@ -1,8 +1,65 @@
 @import "../base";
 
 .tab-list {
+  width: 100%;
+  min-height: 176px;
+  // margin: auto;
+}
+.tab-list-1 {
   width: 1200px;
+  height: 196px;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .icon-text {
+    text-align: center;
+    height: 28px;
+    > div {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto;
+      border:solid 1px red;
+    }
+    p {
+
+      font-size: 20px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #2D2E33;
+      line-height: 28px;
+    }
+    &:hover {
+      > div {
+
+      }
+      p {
+        color: #FF946B;
+      }
+    }
+  }
+  // .icon-fz {
+  //   width: 56px;
+  //   height: 56px;
+  //   margin: 0 auto;
+  //   border:solid 1px red;
+  //   background: url('../../assets/img/slices/icon-fz.png') no-repeat center center;
+  //   background-size: contain;
+  //   &:hover {
+  //       background: url("../../assets/img/slices/icon-fz-1.png") no-repeat center center;
+  //   }
+  // }
+  // .icon-fs {
+  //   width: 56px;
+  //   height: 56px;
+  //   margin: 0 auto;
+  //   border:solid 1px red;
+  //   background: url('../../assets/img/slices/icon-fs.png') no-repeat center center;
+  //   background-size: contain;
+  //   &:hover {
+  //       background: url("../../assets/img/slices/icon-fs-1.png") no-repeat center center;
+  //   }
+  // }
 }
 
 //轮播图部分

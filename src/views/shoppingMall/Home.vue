@@ -1,8 +1,47 @@
 <template>
     <div>
-        <div style="margin-top:92px;"></div>
+        <div style="height:92px;"></div>
         <div class="tab-list">
-            <div></div>
+            <div class="tab-list-1">
+                <div class="icon-text icon-fz">
+                    <div></div>
+                    <p>纺织品</p>
+                </div>
+                <div class="icon-text icon-fs">
+                    <div></div>
+                    <p>服饰类</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>工艺品</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>印刷品</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>日用办公</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>创意数码</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>防疫产品</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>户外运动</p>
+                </div>
+                <div class="icon-text">
+                    <div></div>
+                    <p>礼盒类</p>
+                </div>
+
+            </div>
+            
         </div>
         <!--轮播部分-->
         <div class="swipe" >
@@ -279,5 +318,16 @@
 
 <style lang="scss" scoped>
     @import "../../assets/css/shoppingMall/shoppingMall_home";
+    // .icon-fz {
+    //     width: 56px;
+    //     height: 56px;
+    //     margin: 0 auto;
+    //     border:solid 1px red;
+    //     background: url('../../assets/img/slices/icon-fz.png') no-repeat center center;
+    //     background-size: contain;
+    //     &:hover {
+    //         background: url("../../assets/img/slices/icon-fz-1.png") no-repeat center center;
+    //     }
+    // }
 
 </style>
