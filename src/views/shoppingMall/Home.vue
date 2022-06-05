@@ -43,7 +43,7 @@
         </div>
 
       </div>
-      <div class="tab-list-2" v-if="false">
+      <div class="tab-list-2">
         <div class="tab-list-2-1">
           <div>徽章</div>
           <div>奖杯</div>
