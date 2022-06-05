@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="height:92px;"></div>
+    <!-- <div style="height:92px;"></div> -->
     <div class="tab-list">
       <div class="leftbg"></div>
       <div class="rightbg"></div>
