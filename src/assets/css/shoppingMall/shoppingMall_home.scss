@@ -15,7 +15,8 @@
   min-height: 176px;
   // margin: auto;
   position: sticky;
-  top: 92px;
+  top: rpx2multiple1(92);
+  margin-top: rpx2multiple1(92);
   z-index: 1000;
   // background-color: #fff;
   // position: relative;
