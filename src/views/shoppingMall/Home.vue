@@ -1,7 +1,10 @@
 <template>
   <div>
     <div style="height:92px;"></div>
-    <div class="tab-list">
+    <div class="cate-filter">
+      <CateFilter :categories="categories" @choose="onChooseCategory"/>
+    </div>
+    <div class="tab-list" v-if="false">
       <div class="leftbg"></div>
       <div class="rightbg"></div>
       <div class="tab-list-1">
@@ -202,85 +205,15 @@
 </template>
 
 <script>
+import CateFilter from '@/components/cateFilter/CateFilter'
+import Categories from "@/components/cateFilter/categories.js";
 export default {
   name: "Home",
+  components: {CateFilter},
   data() {
     return {
+      categories: Categories,
       carouselHeight: "500px", //轮播图高度
-      flowerList: [
-        {
-          flowerId: "001",
-          flowerName: "【花艺】七头美丽玫瑰仿真花束",
-          flowerPrice: "89.00",
-        },
-        {
-          flowerId: "002",
-          flowerName: "【花艺】七头美丽玫瑰仿真花束",
-          flowerPrice: "150.00",
-        },
-        {
-          flowerId: "003",
-          flowerName: "【花艺】七头美丽玫瑰仿真花束",
-          flowerPrice: "88.00",
-        },
-        {
-          flowerId: "004",
-          flowerName: "【花艺】七头美丽玫瑰仿真花束",
-          flowerPrice: "96.00",
-        },
-        {
-          flowerId: "005",
-          flowerName: "【花艺】七头美丽玫瑰仿真花束",
-          flowerPrice: "72.00",
-        },
-        {
-          flowerId: "006",
-          flowerName: "【花艺】七头美丽玫瑰仿真花束",
-          flowerPrice: "108.00",
-        },
-      ],
-      proList: [
-        {
-          proId: "001",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "89.00",
-        },
-        {
-          proId: "002",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "150.00",
-        },
-        {
-          proId: "003",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "88.00",
-        },
-        {
-          proId: "004",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "96.00",
-        },
-        {
-          proId: "005",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "72.00",
-        },
-        {
-          proId: "006",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "108.00",
-        },
-        {
-          proId: "007",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "108.00",
-        },
-        {
-          proId: "008",
-          proName: "【GC】七头美丽玫瑰仿真花束",
-          proPrice: "108.00",
-        },
-      ],
     };
   },
   computed: {},
@@ -292,6 +225,11 @@ export default {
     };
   },
   methods: {
+    // 选择了某个第三级分类
+    onChooseCategory(category, index) {
+      console.log(category, index)
+      alert(`您选择了分类${category.name}，三级索引${index}`)
+    },
     //轮播图高度
     resizeCarouselHeight() {
       let innerWidth = window.innerWidth;

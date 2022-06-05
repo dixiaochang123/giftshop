@@ -2,6 +2,13 @@
 @function rpx2multiple ($px) {
   @return ($px / 1.5)+px;
 }
+.cate-filter {
+  width: 100%;
+  //min-height: 176px;
+  position: sticky;
+  top: 92px;
+  z-index: 1000;
+}
 
 .tab-list {
   width: 100%;
