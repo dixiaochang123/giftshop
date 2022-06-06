@@ -15,6 +15,7 @@
         </el-dropdown>
         <div class="icon-order"></div>
         <div class="icon-design"></div>
+        <img v-if="false" style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
         <el-button class="icon-login" plain>登陆</el-button>
         <el-button class="icon-register" type="text">注册</el-button>
         <!-- ------------- -->
