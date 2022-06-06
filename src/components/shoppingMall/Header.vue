@@ -6,7 +6,7 @@
                     <i slot="prepend" class="el-icon-close"></i>
                 </el-input>
                 <div class="icon-search"></div>
-                <div class="icon-cat"></div>
+                <div class="icon-cat" @click="handleclickMycart"></div>
                 <div class="icon-order"></div>
                 <div class="icon-design"></div>
                 <el-button class="icon-login" plain>登陆</el-button>
@@ -72,6 +72,15 @@
         methods: {
             goUserCenter(){
                 this.$router.push('/shoppingMall/user/usercenter');
+            },
+            handleclickMycart() {
+                this.$router.push({
+                    name:'Mycart',
+                    query:{
+                        name:'mycart'
+                    }
+                });
+
             }
         },
 
@@ -100,8 +109,8 @@
 }
     .shopping_haeder{
         width: 100%;
-        height: rpx2multiple(92);
-        line-height: rpx2multiple(92);
+        height: 92px;
+        line-height: 92px;
         position: fixed;
         top: 0;
         z-index: 110;

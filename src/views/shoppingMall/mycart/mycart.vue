@@ -7,17 +7,18 @@
         </el-breadcrumb>
     </div>
     <div class="tabs">
-      <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-        <el-table-column type="selection" width="55">
-        </el-table-column>
-        <el-table-column label="日期" width="120">
-          <template slot-scope="scope">{{ scope.row.date }}</template>
-        </el-table-column>
-        <el-table-column prop="name" label="姓名" width="120">
-        </el-table-column>
-        <el-table-column prop="address" label="地址" show-overflow-tooltip>
-        </el-table-column>
-      </el-table>
+      <div class="header">
+        <div>全选</div>
+        <div>商品信息</div>
+        <div>单价</div>
+        <div>数量</div>
+        <div>金额</div>
+        <div>我的设计</div>
+        <div>操作</div>
+      </div>
+      <div class="tables">
+        
+      </div>
     </div>
 
   </div>

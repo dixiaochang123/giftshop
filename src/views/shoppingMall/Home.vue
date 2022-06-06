@@ -2,7 +2,7 @@
   <div>
     <div style="height:92px;"></div>
     <div class="cate-filter">
-      <CateFilter :categories="categories" @choose="onChooseCategory"/>
+      <CateFilter :categories="categories" @choose="onChooseCategory" />
     </div>
     <div class="tab-list" v-if="false">
       <div class="leftbg"></div>
@@ -84,44 +84,44 @@
       <el-row :gutter="20">
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/jrqd-hover.png" alt="" sizes="" srcset="">
+            <div class="jrqd"></div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/ygfl-hover.png" alt="" sizes="" srcset="">
+            <div class="ygfl"></div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/ip-hover.png" alt="" sizes="" srcset="">
+            <div class="ip"></div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/hdwz-hover.png" alt="" sizes="" srcset="">
+            <div class="hdwz"></div>
           </div>
         </el-col>
       </el-row>
       <el-row :gutter="20">
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/jrqd-hover.png" alt="" sizes="" srcset="">
+            <div class="qyzb"></div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/ygfl-hover.png" alt="" sizes="" srcset="">
+            <div class="rcbg"></div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/ip-hover.png" alt="" sizes="" srcset="">
+            <div class="swlz"></div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/hdwz-hover.png" alt="" sizes="" srcset="">
+            <div class="jgfq"></div>
           </div>
         </el-col>
       </el-row>
@@ -133,87 +133,108 @@
     <!--底部区域-->
     <div class="container">
       <div class="tab-list-2-1">
-        <div class="active">季节限定</div>
-        <div>暖心防疫</div>
-        <div>轻松户外</div>
-        <div>风格系列</div>
+        <div @click="activeindex=index" v-for="(item,index) in specialtab" :key="item" :class="[index==activeindex? 'active':'']">{{item}}</div>
       </div>
       <!--商品-->
       <div class="pro">
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <div class="grid-content bg-purple">
-              <img width="100%" height="100%" src="../../assets/img/slices/jrqd-hover.png" alt="" sizes="" srcset="">
+        <div class="left">
+          <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+          <div class="hover-text">
+            <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
+            <p class="hp2">夏日清凉</p>
+
+          </div>
+        </div>
+        <div class="right container">
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
+              <p class="hp2">夏日清凉</p>
+
             </div>
-          </el-col>
-          <el-col :span="12">
-            <el-row :gutter="20">
-                <el-col :span="12">
-                    <div class="grid-content bg-purple">
-                    <img width="100%" height="100%" src="../../assets/img/slices/jrqd-hover.png" alt="" sizes="" srcset="">
-                    </div>
-                </el-col>
-                <el-col :span="12">
-                    <div class="grid-content bg-purple">
-                    <img width="100%" height="100%" src="../../assets/img/slices/ygfl-hover.png" alt="" sizes="" srcset="">
-                    </div>
-                </el-col>
-                <el-col :span="12">
-                    <div class="grid-content bg-purple">
-                    <img width="100%" height="100%" src="../../assets/img/slices/jrqd-hover.png" alt="" sizes="" srcset="">
-                    </div>
-                </el-col>
-                <el-col :span="12">
-                    <div class="grid-content bg-purple">
-                    <img width="100%" height="100%" src="../../assets/img/slices/ygfl-hover.png" alt="" sizes="" srcset="">
-                    </div>
-                </el-col>
-                </el-row>
-          </el-col>
-        </el-row>
+          </div>
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
+              <p class="hp2">夏日清凉</p>
+
+            </div>
+          </div>
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
+              <p class="hp2">夏日清凉</p>
+
+            </div>
+          </div>
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
+              <p class="hp2">夏日清凉</p>
+
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
     <div class="image">
       <img src="../../assets/img/slices/linggan.png" alt="">
     </div>
-    <div class="big_banner">
-      <el-row :gutter="20">
-        <el-col :span="6">
-          <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/jrqd-hover.png" alt="" sizes="" srcset="">
+    <div class="inspiration">
+      <div class="container">
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp2">热门推荐</p>
+
+            </div>
           </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/ygfl-hover.png" alt="" sizes="" srcset="">
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp2">好物推荐</p>
+
+            </div>
           </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/ip-hover.png" alt="" sizes="" srcset="">
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp2">品牌推荐</p>
+
+            </div>
           </div>
-        </el-col>
-        <el-col :span="6">
-          <div class="grid-content bg-purple">
-            <img width="300px" height="360px" src="../../assets/img/slices/hdwz-hover.png" alt="" sizes="" srcset="">
+          <div>
+            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+            <div class="hover-text">
+              <p class="hp2">大厂案例</p>
+
+            </div>
           </div>
-        </el-col>
-      </el-row>
+
+        </div>
     </div>
     <div style="height:99px;"></div>
   </div>
 </template>
 
 <script>
-import CateFilter from '@/components/cateFilter/CateFilter'
+import CateFilter from "@/components/cateFilter/CateFilter";
 import Categories from "@/components/cateFilter/categories.js";
 export default {
   name: "Home",
-  components: {CateFilter},
+  components: { CateFilter },
   data() {
     return {
       categories: Categories,
-      carouselHeight: "500px", //轮播图高度
+      carouselHeight: "500px",
+      activeindex:0,
+      specialtab:['季节限定','暖心防疫','轻松户外','风格系列']
     };
   },
   computed: {},
@@ -227,8 +248,8 @@ export default {
   methods: {
     // 选择了某个第三级分类
     onChooseCategory(category, index) {
-      console.log(category, index)
-      alert(`您选择了分类${category.name}，三级索引${index}`)
+      console.log(category, index);
+      alert(`您选择了分类${category.name}，三级索引${index}`);
     },
     //轮播图高度
     resizeCarouselHeight() {
@@ -257,15 +278,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/css/shoppingMall/shoppingMall_home";
-// .icon-fz {
-//     width: 56px;
-//     height: 56px;
-//     margin: 0 auto;
-//     border:solid 1px red;
-//     background: url('../../assets/img/slices/icon-fz.png') no-repeat center center;
-//     background-size: contain;
-//     &:hover {
-//         background: url("../../assets/img/slices/icon-fz-1.png") no-repeat center center;
-//     }
-// }
 </style>

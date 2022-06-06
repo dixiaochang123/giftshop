@@ -1,20 +1,20 @@
 <template>
   <div class="backtop">
     <div class="help">
-      <div>
-        <div class="kefu"></div>
+      <div class="kefu">
+        <div></div>
         <p>联系客服</p>
       </div>
-      <div>
-        <div class="phon"></div>
+      <div class="phon">
+        <div ></div>
         <p>联系电话</p>
       </div>
-      <div>
-        <div class="feishu"></div>
+      <div class="feishu">
+        <div ></div>
         <p>飞书账号</p>
       </div>
-      <div>
-        <div class="caozuo"></div>
+      <div class="caozuo">
+        <div ></div>
         <p>操作指南</p>
       </div>
 
@@ -77,28 +77,79 @@ $height: 350px;
     }
   }
   .kefu {
-    width: rpx2multiple(36);
-    height: rpx2multiple(36);
-    background: url("../assets/img/slices/kefu.png") no-repeat center center;
-    background-size: contain;
+    >div {
+      width: rpx2multiple(36);
+      height: rpx2multiple(36);
+      background: url("../assets/img/slices/kefu.png") no-repeat center center;
+      background-size: 100% 100%;
+    }
+    &:hover {
+      >div {
+
+        background: url("../assets/img/slices/kefu-hover.png") no-repeat center center;
+        background-size: 100% 100%;
+      }
+      p {
+        color: #7395DC;
+      }
+    }
   }
   .phon {
-    width: rpx2multiple(29);
-    height: rpx2multiple(29);
-    background: url("../assets/img/slices/phon.png") no-repeat center center;
-    background-size: contain;
+    >div {
+
+      width: rpx2multiple(29);
+      height: rpx2multiple(29);
+      background: url("../assets/img/slices/phon.png") no-repeat center center;
+      background-size: 100% 100%;
+    }
+    &:hover {
+      >div {
+
+        background: url("../assets/img/slices/phon-hover.png") no-repeat center center;
+        background-size: 100% 100%;
+      }
+      p {
+        color: #7395DC;
+      }
+    }
   }
   .feishu {
-    width: rpx2multiple(36);
-    height: rpx2multiple(36);
-    background: url("../assets/img/slices/feishu.png") no-repeat center center;
-    background-size: contain;
+    >div {
+
+      width: rpx2multiple(36);
+      height: rpx2multiple(36);
+      background: url("../assets/img/slices/feishu.png") no-repeat center center;
+      background-size: 100% 100%;
+    }
+    &:hover {
+      >div {
+
+        background: url("../assets/img/slices/feishu-hover.png") no-repeat center center;
+        background-size: 100% 100%;
+      }
+      p {
+        color: #7395DC;
+      }
+    }
   }
   .caozuo {
-    width: rpx2multiple(32);
-    height: rpx2multiple(32);
-    background: url("../assets/img/slices/caozuo.png") no-repeat center center;
-    background-size: contain;
+    >div {
+
+      width: rpx2multiple(32);
+      height: rpx2multiple(32);
+      background: url("../assets/img/slices/caozuo.png") no-repeat center center;
+      background-size: 100% 100%;
+    }
+    &:hover {
+      >div {
+
+        background: url("../assets/img/slices/caozuo-hover.png") no-repeat center center;
+        background-size: 100% 100%;
+      }
+      p {
+        color: #7395DC;
+      }
+    }
   }
   p {
     height: rpx2multiple(17);
@@ -128,7 +179,13 @@ $height: 350px;
     width: rpx2multiple(36);
     height: rpx2multiple(36);
     background: url("../assets/img/slices/top.png") no-repeat center center;
-    background-size: contain;
+    background-size: 100% 100%;
+  }
+  &:hover {
+    div {
+    background: url("../assets/img/slices/top-hover.png") no-repeat center center;
+    background-size: 100% 100%;
+  }
   }
 }
 </style>

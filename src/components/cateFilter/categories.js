@@ -108,8 +108,8 @@ export default [
     },
     {
         name: '家居办公',
-        icon: require('@~/img/slices/icon-ry.png'),
-        activeIcon: require('@~/img/slices/icon-ry-1.png'),
+        icon: require('@~/img/slices/icon-ry (2).png'),
+        activeIcon: require('@~/img/slices/icon-ry-1 (2).png'),
         children: [
             {
                 name: '笔记本',
