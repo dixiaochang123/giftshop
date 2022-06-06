@@ -106,6 +106,7 @@
       background-size: 100% 100%;
     }
     &:hover {
+      transition: all 0.5s ease-in-out;
       &.icon-fz > div {
         background: url("../../assets/img/slices/icon-fz-1.png") no-repeat center center;
         background-size: 100% 100%;
@@ -171,6 +172,7 @@
       font-weight: 400;
       color: #73757D;
       &:hover {
+        transition: all 0.5s ease-in-out;
         border-bottom: solid 6px #FF946B;
         font-weight: 500;
         color: #2D2E33;
@@ -267,6 +269,7 @@
       background: url('../../assets/img/slices/jrqd.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/jrqd-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -276,6 +279,7 @@
       background: url('../../assets/img/slices/ygfl.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/ygfl-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -285,6 +289,7 @@
       background: url('../../assets/img/slices/ip.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/ip-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -294,6 +299,7 @@
       background: url('../../assets/img/slices/hdwz (2).png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/hdwz-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -303,6 +309,7 @@
       background: url('../../assets/img/slices/qyzb.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/qyzb-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -312,6 +319,7 @@
       background: url('../../assets/img/slices/icon-ry.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/icon-ry-1.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -321,6 +329,7 @@
       background: url('../../assets/img/slices/swlz.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/swlz-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -330,6 +339,7 @@
       background: url('../../assets/img/slices/jgfq.png') no-repeat center center;
       background-size: 100% 100%;
       &:hover {
+        transition: all 0.5s ease-in-out;
         background: url('../../assets/img/slices/jgfq-hover.png') no-repeat center center;
         background-size: 100% 100%;
 
@@ -395,6 +405,7 @@
     margin-right:10px;
     position: relative;
     &:hover {
+      transition: all 0.5s ease-in-out;
       > .hover-text {
         bottom: 0 ;
       }
@@ -411,6 +422,7 @@
       overflow: hidden;
       position: relative;
       &:hover {
+        transition: all 0.5s ease-in-out;
         > .hover-text {
           bottom: 0 ;
         }
@@ -475,6 +487,7 @@
       height: 350px;
       border-radius: 8px;
       &:hover {
+        transition: all 0.5s ease-in-out;
         > .hover-text {
           bottom: 0 ;
         }

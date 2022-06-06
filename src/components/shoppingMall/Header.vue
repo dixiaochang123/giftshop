@@ -6,7 +6,9 @@
                     <i slot="prepend" class="el-icon-close"></i>
                 </el-input>
                 <div class="icon-search"></div>
-                <div class="icon-cat" @click="handleclickMycart"></div>
+                <el-tooltip class="item" effect="dark" content="购物车" placement="top-start">
+                    <div class="icon-cat" @click="handleclickMycart"></div>
+                </el-tooltip>
                 <div class="icon-order"></div>
                 <div class="icon-design"></div>
                 <el-button class="icon-login" plain>登陆</el-button>
