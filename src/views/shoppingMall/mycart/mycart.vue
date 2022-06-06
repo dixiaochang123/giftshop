@@ -9,7 +9,7 @@
     <div class="tabs">
       <div class="header">
         <div class="header_1" style="width:40%;text-align: left;">
-          <el-checkbox style="font-size: 18px;">全选</el-checkbox><span class="spxx">商品信息</span>
+          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange" style="font-size: 18px;">全选</el-checkbox><span class="spxx">商品信息</span>
         </div>
         <div style="width:12%">单价</div>
         <div style="width:12%">数量</div>
@@ -19,7 +19,7 @@
       </div>
       <div class="tables" v-for="(item,index) in tableData" :key="index">
         <div class="header_1" style="width:40%;text-align: left;">
-          <el-checkbox style="font-size: 18px;"></el-checkbox>
+          <el-checkbox v-model="item.checked" @change="handleCheckedCitiesChange" style="font-size: 18px;"></el-checkbox>
           <div class="img-text">
             <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt="" srcset="">
             <div class="img-text-text">
@@ -34,7 +34,20 @@
         <div style="width:12%">¥{{item.sumb}}</div>
         <div style="width:12%" class="caozuo"><span>{{item.DesignNumber}}套</span><span style="color: #FF946B;cursor: pointer;">查看</span></div>
         <div style="width:12%" class="caozuo">
-          <span class="dayang" style="cursor: pointer;">打样</span><span style="color: #FF946B;cursor: pointer;">删除</span>
+          <span class="dayang" style="cursor: pointer;">打样</span><span style="color: #FF946B;cursor: pointer;" @click="deleted(item,index)">删除</span>
+        </div>
+      </div>
+
+      <div class="header header_foot">
+        <div class="header_1 header_1_1" style="width:40%;text-align: left;">
+          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange" style="font-size: 18px;">全选</el-checkbox>
+        </div>
+        <div style="width:12%"></div>
+        <!-- <div style="width:12%"></div> -->
+        <div style="width:18%;color: #73757D">已选 &nbsp;<span style="font-size:28px;color:#000;">{{total}}</span> &nbsp;件商品</div>
+        <div style="width:18%;color: #73757D">总价 &nbsp;<span style="font-size:28px;color:#000;">¥{{totalPrice}}</span>&nbsp;元</div>
+        <div style="width:12%;text-align: right;" class="jiesuan">
+          <span  class="dayang" style="cursor: pointer;">结算</span>
         </div>
       </div>
     </div>
@@ -47,8 +60,11 @@ export default {
   name: "Mycart",
   data() {
     return {
+      checkAll: false,
+      isIndeterminate: false,
       tableData: [
         {
+          checked:false,
           url:'',
           p1:'愿时光停在花',
           p2:'母亲节真诚礼至特别巨献妈妈的礼物',
@@ -58,60 +74,94 @@ export default {
           DesignNumber: "2",
         },
         {
+          checked:false,
           url:'',
           p1:'愿时光停在花',
           p2:'母亲节真诚礼至特别巨献妈妈的礼物',
-          price: "¥30.00",
+          price: "30.00",
           number: "100",
-          sumb:'¥3000.00',
+          sumb:'3000.00',
           DesignNumber: "2",
         },
         {
+          checked:false,
           url:'',
           p1:'愿时光停在花',
           p2:'母亲节真诚礼至特别巨献妈妈的礼物',
-          price: "¥30.00",
+          price: "30.00",
           number: "100",
-          sumb:'¥3000.00',
+          sumb:'3000.00',
           DesignNumber: "2",
         },
         {
+          checked:false,
           url:'',
           p1:'愿时光停在花',
           p2:'母亲节真诚礼至特别巨献妈妈的礼物',
-          price: "¥30.00",
+          price: "30.00",
           number: "100",
-          sumb:'¥3000.00',
+          sumb:'3000.00',
           DesignNumber: "2",
         },
         {
+          checked:false,
           url:'',
           p1:'愿时光停在花',
           p2:'母亲节真诚礼至特别巨献妈妈的礼物',
-          price: "¥30.00",
+          price: "30.00",
           number: "100",
-          sumb:'¥3000.00',
+          sumb:'3000.00',
           DesignNumber: "2",
         },
       ],
       multipleSelection: [],
     };
   },
-  computed: {},
+  computed: {
+    total() {
+      return this.tableData.filter(item=>item.checked==true).length
+    },
+    totalPrice() {
+      return this.tableData.filter(item=>item.checked==true).reduce((money, item) => money + Number(item.sumb), 0)
+      // return this.tableData.filter(item=>item.checked==true)
+
+    }
+  },
   mounted() {},
   methods: {
-    toggleSelection(rows) {
-      if (rows) {
-        rows.forEach((row) => {
-          this.$refs.multipleTable.toggleRowSelection(row);
+    handleCheckAllChange(val) {
+    console.log(val)
+    if(val==true) {
+      this.tableData.map(item=>item.checked=true)
+    } else {
+      this.tableData.map(item=>item.checked=false)
+    }
+      // this.checkedCities = val ? this.tableData.map(item=>item.checked==true) : this.tableData.map(item=>item.checked==false);
+      this.isIndeterminate = false;
+    },
+    handleCheckedCitiesChange(value) {
+        let checkedCount = this.tableData.filter(item=>item.checked==true).length;
+        this.checkAll = checkedCount === this.tableData.length;
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.tableData.length;
+    },
+    deleted(item,index) {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.tableData.splice(index, 1);
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
         });
-      } else {
-        this.$refs.multipleTable.clearSelection();
-      }
-    },
-    handleSelectionChange(val) {
-      this.multipleSelection = val;
-    },
+    }
   },
 };
 </script>
@@ -257,4 +307,35 @@ export default {
     
   }
 }
+  .jiesuan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > span {
+      display: inline-block;
+    }
+    .dayang {
+      width: 112px;
+      height: 25px;
+      line-height: 25px;
+      padding:9px 0;
+      background: #FF946B;
+      border-radius: 4px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      text-align: center;
+      
+    }
+  }
+  .header_1_1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header_foot {
+    border:none;
+    background: none;
+    margin-bottom:100px;
+  }
 </style>
