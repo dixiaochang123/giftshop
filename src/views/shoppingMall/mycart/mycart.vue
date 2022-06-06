@@ -17,22 +17,22 @@
         <div style="width:12%">我的设计</div>
         <div style="width:12%">操作</div>
       </div>
-      <div class="tables">
+      <div class="tables" v-for="(item,index) in tableData" :key="index">
         <div class="header_1" style="width:40%;text-align: left;">
           <el-checkbox style="font-size: 18px;"></el-checkbox>
           <div class="img-text">
             <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt="" srcset="">
             <div class="img-text-text">
-              <p>愿时光停在花</p>
-              <p class="p2">母亲节真诚礼至特别巨献妈妈的礼物</p>
+              <p>{{item.p1}}</p>
+              <p class="p2">{{item.p2}}</p>
             </div>
 
           </div>
         </div>
-        <div style="width:12%">¥30.00</div>
-        <div style="width:12%">100</div>
-        <div style="width:12%">¥3000.00</div>
-        <div style="width:12%" class="caozuo"><span>2套</span><span style="color: #FF946B;cursor: pointer;">查看</span></div>
+        <div style="width:12%">¥{{item.price}}</div>
+        <div style="width:12%">{{item.number}}</div>
+        <div style="width:12%">¥{{item.sumb}}</div>
+        <div style="width:12%" class="caozuo"><span>{{item.DesignNumber}}套</span><span style="color: #FF946B;cursor: pointer;">查看</span></div>
         <div style="width:12%" class="caozuo">
           <span class="dayang" style="cursor: pointer;">打样</span><span style="color: #FF946B;cursor: pointer;">删除</span>
         </div>
@@ -49,39 +49,49 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          url:'',
+          p1:'愿时光停在花',
+          p2:'母亲节真诚礼至特别巨献妈妈的礼物',
+          price: "30.00",
+          number: "100",
+          sumb:'3000.00',
+          DesignNumber: "2",
         },
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          url:'',
+          p1:'愿时光停在花',
+          p2:'母亲节真诚礼至特别巨献妈妈的礼物',
+          price: "¥30.00",
+          number: "100",
+          sumb:'¥3000.00',
+          DesignNumber: "2",
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          url:'',
+          p1:'愿时光停在花',
+          p2:'母亲节真诚礼至特别巨献妈妈的礼物',
+          price: "¥30.00",
+          number: "100",
+          sumb:'¥3000.00',
+          DesignNumber: "2",
         },
         {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          url:'',
+          p1:'愿时光停在花',
+          p2:'母亲节真诚礼至特别巨献妈妈的礼物',
+          price: "¥30.00",
+          number: "100",
+          sumb:'¥3000.00',
+          DesignNumber: "2",
         },
         {
-          date: "2016-05-08",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          url:'',
+          p1:'愿时光停在花',
+          p2:'母亲节真诚礼至特别巨献妈妈的礼物',
+          price: "¥30.00",
+          number: "100",
+          sumb:'¥3000.00',
+          DesignNumber: "2",
         },
       ],
       multipleSelection: [],
