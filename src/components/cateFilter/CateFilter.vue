@@ -8,10 +8,10 @@
           <img
             :src="activeFirst === index ? item.activeIcon : item.icon"
             alt=""
-            @mouseenter="onMouseEnterFirstItem($event, index)">
+            @mouseenter="onMouseEnterFirstItem($event,item, index)">
           <div
             class="name"
-            @mouseenter="onMouseEnterFirstItem($event, index)">{{ item.name }}
+            @mouseenter="onMouseEnterFirstItem($event,item, index)">{{ item.name }}
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
         <div :class="['cate-filter-second__item', {active: activeSecond === index}]"
              v-for="(item, index) in categories[activeFirst].children"
              :key="index"
-             @mouseenter="onMouseEnterSecondItem($event, index)">
+             @mouseenter="onMouseEnterSecondItem($event, item,index)">
           <div class="name">{{ item.name }}</div>
         </div>
       </div>
@@ -67,19 +67,26 @@ export default {
       activeFirst: -1,
       activeSecond: -1,
       activeThree: -1,
+
+      activeFirstName: '',
+      activeSecondName: '',
+      activeThreeName: '',
     }
   },
   methods: {
-    onMouseEnterFirstItem(e, index) {
+    onMouseEnterFirstItem(e,item, index) {
       // console.log('onMouseEnterFirstItem', e, index)
       this.activeFirst = index;
       this.activeSecond = -1;
       this.activeThree = -1;
+      this.activeFirstName = item.name
     },
-    onMouseEnterSecondItem(e, index) {
+    onMouseEnterSecondItem(e,item, index) {
       // console.log('onMouseEnterFirstItem', e, index)
       this.activeSecond = index;
       this.activeThree = 0;
+      this.activeSecondName = item.name
+      console.log(item)
     },
     onMouseEnterThreeItem(e, index) {
       // console.log('onMouseEnterFirstItem', e, index)
@@ -91,7 +98,12 @@ export default {
       this.activeThree = -1;
     },
     onClickThreeItem(e, category, index) {
-      this.$emit('choose', category, index)
+      let data = {
+        activeFirstName :this.activeFirstName,
+        activeSecondName: this.activeSecondName,
+        activeThreeName: category.name,
+      }
+      this.$emit('choose', data, index)
     },
   }
 }

@@ -189,9 +189,16 @@ export default {
   },
   methods: {
     // 选择了某个第三级分类
-    onChooseCategory(category, index) {
-      console.log(category, index);
-      alert(`您选择了分类${category.name}，三级索引${index}`);
+    onChooseCategory(data, index) {
+      console.log(data, index);
+      // alert(`您选择了分类${data.name}，三级索引${index}`);
+      console.log(data,index)
+      this.$router.push({
+        name:'VaseDetail',
+        query:{
+          ...data
+        }
+      })
     },
     //轮播图高度
     resizeCarouselHeight() {
