@@ -39,6 +39,11 @@ export default new Router({
                     path: '/shoppingMall/mycart/mycart',
                     name: 'Mycart',
                     component: () => import("./views/shoppingMall/mycart/mycart")
+                },
+                {
+                    path: '/shoppingMall/payment/payment',
+                    name: 'Payment',
+                    component: () => import("./views/shoppingMall/payment/payment")
                 }
             ]
         },
