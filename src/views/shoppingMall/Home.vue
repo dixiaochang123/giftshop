@@ -226,6 +226,7 @@
 <script>
 import CateFilter from "@/components/cateFilter/CateFilter";
 import Categories from "@/components/cateFilter/categories.js";
+
 export default {
   name: "Home",
   components: { CateFilter },
@@ -248,7 +249,6 @@ export default {
   methods: {
     // 选择了某个第三级分类
     onChooseCategory(category, index) {
-      console.log(category, index);
       alert(`您选择了分类${category.name}，三级索引${index}`);
     },
     //轮播图高度

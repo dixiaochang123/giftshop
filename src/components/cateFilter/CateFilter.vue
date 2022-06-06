@@ -104,12 +104,12 @@ export default {
 .cate-filter-container {
   position: relative;
   width: 100%;
-  background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 0) 50%, #E5EDFF 100%);
   font-family: PingFangSC-Regular, PingFang SC;
   animation: all .3s ease-in-out;
 
   &:hover {
-    background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 1) 50%, #E5EDFF 100%);
+    background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 0) 50%, #E5EDFF 100%);
+    backdrop-filter: blur(70px);
   }
 
   .cate-filter-first {
@@ -128,11 +128,11 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
 
       > img {
         width: rpx2multiple(56);
         height: rpx2multiple(56);
+        cursor: pointer;
       }
 
       > .name {
@@ -142,6 +142,7 @@ export default {
         font-weight: 400;
         color: #2D2E33;
         line-height: 28px;
+        cursor: pointer;
       }
 
       &.active {
