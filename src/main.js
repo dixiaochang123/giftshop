@@ -5,6 +5,7 @@ import router from './router'
 //element 组件
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
+import 'animate.css';
 
 //百度地图
 import BaiduMap from 'vue-baidu-map'

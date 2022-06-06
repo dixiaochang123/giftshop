@@ -2,18 +2,22 @@
   <div>
     <div class="shopping_haeder">
       <div class="container">
-        <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
-          <i slot="prepend" class="el-icon-close"></i>
-        </el-input>
-        <div class="icon-search"></div>
+        <div v-if="searchShow" class="searchs">
+          <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
+            <i @click="searchShow=false" slot="prepend" class="el-icon-close"></i>
+          </el-input>
+          <div class="icon-search"></div>
+        </div>
+        <div v-if="!searchShow" class="icon-search" @click="searchShow=true"></div>
+
+        <div class="icon-cat" @click="handleclickMycart"></div>
         <el-dropdown>
-          <div class="icon-cat" @click="handleclickMycart"></div>
-          <el-dropdown-menu slot="dropdown">
+          <div class="icon-order"></div>
+          <el-dropdown-menu slot="dropdown" placement="bottom">
             <el-dropdown-item icon="el-icon-circle-check">常规订单</el-dropdown-item>
             <el-dropdown-item icon="el-icon-edit">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <div class="icon-order"></div>
         <div class="icon-design"></div>
         <img v-if="false" style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
         <el-button class="icon-login" plain>登陆</el-button>
@@ -68,6 +72,7 @@ export default {
   name: "Header",
   data() {
     return {
+        searchShow:false,
       activeIndex: "1",
       activeIndex2: "1",
       hotsearch: "",
@@ -129,12 +134,30 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: relative;
+
+    .searchs {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 100px;
+      transition: all 2s ease-in-out;
+      position: absolute;
+      height: 100%;
+      left: 35%;
+    //   right: 0;
+      margin:auto;
+    }
+    .searchshide {
+        display: none;
+        transition: all 2s ease-in-out;
+    }
 
     .input-with-select {
       width: 380px;
 
       .el-icon-close {
-        font-size: 32px;
+        font-size: rpx2multiple(32);
       }
       /deep/ .el-input-group__prepend {
         background-color: transparent;
@@ -150,7 +173,7 @@ export default {
         background-color: transparent;
         border: none;
         color: #ffffff;
-        font-size: 24px;
+        font-size: rpx2multiple(24);
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
         line-height: 55px;
@@ -174,8 +197,8 @@ export default {
     .icon-cat {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
-    //   margin-left: 40px;
-    //   margin: 0 20px;
+      margin-right: 40px;
+      //   margin: 0 20px;
       background: url("../../assets/img/slices/icon-cat.png") no-repeat center
         center;
       background-size: 100% 100%;
@@ -188,7 +211,7 @@ export default {
     .icon-order {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
-      margin-left: 40px;
+      //   margin-left: 40px;
       background: url("../../assets/img/slices/icon-order.png") no-repeat center
         center;
       background-size: 100% 100%;
