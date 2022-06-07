@@ -58,6 +58,11 @@ export default new Router({
                     ]
                 },
                 {
+                    path: '/shoppingMall/order',
+                    name: 'Order',
+                    component: () => import("./views/shoppingMall/order")
+                },
+                {
                     path: '/shoppingMall/mycart/mycart',
                     name: 'Mycart',
                     component: () => import("./views/shoppingMall/mycart/mycart")
