@@ -1,0 +1,323 @@
+<template>
+  <div class="ProductDesignItem">
+    <div class="ProductDesignItem-header">
+      <div>商品</div>
+      <div>设计方案</div>
+    </div>
+    <div class="ProductDesignItem-content">
+      <div class="ProductDesignItem-content__goods">
+        <el-image :src="cacheData.src"
+                  style="width: 208px;height: 208px;" fit="cover"/>
+        <p>{{ cacheData.name }}</p>
+      </div>
+      <div class="ProductDesignItem-content__designs">
+        <div class="ProductDesignItem-content__designs-carousel" ref="ProductDesignItem-content__designs-carousel">
+          <template v-for="(item,index) of cacheData.plans">
+            <div class="ProductDesignItem-content__designs-carousel__item" :key="index">
+              <div class="relative ProductDesignItem-content__designs-carousel__item-img-wrapper">
+                <template v-if="type==='online'">
+                  <el-image :src="item.src"
+                            style="width: 208px;height: 208px;cursor:pointer;"
+                            fit="cover"
+                            @click.native="viewPlan(item)"/>
+                </template>
+                <template v-else>
+                  <div
+                      style="width: 208px;height: 208px;display: flex;justify-content: center; align-items: center;border: 1px solid #BCBEC6;border-radius: 12px;color: #7395DC;cursor:pointer;"
+                      @click="viewPlan(item)">
+                    <el-icon name="s-cooperation" style="font-size: 40px;"/>
+                  </div>
+                </template>
+                <el-icon class="ProductDesignItem-content__designs-carousel__item-close-icon" name="close"
+                         @click.native="deletePlan(index)"/>
+              </div>
+              <p>{{ item.name }}</p>
+            </div>
+          </template>
+        </div>
+
+        <template v-if="computedPlansLength>4">
+          <div class="ProductDesignItem-content__designs-control ProductDesignItem-content__designs-control__left">
+            <el-icon class="ProductDesignItem-content__designs-control__icon"
+                     :class="{'ProductDesignItem-content__designs-control__icon_disabled':computedControlLeftDisabled}"
+                     name="arrow-left"
+                     @click.native="togglePlan(-1)"/>
+          </div>
+          <div class="ProductDesignItem-content__designs-control ProductDesignItem-content__designs-control__right">
+            <el-icon class="ProductDesignItem-content__designs-control__icon"
+                     :class="{'ProductDesignItem-content__designs-control__icon_disabled':computedControlRightDisabled}"
+                     name="arrow-right"
+                     @click.native="togglePlan(1)"/>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "ProductDesignItem",
+  inject: ["designItemPlanDetailDialog"],
+  props: {
+    type: String,
+    value: Object
+  },
+  data() {
+    return {
+      cacheData: {},
+      planIndex: 0
+    }
+  },
+  computed: {
+    computedPlansLength() {
+      return this.cacheData.plans.length;
+    },
+    computedControlLeftDisabled() {
+      return this.planIndex <= 4 - this.computedPlansLength;
+    },
+    computedControlRightDisabled() {
+      return this.planIndex >= 0;
+    }
+  },
+  watch: {
+    planIndex(val) {
+      this.$refs["ProductDesignItem-content__designs-carousel"].style.transform = `translateX(${val * 25}%)`;
+    }
+  },
+  methods: {
+    togglePlan(step) {
+      switch (step) {
+        case -1:
+          if (this.planIndex > 4 - this.computedPlansLength) {
+            this.planIndex--;
+          }
+          break;
+        case 1:
+          if (this.planIndex < 0) {
+            this.planIndex++;
+          }
+          break;
+      }
+    },
+    deletePlan(index) {
+      this.cacheData.plans.splice(index, 1);
+      this.$emit("input", this.cacheData);
+    },
+    // eslint-disable-next-line no-unused-vars
+    viewPlan(item) {
+      //TODO: Mock Data
+      this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open({
+        main: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+        detail: [
+          {
+            title: "文字",
+            pictures: [
+              {
+                name: "文字1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "文字2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "文字1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "文字2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              }
+            ]
+          },
+          {
+            title: "LOGO",
+            pictures: [
+              {
+                name: "LOGO1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "LOGO2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              }
+            ]
+          },
+          {
+            title: "图案",
+            pictures: [
+              {
+                name: "图案1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "图案2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              }
+            ]
+          }
+        ]
+      }, this.type);
+      // this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open(item,this.type);
+    }
+  },
+  created() {
+    //TODO: Mock Data
+    this.cacheData = this.value || {
+      name: "愿时光停在花",
+      src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+      plans: new Array(10).fill(0).map((it, ix) => ({
+        src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+        name: "方案" + (ix + 1)
+      }))
+    };
+  }
+}
+</script>
+
+<style scoped>
+.ProductDesignItem {
+  border: 1px solid #BCBEC6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ProductDesignItem-header {
+  background-color: #F6F9FE;
+  border-bottom: 1px solid #BCBEC6;
+  color: #2D2E33;
+}
+
+.ProductDesignItem-header,
+.ProductDesignItem-content {
+  display: flex;
+  align-items: center;
+}
+
+.ProductDesignItem-header > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 18px;
+}
+
+.ProductDesignItem-header > div:nth-child(1) {
+  width: 274px;
+}
+
+.ProductDesignItem-header > div:nth-child(2) {
+  flex: 1;
+}
+
+.ProductDesignItem-content {
+  align-items: start;
+  padding: 0 32px;
+}
+
+.ProductDesignItem-content > .ProductDesignItem-content__goods {
+  padding: 40px 0;
+  margin-right: 55px;
+}
+
+.ProductDesignItem-content > .ProductDesignItem-content__goods > .el-image,
+.ProductDesignItem-content__designs-carousel > .ProductDesignItem-content__designs-carousel__item .el-image {
+  width: 208px;
+  height: 208px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.ProductDesignItem-content > .ProductDesignItem-content__goods > p,
+.ProductDesignItem-content__designs-carousel > .ProductDesignItem-content__designs-carousel__item > p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+.ProductDesignItem-content > .ProductDesignItem-content__designs {
+  position: relative;
+  flex: 1;
+  padding: 40px 12px 40px 52px;
+
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.ProductDesignItem-content__designs > .ProductDesignItem-content__designs-carousel {
+  width: 100%;
+  display: flex;
+  transition: transform .3s;
+}
+
+.ProductDesignItem-content__designs-carousel > .ProductDesignItem-content__designs-carousel__item {
+  width: 25%;
+  flex-shrink: 0;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+
+.relative {
+  position: relative;
+}
+
+.ProductDesignItem-content__designs-carousel__item-img-wrapper > .ProductDesignItem-content__designs-carousel__item-close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.ProductDesignItem-content__designs > .ProductDesignItem-content__designs-control {
+  position: absolute;
+  width: 32px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.ProductDesignItem-content__designs-control__icon {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.ProductDesignItem-content__designs-control__icon_disabled {
+  cursor: not-allowed;
+  opacity: .3;
+}
+
+.ProductDesignItem-content__designs > .ProductDesignItem-content__designs-control__left {
+  left: 0;
+  top: 0;
+  bottom: 40px;
+  justify-content: flex-start;
+}
+
+.ProductDesignItem-content__designs > .ProductDesignItem-content__designs-control__right {
+  right: 0;
+  top: 0;
+  bottom: 40px;
+  justify-content: flex-end;
+}
+</style>

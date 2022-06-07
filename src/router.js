@@ -71,6 +71,24 @@ export default new Router({
                     path: '/shoppingMall/payment/payment',
                     name: 'Payment',
                     component: () => import("./views/shoppingMall/payment/payment")
+                },
+                {
+                    path: '/shoppingMall/design',
+                    name: 'Design',
+                    component: () => import("./views/shoppingMall/design/index"),
+                    redirect: "/shoppingMall/design/undetermined",
+                    children: [
+                        {
+                            path: 'undetermined',
+                            name: 'Design-undetermined',
+                            component: () => import("./views/shoppingMall/design/undetermined"),
+                        },
+                        {
+                            path: 'producing',
+                            name: 'Design-producing',
+                            component: () => import("./views/shoppingMall/design/producing"),
+                        }
+                    ]
                 }
             ]
         },

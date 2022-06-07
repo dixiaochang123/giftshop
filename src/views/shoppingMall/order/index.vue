@@ -1,7 +1,13 @@
 <template>
-	<div class="app-container">
+	<div class="mycart">
+		<div class="Breadcrumb">
+		  <el-breadcrumb separator-class="el-icon-arrow-right">
+		    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+		    <el-breadcrumb-item>下单页</el-breadcrumb-item>
+		  </el-breadcrumb>
+		</div>
 		<div class="xiadan">
-			<div class="title">
+			<div class="title" style="margin-top: 0;">
 				商品清单
 			</div>
 			<div class="spqd">
@@ -29,10 +35,8 @@
 			</div>
 			<div class="psfs">
 				<div class="tit title" style="margin: 0;">配送方式</div>
-			
-				<select>
-					<option></option>
-				</select>
+			<el-select style="margin: 0 25px;"></el-select>
+				
 				<div class="tit2">运费:¥0.00</div>
 			</div>
 
@@ -59,7 +63,7 @@
 				<div class="dzgl">地址管理</div>
 			</div>
 			<div class="shrxx">
-				<img src="" />
+				<div class="dx" @click="zffs=1" :class="{active:zffs==1}"></div>
 				<div class="sj">15258888888</div>
 				<div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
 			</div>
@@ -92,25 +96,41 @@
 <script>
 
 	export default {
-		name: 'app',
-		components: {
-
-		}
+		name: 'order',
+		data() {
+			return {
+				zffs: 1,
+				
+			};
+		},
 	}
 </script>
 
 <style>
-	/* #app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
-	} */
-
+	.mycart {
+	  width: 1200px;
+	  margin: 92px auto 0;
+	}
+	.Breadcrumb {
+	    height: 100px;
+	}
+	.el-breadcrumb {
+	    font-size: 14px;
+	    height: 100px;
+	    line-height: 100px;
+	}
+	.el-breadcrumb__inner {
+	    font-size: 15px;
+	    font-family: PingFangSC-Regular, PingFang SC;
+	    font-weight: 400;
+	    color: #73757d;
+	}
+	.el-breadcrumb__inner.is-link {
+	    font-size: 23.33333px;
+		 font-weight: 400;
+	}
 	.xiadan {
-		width: 1380px;
+		width: 1200px;
 		margin: 0px auto;
 		display: block;
 	}
@@ -384,7 +404,7 @@
 	}
 
 	.tjdd {
-		float: right;
+		
 		width: 156px;
 		height: 52px;
 		background: #FF946B;
@@ -396,5 +416,22 @@
 		line-height: 52px;
 		text-align: center;
 		margin-top: 20px;
+		margin-left: 1044px;
+		margin-bottom: 20px;
+	}
+	.dx {
+		border-radius: 2px;
+		width: 16px;
+		height: 16px;
+		border: 1px solid rgba(115, 117, 125, 1);
+		min-width: 16px;
+		margin-left: 24px;
+		margin-right: 80px;
+	}
+	
+	.active {
+		width: 16px;
+		height: 16px;
+		background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng38e71a23fbbf2cc1c7323e2ea35ca0734c1b19186a6c2733ffda061d17333f6b) 100% no-repeat;
 	}
 </style>
