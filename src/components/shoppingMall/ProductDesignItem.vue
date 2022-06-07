@@ -34,6 +34,21 @@
               <p>{{ item.name }}</p>
             </div>
           </template>
+
+          <template v-if="type==='online'">
+            <div class="ProductDesignItem-content__designs-carousel__item">
+              <div class="relative ProductDesignItem-content__designs-carousel__item-img-wrapper plan-uploader-wrapper">
+                <el-upload
+                    class="plan-uploader"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :show-file-list="false"
+                    :on-success="handleUploadSuccess"
+                    :before-upload="beforeUpload">
+                  <i class="el-icon-plus plan-uploader-icon"></i>
+                </el-upload>
+              </div>
+            </div>
+          </template>
         </div>
 
         <template v-if="computedPlansLength>4">
@@ -71,7 +86,7 @@ export default {
   },
   computed: {
     computedPlansLength() {
-      return this.cacheData.plans.length;
+      return (this.type === 'online' ? 1 : 0) + this.cacheData.plans.length;
     },
     computedControlLeftDisabled() {
       return this.planIndex <= 4 - this.computedPlansLength;
@@ -160,6 +175,19 @@ export default {
         ]
       }, this.type);
       // this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open(item,this.type);
+    },
+
+
+    // eslint-disable-next-line no-unused-vars
+    handleUploadSuccess(res, file) {
+      //TODO 上传
+    },
+    beforeUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      return isJPG;
     }
   },
   created() {
@@ -319,5 +347,37 @@ export default {
   top: 0;
   bottom: 40px;
   justify-content: flex-end;
+}
+
+.ProductDesignItem-content__designs-carousel__item-img-wrapper.plan-uploader-wrapper{
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+::v-deep .plan-uploader .el-upload {
+  border: 1px dashed #BCBEC6;
+  border-radius: 6px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+::v-deep .plan-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.plan-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 </style>
