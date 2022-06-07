@@ -19,9 +19,9 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div class="icon-design"></div>
-        <img v-if="false" style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
-        <el-button class="icon-login" plain>登陆</el-button>
-        <el-button class="icon-register" type="text">注册</el-button>
+        <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')" style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
+        <el-button class="icon-login" plain @click="$router.push('/login')">登陆</el-button>
+        <el-button class="icon-register" @click="$router.push('/register')" type="text">注册</el-button>
         <!-- ------------- -->
         <div class="menu" v-if="false">
           <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
