@@ -13,7 +13,7 @@
             <div class="container">
                 <el-breadcrumb separator="/" style="height: 50px;line-height: 50px;" separator-class="el-icon-arrow-right">
                     <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item><a href="/">{{this.$route.query.activeFirstName}}</a></el-breadcrumb-item>
+                    <el-breadcrumb-item>{{this.$route.query.activeFirstName}}</el-breadcrumb-item>
                     <el-breadcrumb-item>{{this.$route.query.activeSecondName}}</el-breadcrumb-item>
                     <el-breadcrumb-item>{{this.$route.query.activeThreeName}}</el-breadcrumb-item>
                 </el-breadcrumb>
