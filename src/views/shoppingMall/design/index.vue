@@ -75,7 +75,7 @@ export default {
 }
 
 .design {
-  width: 1380px;
+  width: rpx2multiple(1380);
   margin: 92px auto 0;
 }
 

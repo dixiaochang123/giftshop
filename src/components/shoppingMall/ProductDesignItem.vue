@@ -7,7 +7,7 @@
     <div class="ProductDesignItem-content">
       <div class="ProductDesignItem-content__goods">
         <el-image :src="cacheData.src"
-                  style="width: 208px;height: 208px;" fit="cover"/>
+                   fit="cover"/>
         <p>{{ cacheData.name }}</p>
       </div>
       <div class="ProductDesignItem-content__designs">
@@ -17,13 +17,13 @@
               <div class="relative ProductDesignItem-content__designs-carousel__item-img-wrapper">
                 <template v-if="type==='online'">
                   <el-image :src="item.src"
-                            style="width: 208px;height: 208px;cursor:pointer;"
+                            style="cursor:pointer;"
                             fit="cover"
                             @click.native="viewPlan(item)"/>
                 </template>
                 <template v-else>
                   <div
-                      style="width: 208px;height: 208px;display: flex;justify-content: center; align-items: center;border: 1px solid #BCBEC6;border-radius: 12px;color: #7395DC;cursor:pointer;"
+                      class="imgbox" style="display: flex;justify-content: center; align-items: center;border: 1px solid #BCBEC6;border-radius: 12px;color: #7395DC;cursor:pointer;"
                       @click="viewPlan(item)">
                     <el-icon name="s-cooperation" style="font-size: 40px;"/>
                   </div>
@@ -204,7 +204,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .ProductDesignItem {
   border: 1px solid #BCBEC6;
   border-radius: 8px;
@@ -247,12 +250,13 @@ export default {
 .ProductDesignItem-content > .ProductDesignItem-content__goods {
   padding: 40px 0;
   margin-right: 55px;
+  
 }
 
 .ProductDesignItem-content > .ProductDesignItem-content__goods > .el-image,
 .ProductDesignItem-content__designs-carousel > .ProductDesignItem-content__designs-carousel__item .el-image {
-  width: 208px;
-  height: 208px;
+  width: rpx2multiple(208);
+  height: rpx2multiple(208);
   overflow: hidden;
   border-radius: 12px;
 }
@@ -267,7 +271,7 @@ export default {
 .ProductDesignItem-content > .ProductDesignItem-content__designs {
   position: relative;
   flex: 1;
-  padding: 40px 12px 40px 52px;
+  padding: 40px 2px 40px 52px;
 
   max-width: 100%;
   overflow: hidden;
@@ -296,8 +300,8 @@ export default {
   right: 0;
   transform: translate(50%, -50%);
   background-color: rgba(0, 0, 0, 0.3);
-  width: 32px;
-  height: 32px;
+  width: rpx2multiple(32);
+  height: rpx2multiple(32);
   border-radius: 50%;
   color: #ffffff;
   display: flex;
@@ -310,7 +314,7 @@ export default {
 
 .ProductDesignItem-content__designs > .ProductDesignItem-content__designs-control {
   position: absolute;
-  width: 32px;
+  width: rpx2multiple(33);
   z-index: 1;
   display: flex;
   align-items: center;
@@ -319,8 +323,8 @@ export default {
 
 .ProductDesignItem-content__designs-control__icon {
   background-color: rgba(0, 0, 0, 0.3);
-  width: 32px;
-  height: 32px;
+  width: rpx2multiple(32);
+  height: rpx2multiple(32);
   border-radius: 50%;
   color: #ffffff;
   display: flex;
@@ -379,5 +383,10 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.imgbox {
+  width: rpx2multiple(208);
+  height: rpx2multiple(208);
 }
 </style>
