@@ -11,6 +11,7 @@
                 </el-breadcrumb>
             </div>
         </div>
+        <div style="height:92px;"></div>
         <div class="container">
             <!--大图 及 商品介绍-->
             <div class="proDet">
@@ -54,7 +55,7 @@
                             </div>
                         </div>
                         <div class="workmanship">
-                            <span class="type-name">工艺</span>
+                            <span class="type-name" style="margin-left:0">工艺</span>
                             <div class="workmanship-box">
                                 <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
                                     <a href="#" :title="item.title">
@@ -99,8 +100,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="proIntro-Design">
+                        <span class="reference-price">我的设计</span>
+                        <span class="workmanship-box-item" style="margin-top:30px;" v-for="item in smallImg"  :key="item.index">
+                                    <a href="#" :title="item.title">
+                                        <img :src="item.url">
+                                    </a>
+                                    <span class="img-item-desc">一二三</span>
+                        </span>
+                    </div>
                     <div class="add-cart">
-                        <div class="add-Design">加入“我的设计”并联系客服定制方案</div>
+                        <div v-if="false" class="add-Design">加入“我的设计”并联系客服定制方案</div>
+                        <div class="continue-Design">
+                            <span>
+                                继续设计
+                            </span>
+                        </div>
                         <div class="add-cart-box">
                             <span style="padding-right:10px;"><el-button>立即下单</el-button></span>
                             <span style="padding-right:10px;"><el-button icon="el-icon-shopping-cart-2">加入购物车</el-button></span>
@@ -346,12 +361,22 @@
       color: #73757D;
       font-size: 14px;
   }
+  .img-item-desc{
+      display:block;
+      position:absolute;
+      bottom: 5px;
+      width:100%;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      background: rgba(0,0,0,0.2);
+      color: #fff;
+      text-align: center;
+  }
   .product-price{
       color: #7395DC;
       font-size: 16px;
   }
   .Split-line{
-
       margin: 0 auto;
       display: inline-block;
       margin: 10px 0;
@@ -464,18 +489,21 @@
       display:inline-block;
       padding-left: 5px;
       vertical-align: middle;
-      .workmanship-box-item{
-          width: 80px;
-          display: inline-block;
-          border-radius: 6px;
-          cursor: pointer;
-          overflow: hidden;
-          margin-right: 20px;
-          img{
-              width: 100%;
-          }
-      }
+      margin-left:80px;
   }
+.workmanship-box-item{
+    width: 120px;
+    display: inline-block;
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-right: 20px;
+    img{
+        width: 100%;
+        height:100%;
+    }
+}
   .Unit-Price{
       margin-top:30px;
       .type-name{
@@ -510,6 +538,10 @@
       }
   }
   .proIntro-checking{
+    //   border-bottom: 1px solid #E9EEF7;
+      margin-bottom: 30px;
+  }
+  .proIntro-Design{
       border-bottom: 1px solid #E9EEF7;
       margin-bottom: 30px;
   }
@@ -529,6 +561,29 @@
     .add-Design:hover{
         border:1px solid #FF946B;
         color:#FF946B
+    }
+    .continue-Design{
+        margin-bottom:10px;
+        font-size:14px;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 32px;
+        // border: 3px solid;
+        padding: 8px 0;
+        font-size:14px;
+        color: #606266;
+        padding:2px;
+        background-image: linear-gradient(225deg, rgba(170, 235, 157, 1), rgba(115, 163, 223, 1), rgba(145, 133, 212, 1), rgba(245, 113, 98, 1), rgba(253, 220, 93, 1));
+        span{
+            padding: 8px 0;
+            width:calc(100% - 4px);
+            height:calc(100% - 4px);
+            margin: 0 auto;
+            border-radius: 26px;
+            display: block;
+            background: #fff;
+        }
     }
   }
   .product-data{

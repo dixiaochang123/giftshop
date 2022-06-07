@@ -17,7 +17,7 @@
   .proDet{
     display: flex;
     margin-top: 20px;
-    height: 650px;
+    // height: 650px;
 
     .pro_big{
       flex: 1;
@@ -88,8 +88,8 @@
       .proIntro{
         padding: 20px 10px;
         margin: 20px 0;
-        border-top: 1px solid #dbdbdb;
-        border-bottom: 1px solid #dbdbdb;
+        // border-top: 1px solid #dbdbdb;
+        // border-bottom: 1px solid #dbdbdb;
 
         p{
           height: 40px;
@@ -138,8 +138,8 @@
 
     .comment{
       width: 970px;
-      height: 600px;
-      border-top: 2px solid #dbdbdb;
+      // height: 600px;
+      // border-top: 2px solid #dbdbdb;
 
       .tab{
         .per{
@@ -213,8 +213,9 @@
         }
 
         .pro_img{
+          text-align: center;;
           img{
-            width: 100%;
+            width: 80%;
             margin-bottom: 10px;
           }
         }
@@ -223,7 +224,10 @@
 
     .recommended{
       margin-left: 30px;
+      margin-top:40px;
       width: 200px;
+      margin-bottom: 15px;
+      height: auto;
       border: 1px solid #dbdbdb;
 
       .recommended_title{
