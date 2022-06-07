@@ -8,11 +8,11 @@
         <!--面包屑导航-->
         <div class="breadcrumb">
             <div class="container">
-                <el-breadcrumb separator="/" style="height: 50px;line-height: 50px;">
+                <el-breadcrumb separator="/" style="height: 50px;line-height: 50px;" separator-class="el-icon-arrow-right">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                    <el-breadcrumb-item><a href="/">{{this.$route.query.activeFirstName}}</a></el-breadcrumb-item>
+                    <el-breadcrumb-item>{{this.$route.query.activeSecondName}}</el-breadcrumb-item>
+                    <el-breadcrumb-item>{{this.$route.query.activeThreeName}}</el-breadcrumb-item>
                 </el-breadcrumb>
             </div>
         </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container product-list">
             <div class="type_list">
                 <el-row :gutter="20">
                     <el-col :span="6" v-for="item in 12" :key="item.id">
@@ -45,20 +45,27 @@
                                    <dl>
                                        <router-link to="/shoppingMall/detail/detail">
                                            <dt><img src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt=""></dt>
-                                           <dd>【最家】创意现代简约白瓷干花花瓶摆件</dd>
                                        </router-link>
                                        <dd class="price">
                                            <span>&yen;17.90</span>
-                                           <span class="button">
+                                           <span class="button" v-if="false">
                                                <el-button size="small" type="danger" @click="showDetail">极速购买</el-button>
                                            </span>
+                                           <span class="product-orderQuantity">{{orderQuantity}}起订</span>
                                        </dd>
+                                       <dd class="product-name">【最家】创意现代简约白瓷干花花瓶摆件</dd>
                                    </dl>
                             </div>
                         </div>
                     </el-col>
                 </el-row>
             </div>
+            <el-pagination
+            class="product-pagination"
+            background
+            layout="prev, pager, next,jumper"
+            :total="1000">
+            </el-pagination>
         </div>
         <fast-detail ref="FastDetail"></fast-detail>
     </div>
@@ -87,7 +94,8 @@
                     value: '选项5',
                     label: '价格从高到低'
                 }],
-                value: ''
+                value: '',
+                orderQuantity: 100
             }
         },
         mounted() {
@@ -104,4 +112,31 @@
 
 <style lang="scss" scoped>
     @import "../../../assets/css/shoppingMall/vaseDetail";
+    .product-list{
+        margin-bottom: 20px;
+    }
+    .vase_item{
+        .product-name{
+            margin-left:0;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 26px;
+        }
+    }
+    .product-orderQuantity{
+        float:right;
+        font-size: 12px;
+        color: #BCBEC6;
+        padding-right:10px;
+    }
+    .product-pagination{
+        // display:inline-block;
+        text-align: center;
+        margin: 0 auto;
+        /deep/ .el-pager{
+            .active{
+                background-color:#FF946B !important;
+            }
+        }
+    }
 </style>
