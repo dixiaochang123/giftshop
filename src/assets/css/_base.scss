@@ -42,3 +42,6 @@ textarea{
   width: 1200px;
   margin:0 auto;
 }
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
