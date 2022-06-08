@@ -1,609 +1,518 @@
 <template>
-	<div class="mycart">
-		<div class="Breadcrumb">
-			<el-breadcrumb separator-class="el-icon-arrow-right">
-				<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-				<el-breadcrumb-item>订单中心</el-breadcrumb-item>
-			</el-breadcrumb>
-		</div>
-		<!--类型-->
-		<div class="page_type" style="border-bottom: none;height: auto;">
-			<div class="container">
-				<div class="type_name" :class="{active1:bq==1}"
-					style="width: 100px;max-width: 100px;text-align: center;">常规订单</div>
-				<div class="type_name" :class="{active1:bq==2}"
-					style="width: 100px;max-width: 100px;text-align: center;">打样订单</div>
-			</div>
-			<div class="container">
-				<div class="navtab">
-					<ul>
-						<li @click="tabqh(1)" :class="{active:tabbq==1}"> 周年庆</li>
-						<li @click="tabqh(2)" :class="{active:tabbq==2}">生日纪念</li>
-						<li @click="tabqh(3)" :class="{active:tabbq==3}">入职纪念</li>
-						<li @click="tabqh(4)" :class="{active:tabbq==4}">新婚庆贺</li>
-						<li @click="tabqh(5)" :class="{active:tabbq==5}">亲子主题</li>
-						<li @click="tabqh(6)" :class="{active:tabbq==6}">颁奖典礼</li>
-						<li @click="tabqh(7)" :class="{active:tabbq==7}">员工关怀</li>
+  <div class="mycart">
+    <div class="Breadcrumb">
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>订单中心</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
 
-					</ul>
-				</div>
+    <!--类型-->
+    <div class="page_type" style="border-bottom: none;height: auto;">
+      <div class="container">
+        <div class="type_name" :class="{active1:bq==1}" style="width: 100px;max-width: 100px;text-align: center;">
+          <router-link :to="{name:'Ordercenter'}">常规订单</router-link>
+        </div>
+        <div class="type_name" :class="{active1:bq==2}" style="width: 100px;max-width: 100px;text-align: center;">
+          <router-link :to="{name:'Proofing'}">打样订单</router-link>
+        </div>
+      </div>
+      <div class="container">
+        <div class="navtab">
+          <ul>
+            <li @click="tabqh(1)" :class="{active:tabbq==1}"> 周年庆</li>
+            <li @click="tabqh(2)" :class="{active:tabbq==2}">生日纪念</li>
+            <li @click="tabqh(3)" :class="{active:tabbq==3}">入职纪念</li>
+            <li @click="tabqh(4)" :class="{active:tabbq==4}">新婚庆贺</li>
+            <li @click="tabqh(5)" :class="{active:tabbq==5}">亲子主题</li>
+            <li @click="tabqh(6)" :class="{active:tabbq==6}">颁奖典礼</li>
+            <li @click="tabqh(7)" :class="{active:tabbq==7}">员工关怀</li>
 
-			</div>
-		</div>
-		<div class="shaixuan">
-			<el-form class="qyktj qyktj1">
-				<div style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
-					<el-form-item label="下单时间" prop="xdsj">
-						<el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-							placeholder="选择下单时间">
-						</el-date-picker>
-						-
-						<el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-							placeholder="选择下单时间">
-				  </el-date-picker>
-					</el-form-item>
-					<el-form-item label="产品类型" prop="cplx">
-						<el-select v-model="cplx" placeholder="请选择产品类型">
-							
-						</el-select>
-					</el-form-item>
-					<el-form-item label="订单状态" prop="ddzt">
-						<el-select v-model="ddzt" placeholder="请选择订单状态">
-							
-						</el-select>
-					</el-form-item>
-				</div>
-				<div style="display: flex;align-items: center;justify-content: space-between;">
-					<el-form-item label="发货时间" prop="xdsj">
-						<el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-							placeholder="选择发货时间">
-						</el-date-picker>
-						-
-						<el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-							placeholder="选择发货时间">
-						</el-date-picker>
-					</el-form-item>
-					<el-form-item label="订单编号" prop="cplx">
-						<el-input v-model="ddbh" placeholder="请输入订单编号" />
-					</el-form-item>
-					<el-form-item>
-						<button>搜索</button>
-						<button style="border-color: #333333;color: #333333;">导出</button>
-					</el-form-item>
-				</div>
-			</el-form>
+          </ul>
+        </div>
 
-		</div>
-		<div class="tabs">
-			<div class="header">
-				<div class="header_1" style="width:40%;text-align: left;">
-					<el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"
-						style="font-size: 18px;">全选</el-checkbox><span class="spxx">商品信息</span>
-				</div>
-				<div style="width:12%">收货人</div>
-				<div style="width:12%">订单金额</div>
-				<div style="width:12%">订单状态</div>
+      </div>
+    </div>
+    <router-view />
 
-				<div style="width:12%">我的设计</div>
-				<div style="width:12%">操作</div>
-			</div>
-			<div class="tables" v-for="(item,index) in tableData" :key="index"
-				style="display: inline-block;height: 307px;">
-				<div class="ddtop">
-					<el-checkbox v-model="item.checked" @change="handleCheckedCitiesChange" style="font-size: 18px;">
-					</el-checkbox>
-					<div class="time">2020-05-21 18:46:57</div>
-					<div class="ddbh">订单编号：<span>2637283464955497116</span></div>
-				</div>
-				<div style="display: flex;align-items: center;">
-					<div class="header_1" style="width:40%;text-align: left;display: inline-block;">
-
-
-						<div class="img-text" style="height: 173px;">
-							<img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt=""
-								srcset="">
-							<div class="img-text-text">
-								<p>{{item.p1}}</p>
-								<p class="p2">{{item.p2}}</p>
-							</div>
-							<div class="jgsl">
-								<p>￥30.00</p>
-								<p>*</p>
-								<p>100个</p>
-							</div>
-						</div>
-						<div class="yf" style="height: 71px;">
-							<span>运费</span>
-							<span>￥0.00</span>
-						</div>
-					</div>
-					<div style="width:12%">{{item.shr}}</div>
-					<div style="width:12%">¥{{item.sumb}}</div>
-					<div style="width:12%">{{item.ddzt}}</div>
-
-					<div style="width:12%" class="caozuo"><span>{{item.DesignNumber}}套</span><span
-							style="color: #FF946B;cursor: pointer;">查看</span></div>
-					<div style="width:12%" class="caozuo">
-						<span class="dayang" style="cursor: pointer;width: 112px;
-height: 42px;
-background: #FF946B;
-border-radius: 4px;color: #FFFFFF;border: none;">立即支付</span>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
+  </div>
 </template>
 
 <script>
-	export default {
-		name: "Ordercenter",
-		data() {
-			return {
-				cplx: '',
-				ddzt: '',
-				xdsj: null,
-				bq: 1,
-				tabbq: 1,
-				checkAll: false,
-				isIndeterminate: false,
-				tableData: [{
-						checked: false,
-						url: '',
-						p1: '愿时光停在花',
-						p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-						shr: '喵大人',
-						ddzt: "待支付",
-						sumb: '3000.00',
-						DesignNumber: "2",
-					},
-					{
-						checked: false,
-						url: '',
-						p1: '愿时光停在花',
-						p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-						shr: '喵大人',
-						ddzt: "待支付",
-						sumb: '3000.00',
-						DesignNumber: "2",
-					},
-					{
-						checked: false,
-						url: '',
-						p1: '愿时光停在花',
-						p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-						shr: '喵大人',
-						ddzt: "待支付",
-						sumb: '3000.00',
-						DesignNumber: "2",
-					},
-					{
-						checked: false,
-						url: '',
-						p1: '愿时光停在花',
-						p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-						shr: '喵大人',
-						ddzt: "待支付",
-						sumb: '3000.00',
-						DesignNumber: "2",
-					},
-					{
-						checked: false,
-						url: '',
-						p1: '愿时光停在花',
-						p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-						shr: '喵大人',
-						ddzt: "待支付",
-						sumb: '3000.00',
-						DesignNumber: "2",
-					},
-				],
-				multipleSelection: [],
-			};
-		},
-		computed: {
-			total() {
-				return this.tableData.filter(item => item.checked == true).length
-			},
-			totalPrice() {
-				return this.tableData.filter(item => item.checked == true).reduce((money, item) => money + Number(item
-					.sumb), 0)
-				// return this.tableData.filter(item=>item.checked==true)
-
-			}
-		},
-		mounted() {},
-		methods: {
-			//tab切换
-				tabqh(zhi){
-					this.tabbq=zhi
-				},
-			handleCheckAllChange(val) {
-				console.log(val)
-				if (val == true) {
-					this.tableData.map(item => item.checked = true)
-				} else {
-					this.tableData.map(item => item.checked = false)
-				}
-				// this.checkedCities = val ? this.tableData.map(item=>item.checked==true) : this.tableData.map(item=>item.checked==false);
-				this.isIndeterminate = false;
-			},
-			handleCheckedCitiesChange(value) {
-				let checkedCount = this.tableData.filter(item => item.checked == true).length;
-				this.checkAll = checkedCount === this.tableData.length;
-				this.isIndeterminate = checkedCount > 0 && checkedCount < this.tableData.length;
-			},
-			deleted(item, index) {
-				this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-					confirmButtonText: '确定',
-					cancelButtonText: '取消',
-					type: 'warning'
-				}).then(() => {
-					this.tableData.splice(index, 1);
-					this.$message({
-						type: 'success',
-						message: '删除成功!'
-					});
-				}).catch(() => {
-					this.$message({
-						type: 'info',
-						message: '已取消删除'
-					});
-				});
-			}
-		},
-	};
+export default {
+  name: "Ordercenter",
+  data() {
+    return {
+      cplx: "",
+      ddzt: "",
+      xdsj: null,
+      bq: 1,
+      tabbq: 1,
+      checkAll: false,
+      isIndeterminate: false,
+      tableData: [
+        {
+          checked: false,
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
+          ddzt: "待支付",
+          sumb: "3000.00",
+          DesignNumber: "2",
+        },
+        {
+          checked: false,
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
+          ddzt: "待支付",
+          sumb: "3000.00",
+          DesignNumber: "2",
+        },
+        {
+          checked: false,
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
+          ddzt: "待支付",
+          sumb: "3000.00",
+          DesignNumber: "2",
+        },
+        {
+          checked: false,
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
+          ddzt: "待支付",
+          sumb: "3000.00",
+          DesignNumber: "2",
+        },
+        {
+          checked: false,
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
+          ddzt: "待支付",
+          sumb: "3000.00",
+          DesignNumber: "2",
+        },
+      ],
+      multipleSelection: [],
+    };
+  },
+  computed: {
+    total() {
+      return this.tableData.filter((item) => item.checked == true).length;
+    },
+    totalPrice() {
+      return this.tableData
+        .filter((item) => item.checked == true)
+        .reduce((money, item) => money + Number(item.sumb), 0);
+      // return this.tableData.filter(item=>item.checked==true)
+    },
+  },
+  mounted() {},
+  methods: {
+    //tab切换
+    tabqh(zhi) {
+      this.tabbq = zhi;
+    },
+    handleCheckAllChange(val) {
+      console.log(val);
+      if (val == true) {
+        this.tableData.map((item) => (item.checked = true));
+      } else {
+        this.tableData.map((item) => (item.checked = false));
+      }
+      // this.checkedCities = val ? this.tableData.map(item=>item.checked==true) : this.tableData.map(item=>item.checked==false);
+      this.isIndeterminate = false;
+    },
+    handleCheckedCitiesChange(value) {
+      let checkedCount = this.tableData.filter(
+        (item) => item.checked == true
+      ).length;
+      this.checkAll = checkedCount === this.tableData.length;
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < this.tableData.length;
+    },
+    deleted(item, index) {
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.tableData.splice(index, 1);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-	@import "../../../assets/css/shoppingMall/vaseDetail";
+@import "../../../assets/css/shoppingMall/vaseDetail";
 
-	@function rpx2multiple1($px, $nub) {
-		@return ($px / $nub)+px;
-	}
+@function rpx2multiple1($px, $nub) {
+  @return ($px / $nub) + px;
+}
 
-	@function rpx2multiple($px) {
-		@return ($px / 1.2)+px;
-	}
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 
-	.mycart {
-		width: 1200px;
-		margin: 92px auto 0;
-	}
+.mycart {
+  width: 1200px;
+  margin: 92px auto 0;
+}
 
-	.Breadcrumb {
-		height: rpx2multiple(120);
-	}
+.Breadcrumb {
+  height: rpx2multiple(120);
+}
 
-	.el-breadcrumb {
-		font-size: 14px;
-		height: rpx2multiple(120);
-		line-height: rpx2multiple(120);
-	}
+.el-breadcrumb {
+  font-size: 14px;
+  height: rpx2multiple(120);
+  line-height: rpx2multiple(120);
+}
 
-	/deep/ .el-breadcrumb__inner {
-		font-size: rpx2multiple(18);
-		font-family: PingFangSC-Regular, PingFang SC;
-		font-weight: 400;
-		color: #73757d;
-	}
+/deep/ .el-breadcrumb__inner {
+  font-size: rpx2multiple(18);
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #73757d;
+}
 
-	/deep/ .el-breadcrumb__inner.is-link {
-		font-size: rpx2multiple(28);
-	}
+/deep/ .el-breadcrumb__inner.is-link {
+  font-size: rpx2multiple(28);
+}
 
-	.tabs {
-		width: 100%;
-		margin: 0 auto;
-	}
+.tabs {
+  width: 100%;
+  margin: 0 auto;
+}
 
-	.header {
-		width: 100%;
-		height: 64px;
-		line-height: 64px;
-		background: #f6f9fe;
-		border-radius: 8px;
-		border: 1px solid #bcbec6;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+.header {
+  width: 100%;
+  height: 64px;
+  line-height: 64px;
+  background: #f6f9fe;
+  border-radius: 8px;
+  border: 1px solid #bcbec6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-		>div {
-			text-align: center;
-			font-size: 18px;
-			font-family: PingFangSC-Regular, PingFang SC;
-			font-weight: 400;
-			color: #2d2e33;
-		}
+  > div {
+    text-align: center;
+    font-size: 18px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #2d2e33;
+  }
 
-		.header_1 {
-			display: flex;
-			justify-content: flex-start;
-			padding-left: 20px;
-		}
+  .header_1 {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
 
-		.spxx {
-			padding-left: 100px;
-		}
-	}
+  .spxx {
+    padding-left: 100px;
+  }
+}
 
-	.tables {
-		width: 100%;
-		height: 172px;
-		background: #ffffff;
-		border-radius: 8px;
-		border: 1px solid #bcbec6;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin: 20px 0;
+.tables {
+  width: 100%;
+  height: 172px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #bcbec6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
 
-		&:hover {
-			box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
-			border: 1px solid #7395dc;
+  &:hover {
+    box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
+    border: 1px solid #7395dc;
 
-			.dayang {
-				background: #7395DC;
-				border-radius: 4px;
-				border: 1px solid #7395DC;
-				color: #ffffff;
+    .dayang {
+      background: #7395dc;
+      border-radius: 4px;
+      border: 1px solid #7395dc;
+      color: #ffffff;
+    }
+  }
 
-			}
-		}
+  > div {
+    text-align: center;
+    font-size: 18px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #2d2e33;
+  }
 
-		>div {
-			text-align: center;
-			font-size: 18px;
-			font-family: PingFangSC-Regular, PingFang SC;
-			font-weight: 400;
-			color: #2d2e33;
-		}
+  .header_1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+  }
 
-		.header_1 {
-			display: flex;
-			justify-content: flex-start;
-			align-items: center;
-			padding-left: 20px;
-		}
+  .img-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-		.img-text {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
+    > img {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  }
 
-			>img {
-				border-radius: 8px;
-				overflow: hidden;
-			}
-		}
+  .img-text-text {
+    font-size: 22px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #2d2e33;
+    padding-left: 16px;
 
-		.img-text-text {
-			font-size: 22px;
-			font-family: PingFangSC-Medium, PingFang SC;
-			font-weight: 500;
-			color: #2d2e33;
-			padding-left: 16px;
+    .p2 {
+      font-size: 14px;
+      font-weight: 400;
+      color: #73757d;
+    }
+  }
 
-			.p2 {
-				font-size: 14px;
-				font-weight: 400;
-				color: #73757d;
-			}
-		}
+  /deep/ .el-checkbox {
+    margin-right: 10px;
+  }
 
-		/deep/ .el-checkbox {
-			margin-right: 10px;
-		}
+  .caozuo {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    height: 96px;
 
-		.caozuo {
-			display: flex;
-			justify-content: flex-end;
-			flex-direction: column;
-			align-items: center;
-			height: 96px;
+    > span {
+      display: inline-block;
+      height: 50%;
+      box-sizing: border-box;
+      margin-top: 20px;
+    }
+  }
 
-			>span {
-				display: inline-block;
-				height: 50%;
-				box-sizing: border-box;
-				margin-top: 20px;
-			}
-		}
+  .dayang {
+    width: 112px;
+    padding: 9px 0;
+    background: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #73757d;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #73757d;
+  }
+}
 
-		.dayang {
-			width: 112px;
-			padding: 9px 0;
-			background: #FFFFFF;
-			border-radius: 4px;
-			border: 1px solid #73757D;
-			font-family: PingFangSC-Regular, PingFang SC;
-			font-weight: 400;
-			color: #73757D;
+.jiesuan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-		}
-	}
+  > span {
+    display: inline-block;
+  }
 
-	.jiesuan {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+  .dayang {
+    width: 112px;
+    height: 25px;
+    line-height: 25px;
+    padding: 9px 0;
+    background: #ff946b;
+    border-radius: 4px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+  }
+}
 
-		>span {
-			display: inline-block;
-		}
+.header_1_1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-		.dayang {
-			width: 112px;
-			height: 25px;
-			line-height: 25px;
-			padding: 9px 0;
-			background: #FF946B;
-			border-radius: 4px;
-			font-family: PingFangSC-Regular, PingFang SC;
-			font-weight: 400;
-			color: #ffffff;
-			text-align: center;
+.header_foot {
+  border: none;
+  background: none;
+  margin-bottom: 100px;
+}
 
-		}
-	}
+.navtab {
+  height: 42px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  width: 100%;
+}
 
-	.header_1_1 {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+.navtab ul li {
+  display: inline-block;
+  height: 42px;
+  background: #f1f2f4;
+  border-radius: 4px;
+  padding: 0 20px;
+  line-height: 42px;
+  margin-right: 15px;
+  font-size: 14px;
+}
 
-	.header_foot {
-		border: none;
-		background: none;
-		margin-bottom: 100px;
-	}
+.navtab ul .active {
+  background: #7395dc;
+  color: #ffffff;
+}
 
-	.navtab {
-		height: 42px;
-		margin-bottom: 30px;
-		margin-top: 10px;
-		width: 100%;
-	}
+.ddtop {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  background: #f6f9fe;
+  border-radius: 8px 8px 0px 0px;
+  border: 1px solid #bcbec6;
+  padding-left: 20px;
+}
 
-	.navtab ul li {
-		display: inline-block;
-		height: 42px;
-		background: #F1F2F4;
-		border-radius: 4px;
-		padding: 0 20px;
-		line-height: 42px;
-		margin-right: 15px;
-		font-size: 14px;
-	}
+.ddtop .time {
+  height: 25px;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2d2e33;
+  line-height: 25px;
+  margin: 0 15px;
+}
 
-	.navtab ul .active {
-		background: #7395DC;
-		color: #FFFFFF;
-	}
+.ddtop .ddbh {
+  height: 25px;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #bcbec6;
+  line-height: 25px;
+}
 
-	.ddtop {
-		display: flex;
-		align-items: center;
-		height: 64px;
-		background: #F6F9FE;
-		border-radius: 8px 8px 0px 0px;
-		border: 1px solid #BCBEC6;
-		padding-left: 20px;
-	}
+.ddtop .ddbh span {
+  color: #2d2e33;
+}
 
-	.ddtop .time {
-		height: 25px;
-		font-size: 18px;
-		font-family: PingFangSC-Regular, PingFang SC;
-		font-weight: 400;
-		color: #2D2E33;
-		line-height: 25px;
-		margin: 0 15px;
-	}
+.tables .header_1 {
+  border-right: 1px solid #bcbec6;
+  height: 100%;
+  height: 244px;
+  padding: 0;
+}
 
-	.ddtop .ddbh {
-		height: 25px;
-		font-size: 18px;
-		font-family: PingFangSC-Regular, PingFang SC;
-		font-weight: 400;
-		color: #BCBEC6;
-		line-height: 25px;
-	}
+.tables .header_1 .img-text {
+  padding: 0 20px;
+}
 
-	.ddtop .ddbh span {
-		color: #2D2E33;
-	}
+.yf {
+  height: 71px;
+  line-height: 71px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2d2e33;
+  border-top: 1px solid #bcbec6;
+  padding: 0 20px;
+}
 
-	.tables .header_1 {
-		border-right: 1px solid #BCBEC6;
-		height: 100%;
-		height: 244px;
-		padding: 0;
-	}
+.jgsl {
+  text-align: right;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2d2e33;
+  line-height: 25px;
+}
 
-	.tables .header_1 .img-text {
-		padding: 0 20px;
-	}
+.tables .img-text-text {
+  padding-left: 0;
+}
 
-	.yf {
-		height: 71px;
-		line-height: 71px;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		font-size: 18px;
-		font-family: PingFangSC-Regular, PingFang SC;
-		font-weight: 400;
-		color: #2D2E33;
-		border-top: 1px solid #BCBEC6;
-		padding: 0 20px;
-	}
+.tables .img-text-text .p2 {
+  margin-top: 15px;
+}
 
-	.jgsl {
-		text-align: right;
-		font-size: 18px;
-		font-family: PingFangSC-Regular, PingFang SC;
-		font-weight: 400;
-		color: #2D2E33;
-		line-height: 25px;
-	}
+.active1 {
+  position: relative;
+  width: 100px;
+}
 
-	.tables .img-text-text {
-		padding-left: 0;
-	}
+.active1::before {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: #7395dc;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25px;
+}
 
-	.tables .img-text-text .p2 {
-		margin-top: 15px;
-	}
+.shaixuan {
+  border-top: 1px solid #7395dc;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #bcbec6;
+  margin-bottom: 30px;
+}
 
-	.active1 {
-		position: relative;
-		width: 100px;
-	}
+.qyktj .el-form-item__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-	.active1::before {
-		position: absolute;
-		content: "";
-		width: 50px;
-		height: 3px;
-		background: #7395DC;
-		bottom: 0;
-		left: 50%;
-		margin-left: -25px;
-	}
-
-	.shaixuan {
-		border-top: 1px solid #7395DC;
-		width: 100%;
-		height: 150px;
-		border-bottom: 1px solid #BCBEC6;
-		margin-bottom: 30px;
-	}
-
-	.qyktj .el-form-item__content {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.el-form-item__content {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.el-form-item{display: flex;
-		align-items: center;}
-		.shaixuan button{width: 112px;
-height: 42px;
-background: #FFFFFF;
-border-radius: 4px;
-border: 1px solid #FF946B;font-size: 18px;
-font-family: PingFangSC-Medium, PingFang SC;
-font-weight: 500;
-color: #FF946B;
-line-height: 42px;margin-left: 20px;}
-
+.el-form-item__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.el-form-item {
+  display: flex;
+  align-items: center;
+}
+.shaixuan button {
+  width: 112px;
+  height: 42px;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #ff946b;
+  font-size: 18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #ff946b;
+  line-height: 42px;
+  margin-left: 20px;
+}
 </style>

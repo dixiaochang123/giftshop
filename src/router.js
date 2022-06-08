@@ -98,7 +98,20 @@ export default new Router({
 				{
 				    path: '/shoppingMall/ordercenter',
 				    name: 'Ordercenter',
-				    component: () => import("./views/shoppingMall/ordercenter")
+				    component: () => import("./views/shoppingMall/ordercenter"),
+                    redirect: "/shoppingMall/ordercenter/ordercenter",
+                    children: [
+                        {
+                            path: 'ordercenter',
+                            name: 'Ordercenter',
+                            component: () => import("./views/shoppingMall/ordercenter/ordercenter"),
+                        },
+                        {
+                            path: 'proofing',
+                            name: 'Proofing',
+                            component: () => import("./views/shoppingMall/ordercenter/proofing"),
+                        }
+                    ]
 				},
             ]
         },
