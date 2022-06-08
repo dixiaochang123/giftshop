@@ -89,7 +89,17 @@ export default new Router({
                             component: () => import("./views/shoppingMall/design/producing"),
                         }
                     ]
-                }
+                },
+                {
+				    path: '/shoppingMall/zhuanti',
+				    name: 'zhuanti',
+				    component: () => import("./views/shoppingMall/zhuanti")
+				},
+				{
+				    path: '/shoppingMall/ordercenter',
+				    name: 'Ordercenter',
+				    component: () => import("./views/shoppingMall/ordercenter")
+				},
             ]
         },
         //登录
