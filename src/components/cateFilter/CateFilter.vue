@@ -77,14 +77,14 @@ export default {
     onMouseEnterFirstItem(e,item, index) {
       // console.log('onMouseEnterFirstItem', e, index)
       this.activeFirst = index;
-      this.activeSecond = -1;
+      this.activeSecond = 0;
       this.activeThree = -1;
       this.activeFirstName = item.name
     },
     onMouseEnterSecondItem(e,item, index) {
       // console.log('onMouseEnterFirstItem', e, index)
       this.activeSecond = index;
-      this.activeThree = 0;
+      this.activeThree = -1;
       this.activeSecondName = item.name
       console.log(item)
     },
