@@ -2,7 +2,7 @@
   <div>
     <div style="height:92px;"></div>
     <div class="cate-filter">
-      <CateFilter :categories="categories" @choose="onChooseCategory" />
+      <CateFilter :categories="categories" @choose="onChooseCategory"/>
     </div>
     <!--轮播部分-->
     <div class="swipe">
@@ -75,13 +75,15 @@
     <!--底部区域-->
     <div class="container">
       <div class="tab-list-2-1">
-        <div @click="activeindex=index" v-for="(item,index) in specialtab" :key="item" :class="[index==activeindex? 'active':'']">{{item}}</div>
+        <div @click="activeindex=index" v-for="(item,index) in specialtab" :key="item"
+             :class="[index==activeindex? 'active':'']">{{ item }}
+        </div>
       </div>
       <!--商品-->
       <div class="pro">
         <div class="left">
           <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-          <div class="hover-text">
+          <div class="hover-text" @click="viewGoodsDetail">
             <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
             <p class="hp2">夏日清凉</p>
 
@@ -90,7 +92,7 @@
         <div class="right container">
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
+            <div class="hover-text" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
@@ -98,7 +100,7 @@
           </div>
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
+            <div class="hover-text" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
@@ -106,7 +108,7 @@
           </div>
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
+            <div class="hover-text" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
@@ -114,7 +116,7 @@
           </div>
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
+            <div class="hover-text" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
@@ -130,36 +132,36 @@
     </div>
     <div class="inspiration">
       <div class="container">
-          <div>
-            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
-              <p class="hp2">热门推荐</p>
+        <div>
+          <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+          <div class="hover-text" @click="viewGoodsDetail">
+            <p class="hp2">热门推荐</p>
 
-            </div>
           </div>
-          <div>
-            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
-              <p class="hp2">好物推荐</p>
-
-            </div>
-          </div>
-          <div>
-            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
-              <p class="hp2">品牌推荐</p>
-
-            </div>
-          </div>
-          <div>
-            <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
-            <div class="hover-text">
-              <p class="hp2">大厂案例</p>
-
-            </div>
-          </div>
-
         </div>
+        <div>
+          <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+          <div class="hover-text" @click="viewGoodsDetail">
+            <p class="hp2">好物推荐</p>
+
+          </div>
+        </div>
+        <div>
+          <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+          <div class="hover-text" @click="viewGoodsDetail">
+            <p class="hp2">品牌推荐</p>
+
+          </div>
+        </div>
+        <div>
+          <img width="100%" height="100%" src="../../assets/img/slices/banner-1.png" alt="" srcset="">
+          <div class="hover-text" @click="viewGoodsDetail">
+            <p class="hp2">大厂案例</p>
+
+          </div>
+        </div>
+
+      </div>
     </div>
     <div style="height:99px;"></div>
   </div>
@@ -168,15 +170,16 @@
 <script>
 import CateFilter from "@/components/cateFilter/CateFilter";
 import Categories from "@/components/cateFilter/categories.js";
+
 export default {
   name: "Home",
-  components: { CateFilter },
+  components: {CateFilter},
   data() {
     return {
       categories: Categories,
       carouselHeight: "500px",
-      activeindex:0,
-      specialtab:['季节限定','暖心防疫','轻松户外','风格系列']
+      activeindex: 0,
+      specialtab: ['季节限定', '暖心防疫', '轻松户外', '风格系列']
     };
   },
   computed: {},
@@ -188,14 +191,20 @@ export default {
     };
   },
   methods: {
+    viewGoodsDetail() {
+      //TODO: 传入id
+      this.$router.push({
+        path: "/shoppingMall/detail/detail"
+      });
+    },
     // 选择了某个第三级分类
     onChooseCategory(data, index) {
       console.log(data, index);
       // alert(`您选择了分类${data.name}，三级索引${index}`);
-      console.log(data,index)
+      console.log(data, index)
       this.$router.push({
-        name:'VaseDetail',
-        query:{
+        name: 'VaseDetail',
+        query: {
           ...data
         }
       })

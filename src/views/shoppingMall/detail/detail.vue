@@ -194,7 +194,6 @@
 
 <script>
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
-// import { mapActions, mapGetters } from "vuex";
 export default {
   name: "detail",
   components: {
@@ -295,9 +294,6 @@ export default {
         }
       ],
     };
-  },
-  computed:{
-      // ...mapGetters(['ProducNavDat'])
   },
   methods: {
     //判断选中数量是否>5,超过5就提示

@@ -15,14 +15,14 @@
         </div>
 
         <div class="icon-cat" @click="handleclickMycart"></div>
-        <el-dropdown>
+        <el-dropdown @command="jumpOrderPage">
           <div class="icon-order"></div>
           <el-dropdown-menu slot="dropdown" placement="bottom">
-            <el-dropdown-item icon="el-icon-circle-check">常规订单</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-edit">打样订单</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check" command="regular">常规订单</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-edit" command="proofing">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <div class="icon-design"></div>
+        <div class="icon-design" @click="viewMyDesign"></div>
         <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
              style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px"
              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
@@ -87,6 +87,20 @@ export default {
   mounted() {
   },
   methods: {
+    viewMyDesign() {
+      this.$router.push({
+        path: "/shoppingMall/design/undetermined"
+      });
+    },
+    jumpOrderPage(command) {
+      this.$router.push({
+        path: ({
+          "regular": "/shoppingMall/ordercenter/ordercenter",
+          "proofing": "/shoppingMall/ordercenter/proofing"
+        })[command]
+      });
+
+    },
     goUserCenter() {
       this.$router.push("/shoppingMall/user/usercenter");
     },
