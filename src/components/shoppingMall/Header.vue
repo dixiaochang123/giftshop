@@ -2,14 +2,17 @@
   <div>
     <div class="shopping_haeder">
       <div class="container">
-        <div v-if="searchShow" class="searchs animate__animated"
-             ref="searchs">
-          <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
-            <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
-          </el-input>
-          <div class="icon-search"></div>
+        <div
+            style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
+          <div v-if="searchShow" class="searchs animate__animated"
+               ref="searchs">
+            <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
+              <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
+            </el-input>
+            <div class="icon-search"></div>
+          </div>
+          <div v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
         </div>
-        <div v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
 
         <div class="icon-cat" @click="handleclickMycart"></div>
         <el-dropdown>
@@ -96,8 +99,8 @@ export default {
       });
     },
     toggleSearchsClasses(val) {
-      this.$refs.searchs.classList[val ? "add" : "remove"]("animate__fadeInRight");
-      this.$refs.searchs.classList[val ? "remove" : "add"]("animate__fadeOutRight");
+      this.$refs.searchs.classList[val ? "add" : "remove"]("animate__fadeInRight__1");
+      this.$refs.searchs.classList[val ? "remove" : "add"]("animate__fadeOutRight__1");
     },
     handleSearchsToggle(flag) {
       if (flag) {
@@ -160,13 +163,8 @@ export default {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      margin-right: 100px;
-      transition: all 2s ease-in-out;
-      position: absolute;
+      transition: all .3s ease-in-out;
       height: 100%;
-      left: 35%;
-      //   right: 0;
-      margin: auto;
     }
 
     .searchshide {
@@ -330,5 +328,39 @@ export default {
       }
     }
   }
+}
+</style>
+
+<style>
+.animate__fadeInRight__1 {
+  animation-name: fadeInRight__1;
+}
+
+@keyframes fadeInRight__1 {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes fadeOutRight__1 {
+  from {
+    opacity: 1;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+.animate__fadeOutRight__1 {
+  animation-name: fadeOutRight__1;
 }
 </style>
