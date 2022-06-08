@@ -95,6 +95,11 @@ export default new Router({
 				    name: 'zhuanti',
 				    component: () => import("./views/shoppingMall/zhuanti")
 				},
+                {
+				    path: '/shoppingMall/onlineDesign',
+				    name: 'onlineDesign',
+				    component: () => import("./views/shoppingMall/onlineDesign/onlineDesign")
+				},
 				{
 				    path: '/shoppingMall/ordercenter',
 				    name: 'Ordercenter',
