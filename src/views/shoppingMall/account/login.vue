@@ -104,6 +104,9 @@ export default {
         },
         //登陆账号
         submitForm(formName) {
+            this.$router.push({
+                name:'ShoppingTemplate'
+            })
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     alert('submit!');
@@ -142,6 +145,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .account-box {
     font-family: PingFangSC-Regular, PingFang SC;
     height: 100vh;
@@ -157,23 +163,23 @@ export default {
         line-height: normal;
     }
     .account-form {
-        width: 636px;
+        width: rpx2multiple(636);
         background: #FFFFFF;
         box-shadow: 0px 50px 120px 0px rgba(0, 0, 0, 0.37);
         border-radius: 12px;
         box-sizing: border-box;
-        padding: 40px;
+        padding: rpx2multiple(40);
 
         .title-nav {
             display: flex;
-            padding-bottom: 20px;
+            padding-bottom: rpx2multiple(20);
 
             .nav-item {
-                font-size: 24px;
+                font-size: rpx2multiple(24);
                 font-weight: 500;
                 color: #bcbec6;
-                margin-right: 70px;
-                padding-bottom: 16px;
+                margin-right: rpx2multiple(70);
+                padding-bottom: rpx2multiple(16);
                 position: relative;
                 cursor: pointer;
 
@@ -185,7 +191,7 @@ export default {
                     color: #2D2E33;
 
                     &::after {
-                        width: 96px;
+                        width: rpx2multiple(96);
                         content: '';
                         bottom: 0;
                         left: 0;
@@ -201,8 +207,8 @@ export default {
             .form-cell {
                 display: flex;
                 align-items: center;
-                font-size: 18px;
-                padding: 25px 0 10px;
+                font-size: rpx2multiple(18);
+                padding: rpx2multiple(25) 0 rpx2multiple(10);
                 border-bottom: 1px solid #BCBEC6;
 
                 .name {
@@ -210,14 +216,14 @@ export default {
                         display: flex;
                         align-items: center;
                         border-right: 1px solid #DDDEE2;
-                        padding-right: 60px;
-                        margin-right: 30px;
+                        padding-right: rpx2multiple(60);
+                        margin-right: rpx2multiple(30);
                         flex-shrink: 0;
 
                         span {
-                            font-size: 18px;
+                            font-size: rpx2multiple(18);
                             flex-shrink: 0;
-                            padding-right: 20px;
+                            padding-right: rpx2multiple(20);
                         }
 
                         .icon {
@@ -235,7 +241,7 @@ export default {
                 }
                 /deep/ .el-input__inner{
                     border: none;
-                    font-size: 18px;
+                    font-size: rpx2multiple(18);
                     padding: 0 0;
                 }
                 .value {
@@ -243,10 +249,10 @@ export default {
                 }
 
                 .getCode {
-                    font-size: 18px;
+                    font-size: rpx2multiple(18);
                     color: #7395DC;
                     flex-shrink: 0;
-                    margin-left: 20px;
+                    margin-left: rpx2multiple(20);
                     cursor: pointer;
                     padding: 0;
                     border: none;
@@ -254,14 +260,14 @@ export default {
             }
 
             .form-btn {
-                height: 52px;
+                height: rpx2multiple(52);
                 background: #E6E7EB;
                 border-radius: 4px;
                 width: 100%;
-                margin: 55px 0 20px;
+                margin: rpx2multiple(55) 0 rpx2multiple(20);
                 background-color: #E6E7EB;
                 border: none;
-                font-size: 18px;
+                font-size: rpx2multiple(18);
                 color: rgba(115, 117, 125, 1);
             }
 
@@ -269,18 +275,18 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                font-size: 18px;
-                padding-bottom: 30px;
+                font-size: rpx2multiple(18);
+                padding-bottom: rpx2multiple(30);
 
                 .el-checkbox {
                     /deep/ .el-checkbox__label {
-                        font-size: 18px;
+                        font-size: rpx2multiple(18);
                         color: #2D2E33;
                     }
 
                     /deep/ .el-checkbox__inner {
-                        width: 16px;
-                        height: 16px;
+                        width: rpx2multiple(16);
+                        height: rpx2multiple(16);
                         transform: translateY(-2px);
                     }
                 }
@@ -291,7 +297,7 @@ export default {
                     align-items: center;
 
                     span {
-                        margin: 0 0 0 10px;
+                        margin: 0 0 0 rpx2multiple(10);
                         cursor: pointer;
                     }
                 }

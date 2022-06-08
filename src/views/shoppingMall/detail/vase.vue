@@ -9,15 +9,13 @@
             <CateFilter :categories="categories" @choose="onChooseCategory" />
         </div>
         <!--面包屑导航-->
-        <div class="breadcrumb">
-            <div class="container">
-                <el-breadcrumb separator="/" style="height: 50px;line-height: 50px;" separator-class="el-icon-arrow-right">
-                    <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
+        <div class="Breadcrumb">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
                     <el-breadcrumb-item>{{this.$route.query.activeFirstName}}</el-breadcrumb-item>
                     <el-breadcrumb-item>{{this.$route.query.activeSecondName}}</el-breadcrumb-item>
                     <el-breadcrumb-item>{{this.$route.query.activeThreeName}}</el-breadcrumb-item>
-                </el-breadcrumb>
-            </div>
+            </el-breadcrumb>
         </div>
 
         <!--类型-->
@@ -38,7 +36,7 @@
                 </div>
                 <div class="result">
                     <span>筛选</span>
-                    <span class="result-num">256个内容</span>
+                    <span class="result-num">共256个内容</span>
                 </div>
             </div>
         </div>
@@ -58,34 +56,13 @@
                                     <span class="product-orderQuantity">{{orderQuantity}}起订</span>
                                 </p>
                                 <span>
-                                    【最家】创意现代简约白瓷干花花瓶摆件
+                                    创意现代简约
                                 </span>
                             </div>
                         </div>
                         </router-link>
                     </div>
                 </div>
-                <!-- <el-row :gutter="20">
-                    <el-col :span="5" v-for="item in 15" :key="item.id">
-                        <div class="grid-content">
-                            <div class="vase_item">
-                                   <dl>
-                                       <router-link to="/shoppingMall/detail/detail">
-                                           <dt style="padding:10px;"><img style="width: 100%" src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt=""></dt>
-                                       </router-link>
-                                       <dd class="price">
-                                           <span>&yen;17.90</span>
-                                           <span class="button" v-if="false">
-                                               <el-button size="small" type="danger" @click="showDetail">极速购买</el-button>
-                                           </span>
-                                           <span class="product-orderQuantity">{{orderQuantity}}起订</span>
-                                       </dd>
-                                       <dd class="product-name">【最家】创意现代简约白瓷干花花瓶摆件</dd>
-                                   </dl>
-                            </div>
-                        </div>
-                    </el-col>
-                </el-row> -->
             </div>
             <el-pagination
             class="product-pagination"
@@ -204,7 +181,7 @@
             transition: all 0.5s;
             .product-content{
                 .product-img{
-                    border-radius: 8px;
+                    border-radius: 12px;
                     overflow: hidden;
                 }
                 .product-desc{

@@ -40,6 +40,9 @@ export default {
             }, {
                 imgUrl: '',
                 fileList: [],
+            }, {
+                imgUrl: '',
+                fileList: [],
             }]
         }
     },
@@ -53,15 +56,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .text-box {
     .text-inner {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
-        padding-bottom: 20px;
+        padding-bottom: rpx2multiple(20);
+        margin-bottom: rpx2multiple(20);
         &::-webkit-scrollbar {
             background-color: #f8f8f8;
-            height: 12px;
+            height: rpx2multiple(12);
         }
 
         &::-webkit-scrollbar-button {
@@ -75,50 +82,50 @@ export default {
         }
 
         .item {
-            margin-right: 50px;
+            margin-right: rpx2multiple(50);
 
             &:last-child {
                 margin-right: 0;
             }
 
             .item-img {
-                width: 480px;
-                height: 480px;
+                width: rpx2multiple(480);
+                height: rpx2multiple(480);
                 border-radius: 10px;
                 background-color: #fff;
-                margin-bottom: 58px;
+                margin-bottom: rpx2multiple(28);
                 position: relative;
             }
 
             .item-control {
                 .upload-box {
                     border: 1px dashed #BCBEC6;
-                    height: 120px;
+                    height: rpx2multiple(120);
                     color: #73757D;
-                    font-size: 18px;
-                    width: 120px;
+                    font-size: rpx2multiple(18);
+                    width: rpx2multiple(120);
                     border-radius: 8px;
-                    margin-bottom: 30px;
+                    margin-bottom: rpx2multiple(30);
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
                     i{
-                        font-size: 30px;
-                        margin-bottom: 10px;
+                        font-size: rpx2multiple(30);
+                        margin-bottom: rpx2multiple(10);
                     }
                 }
 
                 .tips {
-                    font-size: 18px;
+                    font-size: rpx2multiple(18);
                     color: #BCBEC6;
                 }
 
                 .upload-img {
-                    height: 120px;
-                    width: 120px;
+                    height: rpx2multiple(120);
+                    width: rpx2multiple(120);
                     border-radius: 8px;
-                    margin-bottom: 30px;
+                    margin-bottom: rpx2multiple(20);
                     background-position: center;
                     background-size: cover;
                     background-repeat: no-repeat;
@@ -128,8 +135,8 @@ export default {
                         background-color: rgba(0, 0, 0, .5);
                         color: #fff;
                         border-radius: 100px;
-                        width: 32px;
-                        height: 32px;
+                        width: rpx2multiple(32);
+                        height: rpx2multiple(32);
                         cursor: pointer;
                         display: flex;
                         align-items: center;

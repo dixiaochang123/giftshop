@@ -1,7 +1,7 @@
 <template>
 <div class="onlineBox">
-    <el-button type="primary" @click="isShowModel=true">在线设计</el-button>
-    <el-dialog :visible="isShowModel" custom-class="on-lineDesign" fullscreen append-to-body :show-close="false">
+    <!-- <el-button type="primary" @click="isShowModel=true">在线设计</el-button> -->
+    <el-dialog :visible="dialogOnlineDesign" custom-class="on-lineDesign" fullscreen append-to-body :show-close="false">
         <div class="onlineBox-container">
             <div class="onlineBox-inner">
                 <div class="header">
@@ -11,7 +11,7 @@
                     <div class="tab-list-2-1">
                         <div @click="activeindex = index" v-for="(item, index) in specialtab" :key="item" :class="[index == activeindex ? 'active' : '']">{{ item }}</div>
                     </div>
-                    <el-button class="form-btn">保存</el-button>
+                    <el-button class="form-btn" @click="save">保存</el-button>
                 </div>
                 <div class="online-body">
                     <!-- 颜色 -->
@@ -50,7 +50,7 @@
                 您确定要关闭吗？
             </div>
             <div class="btn-box">
-                <el-button class="submit" @click="dialogSave=false">是的，我不需要保存</el-button>
+                <el-button class="submit" @click="notSave">是的，我不需要保存</el-button>
                 <el-button class="cancel" @click="dialogSave=false" type="text">取消</el-button>
             </div>
         </div>
@@ -70,6 +70,7 @@ export default {
         onlineDesignLogo,
         onlineDesignPic
     },
+    props:['dialogOnlineDesign'],
     data() {
         return {
             activeindex: 0,
@@ -83,12 +84,22 @@ export default {
         closeOnlineBox() {
             this.dialogSave = true
             //this.isShowModel = false
+        },
+        save() {
+            this.$parent.closeOnlineBox()
+        },
+        notSave() {
+            this.dialogSave = false;
+            this.$parent.closeOnlineBox()
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .onlineBox {
     width: 1200px;
     margin: 92px auto 0;
@@ -106,7 +117,7 @@ export default {
 
 /deep/ .el-dialog {
     background-color: transparent;
-    overflow: hidden;
+    overflow-x: hidden;
     box-shadow: none;
 }
 
@@ -114,11 +125,11 @@ export default {
     .onlineBox-container {
         background-color: #fff;
         background-image: linear-gradient(-180deg,rgba(0,0,0,.08),rgba(255,255,255,1));
-        height: 100vh;
+        min-height: 100vh;
         width: inherit;
 
         .onlineBox-inner {
-            max-width: 1580px;
+            max-width: rpx2multiple(1380);
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -127,7 +138,7 @@ export default {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 60px 0;
+                padding: rpx2multiple(60) 0;
 
                 .close-btn {
                     cursor: pointer;
@@ -183,7 +194,7 @@ export default {
                 flex: 1;
                 overflow-y: auto;
                 height: 100%;
-                padding-top: 30px;
+                // padding-top: 30px;
                 .noorder-box {
                     width: 428px;
                     height: 496px;
@@ -209,15 +220,15 @@ export default {
 .saveModel {
     .saveBox {
         background: linear-gradient(164deg, #FFE8DF 0%, #FFFFFF 100%);
-        border-radius: 12px;
-        padding: 30px;
+        border-radius: rpx2multiple(12);
+        padding: rpx2multiple(30);
         position: relative;
 
         &::after {
             content: '';
             position: absolute;
-            width: 196px;
-            height: 196px;
+            width: rpx2multiple(196);
+            height: rpx2multiple(196);
             background: linear-gradient(147deg, #FFFFFF 0%, #7395DC 100%);
             opacity: 0.3;
             filter: blur(50px);
@@ -231,17 +242,17 @@ export default {
 
             img {
                 cursor: pointer;
-                width: 30px;
+                width: rpx2multiple(30);
             }
         }
 
         .content {
-            padding: 40px 0 50px;
+            padding: rpx2multiple(40) 0 rpx2multiple(50);
             text-align: center;
             font-weight: 400;
             color: #2D2E33;
-            line-height: 40px;
-            font-size: 22px;
+            line-height: rpx2multiple(40);
+            font-size: rpx2multiple(22);
         }
 
         .btn-box {
@@ -251,20 +262,20 @@ export default {
                 border: none;
 
                 &.submit {
-                    width: 320px;
-                    height: 52px;
+                    width: rpx2multiple(320);
+                    height: rpx2multiple(52);
                     background: #7395DC;
                     color: #FFFFFF;
-                    font-size: 22px;
-                    border-radius: 26px;
+                    font-size: rpx2multiple(22);
+                    border-radius: rpx2multiple(260);
                 }
 
                 &.cancel {
                     color: #73757D;
-                    margin-top: 20px;
-                    line-height: 30px;
+                    margin-top: rpx2multiple(20);
+                    line-height: rpx2multiple(30);
                     font-weight: 400;
-                    font-size: 22px;
+                    font-size: rpx2multiple(22);
                 }
             }
         }

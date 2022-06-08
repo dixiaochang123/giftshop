@@ -126,6 +126,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .account-box {
     font-family: PingFangSC-Regular, PingFang SC;
     height: 100vh;
@@ -139,23 +142,23 @@ export default {
     justify-content: center;
 
     .account-form {
-        width: 636px;
+        width: rpx2multiple(636);
         background: #FFFFFF;
         box-shadow: 0px 50px 120px 0px rgba(0, 0, 0, 0.37);
         border-radius: 12px;
         box-sizing: border-box;
-        padding: 40px;
+        padding: rpx2multiple(40);
 
         .title-nav {
             display: flex;
-            padding-bottom: 40px;
+            padding-bottom: rpx2multiple(40);
 
             .nav-item {
-                font-size: 32px;
+                font-size: rpx2multiple(32);
                 font-weight: 500;
                 color: #bcbec6;
-                margin-right: 70px;
-                padding-bottom: 16px;
+                margin-right: rpx2multiple(70);
+                padding-bottom: rpx2multiple(16);
                 position: relative;
                 cursor: pointer;
 
@@ -175,12 +178,12 @@ export default {
                 align-items: center;
 
                 .btn {
-                    width: 124px;
-                    height: 52px;
+                    width: rpx2multiple(124);
+                    height: rpx2multiple(52);
                     background: #F1F2F4;
                     border-radius: 4px;
-                    margin-left: 20px;
-                    font-size: 18px;
+                    margin-left: rpx2multiple(20);
+                    font-size: rpx2multiple(18);
                     border: none;
                     color: #BCBEC6;
                 }
@@ -193,38 +196,38 @@ export default {
             /deep/ .el-form-item__label {
                 font-size: 18px;
                 color: #73757D;
-                padding-right: 60px;
+                padding-right: rpx2multiple(60);
                 box-sizing: border-box;
             }
 
             /deep/ .el-input__inner {
-                font-size: 18px;
-                height: 52px;
-                line-height: 52px;
+                font-size: rpx2multiple(18);
+                height: rpx2multiple(52);
+                line-height: rpx2multiple(52);
             }
 
             .form-btn-box {
                 display: flex;
                 align-items: center;
                 .form-btn-cancel{
-                    height: 52px;
+                    height: rpx2multiple(52);
                     border-radius: 4px;
-                    margin: 20px 0 10px;
+                    margin: rpx2multiple(20) 0 rpx2multiple(10);
                     border-color: #73757D;
-                    font-size: 18px;
+                    font-size: rpx2multiple(18);
                     color: #73757D;
-                    width: 156px;
-                    margin-right: 20px;
+                    width: rpx2multiple(156);
+                    margin-right: rpx2multiple(20);
                 }   
                 .form-btn {
-                    height: 52px;
+                    height: rpx2multiple(52);
                     background: #E6E7EB;
                     border-radius: 4px;
                     width: 100%;
-                    margin: 20px 0 10px;
+                    margin: rpx2multiple(20) 0 rpx2multiple(10);
                     background-color: #E6E7EB;
                     border: none;
-                    font-size: 18px;
+                    font-size: rpx2multiple(18);
                     color: #73757D;
                 }
             }

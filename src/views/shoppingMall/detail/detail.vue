@@ -111,7 +111,7 @@
                     </div>
                     <div class="add-cart">
                         <div v-if="false" class="add-Design">加入“我的设计”并联系客服定制方案</div>
-                        <div class="continue-Design" @click="closeOnlineBox">
+                        <div class="continue-Design" @click="openOnlineBox">
                             <span>
                                 继续设计
                             </span>
@@ -186,7 +186,7 @@
                 </div>
             </div>
         </div>
-        <onlineDesign v-if="dialogOnlineDesign"></onlineDesign>
+        <onlineDesign :dialogOnlineDesign="dialogOnlineDesign"></onlineDesign>
     </div>
 </template>
 
@@ -334,9 +334,13 @@
             getIndex(smallImg){
                 this.bigImg = smallImg;
             },
-            closeOnlineBox() {
+            openOnlineBox() {
                 this.dialogOnlineDesign = true
-            }
+            },
+            closeOnlineBox() {
+                this.dialogOnlineDesign = false
+            },
+            
         }
     }
 </script>

@@ -68,19 +68,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .color-box {
     /deep/ .slider-item {
-        margin: 30px 0 80px;
-        width: 420px;
-        height: 420px;
+        margin: rpx2multiple(30) 0 rpx2multiple(80);
+        width: rpx2multiple(420);
+        height: rpx2multiple(420);
         background-color: #999;
-        margin-right: 50px;
+        margin-right: rpx2multiple(50);
         border-radius: 10px;
     }
 
     /deep/ .slider-active {
-        width: 480px !important;
-        height: 480px !important;
+        width: rpx2multiple(480) !important;
+        height: rpx2multiple(480) !important;
         background: #FFFFFF;
         box-shadow: 0px 42px 45px 0px rgba(129, 135, 150, 0.2);
         border-radius: 12px;

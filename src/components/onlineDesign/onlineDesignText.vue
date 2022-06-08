@@ -35,15 +35,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.2) + px;
+}
 .text-box {
     .text-inner {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
-        padding-bottom: 20px;
+        padding-bottom: rpx2multiple(20);
         &::-webkit-scrollbar{
             background-color: #f8f8f8;
-            height: 12px;
+            height: rpx2multiple(12);
         }
         &::-webkit-scrollbar-button{
             display: none;
@@ -54,16 +57,16 @@ export default {
             cursor: pointer;
         }
         .item {
-            margin-right: 50px;
+            margin-right: rpx2multiple(50);
             &:last-child{
                 margin-right: 0;
             }
             .item-img {
-                width: 480px;
-                height: 480px;
+                width: rpx2multiple(480);
+                height: rpx2multiple(480);
                 border-radius: 10px;
                 background-color: #fff;
-                margin-bottom: 58px;
+                margin-bottom: rpx2multiple(28);
                 position: relative;
             }
 
@@ -71,7 +74,7 @@ export default {
                 .item-btn {
                     display: flex;
                     justify-content: space-between;
-                    padding-bottom: 15px;
+                    padding-bottom: rpx2multiple(15);
                     color: #73757D;
                 }
             }
