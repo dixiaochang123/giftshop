@@ -2,13 +2,14 @@
   <div>
     <div class="shopping_haeder">
       <div class="container">
-        <div v-if="searchShow" class="searchs">
+        <div v-if="searchShow" class="searchs animate__animated"
+             ref="searchs">
           <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
-            <i @click="searchShow=false" slot="prepend" class="el-icon-close"></i>
+            <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
           </el-input>
           <div class="icon-search"></div>
         </div>
-        <div v-if="!searchShow" class="icon-search" @click="searchShow=true"></div>
+        <div v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
 
         <div class="icon-cat" @click="handleclickMycart"></div>
         <el-dropdown>
@@ -19,7 +20,9 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div class="icon-design"></div>
-        <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')" style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
+        <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
+             style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px"
+             src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
         <el-button class="icon-login" plain @click="$router.push('/login')">登陆</el-button>
         <el-button class="icon-register" @click="$router.push('/register')" type="text">注册</el-button>
         <!-- ------------- -->
@@ -72,13 +75,14 @@ export default {
   name: "Header",
   data() {
     return {
-        searchShow:false,
+      searchShow: false,
       activeIndex: "1",
       activeIndex2: "1",
       hotsearch: "",
     };
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     goUserCenter() {
       this.$router.push("/shoppingMall/user/usercenter");
@@ -91,6 +95,21 @@ export default {
         },
       });
     },
+    toggleSearchsClasses(val) {
+      this.$refs.searchs.classList[val ? "add" : "remove"]("animate__fadeInRight");
+      this.$refs.searchs.classList[val ? "remove" : "add"]("animate__fadeOutRight");
+    },
+    handleSearchsToggle(flag) {
+      if (flag) {
+        this.searchShow = true;
+        this.$nextTick(() => this.toggleSearchsClasses(true));
+      } else {
+        this.toggleSearchsClasses(false);
+        setTimeout(() => {
+          this.searchShow = false;
+        }, 800);
+      }
+    }
   },
 };
 </script>
@@ -115,6 +134,7 @@ export default {
 @function rpx2multiple($px) {
   @return ($px / 1.2) + px;
 }
+
 .shopping_haeder {
   width: 100%;
   height: 92px;
@@ -145,12 +165,13 @@ export default {
       position: absolute;
       height: 100%;
       left: 35%;
-    //   right: 0;
-      margin:auto;
+      //   right: 0;
+      margin: auto;
     }
+
     .searchshide {
-        display: none;
-        transition: all 2s ease-in-out;
+      display: none;
+      transition: all 2s ease-in-out;
     }
 
     .input-with-select {
@@ -159,6 +180,7 @@ export default {
       .el-icon-close {
         font-size: rpx2multiple(32);
       }
+
       /deep/ .el-input-group__prepend {
         background-color: transparent;
         color: #ffffff;
@@ -169,7 +191,7 @@ export default {
         padding: 0 20px;
       }
 
-      /deep/.el-input__inner {
+      /deep/ .el-input__inner {
         background-color: transparent;
         border: none;
         color: #ffffff;
@@ -185,55 +207,55 @@ export default {
       height: rpx2multiple(32);
       margin-left: 40px;
       margin-right: 40px;
-      background: url("../../assets/img/slices/icon-search.png") no-repeat
-        center center;
+      background: url("../../assets/img/slices/icon-search.png") no-repeat center center;
       background-size: 100% 100%;
+
       &:hover {
-        background: url("../../assets/img/slices/icon-search-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-search-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
+
     .icon-cat {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       margin-right: 40px;
       //   margin: 0 20px;
-      background: url("../../assets/img/slices/icon-cat.png") no-repeat center
-        center;
+      background: url("../../assets/img/slices/icon-cat.png") no-repeat center center;
       background-size: 100% 100%;
+
       &:hover {
-        background: url("../../assets/img/slices/icon-cat-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-cat-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
+
     .icon-order {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       //   margin-left: 40px;
-      background: url("../../assets/img/slices/icon-order.png") no-repeat center
-        center;
+      background: url("../../assets/img/slices/icon-order.png") no-repeat center center;
       background-size: 100% 100%;
+
       &:hover {
-        background: url("../../assets/img/slices/icon-order-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-order-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
+
     .icon-design {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       margin-left: 40px;
-      background: url("../../assets/img/slices/icon-design.png") no-repeat
-        center center;
+      background: url("../../assets/img/slices/icon-design.png") no-repeat center center;
       background-size: 100% 100%;
+
       &:hover {
-        background: url("../../assets/img/slices/icon-design-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-design-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
+
     .icon-login {
       width: rpx2multiple(112);
       height: rpx2multiple(48);
@@ -245,17 +267,20 @@ export default {
       font-family: PingFangSC-Medium, PingFang SC;
       font-weight: 500;
       color: #ffffff;
+
       &:hover {
         color: #7395dc;
         border: 2px solid #7395dc;
       }
     }
+
     .icon-register {
       font-size: rpx2multiple(22);
       margin-left: 40px;
       font-family: PingFangSC-Regular, PingFang SC;
       font-weight: 400;
       color: #ffffff;
+
       &:hover {
         color: #7395dc;
       }
@@ -267,14 +292,15 @@ export default {
 
     .login {
       height: 100%;
+
       .icon-search {
         width: rpx2multiple(32);
         height: rpx2multiple(32);
-        background: url("../../assets/img/slices/icon-search.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-search.png") no-repeat center center;
         background-size: 100% 100%;
         margin-right: 40px;
       }
+
       .search {
         width: 250px;
         float: left;
@@ -284,11 +310,14 @@ export default {
       .shopping_cart {
         display: flex;
         float: right;
+
         .mine {
           width: 60px;
         }
+
         .cart {
           width: 60px;
+
           i {
             width: 28px;
             height: 28px;
