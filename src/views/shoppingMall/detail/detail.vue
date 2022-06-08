@@ -111,7 +111,7 @@
                     </div>
                     <div class="add-cart">
                         <div v-if="false" class="add-Design">加入“我的设计”并联系客服定制方案</div>
-                        <div class="continue-Design">
+                        <div class="continue-Design" @click="closeOnlineBox">
                             <span>
                                 继续设计
                             </span>
@@ -186,14 +186,20 @@
                 </div>
             </div>
         </div>
+        <onlineDesign v-if="dialogOnlineDesign"></onlineDesign>
     </div>
 </template>
 
 <script>
+    import onlineDesign from '@/components/onlineDesign/onlineDesign'
     export default {
         name: "detail",
+        components: {
+            onlineDesign
+        },
         data(){
             return{
+                dialogOnlineDesign:false,
                 bigImg:require('../../../assets/img/shoppingMall/detail/proBig02.jpg'),
                 num: 1,
                 activeName:'first',
@@ -327,6 +333,9 @@
             //点击小图片时将图片路径赋值给大图
             getIndex(smallImg){
                 this.bigImg = smallImg;
+            },
+            closeOnlineBox() {
+                this.dialogOnlineDesign = true
             }
         }
     }

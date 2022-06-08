@@ -14,6 +14,8 @@
     "element-ui": "^2.10.0",
     "vue": "^2.6.10",
     "vue-baidu-map": "^0.21.22",
+    "vue-concise-slider": "^4.2.5",
+    "vue-drag-resize": "^1.5.4",
     "vue-router": "^3.0.6"
   },
   "devDependencies": {
