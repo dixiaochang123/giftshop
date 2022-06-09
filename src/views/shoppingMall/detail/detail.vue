@@ -25,7 +25,7 @@
           <div class="tro_list">
             <span v-for="item in smallImg" :key="item.id">
               <a href="#" :title="item.title">
-                <img :src="item.url" @mouseenter="getIndex(item.url)">
+                <img :src="item.url">
               </a>
             </span>
           </div>
@@ -63,9 +63,7 @@
               <span class="type-name" style="margin-left:0">工艺</span>
               <div class="workmanship-box">
                 <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
-                  <a href="#" :title="item.title">
-                    <img :src="item.url" @click="getIndex(item.url)">
-                  </a>
+                  <img :src="item.url" @click="getIndex(item.url)">
                 </span>
               </div>
             </div>
@@ -83,13 +81,13 @@
             <div class="checking-number">
               <span class="type-name">数量</span>
               <div class="checking-number-box">
-                <el-input-number v-model="num" @change="handleChange" :min="100" size="mini" label="描述文字"></el-input-number>
+                <el-input-number size="small" v-model="num" @change="handleChange" :min="100" label="描述文字"></el-input-number>
               </div>
             </div>
             <div class="Unit-Price">
               <span class="type-name">实际单价</span>
               <div class="Unit-Price-box">
-                <span>￥{{unitPrice}}</span>
+                <span style="color:#2D2E33">￥{{unitPrice}}</span>
               </div>
             </div>
             <div class="Total-price">
@@ -107,12 +105,24 @@
           </div>
           <div class="proIntro-Design">
             <span class="reference-price">我的设计</span>
-            <span class="workmanship-box-item" style="margin-top:30px;" v-for="item in smallImg" :key="item.index">
-              <a href="#" :title="item.title">
-                <img :src="item.url">
-              </a>
-              <span class="img-item-desc">一二三</span>
-            </span>
+            <div class="proIntro-Design-imgs">
+                <div class="workmanship-box-item" style="margin-top:30px;" v-for="item in smallImg" :key="item.index">
+                  <a href="#" :title="item.title">
+                    <img :src="item.url">
+                  </a>
+                  <div class="img-item-desc">
+                    <span>方案一</span>
+                    <!-- <i style="color:#ffffff;" class="el-icon-more"></i> -->
+                    <el-dropdown trigger="click" style="cursor: pointer;" @command="jumpOrderPage">
+                      <i style="color:#ffffff;" class="el-icon-more"></i>
+                      <el-dropdown-menu slot="dropdown" placement="bottom">
+                        <el-dropdown-item icon="el-icon-edit" command="proofing">编辑</el-dropdown-item>
+                        <el-dropdown-item icon="el-icon-delete" command="regular">删除</el-dropdown-item>
+                      </el-dropdown-menu>
+                    </el-dropdown>
+                  </div>
+                </div>
+            </div>
           </div>
           <div class="add-cart">
             <div v-if="false" class="add-Design">加入“我的设计”并联系客服定制方案</div>
@@ -123,13 +133,13 @@
             </div>
             <div class="add-cart-box">
               <span style="padding-right:10px;">
-                <el-button>立即下单</el-button>
+                <el-button size="medium">立即下单</el-button>
               </span>
               <span style="padding-right:10px;">
-                <el-button icon="el-icon-shopping-cart-2">加入购物车</el-button>
+                <el-button size="medium" icon="el-icon-shopping-cart-2">加入购物车</el-button>
               </span>
               <span>
-                <el-button>打样</el-button>
+                <el-button size="medium">打样</el-button>
               </span>
             </div>
             <!-- <span style="padding-right:30px;"><el-button>加入购物车</el-button></span>
@@ -342,6 +352,10 @@ export default {
     closeOnlineBox() {
       this.dialogOnlineDesign = false;
     },
+    jumpOrderPage(command) {
+      
+
+    },
   },
 };
 </script>
@@ -405,15 +419,22 @@ export default {
   font-size: 16px;
 }
 .img-item-desc {
+ height: 60px;
+//  opacity: 0.7;
+  background: #E4E4E4;
+  border-radius: 0px 24px 0px 0px;
+  backdrop-filter: blur(10px);
+  font-size: 22px;
   display: block;
   position: absolute;
-  bottom: 5px;
+  bottom: -1px;
   width: 100%;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  background: rgba(0, 0, 0, 0.2);
   color: #fff;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 20px !important;
 }
 .product-price {
   color: #7395dc;
@@ -438,10 +459,11 @@ export default {
 }
 .type-name {
   color: #73757d;
-  font-size: 12px;
+  font-size: 18px;
   vertical-align: middle;
   margin-right: 60px;
   padding: 0 !important;
+  white-space: nowrap;
 }
 .intro-price-item::after {
   content: "";
@@ -492,7 +514,7 @@ export default {
     border-radius: 4px;
     border: 1px solid #bcbec6;
     padding: 9px 22px;
-    font-size: 12px;
+    font-size: 18px;
     color: #2d2e33;
     margin-right: 20px;
   }
@@ -506,7 +528,7 @@ export default {
     border-radius: 4px;
     border: 1px solid #bcbec6;
     padding: 9px 22px;
-    font-size: 12px;
+    font-size: 18px;
     color: #2d2e33;
     margin-right: 20px;
   }
@@ -520,25 +542,28 @@ export default {
     border-radius: 4px;
     border: 1px solid #bcbec6;
     padding: 9px 22px;
-    font-size: 12px;
+    font-size: 18px;
     color: #2d2e33;
     margin-right: 20px;
   }
 }
 .workmanship {
   margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
 }
 .workmanship-box {
   display: inline-block;
   padding-left: 5px;
   vertical-align: middle;
-  margin-left: 80px;
 }
 .workmanship-box-item {
-  width: 120px;
+  width: rpx2multiple(216);
+  width: rpx2multiple(216);
   display: inline-block;
   position: relative;
-  border-radius: 6px;
+  border-radius: 12px;
+  overflow: hidden;
   cursor: pointer;
   overflow: hidden;
   margin-right: 20px;
@@ -554,12 +579,14 @@ export default {
   }
   .Unit-Price-box {
     display: inline-block;
+    font-size: 22px;
   }
 }
 .Total-price {
   margin-top: 30px;
   .Total-Price-box {
     display: inline-block;
+    font-size: 32px;
   }
 }
 .checking-number {
@@ -577,7 +604,7 @@ export default {
   .Production-time-box {
     display: inline-block;
     color: #7395dc;
-    font-size: 12px;
+    font-size: 18px;
   }
 }
 .proIntro-checking {
@@ -586,10 +613,27 @@ export default {
 }
 .proIntro-Design {
   border-bottom: 1px solid #e9eef7;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  .proIntro-Design-imgs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &::after {
+      content: "";
+      display: block;
+      width:rpx2multiple(208);
+      height:rpx2multiple(208);
+    }
+  }
+  .workmanship-box-item {
+    width:rpx2multiple(208);
+    height:rpx2multiple(208);
+    margin: 0;
+  }
 }
 .add-cart {
-  //   width:300px;
+    width:498px;
   display: inline-block;
   .add-Design {
     margin-bottom: 10px;
@@ -606,15 +650,14 @@ export default {
     color: #ff946b;
   }
   .continue-Design {
-    margin-bottom: 10px;
-    font-size: 14px;
+    margin-bottom: 16px;
     width: 100%;
     text-align: center;
     cursor: pointer;
     border-radius: 32px;
     // border: 3px solid;
     padding: 8px 0;
-    font-size: 14px;
+    font-size: 22px;
     color: #606266;
     padding: 2px;
     background-image: linear-gradient(
@@ -660,5 +703,26 @@ export default {
 .activeItem {
   color: #ff946b !important;
   border: 1px solid #ff946b !important;
+}
+.proIntro-material {
+  padding-top: 45px;
+  font-size: 18px;
+}
+.proIntro-packing {
+  padding-bottom:57px;
+}
+/deep/ .el-dropdown-menu__item {
+  width: 128px !important;
+  height: 60px;
+  line-height: 60px;
+  padding:0 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 42px 92px 0px rgba(129, 135, 150, 0.2);
+  border-radius: 8px;
+  border: 1px solid #F6F9FE;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #73757D;
 }
 </style>

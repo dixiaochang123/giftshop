@@ -497,33 +497,12 @@
       overflow: hidden;
       height: 420px;
       border-radius: 8px;
-      &:hover {
-        transition: all 0.5s ease-in-out;
-        > .hover-text {
-          bottom: 0 ;
-        }
-      }
-    }
-    .hover-text {
-      transition: all 0.5s ease-in-out;
-      position: absolute;
-      bottom: -20%;
-      left: 0;
-      width: 100%;
-      height: 20% ;
-      background: rgba($color: #E4E4E4, $alpha: 0.4);
-      border-radius: 0px 20px 0px 0px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .hp2 {
-        font-size: rpx2multiple(35);
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 500;
-        color: #FFFFFF;
-      }
+      // &:hover {
+      //   transition: all 0.5s ease-in-out;
+      //   > .hover-text {
+      //     bottom: 0 ;
+      //   }
+      // }
     }
   }
 }
