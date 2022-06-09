@@ -19,6 +19,10 @@
           <div class="swipe_img" :style="{backgroundImage:'url('+require('../../assets/img/slices/banner-3.png')+')'}">
           </div>
         </el-carousel-item>
+        <el-carousel-item>
+          <div class="swipe_img" :style="{backgroundImage:'url('+require('../../assets/img/slices/banner-4.png')+')'}">
+          </div>
+        </el-carousel-item>
       </el-carousel>
     </div>
 
