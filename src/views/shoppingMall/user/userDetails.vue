@@ -46,6 +46,10 @@
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1.038062283737024)+px;
+}
+
 .user-box {
     display: flex;
     justify-content: space-between;
@@ -56,7 +60,7 @@
     .bg-img {
         flex-shrink: 0;
         height: 100%;
-        margin-left: 150px;
+        margin-left: rpx2multiple(180);
     }
 
     .user-img {
@@ -64,8 +68,8 @@
         width: fit-content;
 
         .user-img-upload {
-            margin: 0 auto 48px;
-            border-radius: 100px;
+            margin: 0 auto rpx2multiple(46);
+            border-radius: rpx2multiple(100);
             position: relative;
             overflow: hidden;
 
@@ -73,7 +77,7 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                font-size: 14px;
+                font-size: rpx2multiple(14);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -85,32 +89,32 @@
             }
 
             img {
-                width: 112px;
-                height: 112px;
+                width: rpx2multiple(112);
+                height: rpx2multiple(112);
             }
         }
     }
 
     .account-inner {
-        padding-bottom: 130px;
+        padding-bottom: rpx2multiple(130);
         /deep/ .el-form-item__label {
-            font-size: 18px;
+            font-size: rpx2multiple(18);
             color: #73757D;
-            padding-right: 60px;
+            padding-right: rpx2multiple(60);
             box-sizing: border-box;
         }
         .el-form-item{
-            padding-bottom: 30px;
+            padding-bottom: rpx2multiple(18);
         }
         /deep/ .el-input__inner {
-            font-size: 18px;
-            height: 52px;
-            line-height: 52px;
+            font-size: rpx2multiple(18);
+            height: rpx2multiple(52);
+            line-height: rpx2multiple(52);
             border: none;
         }
 
         /deep/ .el-textarea__inner {
-            font-size: 18px;
+            font-size: rpx2multiple(18);
             border: none;
             font-family: PingFangSC-Regular, PingFang SC;
             resize: none;
@@ -123,15 +127,15 @@
             align-items: flex-start;
         }
         .form-btn {
-            height: 42px;
+            height: rpx2multiple(42);
             border-radius: 4px;
             width: 100%;
             background-color: #FF946B;
             border: none;
-            font-size: 18px;
+            font-size: rpx2multiple(18);
             color: #fff;
-            width: 112px;
-            margin-left: 20px;
+            width: rpx2multiple(112);
+            margin-left: rpx2multiple(20);
             flex-shrink: 0;
         }
     }

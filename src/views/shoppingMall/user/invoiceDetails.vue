@@ -54,7 +54,7 @@ export default {
         justify-content: space-between;
         align-items: flex-start;
         font-family: PingFangSC-Regular, PingFang SC;
-        margin-bottom: 100px;
+        margin-bottom: 90px;
 
         .left {
             width: 100%;
@@ -81,7 +81,7 @@ export default {
             }
 
             .el-form-item {
-                margin-bottom: 48px;
+                margin-bottom: 36px;
             }
 
             /deep/ .el-cascader {
@@ -99,7 +99,6 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 10px 0 40px;
 
                 label {
                     span {
