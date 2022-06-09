@@ -156,11 +156,11 @@
               <el-tab-pane label="商品介绍" name="first">
                 <div class="product-data">
                   <div class="product-data-box">
-                    <h5>长度 <span>20cm</span></h5>
-                    <h5>宽度 <span>20cm</span></h5>
-                    <h5>厚度 <span>5cm</span></h5>
-                    <h5>材质 <span>玻璃</span></h5>
-                    <h5>工艺 <span>玻璃</span></h5>
+                    <h5><span>长度</span><span>20cm</span></h5>
+                    <h5><span>宽度</span><span>20cm</span></h5>
+                    <h5><span>厚度</span><span>5cm</span></h5>
+                    <h5><span>材质</span><span>玻璃</span></h5>
+                    <h5><span>工艺</span><span>玻璃</span></h5>
                   </div>
                 </div>
                 <div class="pro_img" v-for="item in 3" :key="item.id">
@@ -633,7 +633,7 @@ export default {
   }
 }
 .add-cart {
-    width:498px;
+    width:100%;
   display: inline-block;
   .add-Design {
     margin-bottom: 10px;
@@ -650,8 +650,8 @@ export default {
     color: #ff946b;
   }
   .continue-Design {
+    width:498px;
     margin-bottom: 16px;
-    width: 100%;
     text-align: center;
     cursor: pointer;
     border-radius: 32px;
@@ -671,9 +671,10 @@ export default {
     span {
       padding: 8px 0;
       width: calc(100% - 4px);
-      height: calc(100% - 4px);
+      height: 52px;
+      line-height: 52px;
       margin: 0 auto;
-      border-radius: 26px;
+      border-radius: 32px;
       display: block;
       background: #fff;
     }
@@ -688,13 +689,17 @@ export default {
     flex-wrap: wrap;
     width: 360px;
     > h5 {
-      color: #bcbec6;
       font-size: 12px;
       display: inline-block;
       margin-right: 50px;
       margin-bottom: 20px;
+
+      font-size: 18px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #BCBEC6;
       span {
-        color: #2d2e33;
+        color: #2D2E33;
         margin-left: 10px;
       }
     }
@@ -724,5 +729,9 @@ export default {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #73757D;
+}
+.el-button--medium {
+  font-size: 22px;
+  padding:11px 34px;
 }
 </style>

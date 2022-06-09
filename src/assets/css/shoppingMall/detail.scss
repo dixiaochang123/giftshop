@@ -163,9 +163,9 @@
   //评论 为你推荐
   .pro_information{
     display: flex;
-
+    margin-top: 96px;
     .comment{
-      width: 970px;
+      width: rpx2multiple(1380);
       // height: 600px;
       // border-top: 2px solid #dbdbdb;
 
