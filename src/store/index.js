@@ -6,20 +6,20 @@ Vue.use(Vuex);     //Vuex大写!!!
 
 export default new Vuex.Store({
   state: {
-    Highlight: sessionStorage.getItem('Highlight') ? sessionStorage.getItem('Highlight') : 1,
+    ProductNav: sessionStorage.getItem('ProductNav') ? sessionStorage.getItem('ProductNav') : 1,
   },
   getters: {
-    Highlight: state => state.Highlight,
+    ProductNav: state => state.ProductNav,
   },
   mutations: {
-    SETHIGHLIGH(state, data) {
-      sessionStorage.setItem('Highlight', JSON.stringify(data));
-      state.Highlight = data
+    SETPRODUCTNAV(state, data) {
+      sessionStorage.setItem('ProductNav', JSON.stringify(data));
+      state.ProductNav = data
     },
   },
   actions: {
-    sethighligh({ commit }, data) {
-      commit("SETHIGHLIGH", data)
+    setProductNav({ commit }, data) {
+      commit("SETPRODUCTNAV", data)
     },
   },
   modules: {
