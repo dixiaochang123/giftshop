@@ -120,7 +120,7 @@ export default {
         align-items: flex-start;
         font-family: PingFangSC-Regular, PingFang SC;
         border-bottom: 1px solid rgba(115, 149, 220, .3);
-        margin-bottom: 60px;
+        margin-bottom: 55px;
 
         .left {
             width: 100%;
@@ -136,7 +136,7 @@ export default {
         .bg-img {
             flex-shrink: 0;
             height: 100%;
-            margin-left: 150px;
+            margin-left: 208px;
         }
 
         .account-inner {
@@ -190,7 +190,7 @@ export default {
     }
 
     .bottom-box {
-        padding-bottom: 100px;
+        padding-bottom: 90px;
         font-size: 18px;
         color: rgba(115, 117, 125, 1);
 
@@ -203,7 +203,7 @@ export default {
         .item-box {
             border-radius: 8px;
             border: 1px solid #BCBEC6;
-            margin-top: 40px;
+            margin-top: 27px;
 
             .item-cell {
                 margin-right: 40px;

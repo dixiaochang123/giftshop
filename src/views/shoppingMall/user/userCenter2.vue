@@ -48,12 +48,12 @@ export default {
 }
 
 @function rpx2multiple($px) {
-    @return ($px / 1.2)+px;
+    @return ($px / 1.038062283737024)+px;
 }
 
 .userBox {
-    width: 1200px;
-    margin: 92px auto 0;
+    width: rpx2multiple(1274);
+    margin: rpx2multiple(92) auto 0;
     font-family: PingFangSC-Regular, PingFang SC;
 
     .Breadcrumb {
@@ -62,7 +62,7 @@ export default {
     }
 
     .el-breadcrumb {
-        font-size: 14px;
+        font-size: rpx2multiple(14);
         height: rpx2multiple(120);
         line-height: rpx2multiple(120);
     }
@@ -82,18 +82,18 @@ export default {
         margin: 0 auto;
 
         .title-nav {
-            font-size: 24px;
+            font-size: rpx2multiple(24);
             font-weight: 500;
-            line-height: 33px;
+            line-height: rpx2multiple(33);
             color: #73757D;
             display: flex;
 
             .nav-item {
-                margin-right: 100px;
+                margin-right: rpx2multiple(100);
                 position: relative;
-                padding-bottom: 14px;
-                margin-bottom: 60px;
-                margin-top: 20px;
+                padding-bottom: rpx2multiple(14);
+                margin-bottom: rpx2multiple(78);
+                margin-top: rpx2multiple(20);
                 cursor: pointer;
 
                 &:hover {
@@ -109,7 +109,7 @@ export default {
                         transform: translateX(-50%);
                         bottom: 0;
                         position: absolute;
-                        width: 72px;
+                        width: rpx2multiple(72);
                         height: 6px;
                         background: #7395DC;
                     }
