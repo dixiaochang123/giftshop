@@ -98,11 +98,11 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1) + px;
 }
 .onlineBox {
-    width: 1200px;
-    margin: 92px auto 0;
+    width: rpx2multiple(1380);
+    margin: rpx2multiple(92) auto 0;
     font-family: PingFangSC-Regular, PingFang SC;
 }
 
