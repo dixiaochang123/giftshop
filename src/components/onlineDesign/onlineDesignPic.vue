@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1) + px;
 }
 .text-box {
     .text-inner {
