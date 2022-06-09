@@ -115,7 +115,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .mycart {
   width: 1200px;
   margin: 92px auto 0;
