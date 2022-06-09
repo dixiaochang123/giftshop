@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="shopping_haeder">
+      <div class="logo" @click="handleClicklogo"><img src="../../assets/img/slices/logo.png" alt=""></div>
       <div class="container">
         <div
             style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
@@ -87,6 +88,11 @@ export default {
   mounted() {
   },
   methods: {
+    handleClicklogo() {
+      this.$router.push({
+        path: "/"
+      });
+    },
     viewMyDesign() {
       this.$router.push({
         path: "/shoppingMall/design/undetermined"
@@ -162,6 +168,25 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.15) 0 0 12px;
   background-color: rgba(255, 255, 255, 0.8);
   background-color: #000;
+  .logo {
+    width: rpx2multiple(180);
+    height: rpx2multiple(48);
+    position: absolute;
+    top: 50%;
+    margin-top: rpx2multiple(-24);
+    left: 32px;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 110;
+    img {
+      width:100%;
+      height:100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
   .container {
     // width: 1200px;

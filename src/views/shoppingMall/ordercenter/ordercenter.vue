@@ -117,6 +117,7 @@ export default {
   name: "Ordercenter",
   data() {
     return {
+      ddbh:'',
       cplx: '',
       ddzt: '',
       xdsj: null,
