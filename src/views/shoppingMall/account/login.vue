@@ -146,7 +146,7 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1.36480686695279) + px;
 }
 .account-box {
     font-family: PingFangSC-Regular, PingFang SC;
@@ -165,8 +165,8 @@ export default {
     .account-form {
         width: rpx2multiple(636);
         background: #FFFFFF;
-        box-shadow: 0px 50px 120px 0px rgba(0, 0, 0, 0.37);
-        border-radius: 12px;
+        box-shadow: 0px rpx2multiple(50) rpx2multiple(120) 0px rgba(0, 0, 0, 0.37);
+        border-radius: rpx2multiple(12);
         box-sizing: border-box;
         padding: rpx2multiple(40);
 
@@ -196,7 +196,7 @@ export default {
                         bottom: 0;
                         left: 0;
                         position: absolute;
-                        height: 4px;
+                        height: rpx2multiple(4);
                         background: #FF946B;
                     }
                 }
@@ -229,11 +229,11 @@ export default {
                         .icon {
                             i {
                                 &.el-icon-arrow-up {
-                                    transform: translateY(4px);
+                                    transform: translateY(rpx2multiple(4));
                                 }
 
                                 &.el-icon-arrow-down {
-                                    transform: translateY(-4px);
+                                    transform: translateY(-rpx2multiple(4));
                                 }
                             }
                         }
