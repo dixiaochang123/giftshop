@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import axios from 'axios'
+const config = require('./config')
+const baseURL = config[process.env.NODE_ENV].baseUrl
 
 // 创建一个axios实例
 const service = axios.create({
-  baseURL:baseUrl,
+  baseURL,
   // withCredentials: true,
   timeout: 3600000
 })
