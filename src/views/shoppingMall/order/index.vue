@@ -7,9 +7,7 @@
       </el-breadcrumb>
     </div>
     <div class="xiadan">
-      <div class="title" style="margin-top: 0;">
-        商品清单
-      </div>
+      <p class="title">商品清单</p>
       <div class="spqd">
         <div class="spqdtop">
           <div style="width: 500px;text-align: center;">商品信息</div>
@@ -36,7 +34,7 @@
       </div>
       <div class="psfs">
         <div class="tit title" style="margin: 0;">配送方式</div>
-        <el-select style="margin: 0 25px;"></el-select>
+        <el-select></el-select>
 
         <div class="tit2">运费:¥0.00</div>
       </div>
@@ -56,19 +54,20 @@
       </div>
 
 
-      <div class="title">
-        收获人信息
+      <div class="title" style="display: flex;align-items: center;justify-content: space-between;">
+        <span>收获人信息</span>
+        <div class="dz">
+          <div class="qhdz">切换地址</div>
+          <div class="dzgl">地址管理</div>
+        </div>
       </div>
-      <div class="dz">
-        <div class="qhdz">切换地址</div>
-        <div class="dzgl">地址管理</div>
-      </div>
+
       <div class="shrxx">
         <div class="dx" @click="zffs=1" :class="{active:zffs==1}"></div>
         <div class="sj">15258888888</div>
         <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
       </div>
-      <div class="liyan" style="margin-top: 50px;">
+      <div class="liyan">
         <div class="title" style="margin-top: 0;">留言</div>
         <textarea></textarea>
       </div>
@@ -87,7 +86,12 @@
           <div class="t1">总计</div>
           <div class="t2">¥3000.00元</div>
         </div>
-        <div class="jsxx">寄送至 北京市昌平区沙河镇宏福苑小区1号楼9单元309 收货人:喵大人 15258888888</div>
+        <div class="jsxx">
+          <span style="margin-right: 18px;color: #73757D;">寄送至</span>
+          <span style="margin-right: 50px;">北京市昌平区沙河镇宏福苑小区1号楼9单元309</span>
+          <span style="margin-right: 18px;color: #73757D;">收货人:</span>
+          <span>喵大人 15258888888</span>
+        </div>
       </div>
       <div class="tjdd" @click="submitOrder">提交订单</div>
     </div>
@@ -116,8 +120,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 0.9779951100244499) + px;
+}
+
 .mycart {
-  width: 1200px;
+  width: rpx2multiple(1200);
   margin: 92px auto 0;
 }
 
@@ -144,7 +152,7 @@ export default {
 }
 
 .xiadan {
-  width: 1200px;
+  width: rpx2multiple(1200);
   margin: 0px auto;
   display: block;
 }
@@ -155,7 +163,7 @@ export default {
   font-weight: 400;
   color: #2D2E33;
   line-height: 30px;
-  margin-top: 40px;
+  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -168,10 +176,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-sizing: border-box;
 }
 
 .spqdnr {
-  height: 172px;
   background: #FFFFFF;
   border-radius: 0px 0px 8px 8px;
   border: 1px solid #BCBEC6;
@@ -180,6 +188,8 @@ export default {
   justify-content: space-around;
   border-top: none;
   width: 100%;
+  padding: 32px 50px;
+  box-sizing: border-box;
 }
 
 .spxx {
@@ -191,7 +201,6 @@ export default {
   width: 100px;
   height: 100px;
   margin-right: 15px;
-  margin-left: 56px;
 }
 
 .spxx .name {
@@ -210,15 +219,14 @@ export default {
 .psfs {
   display: flex;
   align-items: center;
-  margin: 50px 0;
+  margin: 44px 0;
 }
 
-.psfs select {
+::v-deep.psfs .el-select {
   width: 230px;
   height: 42px;
   background: #FFFFFF;
   border-radius: 4px;
-  border: 1px solid #BCBEC6;
   margin-left: 60px;
   margin-right: 40px;
 }
@@ -233,7 +241,6 @@ export default {
 
 .sjfa .lb {
   width: 280px;
-  height: 325px;
   background: #FFFFFF;
   box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
   border-radius: 8px;
@@ -256,12 +263,14 @@ export default {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #2D2E33;
-  line-height: 25px;
+  padding: 0 14px 14px;
+  box-sizing: border-box;
 }
 
 .sjfa {
   display: flex;
   width: 100%;
+  margin-bottom: 50px;
 }
 
 .shrxx {
@@ -272,6 +281,7 @@ export default {
   box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
   border-radius: 8px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .shrxx img {
@@ -296,7 +306,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: end;
-  margin-bottom: 15px;
 }
 
 .dz .qhdz {
@@ -321,6 +330,7 @@ export default {
 
 .liyan {
   display: flex;
+  margin-top: 44px;
 }
 
 .liyan textarea {
@@ -348,21 +358,21 @@ export default {
   line-height: 30px;
   width: 100px;
   text-align: left;
-  margin-bottom: 44px;
+  margin-bottom: 20px;
 }
 
 .jgyf .jg .t2 {
   height: 30px;
   font-size: 22px;
   font-family: PingFangSC-Medium, PingFang SC;
-  margin-bottom: 44px;
+  margin-bottom: 20px;
   font-weight: 500;
   color: #2D2E33;
   line-height: 30px;
   margin-left: 124px;
   width: 150px;
   text-align: right;
-  margin-right: 20px;
+  margin-right: 27px;
 }
 
 .fkxx {
@@ -370,7 +380,7 @@ export default {
   height: 131px;
   background: #F6F9FE;
   border-radius: 8px;
-  padding: 20px;
+  padding: 21px 27px;
   box-sizing: border-box;
 }
 
@@ -390,14 +400,14 @@ export default {
   line-height: 30px;
   width: 100px;
   text-align: left;
-  margin-bottom: 44px;
+  margin-bottom: 21px;
 }
 
 .fkxx .jg .t2 {
   height: 30px;
   font-size: 22px;
   font-family: PingFangSC-Medium, PingFang SC;
-  margin-bottom: 44px;
+  margin-bottom: 21px;
   font-weight: 500;
   color: #2D2E33;
   line-height: 30px;
@@ -418,20 +428,17 @@ export default {
 }
 
 .tjdd {
-
-  width: 156px;
-  height: 52px;
   background: #FF946B;
   border-radius: 4px;
   font-size: 22px;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
   color: #FFFFFF;
-  line-height: 52px;
   text-align: center;
   margin-top: 20px;
-  margin-left: 1044px;
-  margin-bottom: 20px;
+  margin-left: 1060px;
+  margin-bottom: 74px;
+  padding: 11px 30px;
 }
 
 .dx {
