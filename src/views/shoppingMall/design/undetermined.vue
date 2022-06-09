@@ -38,7 +38,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@function rpx2multiple($px) {
+  @return ($px / 1) + px;
+}
+
 .undetermined {
 
 }
@@ -49,16 +53,16 @@ export default {
 }
 
 .undetermined-tabs > div {
-  padding: 10px 20px;
+  padding: rpx2multiple(10) rpx2multiple(20);
   background-color: #F1F2F4;
-  font-size: 18px;
+  font-size: rpx2multiple(18);
   color: #73757D;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .undetermined-tabs > div:nth-child(1) {
-  margin-right: 24px;
+  margin-right: rpx2multiple(24);
 }
 
 .undetermined-tabs > div.active {
@@ -67,6 +71,6 @@ export default {
 }
 
 .undetermined-content {
-  padding: 60px 0 20px;
+  padding: rpx2multiple(60) 0 rpx2multiple(20);
 }
 </style>

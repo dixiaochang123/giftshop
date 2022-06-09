@@ -76,7 +76,7 @@ export default {
 
 .design {
   width: rpx2multiple(1380);
-  margin: 92px auto 0;
+  margin: rpx2multiple(92) auto 0;
 }
 
 .Breadcrumb {
@@ -84,7 +84,7 @@ export default {
 }
 
 .el-breadcrumb {
-  font-size: 14px;
+  font-size: rpx2multiple(14);
   height: rpx2multiple(120);
   line-height: rpx2multiple(120);
 }
@@ -107,12 +107,12 @@ export default {
 .design-tabs {
   display: flex;
   align-items: center;
-  padding-bottom: 50px;
+  padding-bottom: rpx2multiple(50);
 }
 
 .design-tabs > div {
   position: relative;
-  font-size: 24px;
+  font-size: rpx2multiple(24);
   color: #73757D;
   cursor: pointer;
 }
@@ -123,14 +123,14 @@ export default {
   display: block;
   left: 0;
   right: 0;
-  bottom: -10px;
+  bottom: rpx2multiple(-10);
   height: 6px;
   background-color: transparent;
   transform: translateY(100%);
 }
 
 .design-tabs > div:nth-child(1) {
-  margin-right: 130px;
+  margin-right: rpx2multiple(130);
 }
 
 .design-tabs > div.active {
