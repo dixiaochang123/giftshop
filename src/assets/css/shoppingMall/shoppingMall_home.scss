@@ -227,11 +227,15 @@
 /deep/ .is-active .el-carousel__button {
   background: #7395DC;
 }
+/deep/ .el-carousel__indicators--outside {
+  margin-top: rpx2multiple(40);
+}
 
 .big_banner{
+  margin: auto;
+  margin-top: rpx2multiple(123);
   width: rpx2multiple(1380);
   min-height: 100px;
-  margin: auto;
   color: #000000;
   p {
     font-size: 36px;

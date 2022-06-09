@@ -1,9 +1,9 @@
 @import "../base";
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1) + px;
 }
 .container {
-  width: 1200px;
+  width: rpx2multiple(1380);
   margin: 0 auto;
 }
 
@@ -18,12 +18,12 @@
 .Breadcrumb {
   width: rpx2multiple(1380);
   margin:0 auto;
-  height: rpx2multiple(120);
+  height: rpx2multiple(100);
 }
 .el-breadcrumb {
   font-size: 14px;
-  height: rpx2multiple(120);
-  line-height: rpx2multiple(120);
+  height: rpx2multiple(100);
+  line-height: rpx2multiple(100);
 }
 /deep/ .el-breadcrumb__inner {
   font-size: rpx2multiple(18);
@@ -45,18 +45,25 @@
 .page_type {
   width: rpx2multiple(1380);
   margin:0 auto;
-  height: rpx2multiple(60);
-  line-height: rpx2multiple(60);
+  height: rpx2multiple(100);
+  line-height: rpx2multiple(100);
   // border-bottom: 1px solid #ccc;
 
-  .container {
-    display: flex;
-
-    .type_name {
-      flex: 1;
-      font-weight: bold;
-    }
-  }
+  font-size: 18px;
+font-family: PingFangSC-Regular, PingFang SC;
+font-weight: 400;
+color: #73757D;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+.sxs {
+  font-size: 22px;
+font-family: PingFangSC-Medium, PingFang SC;
+font-weight: 500;
+color: #2D2E33;
+display: inline-block;
+padding-right: 32px;
+}
 }
 
 .type_list {
