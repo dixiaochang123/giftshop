@@ -49,7 +49,7 @@ export default {
 <style lang="scss" scoped>
 $height: 350px;
 @function rpx2multiple($px) {
-  @return ($px / 1.3) + px;
+  @return ($px / 1) + px;
 }
 .backtop {
   width: rpx2multiple(88);

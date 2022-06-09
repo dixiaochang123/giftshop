@@ -10,63 +10,30 @@
             <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
               <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
             </el-input>
-            <div class="icon-search"></div>
+            <div style="cursor: pointer;" class="icon-search"></div>
           </div>
-          <div v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
+          <div style="cursor: pointer;" v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
         </div>
 
-        <div class="icon-cat" @click="handleclickMycart"></div>
-        <el-dropdown @command="jumpOrderPage">
+        <div style="cursor: pointer;" class="icon-cat" @click="handleclickMycart"></div>
+        <el-dropdown style="cursor: pointer;" @command="jumpOrderPage">
           <div class="icon-order"></div>
           <el-dropdown-menu slot="dropdown" placement="bottom">
             <el-dropdown-item icon="el-icon-circle-check" command="regular">常规订单</el-dropdown-item>
             <el-dropdown-item icon="el-icon-edit" command="proofing">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <div class="icon-design" @click="viewMyDesign"></div>
-        <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
-             style="margin-left: 40px;border-radius: 50%;" width="60px" height="60px"
+        <div style="cursor: pointer;" class="icon-design" @click="viewMyDesign"></div>
+        <img  v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
+             style="margin-left: 40px;border-radius: 50%;cursor: pointer;" width="60px" height="60px"
              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
         <el-button class="icon-login" plain @click="$router.push('/login')">登陆</el-button>
         <el-button class="icon-register" @click="$router.push('/register')" type="text">注册</el-button>
         <!-- ------------- -->
-        <div class="menu" v-if="false">
-          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-            <el-menu-item index="1">首页</el-menu-item>
-            <el-menu-item index="2">
-              <router-link to="#">所有商品</router-link>
-            </el-menu-item>
-            <el-menu-item index="3">
-              <router-link to="/shoppingMall/detail/vase">装饰摆件</router-link>
-            </el-menu-item>
-            <el-menu-item index="4">布艺软饰</el-menu-item>
-            <el-menu-item index="5">墙式挂壁</el-menu-item>
-            <el-menu-item index="6">蜡艺香薰</el-menu-item>
-            <el-menu-item index="7">创意家居</el-menu-item>
-          </el-menu>
-        </div>
         <div class="login" v-if="false">
-          <div class="icon-search">
-            <!-- <img width="32px" height="32px" src="@~/img/slices/icon-search.png" alt="" sizes="" srcset=""> -->
+          <div style="cursor: pointer;" class="icon-search">
           </div>
 
-          <!-- <div class="search">
-                       <el-input
-                               placeholder="热门搜索"
-                               prefix-icon="el-icon-search"
-                               v-model="hotsearch">
-                       </el-input>
-                   </div>
-
-                    <div class="shopping_cart">
-                        <div class="mine" @click="goUserCenter">
-                            <el-avatar :size="'small'" :src="'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'"></el-avatar>
-                        </div>
-                        <div class="cart">
-                            <i class="el-icon-shopping-cart-2"></i>
-                        </div>
-                        <div class="erCode">3</div>
-                    </div> -->
         </div>
       </div>
     </div>
@@ -155,13 +122,13 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1) + px;
 }
 
 .shopping_haeder {
   width: 100%;
-  height: 92px;
-  line-height: 92px;
+  height: 96px;
+  line-height: 96px;
   position: fixed;
   top: 0;
   z-index: 110;

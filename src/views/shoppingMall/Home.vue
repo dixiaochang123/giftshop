@@ -177,7 +177,7 @@ export default {
   data() {
     return {
       categories: Categories,
-      carouselHeight: "500px",
+      carouselHeight: "776",
       activeindex: 0,
       specialtab: ['季节限定', '暖心防疫', '轻松户外', '风格系列']
     };

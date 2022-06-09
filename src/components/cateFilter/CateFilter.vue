@@ -115,13 +115,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 @function rpx2multiple ($px) {
-  @return ($px / 1.5)+px;
+  @return ($px / 1)+px;
 }
 
 .cate-filter-container {
   position: relative;
   width: 100%;
   background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 0) 50%, #E5EDFF 100%);
+  // background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 1) 50%, #E5EDFF 100%);
   font-family: PingFangSC-Regular, PingFang SC;
   animation: all .3s ease-in-out;
 
@@ -130,7 +131,7 @@ export default {
   }
 
   .cate-filter-first {
-    width: 1200px;
+    width: rpx2multiple(1380);
     margin: auto;
     display: flex;
     justify-content: space-between;

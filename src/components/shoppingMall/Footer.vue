@@ -5,20 +5,6 @@
         <div class="left">
           <div class="icon-text">
             <img width="494px" height="110px" src="../../assets/img/slices/slogan.png" alt="" sizes="" srcset="">
-            <!-- <div>
-              <img src="../../assets/img/slices/icon-design-1.png" alt="" sizes="" srcset="">
-              <div>年轻</div>
-            </div>
-            <div style="width:100px;"></div>
-            <div>
-              <img src="../../assets/img/slices/icon-design-1.png" alt="" sizes="" srcset="">
-              <div>专业</div>
-            </div>
-            <div style="width:100px;"></div>
-            <div>
-              <img src="../../assets/img/slices/icon-design-1.png" alt="" sizes="" srcset="">
-              <div>高效</div>
-            </div> -->
           </div>
           <div class="foot-text">
             <p>©2018-2021 &nbsp; &nbsp;版权所有 &nbsp;北京春湘科技有限公司 &nbsp; &nbsp; 京ICP备19049540号-1</p>
@@ -45,7 +31,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$height: 350px;
+$height: 400px;
+@function rpx2multiple($px) {
+  @return ($px / 1) + px;
+}
 .dibu {
   height: $height;
   background: #f2f3f9;
@@ -54,14 +43,14 @@ $height: 350px;
       margin: 0;
       padding: 0;
       font-size: 12px;
-      height: 26px;
-      line-height: 26px;
+      height: 33px;
+      line-height: 33px;
     }
   }
 }
 
 .container {
-  width: 1200px;
+  width: rpx2multiple(1380);
   height: $height;
   margin: 0 auto;
   display: flex;
@@ -133,7 +122,7 @@ $height: 350px;
   .p1 {
     //   height: 33px;
     //   line-height: 33px;
-      padding-bottom: 40px !important;
+      padding-bottom: 60px !important;
       span {
         font-size: 24px;
         font-family: PingFangSC-Medium, PingFang SC;
