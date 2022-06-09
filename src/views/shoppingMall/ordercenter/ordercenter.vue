@@ -2,15 +2,12 @@
   <div class="mycart">
     <div class="shaixuan">
       <el-form class="qyktj qyktj1">
-        <div
-            style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
+        <div style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
           <el-form-item label="下单时间" prop="xdsj">
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择下单时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择下单时间">
             </el-date-picker>
             -
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择下单时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择下单时间">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="产品类型" prop="cplx">
@@ -26,16 +23,14 @@
         </div>
         <div style="display: flex;align-items: center;justify-content: space-between;">
           <el-form-item label="发货时间" prop="xdsj">
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择发货时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择发货时间">
             </el-date-picker>
             -
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择发货时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择发货时间">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="订单编号" prop="cplx">
-            <el-input v-model="ddbh" placeholder="请输入订单编号"/>
+            <el-input v-model="ddbh" placeholder="请输入订单编号" />
           </el-form-item>
           <el-form-item>
             <button>搜索</button>
@@ -48,8 +43,7 @@
     <div class="tabs">
       <div class="header">
         <div class="header_1" style="width:40%;text-align: left;">
-          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"
-                       style="font-size: 18px;">全选
+          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange" style="font-size: 18px;">全选
           </el-checkbox>
           <span class="spxx">商品信息</span>
         </div>
@@ -60,21 +54,19 @@
         <div style="width:12%">我的设计</div>
         <div style="width:12%">操作</div>
       </div>
-      <div class="tables" v-for="(item,index) in tableData" :key="index"
-           style="display: inline-block;height: 307px;">
+      <div class="tables" v-for="(item,index) in tableData" :key="index" style="display: inline-block;height: 307px;">
         <div class="ddtop">
           <el-checkbox v-model="item.checked" @change="handleCheckedCitiesChange" style="font-size: 18px;">
           </el-checkbox>
           <div class="time">2020-05-21 18:46:57</div>
           <div class="ddbh">订单编号：<span>2637283464955497116</span></div>
+          <div class="deleted">删除订单</div>
         </div>
         <div style="display: flex;align-items: center;">
           <div class="header_1" style="width:40%;text-align: left;display: inline-block;">
 
-
             <div class="img-text" style="height: 173px;">
-              <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt=""
-                   srcset="">
+              <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt="" srcset="">
               <div class="img-text-text">
                 <p>{{ item.p1 }}</p>
                 <p class="p2">{{ item.p2 }}</p>
@@ -99,10 +91,8 @@
             <span style="color: #FF946B;cursor: pointer;" @click="viewDesign(item)">查看</span>
           </div>
           <div style="width:12%" class="caozuo">
-						<span class="dayang" style="cursor: pointer;width: 112px;
-height: 42px;
-background: #FF946B;
-border-radius: 4px;color: #FFFFFF;border: none;" @click="payMoney(item)">立即支付</span>
+            <span class="dayang" style="cursor: pointer;width: 112px;height: 42px;background: #FF946B;border-radius: 4px;color: #FFFFFF;border: none;" @click="payMoney(item)">立即支付</span>
+            <span style="cursor: pointer;" >取消订单</span>
           </div>
         </div>
       </div>
@@ -117,63 +107,69 @@ export default {
   name: "Ordercenter",
   data() {
     return {
-      ddbh:'',
-      cplx: '',
-      ddzt: '',
+      ddbh: "",
+      cplx: "",
+      ddzt: "",
       xdsj: null,
       bq: 1,
       tabbq: 1,
       checkAll: false,
       isIndeterminate: false,
-      tableData: [{
-        checked: false,
-        url: '',
-        p1: '愿时光停在花',
-        p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-        shr: '喵大人',
-        ddzt: "待支付",
-        sumb: '3000.00',
-        DesignNumber: "2",
-      },
+      tableData: [
         {
           checked: false,
-          url: '',
-          p1: '愿时光停在花',
-          p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-          shr: '喵大人',
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
           ddzt: "待支付",
-          sumb: '3000.00',
+          sumb: "3000.00",
           DesignNumber: "2",
+          type:'1'
         },
         {
           checked: false,
-          url: '',
-          p1: '愿时光停在花',
-          p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-          shr: '喵大人',
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
           ddzt: "待支付",
-          sumb: '3000.00',
+          sumb: "3000.00",
           DesignNumber: "2",
+          type:'2'
         },
         {
           checked: false,
-          url: '',
-          p1: '愿时光停在花',
-          p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-          shr: '喵大人',
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
           ddzt: "待支付",
-          sumb: '3000.00',
+          sumb: "3000.00",
           DesignNumber: "2",
+          type:'3'
         },
         {
           checked: false,
-          url: '',
-          p1: '愿时光停在花',
-          p2: '母亲节真诚礼至特别巨献妈妈的礼物',
-          shr: '喵大人',
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
           ddzt: "待支付",
-          sumb: '3000.00',
+          sumb: "3000.00",
           DesignNumber: "2",
+          type:'4'
+        },
+        {
+          checked: false,
+          url: "",
+          p1: "愿时光停在花",
+          p2: "母亲节真诚礼至特别巨献妈妈的礼物",
+          shr: "喵大人",
+          ddzt: "待支付",
+          sumb: "3000.00",
+          DesignNumber: "2",
+          type:'5'
         },
       ],
       multipleSelection: [],
@@ -181,70 +177,74 @@ export default {
   },
   computed: {
     total() {
-      return this.tableData.filter(item => item.checked == true).length
+      return this.tableData.filter((item) => item.checked == true).length;
     },
     totalPrice() {
-      return this.tableData.filter(item => item.checked == true).reduce((money, item) => money + Number(item
-          .sumb), 0)
+      return this.tableData
+        .filter((item) => item.checked == true)
+        .reduce((money, item) => money + Number(item.sumb), 0);
       // return this.tableData.filter(item=>item.checked==true)
-
-    }
+    },
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     viewDesign(item) {
       this.$router.push({
         path: "/shoppingMall/design/undetermined",
         query: {
           //TODO: item传参
-          id: item.id || 0
-        }
+          id: item.id || 0,
+        },
       });
     },
     payMoney(item) {
       this.$router.push({
         path: "/shoppingMall/order",
         //TODO: item传参
-        id: item.id || 0
+        id: item.id || 0,
       });
     },
     //tab切换
     tabqh(zhi) {
-      this.tabbq = zhi
+      this.tabbq = zhi;
     },
     handleCheckAllChange(val) {
       if (val == true) {
-        this.tableData.map(item => item.checked = true)
+        this.tableData.map((item) => (item.checked = true));
       } else {
-        this.tableData.map(item => item.checked = false)
+        this.tableData.map((item) => (item.checked = false));
       }
       // this.checkedCities = val ? this.tableData.map(item=>item.checked==true) : this.tableData.map(item=>item.checked==false);
       this.isIndeterminate = false;
     },
     handleCheckedCitiesChange(value) {
-      let checkedCount = this.tableData.filter(item => item.checked == true).length;
+      let checkedCount = this.tableData.filter(
+        (item) => item.checked == true
+      ).length;
       this.checkAll = checkedCount === this.tableData.length;
-      this.isIndeterminate = checkedCount > 0 && checkedCount < this.tableData.length;
+      this.isIndeterminate =
+        checkedCount > 0 && checkedCount < this.tableData.length;
     },
     deleted(item, index) {
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        this.tableData.splice(index, 1);
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.tableData.splice(index, 1);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
         });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
-      });
-    }
+    },
   },
 };
 </script>
@@ -253,16 +253,16 @@ export default {
 @import "../../../assets/css/shoppingMall/vaseDetail";
 
 @function rpx2multiple1($px, $nub) {
-  @return ($px / $nub)+px;
+  @return ($px / $nub) + px;
 }
 
 @function rpx2multiple($px) {
-  @return ($px / 1.2)+px;
+  @return ($px / 1) + px;
 }
 
 .mycart {
-  width: 1200px;
-  margin: 92px auto 0;
+  width: rpx2multiple(1380);
+  margin: 0 auto;
 }
 
 .Breadcrumb {
@@ -337,11 +337,10 @@ export default {
     border: 1px solid #7395dc;
 
     .dayang {
-      background: #7395DC;
+      background: #7395dc;
       border-radius: 4px;
-      border: 1px solid #7395DC;
+      border: 1px solid #7395dc;
       color: #ffffff;
-
     }
   }
 
@@ -407,13 +406,12 @@ export default {
   .dayang {
     width: 112px;
     padding: 9px 0;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 4px;
-    border: 1px solid #73757D;
+    border: 1px solid #73757d;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
-    color: #73757D;
-
+    color: #73757d;
   }
 }
 
@@ -431,13 +429,12 @@ export default {
     height: 25px;
     line-height: 25px;
     padding: 9px 0;
-    background: #FF946B;
+    background: #ff946b;
     border-radius: 4px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: #ffffff;
     text-align: center;
-
   }
 }
 
@@ -463,7 +460,7 @@ export default {
 .navtab ul li {
   display: inline-block;
   height: 42px;
-  background: #F1F2F4;
+  background: #f1f2f4;
   border-radius: 4px;
   padding: 0 20px;
   line-height: 42px;
@@ -472,18 +469,19 @@ export default {
 }
 
 .navtab ul .active {
-  background: #7395DC;
-  color: #FFFFFF;
+  background: #7395dc;
+  color: #ffffff;
 }
 
 .ddtop {
   display: flex;
   align-items: center;
   height: 64px;
-  background: #F6F9FE;
+  background: #f6f9fe;
   border-radius: 8px 8px 0px 0px;
-  border: 1px solid #BCBEC6;
+  border: 1px solid #bcbec6;
   padding-left: 20px;
+  position: relative;
 }
 
 .ddtop .time {
@@ -491,7 +489,7 @@ export default {
   font-size: 18px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #2D2E33;
+  color: #2d2e33;
   line-height: 25px;
   margin: 0 15px;
 }
@@ -501,16 +499,16 @@ export default {
   font-size: 18px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #BCBEC6;
+  color: #bcbec6;
   line-height: 25px;
 }
 
 .ddtop .ddbh span {
-  color: #2D2E33;
+  color: #2d2e33;
 }
 
 .tables .header_1 {
-  border-right: 1px solid #BCBEC6;
+  border-right: 1px solid #bcbec6;
   height: 100%;
   height: 244px;
   padding: 0;
@@ -529,8 +527,8 @@ export default {
   font-size: 18px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #2D2E33;
-  border-top: 1px solid #BCBEC6;
+  color: #2d2e33;
+  border-top: 1px solid #bcbec6;
   padding: 0 20px;
 }
 
@@ -539,7 +537,7 @@ export default {
   font-size: 18px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #2D2E33;
+  color: #2d2e33;
   line-height: 25px;
 }
 
@@ -561,18 +559,19 @@ export default {
   content: "";
   width: 50px;
   height: 3px;
-  background: #7395DC;
+  background: #7395dc;
   bottom: 0;
   left: 50%;
   margin-left: -25px;
 }
 
 .shaixuan {
-  border-top: 1px solid #7395DC;
+  border-top: 1px solid #7395dc;
   width: 100%;
   height: 150px;
-  border-bottom: 1px solid #BCBEC6;
+  border-bottom: 1px solid #bcbec6;
   margin-bottom: 30px;
+  padding-top:15px;
 }
 
 .qyktj .el-form-item__content {
@@ -595,15 +594,19 @@ export default {
 .shaixuan button {
   width: 112px;
   height: 42px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 4px;
-  border: 1px solid #FF946B;
+  border: 1px solid #ff946b;
   font-size: 18px;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 500;
-  color: #FF946B;
+  color: #ff946b;
   line-height: 42px;
   margin-left: 20px;
 }
-
+.deleted {
+  position: absolute;
+  right:30px;
+  top:10px;
+}
 </style>

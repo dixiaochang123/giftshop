@@ -1,5 +1,5 @@
 <template>
-  <div class="mycart">
+  <div class="mycart1">
     <div class="Breadcrumb">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -9,12 +9,8 @@
 
     <!--类型-->
     <div class="page_type" style="border-bottom: none;height: auto;">
-      <div class="container">
-        <div class="type_name" :class="{active1:bq==1}" style="width: 100px;max-width: 100px;text-align: center;">
-          <router-link :to="{name:'Ordercenter'}">常规订单</router-link>
-        </div>
-        <div class="type_name" :class="{active1:bq==2}" style="width: 100px;max-width: 100px;text-align: center;">
-          <router-link :to="{name:'Proofing'}">打样订单</router-link>
+      <div class="tab-list-2-1">
+        <div @click="activeindexchange(index)" v-for="(item,index) in specialtab" :key="item" :class="[index==activeindex? 'active':'']">{{ item }}
         </div>
       </div>
       <div class="container">
@@ -43,6 +39,8 @@ export default {
   name: "Ordercenter",
   data() {
     return {
+      specialtab: ["常规订单", "打样订单"],
+      activeindex:0,
       cplx: "",
       ddzt: "",
       xdsj: null,
@@ -118,6 +116,18 @@ export default {
   },
   mounted() {},
   methods: {
+    activeindexchange(index) {
+      this.activeindex = index;
+      if(index==0) {
+        this.$router.push({
+          name:'Ordercenter'
+        })
+      } else {
+        this.$router.push({
+          name:'Proofing'
+        })
+      }
+    },
     //tab切换
     tabqh(zhi) {
       this.tabbq = zhi;
@@ -165,19 +175,58 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/css/shoppingMall/vaseDetail";
+// @import "../../../assets/css/shoppingMall/vaseDetail";
 
 @function rpx2multiple1($px, $nub) {
   @return ($px / $nub) + px;
 }
 
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1) + px;
+}
+.mycart1 {
+  width: rpx2multiple(1380);
+  margin: rpx2multiple(96) auto 0;
 }
 
-.mycart {
-  width: 1200px;
-  margin: 92px auto 0;
+.page_type {
+  width: rpx2multiple(1380);
+  margin: 0 auto;
+  .tab-list-2-1 {
+      width: 100%;
+      height: 42px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      margin-bottom:50px;
+      > div {
+        margin-right:rpx2multiple(48);
+        // width: 96px;
+        height: 33px;
+        font-size: 24px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #73757d;
+        line-height: 33px;
+        position: relative;
+        cursor: pointer;
+        &.active {
+          font-weight: 500;
+          color: #2d2e33;
+        }
+        &.active::after {
+          content: "";
+          width: 72px;
+          height: 6px;
+          background: #7395dc;
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
 }
 
 .Breadcrumb {
@@ -372,15 +421,21 @@ export default {
   width: 100%;
 }
 
+.navtab ul {
+  margin:0;
+  padding:0;
+}
 .navtab ul li {
   display: inline-block;
-  height: 42px;
   background: #f1f2f4;
   border-radius: 4px;
-  padding: 0 20px;
-  line-height: 42px;
   margin-right: 15px;
-  font-size: 14px;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #73757D;
+  padding:9px 20px;
+  cursor: pointer;
 }
 
 .navtab ul .active {
