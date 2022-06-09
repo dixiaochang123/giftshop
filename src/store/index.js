@@ -6,7 +6,7 @@ Vue.use(Vuex);     //Vuex大写!!!
 
 export default new Vuex.Store({
   state: {
-    ProductNav: sessionStorage.getItem('ProductNav') ? sessionStorage.getItem('ProductNav') : 1,
+    ProductNav: JSON.parse(sessionStorage.getItem('ProductNav')) ? JSON.parse(sessionStorage.getItem('ProductNav')) : null,
   },
   getters: {
     ProductNav: state => state.ProductNav,

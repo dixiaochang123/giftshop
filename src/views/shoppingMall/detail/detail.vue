@@ -2,11 +2,19 @@
   <div>
     <!--面包屑导航-->
     <div style="height:92px;"></div>
-    <div class="Breadcrumb">
+    <!-- <div class="Breadcrumb">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>购物车</el-breadcrumb-item>
       </el-breadcrumb>
+    </div> -->
+    <div class="Breadcrumb">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ProductNav.activeFirstName}}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ProductNav.activeSecondName}}</el-breadcrumb-item>
+                <el-breadcrumb-item>{{ProductNav.activeThreeName}}</el-breadcrumb-item>
+        </el-breadcrumb>
     </div>
     <div class="container">
       <!--大图 及 商品介绍-->
@@ -193,6 +201,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
 export default {
   name: "detail",
@@ -294,6 +303,12 @@ export default {
         }
       ],
     };
+  },
+  computed: {
+    ...mapGetters(["ProductNav"])
+  },
+  mounted(){
+    console.log(this.ProductNav)
   },
   methods: {
     //判断选中数量是否>5,超过5就提示

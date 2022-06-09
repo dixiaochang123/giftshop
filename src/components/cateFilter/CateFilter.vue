@@ -36,6 +36,7 @@
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: 'CateFilter',
   props: {
@@ -47,6 +48,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["ProductNav"]),
     showCateSecond() {
       try {
         return this.categories[this.activeFirst].children.length
@@ -74,6 +76,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["setProductNav"]),
     onMouseEnterFirstItem(e,item, index) {
       // console.log('onMouseEnterFirstItem', e, index)
       this.activeFirst = index;
@@ -103,6 +106,7 @@ export default {
         activeSecondName: this.activeSecondName,
         activeThreeName: category.name,
       }
+      this.setProductNav(data)
       this.$emit('choose', data, index)
     },
   }
