@@ -203,11 +203,11 @@ export default {
 }
 
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1) + px;
 }
 
 .mycart {
-  width: 1200px;
+  width: rpx2multiple(1380);
   margin: 92px auto 0;
 }
 
