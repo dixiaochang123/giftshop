@@ -16,68 +16,92 @@
 
   .proDet{
     display: flex;
+    justify-content: space-between;
+
     margin-top: 20px;
     // height: 650px;
 
     .pro_big{
-      flex: 1;
-      width: 580px;
-      height: 480px;
-      margin-right: 60px;
-
+      // flex: 1;
+      width: rpx2multiple(664);
+      // height: 480px;
+      // margin-right: 60px;
+      position: relative;
       img{
-        width: 580px;
-        height:480px;
+        width: rpx2multiple(664);
+        height:rpx2multiple(664);
+        border-radius: rpx2multiple(12);
+        overflow: hidden;
+      }
+      .zoomicon {
+        width:rpx2multiple(42);
+        height:rpx2multiple(42);
+        position: absolute;
+        right: 0;
+        top: rpx2multiple(622);
       }
 
       .tro_list{
         margin-top: 10px;
         text-align: center;
+        display: flex;
+        justify-content: space-between;
+        
 
         span{
-          width: 100px;
-          height: 100px;
+          width: rpx2multiple(120);
+          height: rpx2multiple(120);
           display: inline-block;
-          padding: 2px;
-          margin-right: 25px;
+          border-radius: 10px;
           cursor: pointer;
           border:1px solid transparent;
+          overflow: hidden;
+          box-sizing: border-box;
+          padding: 2px;
 
           a{
             img{
-              width: 100px;
-              height: 100px;
+              width: 100%;
+              height: 100%;
             }
           }
         }
 
         span:hover{
-          border:1px solid #C10000;
-          border-radius: 2px;
+          border-radius: 10px;
+          border: 2px solid #FF946B;
+          overflow: hidden;
+          // background-color: #FF946B;
         }
       }
 
     }
 
     .intro{
+      width: rpx2multiple(664);
 
       .intro_title{
 
         h3{
-          height: 50px;
-          line-height: 50px;
-          font-size: 24px;
+          height: rpx2multiple(56);
+          line-height: rpx2multiple(56);
+          font-size:rpx2multiple(40);
           font-weight: normal;
-          margin-bottom: 5px;
+          margin-bottom: rpx2multiple(16);
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #2D2E33;
 
         }
 
         h5{
-          height: 36px;
-          line-height: 18px;
-          font-weight: normal;
-          color: #777;
-          margin-bottom: 5px;
+          height: rpx2multiple(30);
+          font-size:rpx2multiple(22);
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #73757D;
+          line-height: rpx2multiple(30);
+          margin-bottom: rpx2multiple(39);
         }
 
         .price{
@@ -86,8 +110,8 @@
       }
 
       .proIntro{
-        padding: 20px 10px;
-        margin: 20px 0;
+        // padding: 20px 10px;
+        margin-top: 56px;
         // border-top: 1px solid #dbdbdb;
         // border-bottom: 1px solid #dbdbdb;
 
@@ -105,6 +129,9 @@
 
         .tro_list{
           margin-bottom: 20px;
+          display: flex;
+          justify-content: space-between;
+
 
           span{
             width: 55px;
@@ -113,7 +140,7 @@
             padding: 2px;
             margin-right: 20px;
             cursor: pointer;
-            border:1px solid transparent;
+            // border:1px solid transparent;
 
             a{
               img{
@@ -124,8 +151,9 @@
           }
 
           span:hover{
-            border:1px solid #C10000;
+            // border:1px solid #C10000;
             border-radius: 2px;
+            // background-color: #C10000;
           }
         }
       }

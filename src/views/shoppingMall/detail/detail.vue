@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--面包屑导航-->
-    <div style="height:92px;"></div>
+    <div style="height:96px;"></div>
     <!-- <div class="Breadcrumb">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -21,6 +21,7 @@
       <div class="proDet">
         <div class="pro_big">
           <img :src="bigImg" alt="">
+          <img class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
           <div class="tro_list">
             <span v-for="item in smallImg" :key="item.id">
               <a href="#" :title="item.title">
@@ -156,27 +157,6 @@
                   <img src="../../../assets/img/shoppingMall/detail/det07.jpg" alt="">
                 </div>
               </el-tab-pane>
-              <!-- <el-tab-pane label="相关评论" name="second">
-                                <div class="per" v-for="item in 4" :key="item.id">
-                                    <div class="per_img">
-                                        <img src="../../../assets/img/shoppingMall/detail/per01.jpg" alt="">
-                                    </div>
-
-                                    <div class="perR">
-                                        <p class="perR_name">馨***呀</p>
-                                        <p class="perR_comment">不好意思评价晚了，产品很好，价格比玻璃品便宜，没有我担心的杂色，发货快，包装好，全5分!不好意思评价晚了，产品很好，价格比玻璃品便宜，没有我担心的杂色，发货快，包装好，全5分</p>
-                                        <p class="perR_img">
-                                            <span v-for="item in 5" :key="item.id">
-                                                <img src="../../../assets/img/shoppingMall/detail/eva01.jpg" alt="">
-                                            </span>
-                                        </p>
-                                        <p class="perR_date">
-                                            2016年12月27日08:31
-                                            <span>颜色分类：大中小三件套（不含花）</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </el-tab-pane> -->
             </el-tabs>
           </div>
         </div>
@@ -300,7 +280,12 @@ export default {
           index: 4,
           url: require("../../../assets/img/shoppingMall/detail/pro04.jpg"),
           title: "【4444】,xxxxxxxxxxx",
-        }
+        },
+        {
+          index: 5,
+          url: require("../../../assets/img/shoppingMall/detail/pro03.jpg"),
+          title: "【3333】,xxxxxxxxxxx",
+        },
       ],
     };
   },
@@ -389,8 +374,15 @@ export default {
   margin-top: 20px;
   display: inline-block;
   color: #2d2e33 !important;
-  font-weight: 700 !important;
+  // font-weight: 700 !important;
   //   font-size:20px;
+
+  height: 30px;
+  font-size: 22px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #2D2E33;
+  line-height: 30px;
 }
 .intro_title {
   width: 100%;
@@ -410,7 +402,7 @@ export default {
 }
 .product-number {
   color: #73757d;
-  font-size: 14px;
+  font-size: 16px;
 }
 .img-item-desc {
   display: block;
@@ -425,7 +417,7 @@ export default {
 }
 .product-price {
   color: #7395dc;
-  font-size: 16px;
+  font-size: 22px;
 }
 .Split-line {
   margin: 0 auto;
