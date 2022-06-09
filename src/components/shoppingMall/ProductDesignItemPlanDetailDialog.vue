@@ -6,9 +6,11 @@
       <div v-show="type==='online'"
            style="display: flex;align-items: center;">
         <el-icon class="header_icon_item" name="share" @click.native="onCommand('share')"/>
-        <el-icon class="header_icon_item" name="share" style="margin-left: 20px;" @click.native="onCommand('share')"/>
-        <el-button style="background-color:#FF946B;border-radius: 4px;margin-left: 20px;border: none;color: #ffffff;"
-                   @click="onCommand('edit')">
+        <el-icon class="header_icon_item" name="share" style="margin-left: calc(20px / 1.124780316344464);"
+                 @click.native="onCommand('share')"/>
+        <el-button
+            style="background-color:#FF946B;border-radius: 4px;margin-left: calc(20px / 1.124780316344464);border: none;color: #ffffff;"
+            @click="onCommand('edit')">
           修改
         </el-button>
       </div>
@@ -17,7 +19,7 @@
     <template v-if="type==='online'">
       <div>
         <div class="title">整体效果</div>
-        <el-image :src="planDetail.main" style="width: 1000px;"/>
+        <el-image :src="planDetail.main" style="width: calc(1000px / 1.124780316344464);"/>
       </div>
       <div style="margin-top: 100px">
         <div class="title">细节效果</div>
@@ -39,11 +41,14 @@
     <template v-else>
       <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
         <div
-            style="padding: 80px 75px;display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: 23px;background-color:#ffffff;">
-          <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')" style="width: 210px;"/>
-          <p style="margin-top: 75px;font-size: 20px;">暂不支持在线预览，请下载后查看</p>
-          <el-button style="background-color:#FF946B;border-radius: 4px;margin-top: 20px;border: none;color: #ffffff;"
-                     @click="onCommand('download')">
+            style="padding: calc(80px /1.124780316344464) calc(75px /1.124780316344464);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
+          <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')"
+                    style="width: calc(210px / 1.124780316344464);"/>
+          <p style="margin-top: calc(75px / 1.124780316344464);font-size: calc(20px / 1.124780316344464);">
+            暂不支持在线预览，请下载后查看</p>
+          <el-button
+              style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px / 1.124780316344464);border: none;color: #ffffff;"
+              @click="onCommand('download')">
             下载
           </el-button>
         </div>
@@ -79,7 +84,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@function rpx2multiple($px) {
+  @return ($px / 1.124780316344464) + px;
+}
+
 .ProductDesignItemPlanDetailDialog {
   position: fixed;
   top: 0;
@@ -87,7 +96,7 @@ export default {
   right: 0;
   bottom: 0;
   width: 100vw;
-  min-width: 1200px;
+  min-width: rpx2multiple(1200);
   margin: 0 !important;
   color: #2D2E33;
   display: flex;
@@ -97,37 +106,37 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog .el-dialog__header {
-  width: 1200px;
+  width: rpx2multiple(1200);
   display: flex;
   justify-content: space-between;
-  padding: 45px 0 30px;
+  padding: rpx2multiple(45) 0 rpx2multiple(30);
 }
 
 .ProductDesignItemPlanDetailDialog .header_icon_item {
   color: #73757d;
-  font-size: 32px;
+  font-size: rpx2multiple(32);
   cursor: pointer;
 }
 
 .ProductDesignItemPlanDetailDialog .el-dialog__body {
-  width: 1200px;
+  width: rpx2multiple(1200);
   flex: 1;
   overflow-y: auto;
 }
 
 .ProductDesignItemPlanDetailDialog .title {
-  font-size: 32px;
-  margin-bottom: 40px;
+  font-size: rpx2multiple(32);
+  margin-bottom: rpx2multiple(40);
 }
 
 .ProductDesignItemPlanDetailDialog .sub_title {
-  font-size: 22px;
-  margin-top: 40px;
-  margin-bottom: 30px;
+  font-size: rpx2multiple(22);
+  margin-top: rpx2multiple(40);
+  margin-bottom: rpx2multiple(30);
 }
 
 .ProductDesignItemPlanDetailDialog .el-image {
-  border-radius: 12px;
+  border-radius: rpx2multiple(12);
 }
 
 .ProductDesignItemPlanDetailDialog .detail_pictures {
@@ -137,7 +146,7 @@ export default {
 
 .ProductDesignItemPlanDetailDialog .detail_pictures-item {
   width: 33.33333333%;
-  padding-right: 60px;
+  padding-right: rpx2multiple(60);
   box-sizing: border-box;
 }
 
@@ -147,7 +156,7 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog .detail_pictures-item > p {
-  margin: 30px 0;
+  margin: rpx2multiple(30) 0;
 }
 
 .ProductDesignItemPlanDetailDialog .detail_pictures-item > .detail_pictures-item_pic_wrap {

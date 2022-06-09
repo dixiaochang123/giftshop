@@ -7,7 +7,7 @@
     <div class="ProductDesignItem-content">
       <div class="ProductDesignItem-content__goods">
         <el-image :src="cacheData.src"
-                   fit="cover"/>
+                  fit="cover"/>
         <p>{{ cacheData.name }}</p>
       </div>
       <div class="ProductDesignItem-content__designs">
@@ -23,7 +23,8 @@
                 </template>
                 <template v-else>
                   <div
-                      class="imgbox" style="display: flex;justify-content: center; align-items: center;border: 1px solid #BCBEC6;border-radius: 12px;color: #7395DC;cursor:pointer;"
+                      class="imgbox"
+                      style="display: flex;justify-content: center; align-items: center;border: 1px solid #BCBEC6;border-radius: 12px;color: #7395DC;cursor:pointer;"
                       @click="viewPlan(item)">
                     <el-icon name="s-cooperation" style="font-size: 40px;"/>
                   </div>
@@ -35,9 +36,9 @@
             </div>
           </template>
 
-          <template v-if="type==='online'">
-            <div class="ProductDesignItem-content__designs-carousel__item">
-              <div class="relative ProductDesignItem-content__designs-carousel__item-img-wrapper plan-uploader-wrapper">
+          <div class="ProductDesignItem-content__designs-carousel__item">
+            <div class="relative ProductDesignItem-content__designs-carousel__item-img-wrapper plan-uploader-wrapper">
+              <template v-if="type==='offline'">
                 <el-upload
                     class="plan-uploader"
                     action="https://jsonplaceholder.typicode.com/posts/"
@@ -46,9 +47,16 @@
                     :before-upload="beforeUpload">
                   <i class="el-icon-plus plan-uploader-icon"></i>
                 </el-upload>
-              </div>
+              </template>
+              <template v-else>
+                <div class="plan-uploader">
+                  <div class="el-upload" @click="addPlan">
+                    <i class="el-icon-plus plan-uploader-icon"></i>
+                  </div>
+                </div>
+              </template>
             </div>
-          </template>
+          </div>
         </div>
 
         <template v-if="computedPlansLength>4">
@@ -86,7 +94,7 @@ export default {
   },
   computed: {
     computedPlansLength() {
-      return (this.type === 'online' ? 1 : 0) + this.cacheData.plans.length;
+      return 1 + this.cacheData.plans.length;
     },
     computedControlLeftDisabled() {
       return this.planIndex <= 4 - this.computedPlansLength;
@@ -176,6 +184,61 @@ export default {
       }, this.type);
       // this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open(item,this.type);
     },
+    addPlan(){
+      //TODO: Mock Data,实际上是新增加设计
+      this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open({
+        main: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
+        detail: [
+          {
+            title: "文字",
+            pictures: [
+              {
+                name: "文字1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "文字2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "文字1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "文字2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              }
+            ]
+          },
+          {
+            title: "LOGO",
+            pictures: [
+              {
+                name: "LOGO1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "LOGO2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              }
+            ]
+          },
+          {
+            title: "图案",
+            pictures: [
+              {
+                name: "图案1",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              },
+              {
+                name: "图案2",
+                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              }
+            ]
+          }
+        ]
+      }, this.type);
+    },
 
 
     // eslint-disable-next-line no-unused-vars
@@ -206,8 +269,9 @@ export default {
 
 <style scoped lang="scss">
 @function rpx2multiple($px) {
-  @return ($px / 1.2) + px;
+  @return ($px / 1.124780316344464) + px;
 }
+
 .ProductDesignItem {
   border: 1px solid #BCBEC6;
   border-radius: 8px;
@@ -230,12 +294,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
-  font-size: 18px;
+  padding: rpx2multiple(20) 0;
+  font-size: rpx2multiple(18);
 }
 
 .ProductDesignItem-header > div:nth-child(1) {
-  width: 274px;
+  width: rpx2multiple(274);
 }
 
 .ProductDesignItem-header > div:nth-child(2) {
@@ -244,13 +308,13 @@ export default {
 
 .ProductDesignItem-content {
   align-items: start;
-  padding: 0 32px;
+  padding: 0 rpx2multiple(32);
 }
 
 .ProductDesignItem-content > .ProductDesignItem-content__goods {
-  padding: 40px 0;
-  margin-right: 55px;
-  
+  padding: rpx2multiple(40) 0;
+  margin-right: rpx2multiple(55);
+
 }
 
 .ProductDesignItem-content > .ProductDesignItem-content__goods > .el-image,
@@ -263,15 +327,15 @@ export default {
 
 .ProductDesignItem-content > .ProductDesignItem-content__goods > p,
 .ProductDesignItem-content__designs-carousel > .ProductDesignItem-content__designs-carousel__item > p {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  font-size: 22px;
+  margin-top: rpx2multiple(16);
+  margin-bottom: rpx2multiple(16);
+  font-size: rpx2multiple(22);
 }
 
 .ProductDesignItem-content > .ProductDesignItem-content__designs {
   position: relative;
   flex: 1;
-  padding: 40px 2px 40px 52px;
+  padding: rpx2multiple(40) 2px rpx2multiple(40) rpx2multiple(52);
 
   max-width: 100%;
   overflow: hidden;
@@ -286,7 +350,7 @@ export default {
 .ProductDesignItem-content__designs-carousel > .ProductDesignItem-content__designs-carousel__item {
   width: 25%;
   flex-shrink: 0;
-  padding-right: 40px;
+  padding-right: rpx2multiple(40);
   box-sizing: border-box;
 }
 
@@ -307,7 +371,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: rpx2multiple(22);
   cursor: pointer;
   z-index: 99;
 }
@@ -330,7 +394,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: rpx2multiple(22);
   cursor: pointer;
 }
 
@@ -342,18 +406,18 @@ export default {
 .ProductDesignItem-content__designs > .ProductDesignItem-content__designs-control__left {
   left: 0;
   top: 0;
-  bottom: 40px;
+  bottom: rpx2multiple(40);
   justify-content: flex-start;
 }
 
 .ProductDesignItem-content__designs > .ProductDesignItem-content__designs-control__right {
   right: 0;
   top: 0;
-  bottom: 40px;
+  bottom: rpx2multiple(40);
   justify-content: flex-end;
 }
 
-.ProductDesignItem-content__designs-carousel__item-img-wrapper.plan-uploader-wrapper{
+.ProductDesignItem-content__designs-carousel__item-img-wrapper.plan-uploader-wrapper {
   position: relative;
   width: 100%;
   height: 0;
@@ -371,11 +435,13 @@ export default {
   bottom: 0;
   overflow: hidden;
 }
+
 ::v-deep .plan-uploader .el-upload:hover {
   border-color: #409EFF;
 }
+
 .plan-uploader-icon {
-  font-size: 28px;
+  font-size: rpx2multiple(28);
   color: #8c939d;
   width: 100%;
   height: 100%;
