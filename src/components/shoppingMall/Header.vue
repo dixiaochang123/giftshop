@@ -57,7 +57,7 @@ export default {
   methods: {
     handleClicklogo() {
       this.$router.push({
-        path: "/"
+        path: "/shoppingMall/Home"
       });
     },
     viewMyDesign() {
