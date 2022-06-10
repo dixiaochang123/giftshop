@@ -455,14 +455,14 @@ export default {
 
   to {
     opacity: 1;
-    transform: translateX(-100px);
+    transform: translateX(-200px);
   }
 }
 
 @keyframes fadeOutRight__1 {
   from {
     opacity: 1;
-    transform: translateX(-100px);
+    transform: translateX(-200px);
   }
 
   to {
