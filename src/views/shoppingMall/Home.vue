@@ -86,7 +86,7 @@
       <!--商品-->
       <div class="pro">
         <div class="left">
-          <img width="100%" height="100%" src="../../assets/img/slices/1.png" alt="" srcset="">
+          <img @click="viewGoodsDetail" width="100%" height="100%" src="../../assets/img/slices/1.png" alt="" srcset="">
           <!-- <div class="hover-text" @click="viewGoodsDetail">
             <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
             <p class="hp2">夏日清凉</p>
@@ -96,35 +96,35 @@
         <div class="right container">
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/2.png" alt="" srcset="">
-            <!-- <div class="hover-text" @click="viewGoodsDetail">
+            <div class="hover-text hover-text1" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
-            </div> -->
+            </div>
           </div>
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/3.png" alt="" srcset="">
-            <!-- <div class="hover-text" @click="viewGoodsDetail">
+            <div class="hover-text hover-text1" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
-            </div> -->
+            </div>
           </div>
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/4.png" alt="" srcset="">
-            <!-- <div class="hover-text" @click="viewGoodsDetail">
+            <div class="hover-text hover-text1" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
-            </div> -->
+            </div>
           </div>
           <div>
             <img width="100%" height="100%" src="../../assets/img/slices/5.png" alt="" srcset="">
-            <!-- <div class="hover-text" @click="viewGoodsDetail">
+            <div class="hover-text hover-text1" @click="viewGoodsDetail">
               <p class="hp1"><span>¥108</span><span class="hhhs">100起订</span></p>
               <p class="hp2">夏日清凉</p>
 
-            </div> -->
+            </div>
           </div>
 
         </div>

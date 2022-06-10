@@ -433,6 +433,15 @@
     // border:solid 1px red;
       overflow: hidden;
       position: relative;
+      .hover-text1 {
+        .hp1,.hp2 {
+          font-size: 22px;
+        }
+        .hhhs {
+          font-size: 14px;
+        }
+
+      }
       &:hover {
         transition: all 0.5s ease-in-out;
         > .hover-text {
