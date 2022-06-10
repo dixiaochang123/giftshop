@@ -138,6 +138,9 @@ export default new Router({
             name:"resetPassword",
             component:() => import ('@/views/shoppingMall/account/resetPassword')
         }
-    ]
+    ],
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 
 })
