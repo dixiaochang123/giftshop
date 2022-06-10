@@ -24,9 +24,46 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div style="cursor: pointer;" class="icon-design" @click="viewMyDesign"></div>
-        <img  v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
-             style="margin-left: 40px;border-radius: 50%;cursor: pointer;" width="60px" height="60px"
-             src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
+        <el-dropdown :hide-on-click="false"
+                     style="display: flex;align-items: center;"
+                     placement="bottom"
+                     @command="onCommand">
+          <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
+               style="margin-left: 40px;border-radius: 50%;cursor: pointer;" width="60px" height="60px"
+               src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="account">
+              <div style="color: #2D2E33;font-weight: 500;font-size: 16px;">
+                <span>喵大人gx</span>
+              </div>
+            </el-dropdown-item>
+            <el-dropdown-item divided command="account">
+              <div style="color: #71737B;font-size: 16px;">
+                <i class="el-icon-user" style="font-size: 18px;"></i>
+                <span>账号管理</span>
+              </div>
+            </el-dropdown-item>
+            <el-dropdown-item command="address">
+              <div style="color: #71737B;font-size: 16px;">
+                <i class="el-icon-location-information" style="font-size: 18px;"></i>
+                <span>地址信息</span>
+              </div>
+            </el-dropdown-item>
+            <el-dropdown-item command="invoice">
+              <div style="color: #71737B;font-size: 16px;">
+                <i class="el-icon-tickets" style="font-size: 18px;"></i>
+                <span>发票信息</span>
+              </div>
+            </el-dropdown-item>
+            <el-dropdown-item divided command="logout">
+              <div style="color: #71737B;font-size: 16px;">
+                <i class="el-icon-switch-button" style="font-size: 18px;"></i>
+                <span>退出登陆</span>
+              </div>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+
         <el-button v-if="false" class="icon-login" plain @click="$router.push('/login')">登陆</el-button>
         <el-button v-if="false" class="icon-register" @click="$router.push('/register')" type="text">注册</el-button>
         <!-- ------------- -->
@@ -55,6 +92,27 @@ export default {
   mounted() {
   },
   methods: {
+    onCommand(command) {
+      switch (command) {
+        case "account":
+        case "address":
+        case "invoice":
+          this.$router.push({
+            path: "/shoppingMall/user/userCenter2",
+            query: {
+              current: ({
+                account: 0,
+                address: 1,
+                invoice: 2
+              })[command]
+            }
+          });
+          break;
+        default:
+          //TODO: 退出登录
+          break;
+      }
+    },
     handleClicklogo() {
       this.$router.push({
         path: "/shoppingMall/Home"
@@ -67,18 +125,18 @@ export default {
     },
     jumpOrderPage(command) {
       console.log(command)
-      if(command.index==1) {
+      if (command.index == 1) {
         this.$router.push({
-          name:'Proofing',
-          query:{
-            index:command.index
+          name: 'Proofing',
+          query: {
+            index: command.index
           }
         })
       } else {
         this.$router.push({
-          name:'Ordercenter',
-          query:{
-            index:command.index
+          name: 'Ordercenter',
+          query: {
+            index: command.index
           }
         })
       }
@@ -145,6 +203,7 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.15) 0 0 12px;
   background-color: rgba(255, 255, 255, 0.8);
   background-color: #000;
+
   .logo {
     width: rpx2multiple(180);
     height: rpx2multiple(48);
@@ -155,9 +214,10 @@ export default {
     box-sizing: border-box;
     cursor: pointer;
     z-index: 110;
+
     img {
-      width:100%;
-      height:100%;
+      width: 100%;
+      height: 100%;
       box-sizing: border-box;
       display: flex;
       justify-content: center;
