@@ -4,9 +4,9 @@
     <!-- <div class="top_banner">
             <img src="../../../assets/img/shoppingMall/detail/banner1.jpg" alt="">
         </div> -->
-    <div style="height:96px;"></div>
+    <!-- <div style="height:96px;"></div> -->
     <div class="cate-filter">
-      <CateFilter :categories="categories" @choose="onChooseCategory" />
+      <CateFilter :categories="categories" @choose="onChooseCategory" :bgcolor="bgcolor" />
     </div>
     <!--面包屑导航-->
     <div class="Breadcrumb">
@@ -56,6 +56,7 @@ export default {
   components: { FastDetail, CateFilter },
   data() {
     return {
+      bgcolor:true,
       categories: Categories,
       carouselHeight: "500px",
       options: [
@@ -109,6 +110,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../assets/css/shoppingMall/vaseDetail";
+.cate-filter {
+    margin-top: rpx2multiple(96);
+}
 .product-list {
   margin-bottom: 20px;
 }

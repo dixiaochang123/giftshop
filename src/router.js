@@ -100,6 +100,11 @@ export default new Router({
 				    name: 'onlineDesign',
 				    component: () => import("./views/shoppingMall/onlineDesign/onlineDesign")
 				},
+                {
+				    path: '/shoppingMall/hotrecommend',
+				    name: 'Hotrecommend',
+				    component: () => import("./views/shoppingMall/hotrecommend/hotrecommend")
+				},
 				{
 				    path: '/shoppingMall/ordercenter',
 				    name: 'Ordercenter',

@@ -1,5 +1,5 @@
 <template>
-  <div class="cate-filter-container" @mouseleave="onMouseLeave">
+  <div :class="[bgcolor? 'bgcolor': '','cate-filter-container']" @mouseleave="onMouseLeave">
     <template v-if="categories.length">
       <div class="cate-filter-first">
         <div :class="['cate-filter-first__item', {active: activeFirst === index}]"
@@ -45,6 +45,10 @@ export default {
       default: function () {
         return [];
       },
+    },
+    bgcolor: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -118,6 +122,17 @@ export default {
   @return ($px / 1)+px;
 }
 
+.bgcolor {
+  background-image: none !important;
+  &:hover {
+    background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%) !important;
+    background-size: 200% !important;
+    background-position: 50% 50% !important;
+  }
+  &>*{
+    background-color: transparent !important;
+  }
+}
 .cate-filter-container {
   position: relative;
   width: 100%;
