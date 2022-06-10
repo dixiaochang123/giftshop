@@ -38,12 +38,12 @@
             <el-dropdown-item icon="el-icon-edit" :command="{index:1,name:'打样订单'}">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <div style="cursor: pointer;" class="icon-design"></div>
+        <div style="cursor: pointer;" class="icon-design" @click="viewMyDesign"></div>
         <el-dropdown :hide-on-click="false"
                      style="display: flex;align-items: center;"
                      placement="bottom"
                      @command="onCommand">
-          <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
+          <img v-if="true"
                style="margin-left: 40px;border-radius: 50%;cursor: pointer;" width="60px" height="60px"
                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
