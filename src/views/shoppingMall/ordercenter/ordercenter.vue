@@ -1,13 +1,16 @@
 <template>
   <div class="mycart">
-    <div class="shaixuan">
-      <el-form class="qyktj qyktj1">
-        <div style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
+    <div class="shaixuan" :class="{'h-0': !computedFilterPanelActive}">
+      <el-form class="qyktj qyktj1 h-0">
+        <div
+            style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
           <el-form-item label="下单时间" prop="xdsj">
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择下单时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
+                            placeholder="选择下单时间">
             </el-date-picker>
             -
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择下单时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
+                            placeholder="选择下单时间">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="产品类型" prop="cplx">
@@ -23,16 +26,18 @@
         </div>
         <div style="display: flex;align-items: center;justify-content: space-between;">
           <el-form-item label="发货时间" prop="xdsj">
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择发货时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
+                            placeholder="选择发货时间">
             </el-date-picker>
             -
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd" placeholder="选择发货时间">
+            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
+                            placeholder="选择发货时间">
             </el-date-picker>
           </el-form-item>
           <el-form-item label="订单编号" prop="cplx">
-            <el-input v-model="ddbh" placeholder="请输入订单编号" />
+            <el-input v-model="ddbh" placeholder="请输入订单编号" class="cplx-el-input"/>
           </el-form-item>
-          <el-form-item>
+          <el-form-item style="min-width: 285px;display: flex;justify-content: flex-end;">
             <button>搜索</button>
             <button style="border-color: #333333;color: #333333;">导出</button>
           </el-form-item>
@@ -43,7 +48,8 @@
     <div class="tabs">
       <div class="header">
         <div class="header_1" style="width:40%;text-align: left;">
-          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange" style="font-size: 18px;">全选
+          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"
+                       style="font-size: 18px;">全选
           </el-checkbox>
           <span class="spxx">商品信息</span>
         </div>
@@ -91,8 +97,10 @@
             <span style="color: #FF946B;cursor: pointer;" @click="viewDesign(item)">查看</span>
           </div>
           <div style="width:12%" class="caozuo">
-            <span class="dayang" style="cursor: pointer;width: 112px;height: 42px;background: #FF946B;border-radius: 4px;color: #FFFFFF;border: none;" @click="payMoney(item)">立即支付</span>
-            <span style="cursor: pointer;" >取消订单</span>
+            <span class="dayang"
+                  style="cursor: pointer;width: 112px;height: 42px;background: #FF946B;border-radius: 4px;color: #FFFFFF;border: none;"
+                  @click="payMoney(item)">立即支付</span>
+            <span style="cursor: pointer;">取消订单</span>
           </div>
         </div>
       </div>
@@ -105,6 +113,7 @@
 <script>
 export default {
   name: "Ordercenter",
+  inject: ["filterPanel"],
   data() {
     return {
       ddbh: "",
@@ -125,7 +134,7 @@ export default {
           ddzt: "待支付",
           sumb: "3000.00",
           DesignNumber: "2",
-          type:'1'
+          type: '1'
         },
         {
           checked: false,
@@ -136,7 +145,7 @@ export default {
           ddzt: "待支付",
           sumb: "3000.00",
           DesignNumber: "2",
-          type:'2'
+          type: '2'
         },
         {
           checked: false,
@@ -147,7 +156,7 @@ export default {
           ddzt: "待支付",
           sumb: "3000.00",
           DesignNumber: "2",
-          type:'3'
+          type: '3'
         },
         {
           checked: false,
@@ -158,7 +167,7 @@ export default {
           ddzt: "待支付",
           sumb: "3000.00",
           DesignNumber: "2",
-          type:'4'
+          type: '4'
         },
         {
           checked: false,
@@ -169,24 +178,28 @@ export default {
           ddzt: "待支付",
           sumb: "3000.00",
           DesignNumber: "2",
-          type:'5'
+          type: '5'
         },
       ],
       multipleSelection: [],
     };
   },
   computed: {
+    computedFilterPanelActive() {
+      return this.filterPanel.active;
+    },
     total() {
       return this.tableData.filter((item) => item.checked == true).length;
     },
     totalPrice() {
       return this.tableData
-        .filter((item) => item.checked == true)
-        .reduce((money, item) => money + Number(item.sumb), 0);
+          .filter((item) => item.checked == true)
+          .reduce((money, item) => money + Number(item.sumb), 0);
       // return this.tableData.filter(item=>item.checked==true)
     },
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     viewDesign(item) {
       this.$router.push({
@@ -219,11 +232,11 @@ export default {
     },
     handleCheckedCitiesChange(value) {
       let checkedCount = this.tableData.filter(
-        (item) => item.checked == true
+          (item) => item.checked == true
       ).length;
       this.checkAll = checkedCount === this.tableData.length;
       this.isIndeterminate =
-        checkedCount > 0 && checkedCount < this.tableData.length;
+          checkedCount > 0 && checkedCount < this.tableData.length;
     },
     deleted(item, index) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -231,19 +244,19 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       })
-        .then(() => {
-          this.tableData.splice(index, 1);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          .then(() => {
+            this.tableData.splice(index, 1);
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消删除",
+            });
           });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除",
-          });
-        });
     },
   },
 };
@@ -571,7 +584,12 @@ export default {
   height: 150px;
   border-bottom: 1px solid #bcbec6;
   margin-bottom: 30px;
-  padding-top:15px;
+  padding-top: 15px;
+  overflow: hidden;
+}
+.shaixuan.h-0{
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
 .qyktj .el-form-item__content {
@@ -604,9 +622,19 @@ export default {
   line-height: 42px;
   margin-left: 20px;
 }
+
 .deleted {
   position: absolute;
-  right:30px;
-  top:10px;
+  right: 30px;
+  top: 10px;
+}
+
+
+::v-deep.cplx-el-input input {
+  width: 217px;
+}
+
+.h-0 {
+  height: 0 !important;
 }
 </style>

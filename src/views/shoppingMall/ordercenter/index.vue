@@ -10,11 +10,12 @@
     <!--类型-->
     <div class="page_type" style="border-bottom: none;height: auto;">
       <div class="tab-list-2-1">
-        <div @click="activeindexchange(index)" v-for="(item,index) in specialtab" :key="item" :class="[index==activeindex? 'active':'']">{{ item }}
+        <div @click="activeindexchange(index)" v-for="(item,index) in specialtab" :key="item"
+             :class="[index==activeindex? 'active':'']">{{ item }}
         </div>
       </div>
       <div class="container">
-        <div class="navtab">
+        <div class="navtab" style="display: flex;justify-content: space-between;align-items: center;">
           <ul>
             <li @click="tabqh(1)" :class="{active:tabbq==1}">全部订单 10</li>
             <li @click="tabqh(2)" :class="{active:tabbq==2}">待支付 2</li>
@@ -25,11 +26,15 @@
             <li @click="tabqh(7)" :class="{active:tabbq==7}">已取消 0</li>
 
           </ul>
+          <div @click="toggleFilterPanel" style="color: #FF946B;">
+            <span style="margin-right: 15px;">订单筛选</span>
+            <i :class="filterPanel.active?'el-icon-arrow-up':'el-icon-arrow-down'"></i>
+          </div>
         </div>
 
       </div>
     </div>
-    <router-view />
+    <router-view/>
 
   </div>
 </template>
@@ -37,10 +42,18 @@
 <script>
 export default {
   name: "Ordercenter",
+  provide() {
+    return {
+      filterPanel: this.filterPanel
+    }
+  },
   data() {
     return {
+      filterPanel: {
+        active: true
+      },
       specialtab: ["常规订单", "打样订单"],
-      activeindex:0,
+      activeindex: 0,
       cplx: "",
       ddzt: "",
       xdsj: null,
@@ -109,12 +122,12 @@ export default {
     },
     totalPrice() {
       return this.tableData
-        .filter((item) => item.checked == true)
-        .reduce((money, item) => money + Number(item.sumb), 0);
+          .filter((item) => item.checked == true)
+          .reduce((money, item) => money + Number(item.sumb), 0);
       // return this.tableData.filter(item=>item.checked==true)
     },
   },
-  watch:{
+  watch: {
     $route: {
       immediate: true, // 一旦监听到路由的变化立即执行
       handler(to, from) {
@@ -126,15 +139,18 @@ export default {
     this.activeindex = this.$route.query.index || 0
   },
   methods: {
+    toggleFilterPanel() {
+      this.filterPanel.active = !this.filterPanel.active;
+    },
     activeindexchange(index) {
       this.activeindex = index;
-      if(index==0) {
+      if (index == 0) {
         this.$router.push({
-          name:'Ordercenter'
+          name: 'Ordercenter'
         })
       } else {
         this.$router.push({
-          name:'Proofing'
+          name: 'Proofing'
         })
       }
     },
@@ -154,11 +170,11 @@ export default {
     },
     handleCheckedCitiesChange(value) {
       let checkedCount = this.tableData.filter(
-        (item) => item.checked == true
+          (item) => item.checked == true
       ).length;
       this.checkAll = checkedCount === this.tableData.length;
       this.isIndeterminate =
-        checkedCount > 0 && checkedCount < this.tableData.length;
+          checkedCount > 0 && checkedCount < this.tableData.length;
     },
     deleted(item, index) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -166,19 +182,19 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       })
-        .then(() => {
-          this.tableData.splice(index, 1);
-          this.$message({
-            type: "success",
-            message: "删除成功!",
+          .then(() => {
+            this.tableData.splice(index, 1);
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消删除",
+            });
           });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除",
-          });
-        });
     },
   },
 };
@@ -194,6 +210,7 @@ export default {
 @function rpx2multiple($px) {
   @return ($px / 1) + px;
 }
+
 .mycart1 {
   width: rpx2multiple(1380);
   margin: rpx2multiple(96) auto 0;
@@ -202,41 +219,45 @@ export default {
 .page_type {
   width: rpx2multiple(1380);
   margin: 0 auto;
+
   .tab-list-2-1 {
-      width: 100%;
-      height: 42px;
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      margin-bottom:50px;
-      > div {
-        margin-right:rpx2multiple(48);
-        // width: 96px;
-        height: 33px;
-        font-size: 24px;
-        font-family: PingFangSC-Regular, PingFang SC;
-        font-weight: 400;
-        color: #73757d;
-        line-height: 33px;
-        position: relative;
-        cursor: pointer;
-        &.active {
-          font-weight: 500;
-          color: #2d2e33;
-        }
-        &.active::after {
-          content: "";
-          width: 72px;
-          height: 6px;
-          background: #7395dc;
-          position: absolute;
-          bottom: -10px;
-          left: 0;
-          right: 0;
-          margin: auto;
-        }
+    width: 100%;
+    height: 42px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 50px;
+
+    > div {
+      margin-right: rpx2multiple(48);
+      // width: 96px;
+      height: 33px;
+      font-size: 24px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #73757d;
+      line-height: 33px;
+      position: relative;
+      cursor: pointer;
+
+      &.active {
+        font-weight: 500;
+        color: #2d2e33;
+      }
+
+      &.active::after {
+        content: "";
+        width: 72px;
+        height: 6px;
+        background: #7395dc;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
+  }
 }
 
 .Breadcrumb {
@@ -432,9 +453,10 @@ export default {
 }
 
 .navtab ul {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
+
 .navtab ul li {
   display: inline-block;
   background: #f1f2f4;
@@ -444,7 +466,7 @@ export default {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #73757D;
-  padding:9px 20px;
+  padding: 9px 20px;
   cursor: pointer;
 }
 
@@ -563,10 +585,12 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
+
 .el-form-item {
   display: flex;
   align-items: center;
 }
+
 .shaixuan button {
   width: 112px;
   height: 42px;
