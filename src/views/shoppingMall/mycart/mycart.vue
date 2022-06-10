@@ -163,7 +163,7 @@ export default {
     payMoney(item) {
       // let payload = item ? {id: item.id || 0} : {ids: this.tableData.map(item => item.id).filter(id => id).join(",")};
       this.$router.push({
-        name: "Ordercenter",
+        name: "Order",
         //TODO: id|ids传参
         // query: {...payload}
       });
