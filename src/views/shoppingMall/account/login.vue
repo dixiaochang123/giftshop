@@ -173,7 +173,7 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.36480686695279) + px;
+  @return ($px / 1) + px;
 }
 
 .account-box {

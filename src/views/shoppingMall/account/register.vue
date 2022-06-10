@@ -145,7 +145,7 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.158469945355191) + px;
+  @return ($px / 1) + px;
 }
 .account-box {
     font-family: PingFangSC-Regular, PingFang SC;

@@ -121,11 +121,11 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 0.9779951100244499) + px;
+  @return ($px / 1) + px;
 }
 
 .mycart {
-  width: rpx2multiple(1200);
+  width: rpx2multiple(1380);
   margin: 92px auto 0;
 }
 
@@ -152,7 +152,7 @@ export default {
 }
 
 .xiadan {
-  width: rpx2multiple(1200);
+  width: rpx2multiple(1380);
   margin: 0px auto;
   display: block;
 }

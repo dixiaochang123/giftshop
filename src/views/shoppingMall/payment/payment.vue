@@ -209,11 +209,11 @@ export default {
 
 <style lang="scss">
 @function rpx2multiple($px) {
-  @return ($px / 0.9779951100244499) + px;
+  @return ($px / 1) + px;
 }
 
 .mycart {
-  width: rpx2multiple(1200);
+  width: rpx2multiple(1380);
   margin: rpx2multiple(92) auto 0;
 }
 
@@ -240,7 +240,7 @@ export default {
 }
 
 .xiadan {
-  width: rpx2multiple(1200);
+  width: rpx2multiple(1380);
   margin: 0px auto;
   display: block;
 }
@@ -251,7 +251,7 @@ export default {
   font-weight: 400;
   color: #2D2E33;
   line-height: rpx2multiple(30);
-  margin-top: rpx2multiple(70);
+  margin-top: rpx2multiple(10);
   margin-bottom: rpx2multiple(16);
 }
 
@@ -368,6 +368,7 @@ export default {
   border-radius: 8px;
   width: 100%;
   padding: 31px 21px;
+  box-sizing: border-box;
 }
 
 .shrxx img {
@@ -540,6 +541,7 @@ export default {
   margin-bottom: rpx2multiple(32);
   justify-content: space-between;
   padding: 21px;
+  box-sizing: border-box;
 }
 
 .zffs {
