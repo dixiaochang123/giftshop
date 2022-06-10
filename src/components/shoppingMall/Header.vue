@@ -38,7 +38,7 @@
             <el-dropdown-item icon="el-icon-edit" :command="{index:1,name:'打样订单'}">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <div style="cursor: pointer;" class="icon-design" @click="viewMyDesign"></div>
+        <div style="cursor: pointer;" class="icon-design"></div>
         <el-dropdown :hide-on-click="false"
                      style="display: flex;align-items: center;"
                      placement="bottom"
