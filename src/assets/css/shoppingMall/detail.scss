@@ -19,17 +19,33 @@
     justify-content: space-between;
 
     margin-top: 20px;
+    position: relative;
     // height: 650px;
-
     .pro_big{
+      .pro_big_right {
+        width: rpx2multiple(664);
+        height: rpx2multiple(664);
+        position: absolute;
+        left:rpx2multiple(684);
+        top: 0;
+        z-index: 11;
+        overflow: hidden;
+        border-radius: rpx2multiple(12);
+        img {
+          width: 200%;
+          height:200%;
+          // overflow: hidden;
+        }
+      }
       // flex: 1;
       width: rpx2multiple(664);
-      height: 800px;
+      height: rpx2multiple(800);
       // height: 480px;
       // margin-right: 60px;
       // position: relative;
       position: sticky;
       top: rpx2multiple(136);
+      z-index: 11;
       img{
         width: rpx2multiple(664);
         height:rpx2multiple(664);
@@ -42,6 +58,25 @@
         position: absolute;
         right: 0;
         top: rpx2multiple(622);
+      }
+      // 放大镜
+      .top {
+        width: rpx2multiple(332);
+        height: rpx2multiple(332);
+        background-color: lightcoral;
+        opacity: 0.4;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      .maskTop {
+        width: rpx2multiple(664);
+        height:rpx2multiple(664);
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
       }
 
       .tro_list{
@@ -79,6 +114,7 @@
       }
 
     }
+    
 
     .intro{
       width: rpx2multiple(664);

@@ -2,16 +2,17 @@
 	<div>
 
 
-		<div class="cate-filter" style="margin-top: 100px;">
-			<CateFilter :categories="categories" @choose="onChooseCategory" />
+		<div class="cate-filter">
+			<CateFilter :categories="categories" @choose="onChooseCategory" :bgcolor="bgcolor" />
 		</div>
 
 		<!--类型-->
 		<div class="page_type" style="border-bottom: none;height: auto;">
 			<div class="container">
-				<div class="type_name">公司福利</div>
+				<div class="type_name" style="color: #2D2E33;font-weight: 500;">{{title}}</div>
 
 			</div>
+		</div>
 			<div class="container">
 				<div class="navtab">
 					<ul>
@@ -27,52 +28,49 @@
 				</div>
 
 			</div>
-		</div>
 
 		<div class="container product-list">
 			<div class="type_list">
-				<el-row :gutter="20">
-					<el-col :span="6" v-for="item in 12" :key="item.id">
-						<div class="grid-content">
-							<div class="vase_item">
-								<dl>
-									<router-link to="/shoppingMall/detail/detail">
-										<dt><img src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt=""></dt>
-									</router-link>
-									<dd class="price">
-										<span>&yen;17.90</span>
-										<span class="button" v-if="false">
-											<el-button size="small" type="danger" @click="showDetail">极速购买</el-button>
-										</span>
-										<span class="product-orderQuantity">{{orderQuantity}}起订</span>
-									</dd>
-									<dd class="product-name">【最家】创意现代简约白瓷干花花瓶摆件</dd>
-								</dl>
-							</div>
-						</div>
-					</el-col>
-				</el-row>
-			</div>
-			<el-pagination class="product-pagination" background layout="prev, pager, next,jumper" :total="1000">
-			</el-pagination>
+        <div class="product-box">
+          <div class="product-item" v-for="item in 15" :key="item.id">
+            <router-link to="/shoppingMall/detail/detail">
+              <div class="product-content">
+                <div class="product-img">
+                  <img style="width: 100%" src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt="">
+                </div>
+                <div class="product-desc">
+                  <p>
+                    <span>¥ {{`108`}}</span>
+                    <span class="product-orderQuantity">{{orderQuantity}}起订</span>
+                  </p>
+                  <span>
+                    创意现代简约
+                  </span>
+                </div>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
+      <el-pagination class="product-pagination" background layout="prev, pager, next,jumper" :total="1000">
+      </el-pagination>
 		</div>
-		<fast-detail ref="FastDetail"></fast-detail>
 	</div>
 </template>
 
 <script>
-	import FastDetail from "../detail/fastDetailModal.vue";
 	import CateFilter from "@/components/cateFilter/CateFilter";
 	import Categories from "@/components/cateFilter/categories.js";
 	export default {
 		components: {
-			FastDetail,
 			CateFilter
 		},
 		data() {
 			return {
+				bgcolor:true,
 				tabbq: 1,
 				categories: Categories,
+				title:'',
 				options: [{
 					value: '选项1',
 					label: '新品上市'
@@ -93,7 +91,9 @@
 				orderQuantity: 100
 			}
 		},
-		mounted() {},
+		mounted() {
+			this.title = this.$route.query.title
+		},
 		methods: {
 		//tab切换
 			tabqh(zhi){
@@ -111,10 +111,6 @@
 					}
 				})
 			},
-			//快速浏览
-			showDetail() {
-				this.$refs.FastDetail.show();
-			}
 		}
 	}
 </script>
@@ -122,6 +118,10 @@
 
 <style lang="scss" scoped>
 	@import "../../../assets/css/shoppingMall/vaseDetail";
+
+	.cate-filter {
+		margin-top: rpx2multiple(96);
+	}
 
 	.product-list {
 		margin-bottom: 20px;
@@ -169,10 +169,45 @@
 		line-height: 42px;
 		margin-right: 15px;
 		font-size: 14px;
+		cursor: pointer;
 	}
 
 	.navtab ul .active {
 		background: #7395DC;
 		color: #FFFFFF;
 	}
+	.product-box {
+  margin-bottom: 30px;
+  .product-item {
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 40px;
+    display: inline-block;
+    border-radius: 12px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid #fff;
+    transition: all 0.5s;
+    .product-content {
+      .product-img {
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .product-desc {
+        color: #2d2e33;
+        font-size: 14px;
+        font-weight: 700;
+        > span {
+          display: inline-block;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .product-item:hover {
+    border-radius: 12px;
+    border: 1px solid #7395dc;
+    box-shadow: 12px 14px 49px 0px rgba(206, 206, 206, 0.54);
+  }
+}
 </style>

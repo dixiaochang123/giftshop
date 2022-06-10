@@ -69,6 +69,7 @@ $height: 350px;
     margin: 0 auto;
     width: rpx2multiple(60);
     border-bottom: solid 1px #7395dc;
+    cursor: pointer;
     &:last-of-type {
       border: none;
     }
@@ -175,6 +176,7 @@ $height: 350px;
   padding-top: rpx2multiple(25);
   box-sizing: border-box;
   margin-top: rpx2multiple(20);
+  cursor: pointer;
   div {
     width: rpx2multiple(36);
     height: rpx2multiple(36);
