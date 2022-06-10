@@ -1,22 +1,43 @@
 <template>
   <div class="backtop">
     <div class="help">
-      <div class="kefu">
-        <div></div>
-        <p>联系客服</p>
-      </div>
-      <div class="phon">
-        <div ></div>
-        <p>联系电话</p>
-      </div>
-      <div class="feishu">
-        <div ></div>
-        <p>飞书账号</p>
-      </div>
-      <div class="caozuo">
-        <div ></div>
-        <p>操作指南</p>
-      </div>
+      <el-tooltip effect="light"
+                  content="客服: 12345678901"
+                  popper-class="backtop-item-popper-class"
+                  placement="left">
+        <div class="kefu">
+          <div></div>
+          <p>联系客服</p>
+        </div>
+      </el-tooltip>
+      <el-tooltip effect="light"
+                  content="电话: 12345678901"
+                  popper-class="backtop-item-popper-class"
+                  placement="left">
+        <div class="phon">
+          <div></div>
+          <p>联系电话</p>
+        </div>
+      </el-tooltip>
+      <el-tooltip effect="light"
+                  content="账号: 12345678901"
+                  popper-class="backtop-item-popper-class"
+                  placement="left">
+        <div class="feishu">
+          <div></div>
+          <p>飞书账号</p>
+        </div>
+      </el-tooltip>
+      <el-tooltip effect="light"
+                  content="指南: 12345678901"
+                  popper-class="backtop-item-popper-class"
+                  placement="left">
+        <div class="caozuo">
+          <div></div>
+          <p>操作指南</p>
+        </div>
+      </el-tooltip>
+
 
     </div>
     <div @click="backtopclick" class="backtop_icon">
@@ -51,6 +72,7 @@ $height: 350px;
 @function rpx2multiple($px) {
   @return ($px / 1) + px;
 }
+
 .backtop {
   width: rpx2multiple(88);
   position: fixed;
@@ -58,100 +80,117 @@ $height: 350px;
   bottom: 100px;
   z-index: 100000000;
 }
+
 .help {
   width: 100%;
   height: rpx2multiple(412);
   background: #ffffff;
   border-radius: 8px;
   border: 1px solid #7395dc;
+
   > div {
     text-align: center;
     margin: 0 auto;
     width: rpx2multiple(60);
     border-bottom: solid 1px #7395dc;
     cursor: pointer;
+
     &:last-of-type {
       border: none;
     }
+
     > div {
       margin: rpx2multiple(20) auto 0;
     }
   }
+
   .kefu {
-    >div {
+    > div {
       width: rpx2multiple(36);
       height: rpx2multiple(36);
       background: url("../assets/img/slices/kefu.png") no-repeat center center;
       background-size: 100% 100%;
     }
+
     &:hover {
-      >div {
+      > div {
 
         background: url("../assets/img/slices/kefu-hover.png") no-repeat center center;
         background-size: 100% 100%;
       }
+
       p {
         color: #7395DC;
       }
     }
   }
+
   .phon {
-    >div {
+    > div {
 
       width: rpx2multiple(29);
       height: rpx2multiple(29);
       background: url("../assets/img/slices/phon.png") no-repeat center center;
       background-size: 100% 100%;
     }
+
     &:hover {
-      >div {
+      > div {
 
         background: url("../assets/img/slices/phon-hover.png") no-repeat center center;
         background-size: 100% 100%;
       }
+
       p {
         color: #7395DC;
       }
     }
   }
+
   .feishu {
-    >div {
+    > div {
 
       width: rpx2multiple(36);
       height: rpx2multiple(36);
       background: url("../assets/img/slices/feishu.png") no-repeat center center;
       background-size: 100% 100%;
     }
+
     &:hover {
-      >div {
+      > div {
 
         background: url("../assets/img/slices/feishu-hover.png") no-repeat center center;
         background-size: 100% 100%;
       }
+
       p {
         color: #7395DC;
       }
     }
   }
+
   .caozuo {
-    >div {
+    > div {
 
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       background: url("../assets/img/slices/caozuo.png") no-repeat center center;
       background-size: 100% 100%;
     }
+
     &:hover {
-      >div {
+      > div {
 
         background: url("../assets/img/slices/caozuo-hover.png") no-repeat center center;
         background-size: 100% 100%;
       }
+
       p {
         color: #7395DC;
       }
     }
   }
+
   p {
     height: rpx2multiple(17);
     font-size: rpx2multiple(12);
@@ -164,6 +203,7 @@ $height: 350px;
     white-space: nowrap;
   }
 }
+
 .backtop_icon {
   width: 100%;
   height: rpx2multiple(88);
@@ -177,17 +217,40 @@ $height: 350px;
   box-sizing: border-box;
   margin-top: rpx2multiple(20);
   cursor: pointer;
+
   div {
     width: rpx2multiple(36);
     height: rpx2multiple(36);
     background: url("../assets/img/slices/top.png") no-repeat center center;
     background-size: 100% 100%;
   }
+
   &:hover {
     div {
-    background: url("../assets/img/slices/top-hover.png") no-repeat center center;
-    background-size: 100% 100%;
+      background: url("../assets/img/slices/top-hover.png") no-repeat center center;
+      background-size: 100% 100%;
+    }
   }
-  }
+}
+</style>
+<style>
+.backtop-item-popper-class.el-tooltip__popper {
+  transform: translateX(-20px);
+  padding: 14px 18px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.backtop-item-popper-class.el-tooltip__popper.is-light {
+  border: none;
+  background: #f1f2f4;
+}
+
+.backtop-item-popper-class.el-tooltip__popper.is-light[x-placement^=left] .popper__arrow {
+  border-left-color: #f1f2f4;
+}
+
+.backtop-item-popper-class.el-tooltip__popper.is-light[x-placement^=left] .popper__arrow::after {
+  border-left-color: #f1f2f4;
 }
 </style>
