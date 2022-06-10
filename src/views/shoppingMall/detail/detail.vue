@@ -20,8 +20,20 @@
       <!--大图 及 商品介绍-->
       <div class="proDet">
         <div class="pro_big">
+          <div class="pro_big_right" v-show="rShow">
+            <img :style="r_img" class="rightImg" :src="bigImg" alt="">
+          </div>
           <img :src="bigImg" alt="">
-          <img class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
+          <img v-show="!rShow" class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
+          <!-- 鼠标层罩 -->
+          <div v-show="topShow" class="top" :style="topStyle"></div>
+          <!-- 最顶层覆盖了整个原图空间的透明层罩 -->
+          <div
+            class="maskTop"
+            @mouseenter="enterHandler"
+            @mousemove="moveHandler"
+            @mouseout="outHandler"
+          ></div>
           <div class="tro_list">
             <span v-for="item in smallImg" :key="item.id">
               <a href="#" :title="item.title">
@@ -307,6 +319,11 @@ export default {
       ],
       smallImg: lodash.cloneDeep(smallImg),
       smallImgcopy: lodash.cloneDeep(smallImg),
+      // 放大镜效果
+      topStyle: { transform: "" },
+      r_img: {},
+      topShow: false,
+      rShow: false,
     };
   },
   computed: {
@@ -419,7 +436,38 @@ export default {
       this.$router.push({
         name:'Mycart'
       })
-    }
+    },
+    // 鼠标进入原图空间函数
+    enterHandler() {
+      // 层罩及放大空间的显示
+      this.topShow = true;
+      this.rShow = true;
+    },
+    // 鼠标移动函数
+    moveHandler(event) {
+      // 鼠标的坐标位置
+      let x = event.offsetX;
+      let y = event.offsetY;
+      // 层罩的左上角坐标位置，并对其进行限制：无法超出原图区域左上角
+      let topX = x - 166 < 0 ? 0 : x - 166;
+      let topY = y - 166 < 0 ? 0 : y - 166;
+      // 对层罩位置再一次限制，保证层罩只能在原图区域空间内
+      if (topX > 332) {
+        topX = 332;
+      }
+      if (topY > 332) {
+        topY = 332;
+      }
+      // 通过 transform 进行移动控制
+      this.topStyle.transform = `translate(${topX}px,${topY}px)`;
+      this.r_img.transform = `translate(-${2 * topX}px,-${2 * topY}px)`;
+    },
+    // 鼠标移出函数
+    outHandler() {
+      // 控制层罩与放大空间的隐藏
+      this.topShow = false;
+      this.rShow = false;
+    },
   },
 };
 </script>
