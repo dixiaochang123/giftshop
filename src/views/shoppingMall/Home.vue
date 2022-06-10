@@ -136,7 +136,7 @@
     </div>
     <div class="inspiration">
       <div class="container">
-        <div>
+        <div @click="gotohotrecommend">
           <img width="100%" height="100%" src="../../assets/img/slices/9.png" alt="" srcset="">
         </div>
         <div>
@@ -218,6 +218,11 @@ export default {
         this.carouselHeight = "900px";
       }
     },
+    gotohotrecommend() {
+      this.$router.push({
+        name:'Hotrecommend'
+      })
+    }
   },
 };
 </script>
