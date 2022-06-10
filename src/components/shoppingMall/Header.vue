@@ -45,7 +45,7 @@
                      @command="onCommand">
           <img v-if="true" @click="$router.push('/shoppingMall/user/userCenter2')"
                style="margin-left: 40px;border-radius: 50%;cursor: pointer;" width="60px" height="60px"
-               src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" alt="" srcset="">
+               src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="account">
               <div style="color: #2D2E33;font-weight: 500;font-size: 16px;">
