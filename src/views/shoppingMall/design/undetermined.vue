@@ -16,17 +16,19 @@
         </template>
       </div>
     </div>
+    <onlineDesign :dialogOnlineDesign="dialogOnlineDesign"></onlineDesign>
   </div>
 </template>
 
 <script>
 import ProductDesignItem from "@/components/shoppingMall/ProductDesignItem";
-
+import onlineDesign from "@/components/onlineDesign/onlineDesign";
 export default {
   name: "undetermined",
-  components: {ProductDesignItem},
+  components: {ProductDesignItem,onlineDesign},
   data() {
     return {
+      dialogOnlineDesign: false,
       activeType: "online"
     }
   },
