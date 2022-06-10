@@ -48,11 +48,11 @@ export default {
 }
 
 @function rpx2multiple($px) {
-    @return ($px / 1.038062283737024)+px;
+    @return ($px / 1)+px;
 }
 
 .userBox {
-    width: rpx2multiple(1274);
+    width: rpx2multiple(1380);
     margin: rpx2multiple(92) auto 0;
     font-family: PingFangSC-Regular, PingFang SC;
 
