@@ -11,9 +11,9 @@
     <div class="Breadcrumb">
         <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ProductNav.activeFirstName}}</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ProductNav.activeSecondName}}</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ProductNav.activeThreeName}}</el-breadcrumb-item>
+                <el-breadcrumb-item >{{ProductNav?ProductNav.activeFirstName : '商品详情'}}</el-breadcrumb-item>
+                <el-breadcrumb-item v-if="ProductNav">{{ProductNav?ProductNav.activeSecondName : ''}}</el-breadcrumb-item>
+                <el-breadcrumb-item v-if="ProductNav">{{ProductNav?ProductNav.activeThreeName : ''}}</el-breadcrumb-item>
         </el-breadcrumb>
     </div>
     <div class="container">

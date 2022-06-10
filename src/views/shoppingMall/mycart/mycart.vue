@@ -24,7 +24,7 @@
         <div class="header_1" style="width:40%;text-align: left;">
           <el-checkbox v-model="item.checked" @change="handleCheckedCitiesChange"
                        style="font-size: 18px;"></el-checkbox>
-          <div class="img-text">
+          <div class="img-text" @click="handleclickdetail">
             <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt="" srcset="">
             <div class="img-text-text">
               <p>{{ item.p1 }}</p>
@@ -142,6 +142,15 @@ export default {
   mounted() {
   },
   methods: {
+    handleclickdetail() {
+      this.$router.push({
+        name: "Detail",
+        // query: {
+        //   //TODO: item传参
+        //   id: item.id || 0
+        // }
+      });
+    },
     viewDesign(item) {
       this.$router.push({
         path: "/shoppingMall/design/undetermined",
