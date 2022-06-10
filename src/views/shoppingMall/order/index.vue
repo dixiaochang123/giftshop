@@ -134,29 +134,27 @@ export default {
 
 .mycart {
   width: rpx2multiple(1380);
-  margin: 92px auto 0;
+  margin: 96px auto 0;
 }
 
 .Breadcrumb {
-  height: 100px;
+  height: rpx2multiple(100);
 }
-
 .el-breadcrumb {
   font-size: 14px;
-  height: 100px;
-  line-height: 100px;
+  height: rpx2multiple(100);
+  line-height: rpx2multiple(100);
 }
 
-.el-breadcrumb__inner {
-  font-size: 15px;
+/deep/ .el-breadcrumb__inner {
+  font-size: rpx2multiple(18);
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #73757d;
 }
 
-.el-breadcrumb__inner.is-link {
-  font-size: 23.33333px;
-  font-weight: 400;
+/deep/ .el-breadcrumb__inner.is-link {
+  font-size: rpx2multiple(28);
 }
 
 .xiadan {
