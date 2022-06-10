@@ -58,7 +58,7 @@
         <span>收获人信息</span>
         <div class="dz">
           <div class="qhdz">切换地址</div>
-          <div class="dzgl">地址管理</div>
+          <div class="dzgl" @click="dzglhandleclick">地址管理</div>
         </div>
       </div>
 
@@ -113,6 +113,14 @@ export default {
       //TODO: 根据ids生产订单，跳转支付页
       this.$router.push({
         path: "/shoppingMall/payment/payment"
+      });
+    },
+    dzglhandleclick() {
+       this.$router.push({
+        path: "/shoppingMall/user/userCenter2/addressDetails",
+        query: {
+          current:1
+        }
       });
     }
   }

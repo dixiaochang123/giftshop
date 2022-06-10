@@ -62,9 +62,12 @@
             <div class="workmanship">
               <span class="type-name" style="margin-left:0">工艺</span>
               <div class="workmanship-box">
-                <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
-                  <img :src="item.url" @click="getIndex(item.url)">
+                <span class="workmanship-box-item" v-for="item in smallImg"  :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
+                  <img :src="item.url" >
                 </span>
+                <!-- <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
+                  <img :src="item.url" @click="getIndex(item.url)">
+                </span> -->
               </div>
             </div>
             <div class="proIntro-packing">

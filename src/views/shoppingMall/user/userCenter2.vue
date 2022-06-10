@@ -32,6 +32,9 @@ export default {
             current: 0
         }
     },
+    mounted() {
+        this.current = this.$route.query.current || 0
+    },
     methods: {
         //标题切换
         changeCurrent(index,route) {

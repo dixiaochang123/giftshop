@@ -161,11 +161,11 @@ export default {
       });
     },
     payMoney(item) {
-      let payload = item ? {id: item.id || 0} : {ids: this.tableData.map(item => item.id).filter(id => id).join(",")};
+      // let payload = item ? {id: item.id || 0} : {ids: this.tableData.map(item => item.id).filter(id => id).join(",")};
       this.$router.push({
-        path: "/shoppingMall/order",
+        name: "Ordercenter",
         //TODO: id|ids传参
-        query: {...payload}
+        // query: {...payload}
       });
     },
 
