@@ -9,12 +9,12 @@
       </el-breadcrumb>
     </div> -->
     <div class="Breadcrumb">
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
-                <el-breadcrumb-item >{{ProductNav?ProductNav.activeFirstName : '商品详情'}}</el-breadcrumb-item>
-                <el-breadcrumb-item v-if="ProductNav">{{ProductNav?ProductNav.activeSecondName : ''}}</el-breadcrumb-item>
-                <el-breadcrumb-item v-if="ProductNav">{{ProductNav?ProductNav.activeThreeName : ''}}</el-breadcrumb-item>
-        </el-breadcrumb>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>{{ProductNav?ProductNav.activeFirstName : '商品详情'}}</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="ProductNav">{{ProductNav?ProductNav.activeSecondName : ''}}</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="ProductNav">{{ProductNav?ProductNav.activeThreeName : ''}}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="container">
       <!--大图 及 商品介绍-->
@@ -64,6 +64,9 @@
               <div class="workmanship-box">
                 <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
                   <img :src="item.url">
+                  <div class="img-item-desc img-item-desc1">
+                    <span>丝绒（胶浆）</span>
+                  </div>
                 </span>
                 <!-- <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
                   <img :src="item.url" @click="getIndex(item.url)">
@@ -109,22 +112,22 @@
           <div class="proIntro-Design">
             <span class="reference-price">我的设计</span>
             <div class="proIntro-Design-imgs">
-                <div class="workmanship-box-item" style="margin-top:30px;" v-for="item in smallImg" :key="item.index">
-                  <a href="#" :title="item.title">
-                    <img :src="item.url">
-                  </a>
-                  <div class="img-item-desc">
-                    <span>方案一</span>
-                    <!-- <i style="color:#ffffff;" class="el-icon-more"></i> -->
-                    <el-dropdown trigger="click" style="cursor: pointer;" @command="jumpOrderPage">
-                      <i style="color:#ffffff;" class="el-icon-more"></i>
-                      <el-dropdown-menu slot="dropdown" placement="bottom">
-                        <el-dropdown-item icon="el-icon-edit" command="proofing">编辑</el-dropdown-item>
-                        <el-dropdown-item icon="el-icon-delete" command="regular">删除</el-dropdown-item>
-                      </el-dropdown-menu>
-                    </el-dropdown>
-                  </div>
+              <div class="workmanship-box-item" style="margin-top:30px;" v-for="(item,index) in smallImgcopy" :key="item.index">
+                <a href="#" :title="item.title">
+                  <img :src="item.url">
+                </a>
+                <div class="img-item-desc">
+                  <span>方案一</span>
+                  <!-- <i style="color:#ffffff;" class="el-icon-more"></i> -->
+                  <el-dropdown trigger="click" style="cursor: pointer;" @command="jumpOrderPage">
+                    <i style="color:#ffffff;" class="el-icon-more"></i>
+                    <el-dropdown-menu slot="dropdown" placement="bottom">
+                      <el-dropdown-item icon="el-icon-edit" :command="{index:index,type:'edit'}">编辑</el-dropdown-item>
+                      <el-dropdown-item icon="el-icon-delete" :command="{index:index,type:'deleted'}">删除</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
                 </div>
+              </div>
             </div>
           </div>
           <div class="add-cart">
@@ -136,13 +139,13 @@
             </div>
             <div class="add-cart-box">
               <span style="padding-right:10px;">
-                <el-button size="medium">立即下单</el-button>
+                <el-button size="medium" @click="gotoOrder">立即下单</el-button>
               </span>
               <span style="padding-right:10px;">
-                <el-button size="medium" icon="el-icon-shopping-cart-2">加入购物车</el-button>
+                <el-button size="medium" icon="el-icon-shopping-cart-2" @click="gotoMycart">加入购物车</el-button>
               </span>
               <span>
-                <el-button size="medium">打样</el-button>
+                <el-button size="medium" @click="gotoOrder">打样</el-button>
               </span>
             </div>
             <!-- <span style="padding-right:30px;"><el-button>加入购物车</el-button></span>
@@ -196,6 +199,35 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
+// import _ from "lodash";
+import lodash from "lodash";
+let smallImg = [
+  {
+    index: 1,
+    url: require("../../../assets/img/shoppingMall/detail/pro01.jpg"),
+    title: "【1111】,xxxxxxxxxxx",
+  },
+  {
+    index: 2,
+    url: require("../../../assets/img/shoppingMall/detail/pro02.jpg"),
+    title: "【2222】,xxxxxxxxxxx",
+  },
+  {
+    index: 3,
+    url: require("../../../assets/img/shoppingMall/detail/pro03.jpg"),
+    title: "【3333】,xxxxxxxxxxx",
+  },
+  {
+    index: 4,
+    url: require("../../../assets/img/shoppingMall/detail/pro04.jpg"),
+    title: "【4444】,xxxxxxxxxxx",
+  },
+  {
+    index: 5,
+    url: require("../../../assets/img/shoppingMall/detail/pro03.jpg"),
+    title: "【3333】,xxxxxxxxxxx",
+  },
+];
 export default {
   name: "detail",
   components: {
@@ -273,40 +305,15 @@ export default {
           id: 3,
         },
       ],
-      smallImg: [
-        {
-          index: 1,
-          url: require("../../../assets/img/shoppingMall/detail/pro01.jpg"),
-          title: "【1111】,xxxxxxxxxxx",
-        },
-        {
-          index: 2,
-          url: require("../../../assets/img/shoppingMall/detail/pro02.jpg"),
-          title: "【2222】,xxxxxxxxxxx",
-        },
-        {
-          index: 3,
-          url: require("../../../assets/img/shoppingMall/detail/pro03.jpg"),
-          title: "【3333】,xxxxxxxxxxx",
-        },
-        {
-          index: 4,
-          url: require("../../../assets/img/shoppingMall/detail/pro04.jpg"),
-          title: "【4444】,xxxxxxxxxxx",
-        },
-        {
-          index: 5,
-          url: require("../../../assets/img/shoppingMall/detail/pro03.jpg"),
-          title: "【3333】,xxxxxxxxxxx",
-        },
-      ],
+      smallImg: lodash.cloneDeep(smallImg),
+      smallImgcopy: lodash.cloneDeep(smallImg),
     };
   },
   computed: {
-    ...mapGetters(["ProductNav"])
+    ...mapGetters(["ProductNav"]),
   },
-  mounted(){
-    console.log(this.ProductNav)
+  mounted() {
+    console.log(this.ProductNav);
   },
   methods: {
     //判断选中数量是否>5,超过5就提示
@@ -356,9 +363,63 @@ export default {
       this.dialogOnlineDesign = false;
     },
     jumpOrderPage(command) {
-      
-
+      console.log(command);
+      if (command.type == "edit") {
+        this.dialogOnlineDesign = true;
+      } else {
+        this.$confirm("确定要删除该方案吗?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        })
+          .then(() => {
+            this.smallImgcopy.splice(command.index, 1);
+            this.$message({
+              type: "success",
+              message: "删除成功!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消删除",
+            });
+          });
+      }
     },
+    editProgramme(data) {
+      this.dialogOnlineDesign = true;
+    },
+    deletedProgramme(index) {
+      this.$confirm("确定要删除该方案吗?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          this.smallImg.splice(index, 1);
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消删除",
+          });
+        });
+    },
+    gotoOrder() {
+      this.$router.push({
+        name:'Order'
+      })
+    },
+    gotoMycart() {
+      this.$router.push({
+        name:'Mycart'
+      })
+    }
   },
 };
 </script>
@@ -398,7 +459,7 @@ export default {
   font-size: 22px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #2D2E33;
+  color: #2d2e33;
   line-height: 30px;
 }
 .intro_title {
@@ -422,9 +483,9 @@ export default {
   font-size: 16px;
 }
 .img-item-desc {
- height: 60px;
-//  opacity: 0.7;
-  background: #E4E4E4;
+  height: 60px;
+  //  opacity: 0.7;
+  background: #e4e4e4;
   border-radius: 0px 24px 0px 0px;
   backdrop-filter: blur(10px);
   font-size: 22px;
@@ -437,7 +498,14 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0 20px !important;
+  padding: 0 20px !important;
+}
+.img-item-desc1 {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
 }
 .product-price {
   color: #7395dc;
@@ -574,6 +642,11 @@ export default {
     width: 100%;
     height: 100%;
   }
+  &:hover {
+    .img-item-desc1 {
+      bottom: 0;
+    }
+  }
 }
 .Unit-Price {
   margin-top: 30px;
@@ -625,18 +698,18 @@ export default {
     &::after {
       content: "";
       display: block;
-      width:rpx2multiple(208);
-      height:rpx2multiple(208);
+      width: rpx2multiple(208);
+      height: rpx2multiple(208);
     }
   }
   .workmanship-box-item {
-    width:rpx2multiple(208);
-    height:rpx2multiple(208);
+    width: rpx2multiple(208);
+    height: rpx2multiple(208);
     margin: 0;
   }
 }
 .add-cart {
-    width:100%;
+  width: 100%;
   display: inline-block;
   .add-Design {
     margin-bottom: 10px;
@@ -653,7 +726,7 @@ export default {
     color: #ff946b;
   }
   .continue-Design {
-    width:498px;
+    width: 498px;
     margin-bottom: 16px;
     text-align: center;
     cursor: pointer;
@@ -700,9 +773,9 @@ export default {
       font-size: 18px;
       font-family: PingFangSC-Regular, PingFang SC;
       font-weight: 400;
-      color: #BCBEC6;
+      color: #bcbec6;
       span {
-        color: #2D2E33;
+        color: #2d2e33;
         margin-left: 10px;
       }
     }
@@ -717,24 +790,24 @@ export default {
   font-size: 18px;
 }
 .proIntro-packing {
-  padding-bottom:57px;
+  padding-bottom: 57px;
 }
 /deep/ .el-dropdown-menu__item {
   width: 128px !important;
   height: 60px;
   line-height: 60px;
-  padding:0 20px;
-  background: #FFFFFF;
+  padding: 0 20px;
+  background: #ffffff;
   box-shadow: 0px 42px 92px 0px rgba(129, 135, 150, 0.2);
   border-radius: 8px;
-  border: 1px solid #F6F9FE;
+  border: 1px solid #f6f9fe;
   font-size: 18px;
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
-  color: #73757D;
+  color: #73757d;
 }
 .el-button--medium {
   font-size: 22px;
-  padding:11px 34px;
+  padding: 11px 34px;
 }
 </style>

@@ -24,14 +24,17 @@
     .pro_big{
       // flex: 1;
       width: rpx2multiple(664);
+      height: 800px;
       // height: 480px;
       // margin-right: 60px;
-      position: relative;
+      // position: relative;
+      position: sticky;
+      top: rpx2multiple(136);
       img{
         width: rpx2multiple(664);
         height:rpx2multiple(664);
         border-radius: rpx2multiple(12);
-        overflow: hidden;
+        // overflow: hidden;
       }
       .zoomicon {
         width:rpx2multiple(42);
@@ -111,7 +114,7 @@
 
       .proIntro{
         // padding: 20px 10px;
-        margin-top: 56px;
+        margin-top: 15px;
         // border-top: 1px solid #dbdbdb;
         // border-bottom: 1px solid #dbdbdb;
 

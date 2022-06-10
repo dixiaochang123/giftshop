@@ -15,6 +15,7 @@
     "element-china-area-data": "^5.0.2",
     "element-ui": "^2.10.0",
     "html2canvas": "^1.4.1",
+    "lodash": "^4.17.21",
     "vue": "^2.6.10",
     "vue-baidu-map": "^0.21.22",
     "vue-concise-slider": "^4.2.5",
