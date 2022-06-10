@@ -136,16 +136,16 @@
     </div>
     <div class="inspiration">
       <div class="container">
-        <div @click="gotohotrecommend(0)">
+        <div style="cursor: pointer;" @click="gotohotrecommend(0)">
           <img width="100%" height="100%" src="../../assets/img/slices/9.png" alt="" srcset="">
         </div>
-        <div @click="gotohotrecommend(1)">
+        <div style="cursor: pointer;" @click="gotohotrecommend(1)">
           <img width="100%" height="100%" src="../../assets/img/slices/7.png" alt="" srcset="">
         </div>
-        <div @click="gotohotrecommend(2)">
+        <div style="cursor: pointer;" @click="gotohotrecommend(2)">
           <img width="100%" height="100%" src="../../assets/img/slices/8.png" alt="" srcset="">
         </div>
-        <div @click="gotohotrecommend(3)">
+        <div style="cursor: pointer;" @click="gotohotrecommend(3)">
           <img width="100%" height="100%" src="../../assets/img/slices/6.png" alt="" srcset="">
         </div>
 
@@ -231,5 +231,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/css/shoppingMall/shoppingMall_home";
+@import "../../assets/css/shoppingMall/shoppingMall_home.scss";
 </style>
