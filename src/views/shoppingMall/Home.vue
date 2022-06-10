@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="height:92px;"></div>
+    <!-- <div style="height:96px;"></div> -->
     <div class="cate-filter">
       <CateFilter :categories="categories" @choose="onChooseCategory"/>
     </div>
