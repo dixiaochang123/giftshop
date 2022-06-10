@@ -7,9 +7,24 @@
             style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
           <div v-if="searchShow" class="searchs animate__animated"
                ref="searchs">
-            <el-input placeholder="请输入内容" v-model="hotsearch" class="input-with-select">
+            <el-autocomplete placeholder="请输入内容"
+                             v-model="hotsearch"
+                             :fetch-suggestions="fetchSuggestions"
+                             popper-class="search-header-popover-class"
+                             class="input-with-select search-header"
+                             ref="autocomplete">
               <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
-            </el-input>
+              <div style="color: #2D2E33;font-size: 20px;margin-bottom: 11px;">最近搜索</div>
+              <div class="search-header-popover-class__results-container">
+                <template v-for="item in hotsearchSuggestions">
+                  <div :class="{active:hotsearch===item.value}"
+                       :key="item.value"
+                       @click.stop="setHotsearch(item)">
+                    {{ item.value }}
+                  </div>
+                </template>
+              </div>
+            </el-autocomplete>
             <div style="cursor: pointer;" class="icon-search"></div>
           </div>
           <div style="cursor: pointer;" v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
@@ -87,11 +102,28 @@ export default {
       activeIndex: "1",
       activeIndex2: "1",
       hotsearch: "",
+      hotsearchSuggestions: [
+        {
+          value: "金属徽章"
+        },
+        {
+          value: "亚克力徽章"
+        },
+        {
+          value: "树脂徽章"
+        }
+      ]
     };
   },
   mounted() {
   },
   methods: {
+    setHotsearch(item) {
+      document.querySelectorAll(".search-header-popover-class>div>div>ul>li")[this.hotsearchSuggestions.indexOf(item)].click();
+    },
+    fetchSuggestions(query, callback) {
+      callback(this.hotsearchSuggestions);
+    },
     onCommand(command) {
       switch (command) {
         case "account":
@@ -162,10 +194,13 @@ export default {
         this.searchShow = true;
         this.$nextTick(() => this.toggleSearchsClasses(true));
       } else {
-        this.toggleSearchsClasses(false);
-        setTimeout(() => {
-          this.searchShow = false;
-        }, 800);
+        this.$refs.autocomplete.close();
+        this.$nextTick(() => {
+          this.toggleSearchsClasses(false);
+          setTimeout(() => {
+            this.searchShow = false;
+          }, 800);
+        });
       }
     }
   },
@@ -249,7 +284,7 @@ export default {
     }
 
     .input-with-select {
-      width: 380px;
+      //width: 380px;
 
       .el-icon-close {
         font-size: rpx2multiple(32);
@@ -438,5 +473,47 @@ export default {
 
 .animate__fadeOutRight__1 {
   animation-name: fadeOutRight__1;
+}
+
+.search-header input {
+  min-width: 438px;
+}
+
+.search-header-popover-class {
+  background: linear-gradient(98deg, #FFEEE7 0%, rgba(255, 255, 255, 0) 100%);
+  padding: 27px;
+  min-width: 554px;
+  margin-left: -50px !important;
+}
+
+.search-header-popover-class__results-container {
+  display: flex;
+}
+
+.search-header-popover-class__results-container > * {
+  padding: 7px 18px;
+  margin-right: 14px;
+  border-radius: 4px;
+  background: #F1F2F4;
+  color: #73757D;
+}
+
+.search-header-popover-class__results-container > *.active {
+  background: #7395DC;
+  color: #ffffff;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion li {
+  padding: 0;
+  display: none;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion li:nth-child(1) {
+  display: block;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion li.highlighted,
+.search-header-popover-class.el-autocomplete-suggestion li:hover {
+  background-color: transparent;
 }
 </style>
