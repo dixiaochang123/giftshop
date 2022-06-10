@@ -16,13 +16,13 @@
       <div class="container">
         <div class="navtab">
           <ul>
-            <li @click="tabqh(1)" :class="{active:tabbq==1}"> 周年庆</li>
-            <li @click="tabqh(2)" :class="{active:tabbq==2}">生日纪念</li>
-            <li @click="tabqh(3)" :class="{active:tabbq==3}">入职纪念</li>
-            <li @click="tabqh(4)" :class="{active:tabbq==4}">新婚庆贺</li>
-            <li @click="tabqh(5)" :class="{active:tabbq==5}">亲子主题</li>
-            <li @click="tabqh(6)" :class="{active:tabbq==6}">颁奖典礼</li>
-            <li @click="tabqh(7)" :class="{active:tabbq==7}">员工关怀</li>
+            <li @click="tabqh(1)" :class="{active:tabbq==1}">全部订单 10</li>
+            <li @click="tabqh(2)" :class="{active:tabbq==2}">待支付 2</li>
+            <li @click="tabqh(3)" :class="{active:tabbq==3}">生产中 1</li>
+            <li @click="tabqh(4)" :class="{active:tabbq==4}">待收货 6</li>
+            <li @click="tabqh(5)" :class="{active:tabbq==5}">已完成 3</li>
+            <li @click="tabqh(6)" :class="{active:tabbq==6}">异常订单 0</li>
+            <li @click="tabqh(7)" :class="{active:tabbq==7}">已取消 0</li>
 
           </ul>
         </div>
@@ -114,7 +114,17 @@ export default {
       // return this.tableData.filter(item=>item.checked==true)
     },
   },
-  mounted() {},
+  watch:{
+    $route: {
+      immediate: true, // 一旦监听到路由的变化立即执行
+      handler(to, from) {
+        this.activeindex = this.$route.query.index || 0
+      },
+    },
+  },
+  mounted() {
+    this.activeindex = this.$route.query.index || 0
+  },
   methods: {
     activeindexchange(index) {
       this.activeindex = index;

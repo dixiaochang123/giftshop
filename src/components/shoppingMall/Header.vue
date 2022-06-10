@@ -19,8 +19,8 @@
         <el-dropdown style="cursor: pointer;" @command="jumpOrderPage">
           <div class="icon-order"></div>
           <el-dropdown-menu slot="dropdown" placement="bottom">
-            <el-dropdown-item icon="el-icon-circle-check" command="regular">常规订单</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-edit" command="proofing">打样订单</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-check" :command="{index:0,name:'常规订单'}">常规订单</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-edit" :command="{index:1,name:'打样订单'}">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <div style="cursor: pointer;" class="icon-design" @click="viewMyDesign"></div>
@@ -66,12 +66,22 @@ export default {
       });
     },
     jumpOrderPage(command) {
-      this.$router.push({
-        path: ({
-          "regular": "/shoppingMall/ordercenter/ordercenter",
-          "proofing": "/shoppingMall/ordercenter/proofing"
-        })[command]
-      });
+      console.log(command)
+      if(command.index==1) {
+        this.$router.push({
+          name:'Proofing',
+          query:{
+            index:command.index
+          }
+        })
+      } else {
+        this.$router.push({
+          name:'Ordercenter',
+          query:{
+            index:command.index
+          }
+        })
+      }
 
     },
     goUserCenter() {
