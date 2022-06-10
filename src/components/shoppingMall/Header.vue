@@ -144,7 +144,7 @@ export default {
   z-index: 110;
   box-shadow: rgba(0, 0, 0, 0.15) 0 0 12px;
   background-color: rgba(255, 255, 255, 0.8);
-  background-color: #000;
+  background-color: #2D2E33;
   .logo {
     width: rpx2multiple(180);
     height: rpx2multiple(48);
@@ -189,7 +189,7 @@ export default {
     }
 
     .input-with-select {
-      width: 380px;
+      width: 624px;
 
       .el-icon-close {
         font-size: rpx2multiple(32);
@@ -360,14 +360,14 @@ export default {
 
   to {
     opacity: 1;
-    transform: translateX(-100px);
+    transform: translateX(-200px);
   }
 }
 
 @keyframes fadeOutRight__1 {
   from {
     opacity: 1;
-    transform: translateX(-100px);
+    transform: translateX(-200px);
   }
 
   to {
