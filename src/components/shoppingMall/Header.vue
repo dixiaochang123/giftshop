@@ -3,23 +3,14 @@
     <div class="shopping_haeder">
       <div class="logo" @click="handleClicklogo"><img src="../../assets/img/slices/logo.png" alt=""></div>
       <div class="container">
-        <div
-            style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
-          <div v-if="searchShow" class="searchs animate__animated"
-               ref="searchs">
-            <el-autocomplete placeholder="请输入内容"
-                             v-model="hotsearch"
-                             :fetch-suggestions="fetchSuggestions"
-                             popper-class="search-header-popover-class"
-                             class="input-with-select search-header"
-                             ref="autocomplete">
+        <div style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
+          <div v-if="searchShow" class="searchs animate__animated" ref="searchs">
+            <el-autocomplete placeholder="请输入内容" v-model="hotsearch" :fetch-suggestions="fetchSuggestions" popper-class="search-header-popover-class" class="input-with-select search-header" ref="autocomplete">
               <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
               <div style="color: #2D2E33;font-size: 20px;margin-bottom: 11px;">最近搜索</div>
               <div class="search-header-popover-class__results-container">
                 <template v-for="item in hotsearchSuggestions">
-                  <div :class="{active:hotsearch===item.value}"
-                       :key="item.value"
-                       @click.stop="setHotsearch(item)">
+                  <div :class="{active:hotsearch===item.value}" :key="item.value" @click.stop="setHotsearch(item)">
                     {{ item.value }}
                   </div>
                 </template>
@@ -39,13 +30,8 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div style="cursor: pointer;margin-right: 40px;" class="icon-design" @click="viewMyDesign"></div>
-        <el-dropdown :hide-on-click="false"
-                     style="display: flex;align-items: center;"
-                     placement="bottom-end"
-                     @command="onCommand">
-          <img v-if="true"
-               style="border-radius: 50%;cursor: pointer;" width="60px" height="60px"
-               src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
+        <el-dropdown :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end" @command="onCommand">
+          <img v-if="true" style="border-radius: 50%;cursor: pointer;" width="60px" height="60px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="account">
               <div style="color: #2D2E33;font-weight: 500;font-size: 16px;">
@@ -104,22 +90,23 @@ export default {
       hotsearch: "",
       hotsearchSuggestions: [
         {
-          value: "金属徽章"
+          value: "金属徽章",
         },
         {
-          value: "亚克力徽章"
+          value: "亚克力徽章",
         },
         {
-          value: "树脂徽章"
-        }
-      ]
+          value: "树脂徽章",
+        },
+      ],
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     setHotsearch(item) {
-      document.querySelectorAll(".search-header-popover-class>div>div>ul>li")[this.hotsearchSuggestions.indexOf(item)].click();
+      document
+        .querySelectorAll(".search-header-popover-class>div>div>ul>li")
+        [this.hotsearchSuggestions.indexOf(item)].click();
     },
     fetchSuggestions(query, callback) {
       callback(this.hotsearchSuggestions);
@@ -132,50 +119,49 @@ export default {
           this.$router.push({
             path: "/shoppingMall/user/userCenter2",
             query: {
-              current: ({
+              current: {
                 account: 0,
                 address: 1,
-                invoice: 2
-              })[command]
-            }
+                invoice: 2,
+              }[command],
+            },
           });
           break;
         default:
           //TODO: 退出登录
           this.$router.push({
-            path: "/login"
-          })
+            path: "/login",
+          });
           break;
       }
     },
     handleClicklogo() {
       this.$router.push({
-        path: "/shoppingMall/Home"
+        path: "/shoppingMall/Home",
       });
     },
     viewMyDesign() {
       this.$router.push({
-        path: "/shoppingMall/design/undetermined"
+        path: "/shoppingMall/design/undetermined",
       });
     },
     jumpOrderPage(command) {
-      console.log(command)
+      console.log(command);
       if (command.index == 1) {
         this.$router.push({
-          name: 'Proofing',
+          name: "Proofing",
           query: {
-            index: command.index
-          }
-        })
+            index: command.index,
+          },
+        });
       } else {
         this.$router.push({
-          name: 'Ordercenter',
+          name: "Ordercenter",
           query: {
-            index: command.index
-          }
-        })
+            index: command.index,
+          },
+        });
       }
-
     },
     goUserCenter() {
       this.$router.push("/shoppingMall/user/usercenter");
@@ -189,8 +175,12 @@ export default {
       });
     },
     toggleSearchsClasses(val) {
-      this.$refs.searchs.classList[val ? "add" : "remove"]("animate__fadeInRight__1");
-      this.$refs.searchs.classList[val ? "remove" : "add"]("animate__fadeOutRight__1");
+      this.$refs.searchs.classList[val ? "add" : "remove"](
+        "animate__fadeInRight__1"
+      );
+      this.$refs.searchs.classList[val ? "remove" : "add"](
+        "animate__fadeOutRight__1"
+      );
     },
     handleSearchsToggle(flag) {
       if (flag) {
@@ -205,7 +195,7 @@ export default {
           }, 800);
         });
       }
-    }
+    },
   },
 };
 </script>
@@ -277,7 +267,7 @@ export default {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease-in-out;
       height: 100%;
     }
 
@@ -319,11 +309,13 @@ export default {
       height: rpx2multiple(32);
       margin-left: 40px;
       margin-right: 40px;
-      background: url("../../assets/img/slices/icon-search.png") no-repeat center center;
+      background: url("../../assets/img/slices/icon-search.png") no-repeat
+        center center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-search-1.png") no-repeat center center;
+        background: url("../../assets/img/slices/icon-search-1.png") no-repeat
+          center center;
         background-size: 100% 100%;
       }
     }
@@ -333,11 +325,13 @@ export default {
       height: rpx2multiple(32);
       margin-right: 40px;
       //   margin: 0 20px;
-      background: url("../../assets/img/slices/icon-cat.png") no-repeat center center;
+      background: url("../../assets/img/slices/icon-cat.png") no-repeat center
+        center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-cat-1.png") no-repeat center center;
+        background: url("../../assets/img/slices/icon-cat-1.png") no-repeat
+          center center;
         background-size: 100% 100%;
       }
     }
@@ -346,11 +340,13 @@ export default {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       //   margin-left: 40px;
-      background: url("../../assets/img/slices/icon-order.png") no-repeat center center;
+      background: url("../../assets/img/slices/icon-order.png") no-repeat center
+        center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-order-1.png") no-repeat center center;
+        background: url("../../assets/img/slices/icon-order-1.png") no-repeat
+          center center;
         background-size: 100% 100%;
       }
     }
@@ -359,11 +355,13 @@ export default {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       margin-left: 40px;
-      background: url("../../assets/img/slices/icon-design.png") no-repeat center center;
+      background: url("../../assets/img/slices/icon-design.png") no-repeat
+        center center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-design-1.png") no-repeat center center;
+        background: url("../../assets/img/slices/icon-design-1.png") no-repeat
+          center center;
         background-size: 100% 100%;
       }
     }
@@ -408,7 +406,8 @@ export default {
       .icon-search {
         width: rpx2multiple(32);
         height: rpx2multiple(32);
-        background: url("../../assets/img/slices/icon-search.png") no-repeat center center;
+        background: url("../../assets/img/slices/icon-search.png") no-repeat
+          center center;
         background-size: 100% 100%;
         margin-right: 40px;
       }
@@ -483,7 +482,7 @@ export default {
 }
 
 .search-header-popover-class {
-  background: linear-gradient(98deg, #FFEEE7 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(98deg, #ffeee7 0%, rgba(255, 255, 255, 0) 100%);
   padding: 27px;
   min-width: 554px;
   margin-left: -50px !important;
@@ -497,12 +496,12 @@ export default {
   padding: 7px 18px;
   margin-right: 14px;
   border-radius: 4px;
-  background: #F1F2F4;
-  color: #73757D;
+  background: #f1f2f4;
+  color: #73757d;
 }
 
 .search-header-popover-class__results-container > *.active {
-  background: #7395DC;
+  background: #7395dc;
   color: #ffffff;
 }
 
