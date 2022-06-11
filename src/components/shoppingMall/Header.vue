@@ -22,20 +22,25 @@
         </div>
 
         <div style="cursor: pointer;" class="icon-cat" @click="handleclickMycart"></div>
-        <el-dropdown class="el-dropdown-cgdd" trigger="click" style="cursor: pointer;" @command="jumpOrderPage">
+        <el-dropdown class="el-dropdown-cgdd" style="cursor: pointer;" @command="jumpOrderPage">
           <div class="icon-order"></div>
           <el-dropdown-menu slot="dropdown" placement="bottom-end">
-            <el-dropdown-item class="cgdd" :command="{index:0,name:'常规订单'}">
-            <img style="vertical-align: middle;" src="../../assets/img/slices/常规订单.png" alt="" srcset="">
-            <!-- <img style="vertical-align: middle;" src="../../assets/img/slices/常规订单-hover.png" alt="" srcset=""> -->
-            常规订单</el-dropdown-item>
+            <el-dropdown-item  class="cgdd" :command="{index:0,name:'常规订单'}">
+            <div @mouseenter="changguiIcon=true" @mouseleave="changguiIcon=false">
+              <img v-show="changguiIcon==false" style="vertical-align: text-top;" src="../../assets/img/slices/常规订单.png" alt="" srcset="">
+              <img v-show="changguiIcon==true" style="vertical-align: text-top;" src="../../assets/img/slices/常规订单-hover.png" alt="" srcset="">
+              常规订单
+            </div>
+            </el-dropdown-item>
             <el-dropdown-item class="cgdd" :command="{index:1,name:'打样订单'}">
-            <img style="vertical-align: middle;" src="../../assets/img/slices/打样订单.png" alt="" srcset="">
-            打样订单</el-dropdown-item>
+            <div @mouseenter="dayangIcon=true" @mouseleave="dayangIcon=false">
+            <img v-if="dayangIcon==false" style="vertical-align: text-top;" src="../../assets/img/slices/打样订单.png" alt="" srcset="">
+            <img v-if="dayangIcon==true" style="vertical-align: text-top;" src="../../assets/img/slices/打样订单-hover.png" alt="" srcset="">
+            打样订单</div></el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <div style="cursor: pointer;margin-right: 40px;" class="icon-design" @click="viewMyDesign"></div>
-        <el-dropdown trigger="click" :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end" @command="onCommand">
+        <el-dropdown :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end" @command="onCommand">
           <img v-if="true" style="border-radius: 50%;cursor: pointer;" width="60px" height="60px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="account">
@@ -89,6 +94,8 @@ export default {
   name: "Header",
   data() {
     return {
+      changguiIcon:false,
+      dayangIcon:false,
       searchShow: false,
       activeIndex: "1",
       activeIndex2: "1",
@@ -530,7 +537,7 @@ export default {
 }
 /deep/ .el-dropdown-menu__item {
   font-size: 18px;
-  padding: 0 20px;
+  padding: 5px 20px;
   color: #71737B;
   > div span {
     font-size: 18px;

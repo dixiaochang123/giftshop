@@ -10,6 +10,7 @@
             alt=""
             @mouseenter="onMouseEnterFirstItem($event,item, index)">
           <div
+            style="padding-top:12px;"
             class="name"
             @mouseenter="onMouseEnterFirstItem($event,item, index)">{{ item.name }}
           </div>
@@ -170,7 +171,7 @@ export default {
 
     .cate-filter-first__item {
       flex: 1 1 auto;
-      padding: 33px 0;
+      padding: 30px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
