@@ -130,7 +130,7 @@ export default {
     background-position: 50% 50% !important;
   }
   &>*{
-    background-color: transparent !important;
+    background-color: #fff !important;
   }
 }
 .cate-filter-container {
@@ -145,6 +145,7 @@ export default {
     background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
     background-size: 200%;
     background-position: 50% 50%;
+    background-color: transparent !important;
   }
   &>*{
     background-color: transparent;
