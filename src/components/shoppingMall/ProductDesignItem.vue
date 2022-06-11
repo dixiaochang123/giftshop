@@ -184,60 +184,9 @@ export default {
       }, this.type);
       // this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open(item,this.type);
     },
-    addPlan(){
-      //TODO: Mock Data,实际上是新增加设计
-      this.designItemPlanDetailDialog.instance && this.designItemPlanDetailDialog.instance.open({
-        main: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg",
-        detail: [
-          {
-            title: "文字",
-            pictures: [
-              {
-                name: "文字1",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              },
-              {
-                name: "文字2",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              },
-              {
-                name: "文字1",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              },
-              {
-                name: "文字2",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              }
-            ]
-          },
-          {
-            title: "LOGO",
-            pictures: [
-              {
-                name: "LOGO1",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              },
-              {
-                name: "LOGO2",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              }
-            ]
-          },
-          {
-            title: "图案",
-            pictures: [
-              {
-                name: "图案1",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              },
-              {
-                name: "图案2",
-                src: "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-              }
-            ]
-          }
-        ]
-      }, this.type);
+    addPlan() {
+      //TODO: 新增加设计
+      this.$emit("design-add");
     },
 
 

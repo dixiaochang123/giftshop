@@ -7,7 +7,7 @@
     <div class="undetermined-content">
       <div v-show="activeType==='online'">
         <template v-for="i in 10">
-          <product-design-item type="online" :key="i" style="margin-bottom: calc(40px);"/>
+          <product-design-item type="online" :key="i" style="margin-bottom: calc(40px);" @design-add="onDesignAdd"/>
         </template>
       </div>
       <div v-show="activeType==='offline'">
@@ -23,9 +23,10 @@
 <script>
 import ProductDesignItem from "@/components/shoppingMall/ProductDesignItem";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
+
 export default {
   name: "undetermined",
-  components: {ProductDesignItem,onlineDesign},
+  components: {ProductDesignItem, onlineDesign},
   data() {
     return {
       dialogOnlineDesign: false,
@@ -35,6 +36,9 @@ export default {
   methods: {
     switchPanel(activeType) {
       this.activeType = activeType;
+    },
+    onDesignAdd() {
+      this.dialogOnlineDesign = true;
     }
   }
 }
