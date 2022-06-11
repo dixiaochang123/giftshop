@@ -41,7 +41,7 @@
     <template v-else>
       <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
         <div
-            style="padding: calc(80px /1.124780316344464) calc(75px /1.124780316344464);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
+            style="padding: calc(80px) calc(75px);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
           <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')"
                     style="width: calc(210px);"/>
           <p style="margin-top: calc(75px);font-size: calc(20px);">
@@ -95,8 +95,8 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  min-width: rpx2multiple(1200);
+  width: 100%;
+  min-width: rpx2multiple(1380);
   margin: 0 !important;
   color: #2D2E33;
   display: flex;
@@ -106,7 +106,8 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog .el-dialog__header {
-  width: rpx2multiple(1200);
+  width: 90%;
+  margin: 0 !important;
   display: flex;
   justify-content: space-between;
   padding: rpx2multiple(45) 0 rpx2multiple(30);
