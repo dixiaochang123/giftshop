@@ -1,43 +1,30 @@
 <template>
   <div class="backtop">
     <div class="help">
-      <el-tooltip effect="light"
-                  content="客服: 12345678901"
-                  popper-class="backtop-item-popper-class"
-                  placement="left">
+      <el-tooltip>
         <div class="kefu">
           <div></div>
           <p>联系客服</p>
         </div>
       </el-tooltip>
-      <el-tooltip effect="light"
-                  content="电话: 12345678901"
-                  popper-class="backtop-item-popper-class"
-                  placement="left">
+      <el-tooltip effect="light" content="电话: 12345678901" popper-class="backtop-item-popper-class" placement="left">
         <div class="phon">
           <div></div>
           <p>联系电话</p>
         </div>
       </el-tooltip>
-      <el-tooltip effect="light"
-                  content="账号: 12345678901"
-                  popper-class="backtop-item-popper-class"
-                  placement="left">
+      <el-tooltip effect="light" content="账号: 12345678901" popper-class="backtop-item-popper-class" placement="left">
         <div class="feishu">
           <div></div>
           <p>飞书账号</p>
         </div>
       </el-tooltip>
-      <el-tooltip effect="light"
-                  content="指南: 12345678901"
-                  popper-class="backtop-item-popper-class"
-                  placement="left">
+      <el-tooltip>
         <div class="caozuo">
           <div></div>
           <p>操作指南</p>
         </div>
       </el-tooltip>
-
 
     </div>
     <div @click="backtopclick" class="backtop_icon">
@@ -54,7 +41,8 @@ export default {
   methods: {
     backtopclick() {
       (function smoothscroll() {
-        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        var currentScroll =
+          document.documentElement.scrollTop || document.body.scrollTop;
 
         if (currentScroll > 0) {
           window.requestAnimationFrame(smoothscroll);
@@ -92,7 +80,7 @@ $height: 350px;
     text-align: center;
     margin: 0 auto;
     width: rpx2multiple(60);
-    border-bottom: solid 1px #7395dc;
+    border-bottom: solid 1px rgba($color: #7395dc, $alpha: 0.3);
     cursor: pointer;
 
     &:last-of-type {
@@ -114,42 +102,40 @@ $height: 350px;
 
     &:hover {
       > div {
-
-        background: url("../assets/img/slices/kefu-hover.png") no-repeat center center;
+        background: url("../assets/img/slices/kefu-hover.png") no-repeat center
+          center;
         background-size: 100% 100%;
       }
 
       p {
-        color: #7395DC;
+        color: #7395dc;
       }
     }
   }
 
   .phon {
     > div {
-
-      width: rpx2multiple(29);
-      height: rpx2multiple(29);
+      width: rpx2multiple(36);
+      height: rpx2multiple(36);
       background: url("../assets/img/slices/phon.png") no-repeat center center;
       background-size: 100% 100%;
     }
 
     &:hover {
       > div {
-
-        background: url("../assets/img/slices/phon-hover.png") no-repeat center center;
+        background: url("../assets/img/slices/phon-hover.png") no-repeat center
+          center;
         background-size: 100% 100%;
       }
 
       p {
-        color: #7395DC;
+        color: #7395dc;
       }
     }
   }
 
   .feishu {
     > div {
-
       width: rpx2multiple(36);
       height: rpx2multiple(36);
       background: url("../assets/img/slices/feishu.png") no-repeat center center;
@@ -158,35 +144,34 @@ $height: 350px;
 
     &:hover {
       > div {
-
-        background: url("../assets/img/slices/feishu-hover.png") no-repeat center center;
+        background: url("../assets/img/slices/feishu-hover.png") no-repeat
+          center center;
         background-size: 100% 100%;
       }
 
       p {
-        color: #7395DC;
+        color: #7395dc;
       }
     }
   }
 
   .caozuo {
     > div {
-
-      width: rpx2multiple(32);
-      height: rpx2multiple(32);
+      width: rpx2multiple(36);
+      height: rpx2multiple(36);
       background: url("../assets/img/slices/caozuo.png") no-repeat center center;
       background-size: 100% 100%;
     }
 
     &:hover {
       > div {
-
-        background: url("../assets/img/slices/caozuo-hover.png") no-repeat center center;
+        background: url("../assets/img/slices/caozuo-hover.png") no-repeat
+          center center;
         background-size: 100% 100%;
       }
 
       p {
-        color: #7395DC;
+        color: #7395dc;
       }
     }
   }
@@ -227,7 +212,8 @@ $height: 350px;
 
   &:hover {
     div {
-      background: url("../assets/img/slices/top-hover.png") no-repeat center center;
+      background: url("../assets/img/slices/top-hover.png") no-repeat center
+        center;
       background-size: 100% 100%;
     }
   }
@@ -246,11 +232,13 @@ $height: 350px;
   background: #f1f2f4;
 }
 
-.backtop-item-popper-class.el-tooltip__popper.is-light[x-placement^=left] .popper__arrow {
+.backtop-item-popper-class.el-tooltip__popper.is-light[x-placement^="left"]
+  .popper__arrow {
   border-left-color: #f1f2f4;
 }
 
-.backtop-item-popper-class.el-tooltip__popper.is-light[x-placement^=left] .popper__arrow::after {
+.backtop-item-popper-class.el-tooltip__popper.is-light[x-placement^="left"]
+  .popper__arrow::after {
   border-left-color: #f1f2f4;
 }
 </style>

@@ -9,8 +9,8 @@
               <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
               <div style="color: #2D2E33;font-size: 20px;margin-bottom: 11px;">最近搜索</div>
               <div class="search-header-popover-class__results-container">
-                <template v-for="item in hotsearchSuggestions">
-                  <div :class="{active:hotsearch===item.value}" :key="item.value" @click.stop="setHotsearch(item)">
+                <template >
+                  <div v-for="item in hotsearchSuggestions" :class="{active:hotsearch===item.value}" :key="item.value" @click.stop="setHotsearch(item)">
                     {{ item.value }}
                   </div>
                 </template>
@@ -496,7 +496,7 @@ export default {
 .search-header-popover-class {
   background: linear-gradient(98deg, rgba(255, 255, 255, 0) 0%, #ffeee7 100%);
   padding: 27px;
-  min-width: 554px;
+  min-width: 624px;
   margin-left: -50px !important;
   margin-top: 40px !important;
 }
@@ -518,7 +518,9 @@ export default {
   background: #7395dc;
   color: #ffffff;
 }
-
+.search-header-popover-class.el-autocomplete-suggestion {
+  width: 624px !important;
+}
 .search-header-popover-class.el-autocomplete-suggestion li {
   padding: 0;
   display: none;
@@ -532,7 +534,7 @@ export default {
 .search-header-popover-class.el-autocomplete-suggestion li:hover {
   background-color: transparent;
 }
-.el-dropdown-menu {
+.el-popper,.el-dropdown-menu {
   top: 90px !important;
 }
 /deep/ .el-dropdown-menu__item {

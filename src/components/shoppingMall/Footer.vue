@@ -101,22 +101,25 @@ $height: 400px;
   box-sizing: border-box;
   padding:80px 0 0 150px;
   p {
-      box-sizing: border-box;
+      // box-sizing: border-box;
     //   width: 625px;
-    //   height: 25px;
+        height: 25px;
         font-size: 18px;
         font-family: PingFangSC-Regular, PingFang SC;
         font-weight: 400;
         color: #73757D;
-        // line-height: 25px;
+        line-height: 25px;
         display: flex;
         justify-content: space-between;
-        padding-bottom: 24px;
+        padding-bottom: 24px !important;
         a {
+          height: 25px;
+            font-size: 18px;
             display: inline-block;
             width:100px;
             color: #73757D;
-            text-decoration:none
+            text-decoration:none;
+            padding-bottom:24px;
         }
   }
   .p1 {
