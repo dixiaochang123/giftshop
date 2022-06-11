@@ -20,7 +20,7 @@
         </div>
         <div class="spqdnr">
           <div class="spxx" style="width: 500px;">
-            <img src="assets/logo.png"/>
+            <img src="../../../assets/img/slices/banner-1.png"/>
             <div class="info">
               <div class="name">愿时光停在花</div>
               <div class="js">母亲节真诚礼至特别巨献妈妈的礼物</div>
@@ -53,7 +53,7 @@
         <div class="zffs">
           <div class="dx" @click="zffs=1" :class="{active:zffs==1}"></div>
           <img
-              src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng3952e7959c2f481ca11628dbd2a938f2edb607f151ef253b87a0b18fa1ce9fc2"/>
+              src="../../../assets/img/slices/duigongicon.png"/>
           <div class="tt">对公转账</div>
         </div>
 
@@ -64,7 +64,7 @@
         <div class="zffs">
           <div class="dx" @click="zffs=2" :class="{active:zffs==2}"></div>
           <img
-              src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPnge1db3786ec66ef1cde7799c116c7abda29cb482067e5934cf87f4cabbe6faa1a"/>
+              src="../../../assets/img/slices/zhifubaoicon.png"/>
           <div class="tt">支付宝</div>
         </div>
 
@@ -75,7 +75,7 @@
         <div class="zffs">
           <div class="dx" @click="zffs=3" :class="{active:zffs==3}"></div>
           <img
-              src="https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng469920132fabdaa5a1874fc50c3a67687480ce260641cec8e462f2229a169e79"/>
+              src="../../../assets/img/slices/weixinicon.png"/>
           <div class="tt">微信</div>
         </div>
 

@@ -33,18 +33,18 @@
         <div style="cursor: pointer;" class="icon-cat" @click="handleclickMycart"></div>
         <el-dropdown style="cursor: pointer;" @command="jumpOrderPage">
           <div class="icon-order"></div>
-          <el-dropdown-menu slot="dropdown" placement="bottom">
+          <el-dropdown-menu slot="dropdown" placement="bottom-end">
             <el-dropdown-item icon="el-icon-circle-check" :command="{index:0,name:'常规订单'}">常规订单</el-dropdown-item>
             <el-dropdown-item icon="el-icon-edit" :command="{index:1,name:'打样订单'}">打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <div style="cursor: pointer;" class="icon-design" @click="viewMyDesign"></div>
+        <div style="cursor: pointer;margin-right: 40px;" class="icon-design" @click="viewMyDesign"></div>
         <el-dropdown :hide-on-click="false"
                      style="display: flex;align-items: center;"
-                     placement="bottom"
+                     placement="bottom-end"
                      @command="onCommand">
           <img v-if="true"
-               style="margin-left: 40px;border-radius: 50%;cursor: pointer;" width="60px" height="60px"
+               style="border-radius: 50%;cursor: pointer;" width="60px" height="60px"
                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="account">

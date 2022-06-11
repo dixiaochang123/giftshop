@@ -71,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.124780316344464) + px;
+  @return ($px / 1) + px;
 }
 
 .design {
