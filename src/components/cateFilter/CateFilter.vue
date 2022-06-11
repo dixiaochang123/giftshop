@@ -122,18 +122,18 @@ export default {
   @return ($px / 1)+px;
 }
 
-.bgcolor {
-  // background-image: none !important;
-  background-color: #ffffff !important;
-  &:hover {
-    background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%) !important;
-    background-size: 200% !important;
-    background-position: 50% 50% !important;
-  }
-  &>*{
-    background-color: #ffffff !important;
-  }
-}
+// .bgcolor {
+//   // background-image: none !important;
+//   background-color: #ffffff !important;
+//   &:hover {
+//     background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%) !important;
+//     background-size: 200% !important;
+//     background-position: 50% 50% !important;
+//   }
+//   &>*{
+//     background-color: #ffffff !important;
+//   }
+// }
 .cate-filter-containe-hover:hover {
     background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
     background-size: 200%;
