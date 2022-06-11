@@ -1,5 +1,5 @@
 <template>
-  <div :class="[bgcolor? 'bgcolor': '','cate-filter-container']" @mouseleave="onMouseLeave">
+  <div :class="[bgcolor? 'bgcolor': '',this.activeFirst!==-1? 'cate-filter-containe-hover': '','cate-filter-container']" @mouseleave="onMouseLeave">
     <template v-if="categories.length">
       <div class="cate-filter-first">
         <div :class="['cate-filter-first__item', {active: activeFirst === index}]"
@@ -136,12 +136,12 @@ export default {
 .cate-filter-container {
   position: relative;
   width: 100%;
-  background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .6) 50%, #E5EDFF 100%);
+  // background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .6) 50%, #E5EDFF 100%);
   // background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 1) 50%, #E5EDFF 100%);
   font-family: PingFangSC-Regular, PingFang SC;
   animation: all .3s ease-in-out;
 
-  &:hover {
+  &.cate-filter-containe-hover:hover {
     background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
     background-size: 200%;
     background-position: 50% 50%;
