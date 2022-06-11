@@ -269,7 +269,7 @@ export default {
 
 <style scoped lang="scss">
 @function rpx2multiple($px) {
-  @return ($px / 1.124780316344464) + px;
+  @return ($px / 1) + px;
 }
 
 .ProductDesignItem {

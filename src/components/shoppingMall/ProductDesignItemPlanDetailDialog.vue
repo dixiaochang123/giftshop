@@ -6,10 +6,10 @@
       <div v-show="type==='online'"
            style="display: flex;align-items: center;">
         <el-icon class="header_icon_item" name="share" @click.native="onCommand('share')"/>
-        <el-icon class="header_icon_item" name="share" style="margin-left: calc(20px / 1.124780316344464);"
+        <el-icon class="header_icon_item" name="share" style="margin-left: calc(20px);"
                  @click.native="onCommand('share')"/>
         <el-button
-            style="background-color:#FF946B;border-radius: 4px;margin-left: calc(20px / 1.124780316344464);border: none;color: #ffffff;"
+            style="background-color:#FF946B;border-radius: 4px;margin-left: calc(20px);border: none;color: #ffffff;"
             @click="onCommand('edit')">
           修改
         </el-button>
@@ -19,7 +19,7 @@
     <template v-if="type==='online'">
       <div>
         <div class="title">整体效果</div>
-        <el-image :src="planDetail.main" style="width: calc(1000px / 1.124780316344464);"/>
+        <el-image :src="planDetail.main" style="width: calc(1000px);"/>
       </div>
       <div style="margin-top: 100px">
         <div class="title">细节效果</div>
@@ -43,11 +43,11 @@
         <div
             style="padding: calc(80px /1.124780316344464) calc(75px /1.124780316344464);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
           <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')"
-                    style="width: calc(210px / 1.124780316344464);"/>
-          <p style="margin-top: calc(75px / 1.124780316344464);font-size: calc(20px / 1.124780316344464);">
+                    style="width: calc(210px);"/>
+          <p style="margin-top: calc(75px);font-size: calc(20px);">
             暂不支持在线预览，请下载后查看</p>
           <el-button
-              style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px / 1.124780316344464);border: none;color: #ffffff;"
+              style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px);border: none;color: #ffffff;"
               @click="onCommand('download')">
             下载
           </el-button>
@@ -86,7 +86,7 @@ export default {
 
 <style lang="scss">
 @function rpx2multiple($px) {
-  @return ($px / 1.124780316344464) + px;
+  @return ($px / 1) + px;
 }
 
 .ProductDesignItemPlanDetailDialog {

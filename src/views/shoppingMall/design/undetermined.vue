@@ -7,12 +7,12 @@
     <div class="undetermined-content">
       <div v-show="activeType==='online'">
         <template v-for="i in 10">
-          <product-design-item type="online" :key="i" style="margin-bottom: calc(40px / 1.124780316344464);"/>
+          <product-design-item type="online" :key="i" style="margin-bottom: calc(40px);"/>
         </template>
       </div>
       <div v-show="activeType==='offline'">
         <template v-for="i in 10">
-          <product-design-item type="offline" :key="i" style="margin-bottom: calc(40px / 1.124780316344464);"/>
+          <product-design-item type="offline" :key="i" style="margin-bottom: calc(40px);"/>
         </template>
       </div>
     </div>
@@ -42,7 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 @function rpx2multiple($px) {
-  @return ($px / 1.124780316344464) + px;
+  @return ($px / 1) + px;
 }
 
 .undetermined {
