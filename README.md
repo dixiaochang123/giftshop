@@ -28,6 +28,7 @@ npm run lint
 ```
 git pull origin master --allow-unrelated-histories
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 项目所有页面缩放 devicePixelRatio
+```
+import DevicePixelRatio from './devicePixelRatio';
+```

@@ -3,11 +3,14 @@
         <router-view/>
     </div>
 </template>
-
 <script>
+import DevicePixelRatio from './devicePixelRatio';
     export default {
         name: 'app',
-        components: {}
+        components: {},
+         created() {
+            new DevicePixelRatio().init();
+        }
     }
 </script>
 

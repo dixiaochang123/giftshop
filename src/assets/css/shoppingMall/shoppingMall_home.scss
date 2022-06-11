@@ -1,10 +1,10 @@
 @import "../base";
-@function rpx2multiple ($px) {
-  @return ($px / 1)+px;
-}
-@function rpx2multiple1 ($px) {
-  @return ($px / 1)+px;
-}
+// @function rpx2multiple ($px) {
+//   @return ($px / 1)+px;
+// }
+// @function rpx2multiple1 ($px) {
+//   @return ($px / 1)+px;
+// }
 .cate-filter {
   width: 100%;
   //min-height: 176px;
@@ -18,8 +18,8 @@
   min-height: 176px;
   // margin: auto;
   position: sticky;
-  top: rpx2multiple1(92);
-  margin-top: rpx2multiple1(92);
+  top: rpx2multiple(92);
+  margin-top: rpx2multiple(92);
   z-index: 1000;
   // background-color: #fff;
   // position: relative;

@@ -240,4 +240,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/css/shoppingMall/shoppingMall_home.scss";
+// @media screen and(min-width: 1920px) {
+//   @import "../../assets/css/shoppingMall/shoppingMall_home_media.scss";
+// }
+
 </style>
