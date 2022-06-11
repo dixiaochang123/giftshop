@@ -22,15 +22,20 @@
         </div>
 
         <div style="cursor: pointer;" class="icon-cat" @click="handleclickMycart"></div>
-        <el-dropdown style="cursor: pointer;" @command="jumpOrderPage">
+        <el-dropdown class="el-dropdown-cgdd" trigger="click" style="cursor: pointer;" @command="jumpOrderPage">
           <div class="icon-order"></div>
           <el-dropdown-menu slot="dropdown" placement="bottom-end">
-            <el-dropdown-item icon="el-icon-circle-check" :command="{index:0,name:'常规订单'}">常规订单</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-edit" :command="{index:1,name:'打样订单'}">打样订单</el-dropdown-item>
+            <el-dropdown-item class="cgdd" :command="{index:0,name:'常规订单'}">
+            <img style="vertical-align: middle;" src="../../assets/img/slices/常规订单.png" alt="" srcset="">
+            <!-- <img style="vertical-align: middle;" src="../../assets/img/slices/常规订单-hover.png" alt="" srcset=""> -->
+            常规订单</el-dropdown-item>
+            <el-dropdown-item class="cgdd" :command="{index:1,name:'打样订单'}">
+            <img style="vertical-align: middle;" src="../../assets/img/slices/打样订单.png" alt="" srcset="">
+            打样订单</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <div style="cursor: pointer;margin-right: 40px;" class="icon-design" @click="viewMyDesign"></div>
-        <el-dropdown :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end" @command="onCommand">
+        <el-dropdown trigger="click" :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end" @command="onCommand">
           <img v-if="true" style="border-radius: 50%;cursor: pointer;" width="60px" height="60px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="account">
@@ -41,25 +46,25 @@
             <el-dropdown-item divided command="account">
               <div style="color: #71737B;font-size: 16px;">
                 <i class="el-icon-user" style="font-size: 18px;"></i>
-                <span>账号管理</span>
+                <span style="padding-left:10px;">账号管理</span>
               </div>
             </el-dropdown-item>
             <el-dropdown-item command="address">
               <div style="color: #71737B;font-size: 16px;">
                 <i class="el-icon-location-information" style="font-size: 18px;"></i>
-                <span>地址信息</span>
+                <span style="padding-left:10px;">地址信息</span>
               </div>
             </el-dropdown-item>
             <el-dropdown-item command="invoice">
               <div style="color: #71737B;font-size: 16px;">
                 <i class="el-icon-tickets" style="font-size: 18px;"></i>
-                <span>发票信息</span>
+                <span style="padding-left:10px;">发票信息</span>
               </div>
             </el-dropdown-item>
             <el-dropdown-item divided command="logout">
               <div style="color: #71737B;font-size: 16px;">
                 <i class="el-icon-switch-button" style="font-size: 18px;"></i>
-                <span>退出登陆</span>
+                <span style="padding-left:10px;">退出登陆</span>
               </div>
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -444,7 +449,7 @@ export default {
 }
 </style>
 
-<style>
+<style lang="scss" scoped>
 .animate__fadeInRight__1 {
   animation-name: fadeInRight__1;
 }
@@ -457,14 +462,14 @@ export default {
 
   to {
     opacity: 1;
-    transform: translateX(-200px);
+    transform: translateX(-230px);
   }
 }
 
 @keyframes fadeOutRight__1 {
   from {
     opacity: 1;
-    transform: translateX(-200px);
+    transform: translateX(-230px);
   }
 
   to {
@@ -482,10 +487,11 @@ export default {
 }
 
 .search-header-popover-class {
-  background: linear-gradient(98deg, #ffeee7 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(98deg, rgba(255, 255, 255, 0) 0%, #ffeee7 100%);
   padding: 27px;
   min-width: 554px;
   margin-left: -50px !important;
+  margin-top: 40px !important;
 }
 
 .search-header-popover-class__results-container {
@@ -498,6 +504,7 @@ export default {
   border-radius: 4px;
   background: #f1f2f4;
   color: #73757d;
+  font-size: 18px;
 }
 
 .search-header-popover-class__results-container > *.active {
@@ -517,5 +524,26 @@ export default {
 .search-header-popover-class.el-autocomplete-suggestion li.highlighted,
 .search-header-popover-class.el-autocomplete-suggestion li:hover {
   background-color: transparent;
+}
+.el-dropdown-menu {
+  top: 90px !important;
+}
+/deep/ .el-dropdown-menu__item {
+  font-size: 18px;
+  padding: 0 20px;
+  color: #71737B;
+  > div span {
+    font-size: 18px;
+  }
+}
+/deep/ .el-dropdown-menu__item:focus, /deep/ .el-dropdown-menu__item:not(.is-disabled):hover {
+    // background-color: none !important;
+    color: #2D2E33;
+}
+/deep/ .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color: transparent !important;
+    > div {
+      color: #2D2E33 !important;
+    }
 }
 </style>

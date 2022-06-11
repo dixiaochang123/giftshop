@@ -77,7 +77,7 @@ $height: 350px;
   width: rpx2multiple(88);
   position: fixed;
   right: 50px;
-  bottom: 100px;
+  bottom: 50px;
   z-index: 100000000;
 }
 
