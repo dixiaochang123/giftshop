@@ -74,6 +74,7 @@ export default {
       this.active = false;
     },
     onCommand(command) {
+      this.active = false;
       this.$emit(command, this.planDetail);
     },
   },

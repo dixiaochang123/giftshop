@@ -28,11 +28,11 @@
                   <img style="width: 100%" src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt="">
                 </div>
                 <div class="product-desc">
-                  <p>
-                    <span>¥ {{`108`}}</span>
-                    <span class="product-orderQuantity">{{orderQuantity}}起订</span>
+                  <p style="padding-top:20px;">
+                    <span style="font-size: 22px">¥ {{`108`}}</span>
+                    <span style="font-size: 14px;" class="product-orderQuantity">{{orderQuantity}}起订</span>
                   </p>
-                  <span>
+                  <span style="font-size: 22px;">
                     创意现代简约
                   </span>
                 </div>
@@ -154,7 +154,7 @@ export default {
   margin-bottom: 30px;
   .product-item {
     width: 20%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 40px;
     display: inline-block;
     border-radius: 12px;
@@ -164,8 +164,12 @@ export default {
     transition: all 0.5s;
     .product-content {
       .product-img {
-        border-radius: 12px;
-        overflow: hidden;
+        // border-radius: 12px;
+        // overflow: hidden;
+        > img {
+          border-radius: 8px;
+          overflow: hidden;
+        }
       }
       .product-desc {
         color: #2d2e33;

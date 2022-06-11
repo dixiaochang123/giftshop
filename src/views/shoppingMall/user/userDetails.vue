@@ -4,7 +4,7 @@
         <div class="user-img">
             <el-upload action="##">
                 <div class="user-img-upload">
-                    <img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" class="avatar" />
+                    <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" class="avatar" />
                     <span class="user-img-tips">修改头像</span>
                 </div>
             </el-upload>
@@ -86,17 +86,39 @@
                 z-index: 2;
                 top: 0;
                 left: 0;
+                display: none;
             }
 
             img {
                 width: rpx2multiple(112);
                 height: rpx2multiple(112);
             }
+            &:hover {
+                 .user-img-tips{
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    font-size: rpx2multiple(14);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    background-color: rgba(0, 0, 0, .5);
+                    z-index: 2;
+                    top: 0;
+                    left: 0;
+                 }
+            }
         }
     }
 
     .account-inner {
-        padding-bottom: rpx2multiple(130);
+        border-radius: 12px;
+        border: 1px solid #BCBEC6;
+        // padding-bottom: rpx2multiple(130);
+        padding:41px 58px;
+        margin-bottom: 66px;
         /deep/ .el-form-item__label {
             font-size: rpx2multiple(18);
             color: #73757D;

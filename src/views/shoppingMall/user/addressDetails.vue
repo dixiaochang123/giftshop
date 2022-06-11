@@ -2,11 +2,11 @@
     <div class="user-box">
         <div class="top-box">
             <div class="left">
-                <div class="nav-title">
-                    新增收货地址
-                </div>
                 <div class="account-inner">
                     <el-form label-width="160px" class="demo-ruleForm">
+                        <div class="nav-title">
+                            新增收货地址
+                        </div>
                         <el-form-item label="地址信息">
                             <el-cascader v-model="addressInfo" :options="addressOptions"></el-cascader>
                         </el-form-item>
@@ -19,14 +19,14 @@
                         <el-form-item label="手机号">
                             <el-input maxlength="11" placeholder="请输入手机号"></el-input>
                         </el-form-item>
-                        <div class="form-tips">
-                            <label>
-                                <span>设为常用地址</span>
-                                <el-checkbox></el-checkbox>
-                            </label>
-                            <el-button class="form-btn">保存</el-button>
-                        </div>
                     </el-form>
+                    <div class="form-tips">
+                        <label>
+                            <span>设为常用地址</span>
+                            <el-checkbox></el-checkbox>
+                        </label>
+                        <el-button class="form-btn">保存</el-button>
+                    </div>
                 </div>
             </div>
             <img class="bg-img" src="../../../assets/img/slices/addressdetails-img.png" alt="">
@@ -124,6 +124,7 @@ export default {
 
         .left {
             width: 100%;
+            
 
             .nav-title {
                 font-size: 22px;
@@ -140,6 +141,12 @@ export default {
         }
 
         .account-inner {
+            .demo-ruleForm {
+                border-radius: 12px;
+                border: 1px solid #BCBEC6;
+                padding:40px;
+
+            }
             /deep/ .el-form-item__label {
                 font-size: 18px;
                 color: #73757D;

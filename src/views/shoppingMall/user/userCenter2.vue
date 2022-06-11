@@ -3,7 +3,7 @@
     <div class="Breadcrumb">
         <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>订单中心</el-breadcrumb-item>
+            <el-breadcrumb-item>个人中心</el-breadcrumb-item>
         </el-breadcrumb>
     </div>
     <div class="tabs">

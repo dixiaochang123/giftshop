@@ -24,7 +24,7 @@
             <img :style="r_img" class="rightImg" :src="bigImg" alt="">
           </div>
           <img :src="bigImg" alt="">
-          <img v-show="!rShow" class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
+          <!-- <img v-show="!rShow" class="zoomicon" src="../../../assets/img/slices/radus.png" alt=""> -->
           <!-- 鼠标层罩 -->
           <div v-show="topShow" class="top" :style="topStyle"></div>
           <!-- 最顶层覆盖了整个原图空间的透明层罩 -->
@@ -48,7 +48,9 @@
             <h3>愿时光停在花礼盒定制</h3>
             <h5>愿时光停在花礼盒定制</h5>
             <!-- <h3 class="price">&yen;17.96</h3> -->
-            <h5 class="reference-price">参考价格</h5>
+            <h5 class="reference-price">
+             <span>参考价格</span><span class="borderspan" style="width:520px;"></span>
+              </h5>
           </div>
           <div class="intro-price">
             <div class="intro-price-item" v-for="(item, index) in priceList" :key="index">
@@ -58,7 +60,7 @@
             </div>
           </div>
           <div class="proIntro">
-            <h5 class="reference-price">规格</h5>
+            <h5 class="reference-price"><span>规格</span><span class="borderspan" style="width:588px;"></span></h5>
             <div class="proIntro-material">
               <span class="type-name">材质</span>
               <div class="material-item-box">
@@ -95,7 +97,7 @@
 
           </div>
           <div class="proIntro-checking">
-            <span class="reference-price">核价</span>
+            <span class="reference-price"><span>核价</span><span class="borderspan" style="width:588px;"></span></span>
             <div class="checking-number">
               <span class="type-name">数量</span>
               <div class="checking-number-box">
@@ -103,7 +105,7 @@
               </div>
             </div>
             <div class="Unit-Price">
-              <span class="type-name">实际单价</span>
+              <span class="type-name" style="margin-right: 50px">实际单价</span>
               <div class="Unit-Price-box">
                 <span style="color:#2D2E33">￥{{unitPrice}}</span>
               </div>
@@ -115,7 +117,7 @@
               </div>
             </div>
             <div class="Production-time">
-              <span class="type-name">生产时间</span>
+              <span class="type-name" style="margin-right: 50px">生产时间</span>
               <div class="Production-time-box">
                 <span>付款后15个工作日内完成生产</span>
               </div>
@@ -125,9 +127,9 @@
             <span class="reference-price">我的设计</span>
             <div class="proIntro-Design-imgs">
               <div class="workmanship-box-item" style="margin-top:30px;" v-for="(item,index) in smallImgcopy" :key="item.index">
-                <a href="#" :title="item.title">
+                <!-- <a href="#" :title="item.title"> -->
                   <img :src="item.url">
-                </a>
+                <!-- </a> -->
                 <div class="img-item-desc">
                   <span>方案一</span>
                   <!-- <i style="color:#ffffff;" class="el-icon-more"></i> -->
@@ -509,6 +511,17 @@ export default {
   font-weight: 400;
   color: #2d2e33;
   line-height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    white-space: nowrap;
+  }
+  .borderspan {
+    height: 1px;
+    border-bottom: 1px solid #E9EEF7;
+  }
+
 }
 .intro_title {
   width: 100%;
@@ -580,7 +593,7 @@ export default {
   color: #73757d;
   font-size: 18px;
   vertical-align: middle;
-  margin-right: 60px;
+  margin-right: 88px;
   padding: 0 !important;
   white-space: nowrap;
 }
@@ -612,15 +625,15 @@ export default {
   content: "";
   display: none;
 }
-.reference-price::after {
-  content: "";
-  display: inline-block;
-  width: 380px;
-  margin-left: 20px;
-  height: 0;
-  vertical-align: middle;
-  border-bottom: 1px solid #e9eef7;
-}
+// .reference-price::after {
+//   content: "";
+//   display: inline-block;
+//   width: 380px;
+//   margin-left: 20px;
+//   height: 0;
+//   vertical-align: middle;
+//   border-bottom: 1px solid #e9eef7;
+// }
 .intro-price-item:last-child::after {
   content: "";
   display: none;
@@ -681,14 +694,14 @@ export default {
   width: rpx2multiple(216);
   display: inline-block;
   position: relative;
-  border-radius: 12px;
-  overflow: hidden;
   cursor: pointer;
   overflow: hidden;
   margin-right: 20px;
   img {
     width: 100%;
     height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
   }
   &:hover {
     .img-item-desc1 {

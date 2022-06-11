@@ -25,12 +25,12 @@
                     <el-form-item label="发票接收邮箱">
                         <el-input placeholder="请输入发票接收邮箱"></el-input>
                     </el-form-item>
-                    <div class="form-tips">
-                        <label>
-                        </label>
-                        <el-button class="form-btn">修改</el-button>
-                    </div>
                 </el-form>
+                <div class="form-tips">
+                    <label>
+                    </label>
+                    <el-button class="form-btn">修改</el-button>
+                </div>
             </div>
         </div>
         <img class="bg-img" src="../../../assets/img/slices/invoicedetails-img.png" alt="">
@@ -74,6 +74,11 @@ export default {
         }
 
         .account-inner {
+            .demo-ruleForm {
+                border-radius: 12px;
+                border: 1px solid #BCBEC6;
+                padding:40px 30px 0 40px;
+            }
             /deep/ .el-form-item__label {
                 font-size: 18px;
                 color: #73757D;
@@ -96,6 +101,7 @@ export default {
             }
 
             .form-tips {
+                margin-top: 30px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;

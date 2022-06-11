@@ -20,7 +20,7 @@
         <div style="width:12%">我的设计</div>
         <div style="width:12%">操作</div>
       </div>
-      <div class="tables" v-for="(item,index) in tableData" :key="index">
+      <div :class="[item.checked?'tables_hover':'', 'tables']" v-for="(item,index) in tableData" :key="index">
         <div class="header_1" style="width:40%;text-align: left;">
           <el-checkbox v-model="item.checked" @change="handleCheckedCitiesChange"
                        style="font-size: 18px;"></el-checkbox>
@@ -56,7 +56,7 @@
         <div style="width:18%;color: #73757D">已选 &nbsp;<span style="font-size:28px;color:#000;">{{ total }}</span>
           &nbsp;件商品
         </div>
-        <div style="width:18%;color: #73757D">总价 &nbsp;<span style="font-size:28px;color:#000;">¥{{ totalPrice }}</span>&nbsp;元
+        <div style="width:18%;color: #73757D">总价 &nbsp;<span class="zongjia" style="font-size:28px;color:#000;">¥{{ totalPrice }}</span>&nbsp;元
         </div>
         <div style="width:12%;text-align: right;" class="jiesuan">
           <span class="dayang" style="cursor: pointer;" @click="payMoney()">结算</span>
@@ -287,17 +287,17 @@ export default {
   justify-content: space-between;
   margin: 20px 0;
 
-  &:hover {
+  &.tables_hover {
     box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
     border: 1px solid #7395dc;
 
-    .dayang {
-      background: #7395DC;
-      border-radius: 4px;
-      border: 1px solid #7395DC;
-      color: #ffffff;
+    // .dayang {
+    //   background: #7395DC;
+    //   border-radius: 4px;
+    //   border: 1px solid #7395DC;
+    //   color: #ffffff;
 
-    }
+    // }
   }
 
   > div {
@@ -368,6 +368,12 @@ export default {
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: #73757D;
+    &:hover {
+      background: #7395DC;
+      border-radius: 4px;
+      border: 1px solid #7395DC;
+      color: #ffffff;
+    }
 
   }
 }
@@ -406,5 +412,13 @@ export default {
   border: none;
   background: none;
   margin-bottom: 100px;
+}
+/deep/ .el-checkbox__label {
+  font-size: 18px;
+}
+.zongjia {
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #2D2E33;
 }
 </style>

@@ -94,6 +94,10 @@ export default {
     },
   },
   methods: {
+    edit(data){
+      console.log(data,this.$parent)
+      // this.$parent.onDesignAdd()
+    },
     togglePlan(step) {
       switch (step) {
         case -1:
