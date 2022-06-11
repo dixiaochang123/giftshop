@@ -142,6 +142,9 @@ export default {
           break;
         default:
           //TODO: 退出登录
+          this.$router.push({
+            path: "/login"
+          })
           break;
       }
     },
