@@ -39,7 +39,10 @@ export default {
     },
     onDesignAdd() {
       this.dialogOnlineDesign = true;
-    }
+    },
+    closeOnlineBox() {
+      this.dialogOnlineDesign = false;
+    },
   }
 }
 </script>
