@@ -123,16 +123,25 @@ export default {
 }
 
 .bgcolor {
-  background-image: none !important;
+  // background-image: none !important;
+  background-color: #ffffff !important;
   &:hover {
     background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%) !important;
     background-size: 200% !important;
     background-position: 50% 50% !important;
   }
   &>*{
-    background-color: #fff !important;
+    background-color: #ffffff !important;
   }
 }
+.cate-filter-containe-hover:hover {
+    background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
+    background-size: 200%;
+    background-position: 50% 50%;
+    &>*{
+      background-color: transparent;
+    }
+  }
 .cate-filter-container {
   position: relative;
   width: 100%;
@@ -140,12 +149,11 @@ export default {
   // background: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, 1) 50%, #E5EDFF 100%);
   font-family: PingFangSC-Regular, PingFang SC;
   animation: all .3s ease-in-out;
-
+  background-color: #ffffff;
   &.cate-filter-containe-hover:hover {
     background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
     background-size: 200%;
     background-position: 50% 50%;
-    background-color: transparent !important;
   }
   &>*{
     background-color: transparent;
