@@ -46,11 +46,11 @@
         设计方案
       </div>
       <div class="sjfa">
-        <div class="lb">
+        <div class="lb" :class="{'sjfa-lb-active':sjfaLbActiveIndex===0}" @click="sjfaLbActiveIndex=0">
           <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
           <div class="tt">方案1</div>
         </div>
-        <div class="lb">
+        <div class="lb" :class="{'sjfa-lb-active':sjfaLbActiveIndex===1}" @click="sjfaLbActiveIndex=1">
           <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
           <div class="tt">方案2</div>
         </div>
@@ -108,7 +108,7 @@ export default {
   data() {
     return {
       zffs: 1,
-
+      sjfaLbActiveIndex: 0
     };
   },
   methods: {
@@ -119,10 +119,10 @@ export default {
       });
     },
     dzglhandleclick() {
-       this.$router.push({
+      this.$router.push({
         path: "/shoppingMall/user/userCenter2/addressDetails",
         query: {
-          current:1
+          current: 1
         }
       });
     }
@@ -143,6 +143,7 @@ export default {
 .Breadcrumb {
   height: rpx2multiple(100);
 }
+
 .el-breadcrumb {
   font-size: 14px;
   height: rpx2multiple(100);
@@ -239,7 +240,8 @@ export default {
   margin-left: 60px;
   margin-right: 40px;
 }
-::v-deep.psfs .el-select input{
+
+::v-deep.psfs .el-select input {
   font-size: 18px;
   height: 42px;
   line-height: 42px;
@@ -256,10 +258,15 @@ export default {
 .sjfa .lb {
   width: 280px;
   background: #FFFFFF;
-  box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
   border-radius: 8px;
   float: left;
   margin-right: 20px;
+  border: 1px solid #BCBEC6;
+}
+
+.sjfa .lb.sjfa-lb-active {
+  box-shadow: 0 7px 28px 0 rgba(178, 187, 206, 0.45);
+  border: 1px solid #7395DC;
 }
 
 .sjfa .lb img {
