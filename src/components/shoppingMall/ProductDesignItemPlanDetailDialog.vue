@@ -129,7 +129,7 @@ export default {
 
 .ProductDesignItemPlanDetailDialog .sub_title {
   font-size: rpx2multiple(22);
-  margin-top: rpx2multiple(40);
+  margin-top: rpx2multiple(20);
   margin-bottom: rpx2multiple(30);
 }
 
@@ -154,7 +154,7 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog .detail_pictures-item > p {
-  margin: rpx2multiple(30) 0;
+  margin: rpx2multiple(30) 0 60px;
 }
 
 .ProductDesignItemPlanDetailDialog
