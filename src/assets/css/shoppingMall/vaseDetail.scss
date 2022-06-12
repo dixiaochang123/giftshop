@@ -17,13 +17,13 @@
 }
 .Breadcrumb {
   width: rpx2multiple(1380);
-  margin:0 auto;
-  height: rpx2multiple(100);
+  margin:10px auto 0;
+  height: rpx2multiple(40);
 }
 .el-breadcrumb {
   font-size: 14px;
-  height: rpx2multiple(100);
-  line-height: rpx2multiple(100);
+  height: rpx2multiple(40);
+  line-height: rpx2multiple(40);
 }
 /deep/ .el-breadcrumb__inner {
   font-size: rpx2multiple(18);
@@ -67,7 +67,7 @@ padding-right: 32px;
 }
 
 .type_list {
-  margin-top: 20px;
+  // margin-top: 20px;
   margin-left: -12px;
 
   .grid-content {

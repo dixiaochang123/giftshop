@@ -442,8 +442,8 @@ export default {
     // 鼠标进入原图空间函数
     enterHandler() {
       // 层罩及放大空间的显示
-      this.topShow = true;
-      this.rShow = true;
+      // this.topShow = true;
+      // this.rShow = true;
     },
     // 鼠标移动函数
     moveHandler(event) {
