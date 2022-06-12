@@ -19,7 +19,7 @@
                 </template>
                 <template v-else>
                   <div class="imgbox" style="display: flex;justify-content: center; align-items: center;border: 1px solid #BCBEC6;border-radius: 12px;color: #7395DC;cursor:pointer;" @click="viewPlan(item)">
-                    <el-icon name="s-cooperation" style="font-size: 40px;" />
+                    <el-image :src="require('@/assets/img/shoppingMall/design/cooperation_icon.png')" style="width: 50px;height: 50px;"/>
                   </div>
                 </template>
                 <el-icon class="ProductDesignItem-content__designs-carousel__item-close-icon" name="close" @click.native="deletePlan(index)" />
