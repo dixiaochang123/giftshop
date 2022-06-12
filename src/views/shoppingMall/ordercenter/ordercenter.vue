@@ -1,6 +1,6 @@
 <template>
   <div class="mycart">
-    <div class="shaixuan" :class="{'h-0': !computedFilterPanelActive}">
+    <div class="shaixuan" :class="{'h-0': !filterPanelActive}">
       <el-form class="qyktj qyktj1">
         <div
             style="display: flex;align-items: center;justify-content: space-between;margin-bottom: 24px;">
@@ -74,7 +74,7 @@
           </el-checkbox>
           <div class="time">2020-05-21 18:46:57</div>
           <div class="ddbh">订单编号：<span>2637283464955497116</span></div>
-          <template v-if="item.ddzt==='交易关闭'">
+          <template v-if="['交易关闭','交易成功'].includes(item.ddzt)">
             <div class="deleted-wrapper">
               <span @click="deleted(item,index)"><i class="el-icon-delete"></i>删除订单</span>
             </div>
@@ -104,7 +104,12 @@
           </div>
           <div style="width:12%">{{ item.shr }}</div>
           <div style="width:12%">¥{{ item.sumb }}</div>
-          <div style="width:12%">{{ item.ddzt }}</div>
+          <div style="width:12%;display: flex;flex-direction: column;">
+            <span>{{ item.ddzt }}</span>
+            <template v-if="item.ddzt==='交易成功'">
+              <span style="color: #FF946B;margin-top: 19px;cursor:pointer;" @click="viewPost(item)">查看物流</span>
+            </template>
+          </div>
 
           <div style="width:12%" class="caozuo">
             <span>{{ item.DesignNumber }}套</span>
@@ -114,7 +119,7 @@
             <span class="dayang"
                   style="cursor: pointer;width: 112px;height: 42px;background: #FF946B;border-radius: 4px;color: #FFFFFF;border: none;"
                   @click="payMoney(item)">立即支付</span>
-            <span style="cursor: pointer;">取消订单</span>
+            <span style="cursor: pointer;" @click="cancelOrder(item,index)">取消订单</span>
           </div>
         </div>
       </div>
@@ -128,7 +133,7 @@
 export default {
   name: "Ordercenter",
   props: {
-    filterPanel: Object
+    filterPanelActive: Boolean
   },
   data() {
     return {
@@ -161,7 +166,7 @@ export default {
           p1: "愿时光停在花",
           p2: "母亲节真诚礼至特别巨献妈妈的礼物",
           shr: "喵大人",
-          ddzt: "待支付",
+          ddzt: "交易成功",
           sumb: "3000.00",
           DesignNumber: "2",
           type: '2'
@@ -204,9 +209,6 @@ export default {
     };
   },
   computed: {
-    computedFilterPanelActive() {
-      return this.filterPanel.active;
-    },
     total() {
       return this.tableData.filter((item) => item.checked == true).length;
     },
@@ -236,6 +238,10 @@ export default {
         id: item.id || 0,
       });
     },
+    // eslint-disable-next-line no-unused-vars
+    viewPost(item) {
+      //TODO: 查看物流
+    },
     //tab切换
     tabqh(zhi) {
       this.tabbq = zhi;
@@ -256,6 +262,26 @@ export default {
       this.checkAll = checkedCount === this.tableData.length;
       this.isIndeterminate =
           checkedCount > 0 && checkedCount < this.tableData.length;
+    },
+    cancelOrder(item, index) {
+      this.$confirm("此操作将取消订单, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+          .then(() => {
+            this.tableData.splice(index, 1);
+            this.$message({
+              type: "info",
+              message: "取消订单成功!",
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消",
+            });
+          });
     },
     deleted(item, index) {
       this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
@@ -424,14 +450,17 @@ export default {
 
   .caozuo {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     height: 96px;
 
+    > span:nth-child(1) {
+      margin-top: 0;
+    }
+
     > span {
       display: inline-block;
-      height: 50%;
       box-sizing: border-box;
       margin-top: 20px;
     }

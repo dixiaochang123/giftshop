@@ -10,8 +10,8 @@
     <!--类型-->
     <div class="page_type" style="border-bottom: none;height: auto;">
       <div class="tab-list-2-1">
-        <div @click="activeindexchange(index)" v-for="(item,index) in specialtab" :key="item"
-             :class="[index==activeindex? 'active':'']">{{ item }}
+        <div @click="activeindexchange(item)" v-for="(item,index) in specialtab" :key="item.name"
+             :class="[index==activeindex? 'active':'']">{{ item.name }}
         </div>
       </div>
       <div class="container">
@@ -26,15 +26,16 @@
             <li @click="tabqh(7)" :class="{active:tabbq==7}">已取消 0</li>
 
           </ul>
-          <div class="dingdannth" @click="toggleFilterPanel" :style="{color:(filterPanel.active?'#FF946B':'#73757D')}">
+          <div class="dingdannth" @click="toggleFilterPanel"
+               :style="{color:(computedFilterPanelActive?'#FF946B':'#73757D')}">
             <span style="margin-right: 15px;">订单筛选</span>
-            <i :class="filterPanel.active?'el-icon-arrow-up':'el-icon-arrow-down'"></i>
+            <i :class="computedFilterPanelActive?'el-icon-arrow-up':'el-icon-arrow-down'"></i>
           </div>
         </div>
 
       </div>
     </div>
-    <router-view :filterPanel="filterPanel"/>
+    <router-view :filterPanelActive="computedFilterPanelActive"/>
 
   </div>
 </template>
@@ -44,10 +45,18 @@ export default {
   name: "Ordercenter",
   data() {
     return {
-      filterPanel: {
-        active: true
-      },
-      specialtab: ["常规订单", "打样订单"],
+      specialtab: [
+        {
+          path: "/shoppingMall/ordercenter/ordercenter",
+          name: "常规订单",
+          filterPanelActive: true
+        },
+        {
+          path: "/shoppingMall/ordercenter/proofing",
+          name: "打样订单",
+          filterPanelActive: true
+        }
+      ],
       activeindex: 0,
       cplx: "",
       ddzt: "",
@@ -121,34 +130,29 @@ export default {
           .reduce((money, item) => money + Number(item.sumb), 0);
       // return this.tableData.filter(item=>item.checked==true)
     },
+    computedFilterPanelActive() {
+      return this.specialtab[this.activeindex].filterPanelActive;
+    }
   },
   watch: {
     $route: {
       immediate: true, // 一旦监听到路由的变化立即执行
-      handler(to, from) {
-        this.activeindex = this.$route.query.index || 0
+      handler(val) {
+        if (val.query.hasOwnProperty("index")) {
+          this.activeindex = val.query.index;
+          return;
+        }
+        let index = this.specialtab.findIndex(item => item.path === val.path);
+        index !== -1 && (this.activeindex = index);
       },
     },
   },
-  mounted() {
-    this.activeindex = this.$route.query.index || 0
-  },
   methods: {
     toggleFilterPanel() {
-      this.filterPanel.active = !this.filterPanel.active;
+      this.specialtab[this.activeindex].filterPanelActive = !this.specialtab[this.activeindex].filterPanelActive;
     },
-    activeindexchange(index) {
-      this.activeindex = index;
-      console.log(index)
-      if (index == 0) {
-        this.$router.push({
-          name: 'Ordercenter'
-        })
-      } else {
-        this.$router.push({
-          name: 'Proofing'
-        })
-      }
+    activeindexchange(item) {
+      this.$router.replace({path: item.path});
     },
     //tab切换
     tabqh(zhi) {
@@ -587,9 +591,11 @@ export default {
   align-items: center;
   font-size: 18px;
 }
+
 /deep/ .el-form-item__label {
   font-size: 18px;
 }
+
 /deep/ .el-input--small {
   font-size: 18px;
 }
@@ -607,6 +613,7 @@ export default {
   line-height: 42px;
   margin-left: 20px;
 }
+
 .dingdannth {
   cursor: pointer;
 }
