@@ -21,7 +21,7 @@
 
 <script>
 import ProductDesignItemPlanDetailDialog from "@/components/shoppingMall/ProductDesignItemPlanDetailDialog";
-
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "index",
   components: {ProductDesignItemPlanDetailDialog},
@@ -34,13 +34,16 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["setEdit"]),
     switchPanel(activePanel) {
       this.activePanel = activePanel;
     },
     // eslint-disable-next-line no-unused-vars
     onDesignItemPlanDetailDialogEdit(planDetail) {
       // eslint-disable-next-line no-console
-      console.log("编辑");
+      console.log("编辑",this.$children);
+      this.setEdit(true)
+      // addPlan
       //TODO 编辑
     },
     // eslint-disable-next-line no-unused-vars

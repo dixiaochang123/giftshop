@@ -23,12 +23,25 @@
 <script>
 import ProductDesignItem from "@/components/shoppingMall/ProductDesignItem";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
-
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "undetermined",
   components: {ProductDesignItem, onlineDesign},
   props:{
     designItemPlanDetailDialog: Object
+  },
+  computed: {
+    ...mapGetters(["isEdit"])
+  },
+  watch: {
+    isEdit(val) {
+      if(val==true) {
+        this.dialogOnlineDesign = true;
+      } else {
+        this.dialogOnlineDesign = false;
+
+      }
+    }
   },
   data() {
     return {
@@ -37,6 +50,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["setEdit"]),
     switchPanel(activeType) {
       this.activeType = activeType;
     },
@@ -45,6 +59,7 @@ export default {
     },
     closeOnlineBox() {
       this.dialogOnlineDesign = false;
+      this.setEdit(false)
     },
   }
 }
