@@ -41,8 +41,10 @@ class DevicePixelRatio {
             if(widths==1920 || widths < 1920) {
                 document.getElementsByTagName('body')[0].style.zoom = 1 / window.devicePixelRatio;
                 
-            } else {
+            } else if(widths==2560 || widths < 2560) {
                 document.getElementsByTagName('body')[0].style.zoom = 1;
+            }  else {
+                document.getElementsByTagName('body')[0].style.zoom = 0.7;
                 // document.getElementsByTagName('body')[0].style.transform = 'scale(1)';
                 // document.getElementsByTagName('body')[0].style.transform = 'none';
                 // document.getElementsByTagName('body')[0].style['transform-origin']= 'center';

@@ -83,4 +83,7 @@ export default {
         }
     }
 }
+/deep/ .el-textarea {
+    font-size: 18px;
+}
 </style>
