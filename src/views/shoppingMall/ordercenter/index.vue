@@ -26,7 +26,7 @@
             <li @click="tabqh(7)" :class="{active:tabbq==7}">已取消 0</li>
 
           </ul>
-          <div @click="toggleFilterPanel" style="color: #FF946B;">
+          <div class="dingdannth" @click="toggleFilterPanel" :style="{color:(filterPanel.active?'#FF946B':'#73757D')}">
             <span style="margin-right: 15px;">订单筛选</span>
             <i :class="filterPanel.active?'el-icon-arrow-up':'el-icon-arrow-down'"></i>
           </div>
@@ -144,6 +144,7 @@ export default {
     },
     activeindexchange(index) {
       this.activeindex = index;
+      console.log(index)
       if (index == 0) {
         this.$router.push({
           name: 'Ordercenter'
@@ -226,7 +227,7 @@ export default {
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 
     > div {
       margin-right: rpx2multiple(48);
@@ -447,8 +448,8 @@ export default {
 
 .navtab {
   height: 42px;
-  margin-bottom: 30px;
-  margin-top: 10px;
+  margin-bottom: 40px;
+  // margin-top: 10px;
   width: 100%;
 }
 
@@ -567,11 +568,11 @@ export default {
 }
 
 .shaixuan {
-  border-top: 1px solid #7395dc;
-  width: 100%;
-  height: 150px;
-  border-bottom: 1px solid #bcbec6;
-  margin-bottom: 30px;
+  // border-top: 1px solid #7395dc;
+  // width: 100%;
+  // height: 150px;
+  // border-bottom: 1px solid #bcbec6;
+  // margin-bottom: 30px;
 }
 
 .qyktj .el-form-item__content {
@@ -589,6 +590,13 @@ export default {
 .el-form-item {
   display: flex;
   align-items: center;
+  font-size: 18px;
+}
+/deep/ .el-form-item__label {
+  font-size: 18px;
+}
+/deep/ .el-input--small {
+  font-size: 18px;
 }
 
 .shaixuan button {
@@ -603,5 +611,8 @@ export default {
   color: #ff946b;
   line-height: 42px;
   margin-left: 20px;
+}
+.dingdannth {
+  cursor: pointer;
 }
 </style>

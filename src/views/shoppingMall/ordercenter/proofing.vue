@@ -568,7 +568,7 @@ export default {
 .shaixuan {
   border-top: 1px solid #7395dc;
   width: 100%;
-  height: 150px;
+  min-height: 180px;
   border-bottom: 1px solid #bcbec6;
   margin-bottom: 30px;
   padding-top:15px;

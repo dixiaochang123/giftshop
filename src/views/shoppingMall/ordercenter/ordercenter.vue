@@ -4,7 +4,7 @@
       <el-form class="qyktj qyktj1 h-0">
         <div
             style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
-          <el-form-item label="下单时间" prop="xdsj">
+          <el-form-item class="items1" label="下单时间" prop="xdsj">
             <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
                             placeholder="选择下单时间">
             </el-date-picker>
@@ -13,19 +13,19 @@
                             placeholder="选择下单时间">
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="产品类型" prop="cplx">
+          <el-form-item  label="产品类型" prop="cplx">
             <el-select v-model="cplx" placeholder="请选择产品类型">
 
             </el-select>
           </el-form-item>
-          <el-form-item label="订单状态" prop="ddzt">
+          <el-form-item label="订单状态" prop="ddzt" style="min-width: 285px;display: flex;justify-content: flex-end;">
             <el-select v-model="ddzt" placeholder="请选择订单状态">
 
             </el-select>
           </el-form-item>
         </div>
         <div style="display: flex;align-items: center;justify-content: space-between;">
-          <el-form-item label="发货时间" prop="xdsj">
+          <el-form-item class="items1" label="发货时间" prop="xdsj">
             <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
                             placeholder="选择发货时间">
             </el-date-picker>
@@ -579,19 +579,22 @@ export default {
 }
 
 .shaixuan {
-  border-top: 1px solid #7395dc;
+  border-top: 1px solid rgba($color: #7395DC, $alpha: 0.3);
   width: 100%;
-  height: 150px;
-  border-bottom: 1px solid #bcbec6;
-  margin-bottom: 30px;
-  padding-top: 15px;
-  overflow: hidden;
+  min-height: 180px;
+  border-top: 1px solid rgba($color: #7395DC, $alpha: 0.3);
+  margin-bottom: 60px;
+  padding-top: 39px;
+  padding-bottom: 40px;
+  // overflow: hidden;
 }
 .shaixuan.h-0{
   margin-bottom: 0;
   border-bottom: none;
 }
-
+.qyktj {
+  padding-bottom: 40px;
+}
 .qyktj .el-form-item__content {
   display: flex;
   align-items: center;
@@ -607,6 +610,11 @@ export default {
 .el-form-item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  width:27.5%;
+}
+.items1 {
+  width:45%;
 }
 
 .shaixuan button {
@@ -631,10 +639,19 @@ export default {
 
 
 ::v-deep.cplx-el-input input {
-  width: 217px;
+  width: 230px;
+}
+::v-deep.el-select{
+  width: 230px;
 }
 
 .h-0 {
   height: 0 !important;
+}
+/deep/ .el-checkbox__label {
+  font-size: 18px;
+}
+/deep/ .el-input {
+  font-size: 18px;
 }
 </style>
