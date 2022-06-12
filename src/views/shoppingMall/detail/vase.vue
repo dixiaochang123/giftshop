@@ -25,7 +25,8 @@
             <router-link to="/shoppingMall/detail/detail">
               <div class="product-content">
                 <div class="product-img">
-                  <img style="width: 100%" src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt="">
+                  <img class="bgimg" style="width: 100%" src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt="">
+                  <img class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
                 </div>
                 <div class="product-desc">
                   <p style="padding-top:20px;">
@@ -166,9 +167,17 @@ export default {
       .product-img {
         // border-radius: 12px;
         // overflow: hidden;
-        > img {
+        position: relative;
+        .bgimg {
           border-radius: 8px;
           overflow: hidden;
+        }
+        .zoomicon {
+          width:rpx2multiple(42);
+          height:rpx2multiple(42);
+          position: absolute;
+          right: -5px;
+          bottom: -5px;
         }
       }
       .product-desc {
