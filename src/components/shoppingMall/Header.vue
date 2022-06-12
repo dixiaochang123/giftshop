@@ -6,10 +6,13 @@
         <div
             style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
           <div v-if="searchShow" class="searchs animate__animated" ref="searchs">
-            <el-autocomplete placeholder="请输入内容" v-model="hotsearch" :fetch-suggestions="fetchSuggestions"
-                             popper-class="search-header-popover-class" class="input-with-select search-header"
+            <el-autocomplete v-model="hotsearch"
+                             placeholder="请输入内容"
+                             :fetch-suggestions="fetchSuggestions"
+                             :popper-class="'search-header-popover-class'+(hotsearch?' hidden':'')"
+                             class="input-with-select search-header"
                              ref="autocomplete">
-              <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
+              <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close" style="cursor:pointer;"></i>
               <div style="color: #2D2E33;font-size: 20px;margin-bottom: 11px;">最近搜索</div>
               <div class="search-header-popover-class__results-container">
                 <template>
@@ -147,6 +150,14 @@ export default {
         },
       ],
     };
+  },
+  watch: {
+    $route: {
+      handler() {
+        this.searchShow = false;
+        this.hotsearch = "";
+      }
+    }
   },
   mounted() {
   },
@@ -514,52 +525,8 @@ export default {
   animation-name: fadeOutRight__1;
 }
 
-.search-header input {
+::v-deep.search-header input {
   min-width: 438px;
-}
-
-.search-header-popover-class {
-  background: linear-gradient(98deg, rgba(255, 255, 255, 0) 0%, #ffeee7 100%);
-  padding: 27px;
-  min-width: 624px;
-  margin-left: -50px !important;
-  margin-top: 40px !important;
-}
-
-.search-header-popover-class__results-container {
-  display: flex;
-}
-
-.search-header-popover-class__results-container > * {
-  padding: 7px 18px;
-  margin-right: 14px;
-  border-radius: 4px;
-  background: #f1f2f4;
-  color: #73757d;
-  font-size: 18px;
-}
-
-.search-header-popover-class__results-container > *.active {
-  background: #7395dc;
-  color: #ffffff;
-}
-
-.search-header-popover-class.el-autocomplete-suggestion {
-  width: 624px !important;
-}
-
-.search-header-popover-class.el-autocomplete-suggestion li {
-  padding: 0;
-  display: none;
-}
-
-.search-header-popover-class.el-autocomplete-suggestion li:nth-child(1) {
-  display: block;
-}
-
-.search-header-popover-class.el-autocomplete-suggestion li.highlighted,
-.search-header-popover-class.el-autocomplete-suggestion li:hover {
-  background-color: transparent;
 }
 
 .el-popper, .el-dropdown-menu {
@@ -587,5 +554,54 @@ export default {
   > div {
     color: #2D2E33 !important;
   }
+}
+</style>
+<style>
+.search-header-popover-class {
+  background: linear-gradient(98deg, rgba(255, 255, 255, 0) 0%, #ffeee7 100%);
+  padding: 27px;
+  min-width: 554px;
+  margin-left: -50px !important;
+  margin-top: 40px !important;
+}
+
+.search-header-popover-class.hidden {
+  display: none !important;
+}
+
+.search-header-popover-class__results-container {
+  display: flex;
+}
+
+.search-header-popover-class__results-container > * {
+  padding: 7px 18px;
+  margin-right: 14px;
+  border-radius: 4px;
+  background: #f1f2f4;
+  color: #73757d;
+  font-size: 18px;
+}
+
+.search-header-popover-class__results-container > *:hover {
+  background: #7395dc;
+  color: #ffffff;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion {
+  width: 554px !important;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion li {
+  padding: 0;
+  display: none;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion li:nth-child(1) {
+  display: block;
+}
+
+.search-header-popover-class.el-autocomplete-suggestion li.highlighted,
+.search-header-popover-class.el-autocomplete-suggestion li:hover {
+  background-color: transparent;
 }
 </style>
