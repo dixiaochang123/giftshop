@@ -249,6 +249,7 @@ export default {
           this.toggleSearchsClasses(false);
           setTimeout(() => {
             this.searchShow = false;
+            this.hotsearch = "";
           }, 800);
         });
       }
