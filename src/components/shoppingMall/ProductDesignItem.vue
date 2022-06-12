@@ -316,12 +316,16 @@ export default {
   height: rpx2multiple(32);
   border-radius: 50%;
   color: #ffffff;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   font-size: rpx2multiple(22);
   cursor: pointer;
   z-index: 99;
+}
+
+.ProductDesignItem-content__designs-carousel__item:hover .ProductDesignItem-content__designs-carousel__item-close-icon{
+  display: flex;
 }
 
 .ProductDesignItem-content__designs
