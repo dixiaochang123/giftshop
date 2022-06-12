@@ -17,7 +17,7 @@
     <template v-if="type==='online'">
       <div>
         <div class="title">整体效果</div>
-        <el-image :src="planDetail.main" style="width: calc(1000px);" />
+        <el-image :src="planDetail.main" style="width: 1000px;height: 1000px;" fit="cover"/>
       </div>
       <div style="margin-top: 100px">
         <div class="title">细节效果</div>
