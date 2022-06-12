@@ -1,7 +1,9 @@
 <template>
 <div class="color-box">
-    <slider ref="slider" :options="options" @slide="slide">
-        <slideritem v-for="(item, index) in 4" :key="index">
+    <slider ref="slider" :options="options" @slide="slide" @tap="onTap">
+        <slideritem @click="changeSlide(index)" v-for="(item, index) in 4" :key="index">
+            <img src="../../assets/img/slices/banner-1.png"
+             alt="">
         </slideritem>
     </slider>
     <div class="color-btn">
@@ -57,11 +59,16 @@ export default {
     },
     methods: {
         changeSlide(index) {
+            console.log(index)
             this.current = index;
             this.$refs.slider.$emit('slideTo', index)
         },
         slide(slide) {
             this.current = slide.currentPage
+        },
+        onTap(slide) {
+            console.log(slide)
+            // this.current = slide.currentPage
         }
     }
 }
@@ -78,7 +85,12 @@ export default {
         height: rpx2multiple(420);
         background-color: #999;
         margin-right: rpx2multiple(50);
-        border-radius: 10px;
+        border-radius: 12px;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     /deep/ .slider-active {
@@ -105,6 +117,7 @@ export default {
             &.active {
                 .i-btn {
                     border-color: #7395DC;
+                    padding:2px;
                 }
             }
 
@@ -114,10 +127,10 @@ export default {
         }
 
         .i-btn {
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             margin: 0 auto;
-            border: 1px solid #FFFFFF;
+            border: 1px solid transparent;
             border-radius: 100px;
         }
 
@@ -126,7 +139,7 @@ export default {
             height: 24px;
             display: block;
             border-radius: 100px;
-            border: 1px solid #f1f1f1;
+            // border: 1px solid #f1f1f1;
 
         }
     }
