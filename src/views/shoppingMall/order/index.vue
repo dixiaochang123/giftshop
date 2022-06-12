@@ -277,7 +277,7 @@ export default {
   font-family: PingFangSC-Regular, PingFang SC;
   font-weight: 400;
   color: #2D2E33;
-  padding: 0 14px 14px;
+  padding: 5px 14px 16px;
   box-sizing: border-box;
 }
 
