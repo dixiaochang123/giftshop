@@ -34,7 +34,7 @@
       </div>
       <div class="psfs">
         <div class="tit title" style="margin: 0;">配送方式</div>
-        <el-select></el-select>
+        <el-select v-model="psfs"></el-select>
 
         <div class="tit2" style="font-size: 24px;">
           <span style="margin-right: 24px;">运费:</span>
@@ -65,12 +65,31 @@
         </div>
       </div>
 
-      <div class="shrxx">
-        <div class="dx" @click="zffs=1" :class="{active:zffs==1}"></div>
+      <div class="shrxx" :class="{'shrxx-active':zffs===0}">
+        <div class="dx" @click="zffs=0" :class="{'dx-active':zffs===0}">
+          <span class="el-checkbox__inner"></span>
+        </div>
         <div>喵大人</div>
         <div class="sj">15258888888</div>
         <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
       </div>
+      <div class="shrxx" :class="{'shrxx-active':zffs===1}">
+        <div class="dx" @click="zffs=1" :class="{'dx-active':zffs===1}">
+          <span class="el-checkbox__inner"></span>
+        </div>
+        <div>喵大人</div>
+        <div class="sj">15258888888</div>
+        <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
+      </div>
+      <div class="shrxx" :class="{'shrxx-active':zffs===2}">
+        <div class="dx" @click="zffs=2" :class="{'dx-active':zffs===2}">
+          <span class="el-checkbox__inner"></span>
+        </div>
+        <div>喵大人</div>
+        <div class="sj">15258888888</div>
+        <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
+      </div>
+
       <div class="liyan">
         <div class="title" style="margin-top: 0;">留言</div>
         <textarea></textarea>
@@ -108,6 +127,7 @@ export default {
   name: 'order',
   data() {
     return {
+      psfs: "",
       zffs: 1,
       sjfaLbActiveIndex: 0
     };
@@ -301,10 +321,14 @@ export default {
   align-items: center;
   height: 96px;
   background: #FFFFFF;
-  box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
   border-radius: 8px;
   width: 100%;
   margin-bottom: 20px;
+}
+
+.shrxx.shrxx-active {
+  border: 1px solid #7395DC;
+  box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
 }
 
 .shrxx img {
@@ -465,18 +489,48 @@ export default {
 }
 
 .dx {
+  position: relative;
   border-radius: 2px;
+  overflow: hidden;
   width: 16px;
   height: 16px;
   border: 1px solid rgba(115, 117, 125, 1);
   min-width: 16px;
   margin-left: 24px;
   margin-right: 18px;
+  color: transparent;
 }
 
-.active {
+.dx.dx-active {
   width: 16px;
   height: 16px;
-  background: url(https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng38e71a23fbbf2cc1c7323e2ea35ca0734c1b19186a6c2733ffda061d17333f6b) 100% no-repeat;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+}
+
+.dx:hover,
+.dx.dx-active {
+  border-color: #7395dc;
+}
+
+.dx .el-checkbox__inner,
+.dx .el-checkbox__inner:hover {
+  border: 1px solid transparent;
+  border-radius: unset;
+}
+
+.dx.dx-active .el-checkbox__inner {
+  width: 100%;
+  height: 100%;
+  background-color: #7395dc;
+}
+
+.dx.dx-active .el-checkbox__inner:after {
+  transform: rotate(45deg) scaleY(1);
+  left: 5px;
+  top: 2px;
 }
 </style>
