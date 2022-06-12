@@ -11,10 +11,10 @@
       <div class="spqd">
         <div class="spqdtop">
           <div style="width: 500px;text-align: center;">商品信息</div>
-          <div style="width: 220px;text-align: center;">单价</div>
-          <div style="width: 220px;text-align: center;">数量</div>
-          <div style="width: 220px;text-align: center;">运费</div>
-          <div style="width: 220px;text-align: center;">小计</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">单价</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">数量</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">运费</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">小计</div>
         </div>
         <div class="spqdnr">
           <div class="spxx" style="width: 500px;">
@@ -24,10 +24,10 @@
               <div class="js">母亲节真诚礼至特别巨献妈妈的礼物</div>
             </div>
           </div>
-          <div style="width: 220px;text-align: center;">￥30.00</div>
-          <div style="width: 220px;text-align: center;">100</div>
-          <div style="width: 220px;text-align: center;">￥00.00</div>
-          <div style="font-size: 28px;font-weight: 500;color: #2D2E33;width: 220px;text-align: center;">
+          <div style="width: 220px;text-align: center;font-size: 18px;">￥30.00</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">100</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">￥00.00</div>
+          <div style="font-size: 28px;font-weight: 500;color: #2D2E33;width: 220px;text-align: center;font-size: 18px;">
             ￥3000.00元
           </div>
         </div>
@@ -36,7 +36,10 @@
         <div class="tit title" style="margin: 0;">配送方式</div>
         <el-select></el-select>
 
-        <div class="tit2">运费:¥0.00</div>
+        <div class="tit2" style="font-size: 24px;">
+          <span style="margin-right: 24px;">运费:</span>
+          <span>¥0.00</span>
+        </div>
       </div>
 
       <div class="title">
@@ -235,6 +238,11 @@ export default {
   border-radius: 4px;
   margin-left: 60px;
   margin-right: 40px;
+}
+::v-deep.psfs .el-select input{
+  font-size: 18px;
+  height: 42px;
+  line-height: 42px;
 }
 
 .psfs .tit2 {
