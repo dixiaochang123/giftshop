@@ -34,7 +34,7 @@
 
       </div>
     </div>
-    <router-view/>
+    <router-view :filterPanel="filterPanel"/>
 
   </div>
 </template>
@@ -42,11 +42,6 @@
 <script>
 export default {
   name: "Ordercenter",
-  provide() {
-    return {
-      filterPanel: this.filterPanel
-    }
-  },
   data() {
     return {
       filterPanel: {

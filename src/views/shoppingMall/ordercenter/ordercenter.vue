@@ -1,19 +1,23 @@
 <template>
   <div class="mycart">
     <div class="shaixuan" :class="{'h-0': !computedFilterPanelActive}">
-      <el-form class="qyktj qyktj1 h-0">
+      <el-form class="qyktj qyktj1">
         <div
-            style="display: flex;align-items: center;justify-content: space-between;margin-top: 20px;margin-bottom: 20px;">
-          <el-form-item class="items1" label="下单时间" prop="xdsj">
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择下单时间">
-            </el-date-picker>
-            -
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择下单时间">
-            </el-date-picker>
-          </el-form-item>
-          <el-form-item  label="产品类型" prop="cplx">
+            style="display: flex;align-items: center;justify-content: space-between;margin-bottom: 24px;">
+          <div class="items1" style="display: flex;align-items: center;">
+            <el-form-item label="下单时间" prop="xdsj1">
+              <el-date-picker clearable size="small" v-model="xdsj1" type="date" value-format="yyyy-MM-dd"
+                              placeholder="选择下单时间">
+              </el-date-picker>
+            </el-form-item>
+            <div style="padding: 0 14px;">-</div>
+            <el-form-item prop="xdsj2">
+              <el-date-picker clearable size="small" v-model="xdsj2" type="date" value-format="yyyy-MM-dd"
+                              placeholder="选择下单时间">
+              </el-date-picker>
+            </el-form-item>
+          </div>
+          <el-form-item label="产品类型" prop="cplx">
             <el-select v-model="cplx" placeholder="请选择产品类型">
 
             </el-select>
@@ -25,16 +29,20 @@
           </el-form-item>
         </div>
         <div style="display: flex;align-items: center;justify-content: space-between;">
-          <el-form-item class="items1" label="发货时间" prop="xdsj">
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择发货时间">
-            </el-date-picker>
-            -
-            <el-date-picker clearable size="small" v-model="xdsj" type="date" value-format="yyyy-MM-dd"
-                            placeholder="选择发货时间">
-            </el-date-picker>
-          </el-form-item>
-          <el-form-item label="订单编号" prop="cplx">
+          <div class="items1" style="display: flex;align-items: center;">
+            <el-form-item label="发货时间" prop="fhsj1">
+              <el-date-picker clearable size="small" v-model="fhsj1" type="date" value-format="yyyy-MM-dd"
+                              placeholder="选择发货时间">
+              </el-date-picker>
+            </el-form-item>
+            <div style="padding: 0 14px;">-</div>
+            <el-form-item prop="fhsj2">
+              <el-date-picker clearable size="small" v-model="fhsj2" type="date" value-format="yyyy-MM-dd"
+                              placeholder="选择发货时间">
+              </el-date-picker>
+            </el-form-item>
+          </div>
+          <el-form-item label="订单编号" prop="ddbh">
             <el-input v-model="ddbh" placeholder="请输入订单编号" class="cplx-el-input"/>
           </el-form-item>
           <el-form-item style="min-width: 285px;display: flex;justify-content: flex-end;">
@@ -46,7 +54,7 @@
 
     </div>
     <div class="tabs">
-      <div class="header">
+      <div class="header" style="margin-bottom: 20px;">
         <div class="header_1" style="width:40%;text-align: left;">
           <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"
                        style="font-size: 18px;">全选
@@ -113,13 +121,18 @@
 <script>
 export default {
   name: "Ordercenter",
-  inject: ["filterPanel"],
+  props: {
+    filterPanel: Object
+  },
   data() {
     return {
       ddbh: "",
       cplx: "",
       ddzt: "",
-      xdsj: null,
+      xdsj1: null,
+      xdsj2: null,
+      fhsj1: null,
+      fhsj2: null,
       bq: 1,
       tabbq: 1,
       checkAll: false,
@@ -492,7 +505,7 @@ export default {
   height: 64px;
   background: #f6f9fe;
   border-radius: 8px 8px 0px 0px;
-  border: 1px solid #bcbec6;
+  border-bottom: 1px solid #bcbec6;
   padding-left: 20px;
   position: relative;
 }
@@ -582,19 +595,23 @@ export default {
   border-top: 1px solid rgba($color: #7395DC, $alpha: 0.3);
   width: 100%;
   min-height: 180px;
-  border-top: 1px solid rgba($color: #7395DC, $alpha: 0.3);
-  margin-bottom: 60px;
-  padding-top: 39px;
-  padding-bottom: 40px;
+  border-bottom: 1px solid rgba($color: #7395DC, $alpha: 0.3);
+  margin-bottom: 52px;
+  padding: 40px 0;
   // overflow: hidden;
 }
-.shaixuan.h-0{
-  margin-bottom: 0;
+
+.shaixuan.h-0 {
+  padding: 0;
+  min-height: unset;
+  margin-bottom: 52px;
   border-bottom: none;
+  overflow: hidden;
 }
-.qyktj {
-  padding-bottom: 40px;
+.shaixuan.h-0 .qyktj{
+  display: none;
 }
+
 .qyktj .el-form-item__content {
   display: flex;
   align-items: center;
@@ -611,10 +628,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width:27.5%;
+  width: 27.5%;
 }
+
 .items1 {
-  width:45%;
+  width: 45%;
+}
+
+.items1 .el-form-item {
+  width: unset;
 }
 
 .shaixuan button {
@@ -641,17 +663,25 @@ export default {
 ::v-deep.cplx-el-input input {
   width: 230px;
 }
-::v-deep.el-select{
+
+::v-deep.el-select {
   width: 230px;
 }
 
 .h-0 {
   height: 0 !important;
 }
+
 /deep/ .el-checkbox__label {
   font-size: 18px;
 }
+
 /deep/ .el-input {
   font-size: 18px;
+}
+
+/deep/.qyktj1 input.el-input__inner{
+  height: 40px;
+  line-height: 40px;
 }
 </style>
