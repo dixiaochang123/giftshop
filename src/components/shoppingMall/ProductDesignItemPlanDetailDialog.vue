@@ -34,7 +34,7 @@
                 <div class="detail_pictures-item_pic_wrap">
                   <el-image :src="picture.src"/>
                 </div>
-                <p>{{ picture.name }}</p>
+                <p style="font-size: 22px;">{{ picture.name }}</p>
               </div>
             </template>
           </div>
