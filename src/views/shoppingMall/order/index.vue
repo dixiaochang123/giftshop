@@ -18,7 +18,7 @@
         </div>
         <div class="spqdnr">
           <div class="spxx" style="width: 500px;">
-            <img src="assets/logo.png"/>
+            <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" style="border-radius: 4px;"/>
             <div class="info">
               <div class="name">愿时光停在花</div>
               <div class="js">母亲节真诚礼至特别巨献妈妈的礼物</div>
