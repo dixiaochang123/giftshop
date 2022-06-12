@@ -816,6 +816,11 @@ export default {
       display: block;
       background: #fff;
     }
+    &:hover {
+      span {
+        color:#000000;
+      }
+    }
   }
 }
 .product-data {
@@ -871,5 +876,12 @@ export default {
 .el-button--medium {
   font-size: 22px;
   padding: 11px 34px;
+}
+.add-cart-box {
+  .el-button:hover {
+    color: #ff946b;
+    border-color: #ff946b;
+    background-color: #ffffff;
+  }
 }
 </style>
