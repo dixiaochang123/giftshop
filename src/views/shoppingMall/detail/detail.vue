@@ -824,7 +824,7 @@ export default {
   }
 }
 .product-data {
-  border-bottom: 1px solid #dcdfe6;
+  border-bottom: 1px solid rgba($color: #7395DC, $alpha: 0.3);
   padding: 30px 0 10px 0;
   margin-bottom: 50px;
   .product-data-box {
