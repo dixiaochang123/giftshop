@@ -144,4 +144,7 @@ export default {
         }
     }
 }
+/deep/ .slider-wrapper {
+    align-items: baseline;
+}
 </style>
