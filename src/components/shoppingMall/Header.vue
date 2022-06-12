@@ -3,14 +3,18 @@
     <div class="shopping_haeder">
       <div class="logo" @click="handleClicklogo"><img src="../../assets/img/slices/logo.png" alt=""></div>
       <div class="container">
-        <div style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
+        <div
+            style="position: relative;flex: 1;height:100%;align-items: center; justify-content: flex-end;display: flex;">
           <div v-if="searchShow" class="searchs animate__animated" ref="searchs">
-            <el-autocomplete placeholder="请输入内容" v-model="hotsearch" :fetch-suggestions="fetchSuggestions" popper-class="search-header-popover-class" class="input-with-select search-header" ref="autocomplete">
+            <el-autocomplete placeholder="请输入内容" v-model="hotsearch" :fetch-suggestions="fetchSuggestions"
+                             popper-class="search-header-popover-class" class="input-with-select search-header"
+                             ref="autocomplete">
               <i @click="handleSearchsToggle(false)" slot="prepend" class="el-icon-close"></i>
               <div style="color: #2D2E33;font-size: 20px;margin-bottom: 11px;">最近搜索</div>
               <div class="search-header-popover-class__results-container">
-                <template >
-                  <div v-for="item in hotsearchSuggestions" :class="{active:hotsearch===item.value}" :key="item.value" @click.stop="setHotsearch(item)">
+                <template>
+                  <div v-for="item in hotsearchSuggestions" :class="{active:hotsearch===item.value}" :key="item.value"
+                       @click.stop="setHotsearch(item)">
                     {{ item.value }}
                   </div>
                 </template>
@@ -25,55 +29,64 @@
         <el-dropdown class="el-dropdown-cgdd" style="cursor: pointer;" @command="jumpOrderPage">
           <div class="icon-order"></div>
           <el-dropdown-menu slot="dropdown" placement="bottom-end">
-            <el-dropdown-item  class="cgdd" :command="{index:0,name:'常规订单'}">
-            <div @mouseenter="changguiIcon=true" @mouseleave="changguiIcon=false">
-              <img v-show="changguiIcon==false" style="vertical-align: text-top;" src="../../assets/img/slices/常规订单.png" alt="" srcset="">
-              <img v-show="changguiIcon==true" style="vertical-align: text-top;" src="../../assets/img/slices/常规订单-hover.png" alt="" srcset="">
-              常规订单
-            </div>
+            <el-dropdown-item class="cgdd" :command="{index:0,name:'常规订单'}">
+              <div @mouseenter="changguiIcon=true" @mouseleave="changguiIcon=false">
+                <img v-show="changguiIcon==false" style="vertical-align: text-top;"
+                     src="../../assets/img/slices/常规订单.png" alt="" srcset="">
+                <img v-show="changguiIcon==true" style="vertical-align: text-top;"
+                     src="../../assets/img/slices/常规订单-hover.png" alt="" srcset="">
+                常规订单
+              </div>
             </el-dropdown-item>
             <el-dropdown-item class="cgdd" :command="{index:1,name:'打样订单'}">
-            <div @mouseenter="dayangIcon=true" @mouseleave="dayangIcon=false">
-            <img v-if="dayangIcon==false" style="vertical-align: text-top;" src="../../assets/img/slices/打样订单.png" alt="" srcset="">
-            <img v-if="dayangIcon==true" style="vertical-align: text-top;" src="../../assets/img/slices/打样订单-hover.png" alt="" srcset="">
-            打样订单</div></el-dropdown-item>
+              <div @mouseenter="dayangIcon=true" @mouseleave="dayangIcon=false">
+                <img v-if="dayangIcon==false" style="vertical-align: text-top;" src="../../assets/img/slices/打样订单.png"
+                     alt="" srcset="">
+                <img v-if="dayangIcon==true" style="vertical-align: text-top;"
+                     src="../../assets/img/slices/打样订单-hover.png" alt="" srcset="">
+                打样订单
+              </div>
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <div style="cursor: pointer;margin-right: 40px;" class="icon-design" @click="viewMyDesign"></div>
-        <el-dropdown :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end" @command="onCommand">
-          <img v-if="true" style="border-radius: 50%;cursor: pointer;" width="60px" height="60px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
+        <el-dropdown :hide-on-click="false" style="display: flex;align-items: center;" placement="bottom-end"
+                     @command="onCommand">
+          <img v-if="true" style="border-radius: 50%;cursor: pointer;" width="60px" height="60px"
+               src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" alt="" srcset="">
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="account">
               <div style="color: #2D2E33;font-weight: 500;font-size: 16px;">
                 <span>喵大人gx</span>
               </div>
             </el-dropdown-item>
-            <el-dropdown-item divided command="account">
+            <el-dropdown-item class="header_useravtar_el-dropdown-item" divided command="account">
               <div style="color: #71737B;font-size: 16px;">
-                <i class="el-icon-user" style="font-size: 18px;"></i>
+                <div data-iconindex="account"></div>
                 <span style="padding-left:10px;">账号管理</span>
               </div>
             </el-dropdown-item>
-            <el-dropdown-item command="address">
+            <el-dropdown-item class="header_useravtar_el-dropdown-item" command="address">
               <div style="color: #71737B;font-size: 16px;">
-                <i class="el-icon-location-information" style="font-size: 18px;"></i>
+                <div data-iconindex="address"></div>
                 <span style="padding-left:10px;">地址信息</span>
               </div>
             </el-dropdown-item>
-            <el-dropdown-item command="invoice">
+            <el-dropdown-item class="header_useravtar_el-dropdown-item" command="invoice">
               <div style="color: #71737B;font-size: 16px;">
-                <i class="el-icon-tickets" style="font-size: 18px;"></i>
+                <div data-iconindex="invoice"></div>
                 <span style="padding-left:10px;">发票信息</span>
               </div>
             </el-dropdown-item>
-            <el-dropdown-item divided command="logout">
+            <el-dropdown-item class="header_useravtar_el-dropdown-item" divided command="logout">
               <div style="color: #71737B;font-size: 16px;">
-                <i class="el-icon-switch-button" style="font-size: 18px;"></i>
+                <div data-iconindex="logout"></div>
                 <span style="padding-left:10px;">退出登陆</span>
               </div>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+        <div style="display: none;" v-html="headerDropDownItemIconStyleHtml"></div>
 
         <el-button v-if="false" class="icon-login" plain @click="$router.push('/login')">登陆</el-button>
         <el-button v-if="false" class="icon-register" @click="$router.push('/register')" type="text">注册</el-button>
@@ -94,8 +107,30 @@ export default {
   name: "Header",
   data() {
     return {
-      changguiIcon:false,
-      dayangIcon:false,
+      headerDropDownItemIconStyleHtml: `
+        <style>
+          [class*="header_useravtar_el-dropdown-item"]>div{
+              display: flex;
+              align-items: center;
+          }
+          [class*="header_useravtar_el-dropdown-item"] [data-iconindex]{
+              width: 20px;
+              height: 20px;
+              background-size: cover;
+              background-repeat: no-repeat;
+          }
+          [class*="header_useravtar_el-dropdown-item"] [data-iconindex="account"]{background-image: url("${require('@/assets/img/header/account_icon.png')}")}
+          [class*="header_useravtar_el-dropdown-item"] [data-iconindex="address"]{background-image: url("${require('@/assets/img/header/address_icon.png')}")}
+          [class*="header_useravtar_el-dropdown-item"] [data-iconindex="invoice"]{background-image: url("${require('@/assets/img/header/invoice_icon.png')}")}
+          [class*="header_useravtar_el-dropdown-item"] [data-iconindex="logout"]{background-image: url("${require('@/assets/img/header/logout_icon.png')}")}
+          [class*="header_useravtar_el-dropdown-item"]:hover [data-iconindex="account"]{background-image: url("${require('@/assets/img/header/account_icon-hover.png')}")}
+          [class*="header_useravtar_el-dropdown-item"]:hover [data-iconindex="address"]{background-image: url("${require('@/assets/img/header/address_icon-hover.png')}")}
+          [class*="header_useravtar_el-dropdown-item"]:hover [data-iconindex="invoice"]{background-image: url("${require('@/assets/img/header/invoice_icon-hover.png')}")}
+          [class*="header_useravtar_el-dropdown-item"]:hover [data-iconindex="logout"]{background-image: url("${require('@/assets/img/header/logout_icon-hover.png')}")}
+        </style>
+      `,
+      changguiIcon: false,
+      dayangIcon: false,
       searchShow: false,
       activeIndex: "1",
       activeIndex2: "1",
@@ -113,12 +148,11 @@ export default {
       ],
     };
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     setHotsearch(item) {
-      document
-        .querySelectorAll(".search-header-popover-class>div>div>ul>li")
-        [this.hotsearchSuggestions.indexOf(item)].click();
+      document.querySelectorAll(".search-header-popover-class>div>div>ul>li")[this.hotsearchSuggestions.indexOf(item)].click();
     },
     fetchSuggestions(query, callback) {
       callback(this.hotsearchSuggestions);
@@ -188,10 +222,10 @@ export default {
     },
     toggleSearchsClasses(val) {
       this.$refs.searchs.classList[val ? "add" : "remove"](
-        "animate__fadeInRight__1"
+          "animate__fadeInRight__1"
       );
       this.$refs.searchs.classList[val ? "remove" : "add"](
-        "animate__fadeOutRight__1"
+          "animate__fadeOutRight__1"
       );
     },
     handleSearchsToggle(flag) {
@@ -321,13 +355,11 @@ export default {
       height: rpx2multiple(32);
       margin-left: 40px;
       margin-right: 40px;
-      background: url("../../assets/img/slices/icon-search.png") no-repeat
-        center center;
+      background: url("../../assets/img/slices/icon-search.png") no-repeat center center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-search-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-search-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
@@ -337,13 +369,11 @@ export default {
       height: rpx2multiple(32);
       margin-right: 40px;
       //   margin: 0 20px;
-      background: url("../../assets/img/slices/icon-cat.png") no-repeat center
-        center;
+      background: url("../../assets/img/slices/icon-cat.png") no-repeat center center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-cat-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-cat-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
@@ -352,13 +382,11 @@ export default {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       //   margin-left: 40px;
-      background: url("../../assets/img/slices/icon-order.png") no-repeat center
-        center;
+      background: url("../../assets/img/slices/icon-order.png") no-repeat center center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-order-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-order-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
@@ -367,13 +395,11 @@ export default {
       width: rpx2multiple(32);
       height: rpx2multiple(32);
       margin-left: 40px;
-      background: url("../../assets/img/slices/icon-design.png") no-repeat
-        center center;
+      background: url("../../assets/img/slices/icon-design.png") no-repeat center center;
       background-size: 100% 100%;
 
       &:hover {
-        background: url("../../assets/img/slices/icon-design-1.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-design-1.png") no-repeat center center;
         background-size: 100% 100%;
       }
     }
@@ -418,8 +444,7 @@ export default {
       .icon-search {
         width: rpx2multiple(32);
         height: rpx2multiple(32);
-        background: url("../../assets/img/slices/icon-search.png") no-repeat
-          center center;
+        background: url("../../assets/img/slices/icon-search.png") no-repeat center center;
         background-size: 100% 100%;
         margin-right: 40px;
       }
@@ -518,9 +543,11 @@ export default {
   background: #7395dc;
   color: #ffffff;
 }
+
 .search-header-popover-class.el-autocomplete-suggestion {
   width: 624px !important;
 }
+
 .search-header-popover-class.el-autocomplete-suggestion li {
   padding: 0;
   display: none;
@@ -534,25 +561,31 @@ export default {
 .search-header-popover-class.el-autocomplete-suggestion li:hover {
   background-color: transparent;
 }
-.el-popper,.el-dropdown-menu {
+
+.el-popper, .el-dropdown-menu {
   top: 90px !important;
 }
+
 /deep/ .el-dropdown-menu__item {
   font-size: 18px;
   padding: 5px 20px;
   color: #71737B;
+
   > div span {
     font-size: 18px;
   }
 }
+
 /deep/ .el-dropdown-menu__item:focus, /deep/ .el-dropdown-menu__item:not(.is-disabled):hover {
-    // background-color: none !important;
-    color: #2D2E33;
+  // background-color: none !important;
+  color: #2D2E33;
 }
+
 /deep/ .el-dropdown-menu__item:not(.is-disabled):hover {
-    background-color: transparent !important;
-    > div {
-      color: #2D2E33 !important;
-    }
+  background-color: transparent !important;
+
+  > div {
+    color: #2D2E33 !important;
+  }
 }
 </style>
