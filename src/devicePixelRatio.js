@@ -30,6 +30,9 @@ class DevicePixelRatio {
             }
         }
         //校正浏览器缩放比例
+        //mac小屏 2880 1440(window.screen.width) 0.7 
+        //mac大屏 2560 2560(window.screen.width) 1 
+        //window  1920 2560(window.screen.width) 1.1
     _correct() {
         console.log(window.screen.width * window.devicePixelRatio,window.devicePixelRatio)
             let t = this;
@@ -41,11 +44,11 @@ class DevicePixelRatio {
             } else {
                 document.getElementsByTagName('body')[0].style.zoom = 1;
                 // document.getElementsByTagName('body')[0].style.transform = 'scale(1)';
-                document.getElementsByTagName('body')[0].style.transform = 'none';
-                document.getElementsByTagName('body')[0].style['transform-origin']= 'center';
-                document.getElementsByTagName('body')[0].style['position']= 'absolute';
-                document.getElementsByTagName('body')[0].style['width']= '100%';
-                document.getElementsByTagName('body')[0].style['color']= 'transparent';
+                // document.getElementsByTagName('body')[0].style.transform = 'none';
+                // document.getElementsByTagName('body')[0].style['transform-origin']= 'center';
+                // document.getElementsByTagName('body')[0].style['position']= 'absolute';
+                // document.getElementsByTagName('body')[0].style['width']= '100%';
+                // document.getElementsByTagName('body')[0].style['color']= '100%';
 
             }
         }
