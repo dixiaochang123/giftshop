@@ -74,7 +74,11 @@
           </el-checkbox>
           <div class="time">2020-05-21 18:46:57</div>
           <div class="ddbh">订单编号：<span>2637283464955497116</span></div>
-          <div class="deleted">删除订单</div>
+          <template v-if="item.ddzt==='交易关闭'">
+            <div class="deleted-wrapper">
+              <span @click="deleted(item,index)"><i class="el-icon-delete"></i>删除订单</span>
+            </div>
+          </template>
         </div>
         <div style="display: flex;align-items: center;">
           <div class="header_1" style="width:40%;text-align: left;display: inline-block;">
@@ -146,7 +150,7 @@ export default {
           p1: "愿时光停在花",
           p2: "母亲节真诚礼至特别巨献妈妈的礼物",
           shr: "喵大人",
-          ddzt: "待支付",
+          ddzt: "交易关闭",
           sumb: "3000.00",
           DesignNumber: "2",
           type: '1'
@@ -612,7 +616,8 @@ export default {
   border-bottom: none;
   overflow: hidden;
 }
-.shaixuan.h-0 .qyktj{
+
+.shaixuan.h-0 .qyktj {
   display: none;
 }
 
@@ -657,10 +662,19 @@ export default {
   margin-left: 20px;
 }
 
-.deleted {
-  position: absolute;
-  right: 30px;
-  top: 10px;
+.deleted-wrapper {
+  flex: 1;
+  text-align: right;
+  color: #73757D;
+
+  span {
+    i {
+      margin-right: 5px;
+    }
+
+    margin-right: 30px;
+    cursor: pointer;
+  }
 }
 
 
@@ -684,7 +698,7 @@ export default {
   font-size: 18px;
 }
 
-/deep/.qyktj1 input.el-input__inner{
+/deep/ .qyktj1 input.el-input__inner {
   height: 40px;
   line-height: 40px;
 }
