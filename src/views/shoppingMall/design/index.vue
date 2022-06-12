@@ -11,7 +11,7 @@
       <div :class="{active:activePanel==='producing'}" @click="switchPanel('producing')">生产中</div>
     </div>
 
-    <router-view/>
+    <router-view :designItemPlanDetailDialog="designItemPlanDetailDialog"/>
     <product-design-item-plan-detail-dialog @edit="onDesignItemPlanDetailDialogEdit"
                                             @share="onDesignItemPlanDetailDialogShare"
                                             @download="onDesignItemPlanDetailDialogDownload"
@@ -25,11 +25,6 @@ import ProductDesignItemPlanDetailDialog from "@/components/shoppingMall/Product
 export default {
   name: "index",
   components: {ProductDesignItemPlanDetailDialog},
-  provide() {
-    return {
-      designItemPlanDetailDialog: this.designItemPlanDetailDialog
-    }
-  },
   data() {
     return {
       activePanel: "undetermined",

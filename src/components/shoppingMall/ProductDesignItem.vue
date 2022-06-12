@@ -64,10 +64,10 @@
 <script>
 export default {
   name: "ProductDesignItem",
-  inject: ["designItemPlanDetailDialog"],
   props: {
     type: String,
     value: Object,
+    designItemPlanDetailDialog: Object
   },
   data() {
     return {

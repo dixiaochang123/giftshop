@@ -7,12 +7,12 @@
     <div class="undetermined-content">
       <div v-show="activeType==='online'">
         <template v-for="i in 10">
-          <product-design-item type="online" :key="i" style="margin-bottom: calc(40px);" @design-add="onDesignAdd"/>
+          <product-design-item :design-item-plan-detail-dialog="designItemPlanDetailDialog" type="online" :key="i" style="margin-bottom: calc(40px);" @design-add="onDesignAdd"/>
         </template>
       </div>
       <div v-show="activeType==='offline'">
         <template v-for="i in 10">
-          <product-design-item type="offline" :key="i" style="margin-bottom: calc(40px);"/>
+          <product-design-item :design-item-plan-detail-dialog="designItemPlanDetailDialog" type="offline" :key="i" style="margin-bottom: calc(40px);"/>
         </template>
       </div>
     </div>
@@ -27,6 +27,9 @@ import onlineDesign from "@/components/onlineDesign/onlineDesign";
 export default {
   name: "undetermined",
   components: {ProductDesignItem, onlineDesign},
+  props:{
+    designItemPlanDetailDialog: Object
+  },
   data() {
     return {
       dialogOnlineDesign: false,
