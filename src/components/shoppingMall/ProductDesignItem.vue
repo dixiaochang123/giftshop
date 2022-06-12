@@ -118,6 +118,7 @@ export default {
     },
     // eslint-disable-next-line no-unused-vars
     viewPlan(item) {
+      // document.getElementsByTagName('body')[0].style.transform ='none'
       //TODO: Mock Data
       this.designItemPlanDetailDialog.instance &&
         this.designItemPlanDetailDialog.instance.open(

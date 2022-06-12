@@ -117,8 +117,8 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog .el-dialog__body {
-  width: rpx2multiple(1200);
-  flex: 1;
+  width: rpx2multiple(1380);
+  // flex: 1;
   overflow-y: auto;
 }
 

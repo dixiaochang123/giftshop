@@ -39,8 +39,9 @@ class DevicePixelRatio {
                 document.getElementsByTagName('body')[0].style.zoom = 1 / window.devicePixelRatio;
                 
             } else {
-                document.getElementsByTagName('body')[0].style.zoom = 1;
-                document.getElementsByTagName('body')[0].style.transform = 'scale(1)';
+                // document.getElementsByTagName('body')[0].style.zoom = 1;
+                // document.getElementsByTagName('body')[0].style.transform = 'scale(1)';
+                document.getElementsByTagName('body')[0].style.transform = 'none';
                 document.getElementsByTagName('body')[0].style['transform-origin']= 'center';
                 document.getElementsByTagName('body')[0].style['position']= 'absolute';
                 document.getElementsByTagName('body')[0].style['width']= '100%';
