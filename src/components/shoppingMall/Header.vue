@@ -241,8 +241,8 @@ export default {
   top: 0;
   z-index: 110;
   box-shadow: rgba(0, 0, 0, 0.15) 0 0 12px;
-  background-color: rgba(255, 255, 255, 0.8);
-  background-color: #000;
+  // background-color: rgba(255, 255, 255, 0.8);
+  background-color: #2D2E33;
 
   .logo {
     width: rpx2multiple(180);
