@@ -76,9 +76,9 @@
             <div class="workmanship">
               <span class="type-name" style="margin-left:0">工艺</span>
               <div class="workmanship-box">
-                <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
-                  <img :src="item.url">
-                  <div class="img-item-desc img-item-desc1">
+                <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index">
+                  <img :src="item.url" :class="{'activeItem' : item.index === workmanshipActive}">
+                  <div class="img-item-desc">
                     <span>丝绒（胶浆）</span>
                   </div>
                 </span>
@@ -176,11 +176,18 @@
               <el-tab-pane label="商品介绍" name="first">
                 <div class="product-data">
                   <div class="product-data-box">
-                    <h5><span>长度</span><span>20cm</span></h5>
-                    <h5><span>宽度</span><span>20cm</span></h5>
-                    <h5><span>厚度</span><span>5cm</span></h5>
-                    <h5><span>材质</span><span>玻璃</span></h5>
-                    <h5><span>工艺</span><span>玻璃</span></h5>
+                    <div>
+                      <p class="first_p"><span>长度</span><span>20cm</span></p>
+                      <p><span>材质</span><span>玻璃</span></p>
+                    </div>
+                    <div>
+                      <p class="first_p"><span>宽度</span><span>20cm</span></p>
+                      <p><span>工艺</span><span>玻璃</span></p>
+                    </div>
+                    <div>
+                      <p class="first_p"><span>厚度</span><span>5cm</span></p>
+                      <p><span>工艺</span><span>玻璃</span></p>
+                    </div>
                   </div>
                 </div>
                 <div class="pro_img" v-for="item in 3" :key="item.id">
@@ -527,7 +534,7 @@ export default {
   width: 100%;
 }
 .intro-price {
-  height: 105px;
+  height: 136px;
   background: #f6f9fe;
   display: flex;
   //   justify-content: space-around;
@@ -545,10 +552,11 @@ export default {
 }
 .img-item-desc {
   height: 60px;
-  //  opacity: 0.7;
-  background: #e4e4e4;
-  border-radius: 0px 24px 0px 0px;
+  //  opacity: 0.9;
+  // background: #e4e4e4;
+  background: rgba($color: #e4e4e4, $alpha: 0.5);
   backdrop-filter: blur(10px);
+  border-radius: 0px 24px 12px 12px;
   font-size: 22px;
   display: block;
   position: absolute;
@@ -791,7 +799,7 @@ export default {
     margin-bottom: 16px;
     text-align: center;
     cursor: pointer;
-    border-radius: 32px;
+    border-radius: 52px;
     // border: 3px solid;
     padding: 8px 0;
     font-size: 22px;
@@ -807,24 +815,48 @@ export default {
     );
     span {
       padding: 8px 0;
-      width: calc(100% - 4px);
+      // width: calc(100% - 4px);
       height: 52px;
       line-height: 52px;
       margin: 0 auto;
-      border-radius: 32px;
+      border-radius: 52px;
       display: block;
       background: #fff;
+    }
+    &:hover {
+      span {
+        color:#000000;
+      }
     }
   }
 }
 .product-data {
-  border-bottom: 1px solid #dcdfe6;
-  padding: 30px 0 10px 0;
-  margin-bottom: 50px;
+  border-bottom: 1px solid rgba($color: #7395DC, $alpha: 0.3);
+  padding: 30px 0 30px 27px;
+  margin-bottom: 80px;
   .product-data-box {
     display: flex;
-    flex-wrap: wrap;
-    width: 360px;
+    justify-content: start;
+    align-items: center;
+    // width: 360px;
+    >div {
+      font-size: 18px;
+      padding-right:152px;
+      p {
+        color: #2D2E33;
+        span {
+          &:first-of-type {
+            display: inline-block;
+            padding-right: 24px;
+            color: #BCBEC6;
+          }
+        }
+      }
+      .first_p {
+        padding-bottom: 24px;
+      }
+
+    }
     > h5 {
       font-size: 12px;
       display: inline-block;
@@ -836,6 +868,9 @@ export default {
       font-weight: 400;
       color: #bcbec6;
       span {
+        width: 60px;
+        border:solid 1px red;
+        display: inline-block;
         color: #2d2e33;
         margin-left: 10px;
       }
@@ -844,7 +879,7 @@ export default {
 }
 .activeItem {
   color: #ff946b !important;
-  border: 1px solid #ff946b !important;
+  border: 2px solid #ff946b !important;
 }
 .proIntro-material {
   padding-top: 45px;
@@ -870,5 +905,12 @@ export default {
 .el-button--medium {
   font-size: 22px;
   padding: 11px 34px;
+}
+.add-cart-box {
+  .el-button:hover {
+    color: #ff946b;
+    border-color: #ff946b;
+    background-color: #ffffff;
+  }
 }
 </style>

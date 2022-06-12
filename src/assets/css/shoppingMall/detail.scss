@@ -222,12 +222,34 @@
   .pro_information{
     display: flex;
     margin-top: 96px;
+    /deep/ .el-tabs__header {
+      margin:0;
+    }
     .comment{
       width: rpx2multiple(1380);
       // height: 600px;
       // border-top: 2px solid #dbdbdb;
 
       .tab{
+        /deep/ .el-tabs--card>.el-tabs__header {
+          border-bottom: 1px solid rgba($color: #7395DC, $alpha: 0.3);
+        }
+        /deep/ .el-tabs__nav {
+          border: 1px solid rgba($color: #7395DC, $alpha: 0.3);
+        }
+        /deep/ .el-tabs__item {
+          padding: 11px 27px;
+          height: 50px;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          line-height: 33px;
+          display: inline-block;
+          list-style: none;
+          font-size: 22px;
+          font-weight: 500;
+          color: #7395DC;
+          position: relative;
+        }
         .per{
           border-bottom: 1px dashed #dbdbdb;
           margin-bottom: 10px;

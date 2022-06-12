@@ -68,7 +68,7 @@ export default {
         margin-bottom: rpx2multiple(20);
         &::-webkit-scrollbar {
             background-color: #f8f8f8;
-            height: rpx2multiple(12);
+            height: rpx2multiple(8);
         }
 
         &::-webkit-scrollbar-button {
@@ -76,7 +76,7 @@ export default {
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: rgb(216, 216, 216);
+            background-color: #FF946B;
             border-radius: 100px;
             cursor: pointer;
         }

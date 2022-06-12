@@ -113,6 +113,7 @@ export default {
 
 /deep/ .el-dialog__body {
     padding: 0;
+    height: 100%;
 }
 
 /deep/ .el-dialog {
@@ -126,6 +127,7 @@ export default {
         background-color: #fff;
         background-image: linear-gradient(-180deg,rgba(0,0,0,.08),rgba(255,255,255,1));
         min-height: 100vh;
+        height: 100%;
         width: inherit;
 
         .onlineBox-inner {

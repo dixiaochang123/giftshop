@@ -136,9 +136,13 @@ export default {
 //   }
 // }
 .cate-filter-containe-hover:hover {
-    background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
-    background-size: 200%;
-    background-position: 50% 50%;
+    background: linear-gradient(77deg, rgba(255, 236, 229, 0.9) 0%, rgba(255, 255, 255, .1) 50%, rgba(229, 237, 255, 0.9) 100%);
+    // background-size: 200%;
+    // background-position: 50% 50%;
+    box-shadow: 0px 50px 105px 0px rgba(129, 135, 150, 0.2);
+    backdrop-filter: blur(50px);
+
+    
     &>*{
       background-color: transparent;
     }
@@ -151,11 +155,11 @@ export default {
   font-family: PingFangSC-Regular, PingFang SC;
   animation: all .3s ease-in-out;
   background-color: #ffffff;
-  &.cate-filter-containe-hover:hover {
-    background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
-    background-size: 200%;
-    background-position: 50% 50%;
-  }
+  // &.cate-filter-containe-hover:hover {
+  //   background-image: linear-gradient(77deg, #FFECE5 0%, rgba(255, 255, 255, .9) 50%, #E5EDFF 100%);
+  //   background-size: 200%;
+  //   background-position: 50% 50%;
+  // }
   &>*{
     background-color: transparent;
   }
