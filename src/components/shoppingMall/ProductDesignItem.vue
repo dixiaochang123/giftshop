@@ -297,7 +297,7 @@ export default {
   > .ProductDesignItem-content__designs-carousel__item {
   width: 25%;
   flex-shrink: 0;
-  padding-right: rpx2multiple(40);
+  padding-right: rpx2multiple(39);
   box-sizing: border-box;
 }
 
