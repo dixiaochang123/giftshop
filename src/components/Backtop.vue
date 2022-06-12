@@ -66,7 +66,7 @@ $height: 350px;
   position: fixed;
   right: 50px;
   bottom: 50px;
-  z-index: 100000000;
+  z-index: 1000;
 }
 
 .help {
