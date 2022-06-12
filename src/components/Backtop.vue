@@ -1,12 +1,10 @@
 <template>
   <div class="backtop">
     <div class="help">
-      <el-tooltip>
-        <div class="kefu">
+      <div class="kefu">
           <div></div>
           <p>联系客服</p>
         </div>
-      </el-tooltip>
       <el-tooltip effect="light" content="电话: 12345678901" popper-class="backtop-item-popper-class" placement="left">
         <div class="phon">
           <div></div>
@@ -19,12 +17,10 @@
           <p>飞书账号</p>
         </div>
       </el-tooltip>
-      <el-tooltip>
-        <div class="caozuo">
+      <div class="caozuo">
           <div></div>
           <p>操作指南</p>
-        </div>
-      </el-tooltip>
+      </div>
 
     </div>
     <div @click="backtopclick" class="backtop_icon">
