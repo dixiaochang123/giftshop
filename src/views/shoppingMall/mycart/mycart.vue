@@ -421,4 +421,12 @@ export default {
   font-weight: 500;
   color: #2D2E33;
 }
+/deep/ .el-checkbox__inner {
+  width: 16px;
+  height: 16px;
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: #7395DC;
+    border-color: #7395DC;
+}
 </style>
