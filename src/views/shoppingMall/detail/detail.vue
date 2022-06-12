@@ -76,8 +76,8 @@
             <div class="workmanship">
               <span class="type-name" style="margin-left:0">工艺</span>
               <div class="workmanship-box">
-                <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
-                  <img :src="item.url">
+                <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index">
+                  <img :src="item.url" :class="{'activeItem' : item.index === workmanshipActive}">
                   <div class="img-item-desc img-item-desc1">
                     <span>丝绒（胶浆）</span>
                   </div>
@@ -527,7 +527,7 @@ export default {
   width: 100%;
 }
 .intro-price {
-  height: 105px;
+  height: 136px;
   background: #f6f9fe;
   display: flex;
   //   justify-content: space-around;
@@ -545,10 +545,11 @@ export default {
 }
 .img-item-desc {
   height: 60px;
-  //  opacity: 0.7;
-  background: #e4e4e4;
-  border-radius: 0px 24px 0px 0px;
+  //  opacity: 0.9;
+  // background: #e4e4e4;
+  background: rgba($color: #e4e4e4, $alpha: 0.5);
   backdrop-filter: blur(10px);
+  border-radius: 0px 24px 12px 12px;
   font-size: 22px;
   display: block;
   position: absolute;
@@ -844,7 +845,7 @@ export default {
 }
 .activeItem {
   color: #ff946b !important;
-  border: 1px solid #ff946b !important;
+  border: 2px solid #ff946b !important;
 }
 .proIntro-material {
   padding-top: 45px;
