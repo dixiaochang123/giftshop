@@ -47,11 +47,11 @@
       </div>
       <div class="sjfa">
         <div class="lb">
-          <img src=""/>
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
           <div class="tt">方案1</div>
         </div>
         <div class="lb">
-          <img src=""/>
+          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
           <div class="tt">方案2</div>
         </div>
       </div>
@@ -267,6 +267,7 @@ export default {
   height: 256px;
   display: block;
   margin: 12px auto;
+  border-radius: 4px;
 }
 
 .sjfa .lb .tt {
