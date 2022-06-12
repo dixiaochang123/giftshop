@@ -4,9 +4,9 @@
       <el-icon class="header_icon_item" name="close" @click.native="close" />
       <div v-show="type==='online'" style="display: flex;align-items: center;">
         <!-- <el-icon class="header_icon_item" name="share" @click.native="onCommand('share')"/> -->
-        <img class="header_icon_item" src="../../assets/img/slices/daochuicon.png" alt="" srcset="" @click.native="onCommand('share')">
+        <img class="header_icon_item" src="../../assets/img/slices/daochuicon.png" alt="" srcset="" @click="onCommand('share')">
         <span style="display:inline-block;width:20px;"></span>
-        <img class="header_icon_item" src="../../assets/img/slices/fenxiangicon.png" alt="" srcset="" @click.native="onCommand('share')">
+        <img class="header_icon_item" src="../../assets/img/slices/fenxiangicon.png" alt="" srcset="" @click="onCommand('share')">
         <!-- <el-icon class="header_icon_item" name="share" style="margin-left: calc(20px);"
                  @click.native="onCommand('share')"/> -->
         <span style="display:inline-block;width:30px;"></span>
