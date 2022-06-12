@@ -4,13 +4,11 @@
       <el-icon class="header_icon_item" name="close" @click.native="close" />
       <div v-show="type==='online'" style="display: flex;align-items: center;">
         <!-- <el-icon class="header_icon_item" name="share" @click.native="onCommand('share')"/> -->
-        <img class="header_icon_item" src="../../assets/img/slices/daochuicon.png" alt="" srcset="" @click="onCommand('share')">
-        <span style="display:inline-block;width:20px;"></span>
-        <img class="header_icon_item" src="../../assets/img/slices/fenxiangicon.png" alt="" srcset="" @click="onCommand('share')">
+        <img style="width: 28px;margin-right: 36px;" class="header_icon_item" src="../../assets/img/slices/daochuicon.png" alt="" srcset="" @click="onCommand('share')">
+        <img style="width: 28px;margin-right: 36px;" class="header_icon_item" src="../../assets/img/slices/fenxiangicon.png" alt="" srcset="" @click="onCommand('share')">
         <!-- <el-icon class="header_icon_item" name="share" style="margin-left: calc(20px);"
                  @click.native="onCommand('share')"/> -->
-        <span style="display:inline-block;width:30px;"></span>
-        <el-button style="background-color:#FF946B;border-radius: 4px;margin-left: calc(20px);border: none;color: #ffffff;" @click="onCommand('edit')">
+        <el-button style="background-color:#FF946B;border-radius: 4px;border: none;color: #ffffff;padding: 9px 34px;font-size: 16px;margin-left: 14px;" @click="onCommand('edit')">
           修改
         </el-button>
       </div>
@@ -39,12 +37,12 @@
       </div>
     </template>
     <template v-else>
-      <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
+      <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center; background-color:rgba(255,255,255,0.15);backdrop-filter: blur(50px);">
         <div style="padding: calc(80px) calc(75px);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
           <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')" style="width: calc(210px);" />
           <p style="margin-top: calc(75px);font-size: calc(20px);">
             暂不支持在线预览，请下载后查看</p>
-          <el-button style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px);border: none;color: #ffffff;" @click="onCommand('download')">
+          <el-button style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px);border: none;color: #ffffff;padding: 9px 34px;font-size: 16px;" @click="onCommand('download')">
             下载
           </el-button>
         </div>
@@ -103,7 +101,7 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog .el-dialog__header {
-  width: 90%;
+  width: 1380px;
   margin: 0 !important;
   display: flex;
   justify-content: space-between;
@@ -120,6 +118,8 @@ export default {
   width: rpx2multiple(1380);
   // flex: 1;
   overflow-y: auto;
+  box-sizing: border-box;
+  padding: 30px 20px 30px 0;
 }
 
 .ProductDesignItemPlanDetailDialog .title {
