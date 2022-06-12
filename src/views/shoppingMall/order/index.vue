@@ -67,6 +67,7 @@
 
       <div class="shrxx">
         <div class="dx" @click="zffs=1" :class="{active:zffs==1}"></div>
+        <div>喵大人</div>
         <div class="sj">15258888888</div>
         <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
       </div>
@@ -320,8 +321,8 @@ export default {
   font-weight: 400;
   color: #2D2E33;
   line-height: 25px;
-  margin-left: 40px;
-  margin-right: 80px;
+  margin-left: 36px;
+  margin-right: 71px;
 }
 
 .dz {
@@ -470,7 +471,7 @@ export default {
   border: 1px solid rgba(115, 117, 125, 1);
   min-width: 16px;
   margin-left: 24px;
-  margin-right: 80px;
+  margin-right: 18px;
 }
 
 .active {
