@@ -80,10 +80,12 @@
           <div class="header_1" style="width:40%;text-align: left;display: inline-block;">
 
             <div class="img-text" style="height: 173px;">
-              <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt="" srcset="">
-              <div class="img-text-text">
-                <p>{{ item.p1 }}</p>
-                <p class="p2">{{ item.p2 }}</p>
+              <div style="display: flex; align-items: flex-start;">
+                <img width="100px" height="100px" src="../../../assets/img/slices/banner-1.png" alt="" srcset="">
+                <div class="img-text-text">
+                  <p>{{ item.p1 }}</p>
+                  <p class="p2">{{ item.p2 }}</p>
+                </div>
               </div>
               <div class="jgsl">
                 <p>￥30.00</p>
@@ -401,12 +403,14 @@ export default {
     font-family: PingFangSC-Medium, PingFang SC;
     font-weight: 500;
     color: #2d2e33;
-    padding-left: 16px;
+    margin-left: 16px;
+    margin-top: 15px;
 
     .p2 {
       font-size: 14px;
       font-weight: 400;
       color: #73757d;
+      margin-top: 18px !important;
     }
   }
 
