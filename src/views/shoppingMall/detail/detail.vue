@@ -176,11 +176,18 @@
               <el-tab-pane label="商品介绍" name="first">
                 <div class="product-data">
                   <div class="product-data-box">
-                    <h5><span>长度</span><span>20cm</span></h5>
-                    <h5><span>宽度</span><span>20cm</span></h5>
-                    <h5><span>厚度</span><span>5cm</span></h5>
-                    <h5><span>材质</span><span>玻璃</span></h5>
-                    <h5><span>工艺</span><span>玻璃</span></h5>
+                    <div>
+                      <p class="first_p"><span>长度</span><span>20cm</span></p>
+                      <p><span>材质</span><span>玻璃</span></p>
+                    </div>
+                    <div>
+                      <p class="first_p"><span>宽度</span><span>20cm</span></p>
+                      <p><span>工艺</span><span>玻璃</span></p>
+                    </div>
+                    <div>
+                      <p class="first_p"><span>厚度</span><span>5cm</span></p>
+                      <p><span>工艺</span><span>玻璃</span></p>
+                    </div>
                   </div>
                 </div>
                 <div class="pro_img" v-for="item in 3" :key="item.id">
@@ -825,12 +832,31 @@ export default {
 }
 .product-data {
   border-bottom: 1px solid rgba($color: #7395DC, $alpha: 0.3);
-  padding: 30px 0 10px 0;
-  margin-bottom: 50px;
+  padding: 30px 0 30px 27px;
+  margin-bottom: 80px;
   .product-data-box {
     display: flex;
-    flex-wrap: wrap;
-    width: 360px;
+    justify-content: start;
+    align-items: center;
+    // width: 360px;
+    >div {
+      font-size: 18px;
+      padding-right:152px;
+      p {
+        color: #2D2E33;
+        span {
+          &:first-of-type {
+            display: inline-block;
+            padding-right: 24px;
+            color: #BCBEC6;
+          }
+        }
+      }
+      .first_p {
+        padding-bottom: 24px;
+      }
+
+    }
     > h5 {
       font-size: 12px;
       display: inline-block;
@@ -842,6 +868,9 @@ export default {
       font-weight: 400;
       color: #bcbec6;
       span {
+        width: 60px;
+        border:solid 1px red;
+        display: inline-block;
         color: #2d2e33;
         margin-left: 10px;
       }

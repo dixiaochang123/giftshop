@@ -222,6 +222,9 @@
   .pro_information{
     display: flex;
     margin-top: 96px;
+    /deep/ .el-tabs__header {
+      margin:0;
+    }
     .comment{
       width: rpx2multiple(1380);
       // height: 600px;
