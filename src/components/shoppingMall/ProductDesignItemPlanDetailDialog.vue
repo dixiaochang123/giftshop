@@ -1,14 +1,19 @@
 <template>
-  <el-dialog append-to-body lock-scroll custom-class="ProductDesignItemPlanDetailDialog" :show-close="false" :visible="active">
+  <el-dialog append-to-body lock-scroll custom-class="ProductDesignItemPlanDetailDialog" :show-close="false"
+             :visible="active">
     <template v-slot:title>
-      <el-icon class="header_icon_item" name="close" @click.native="close" />
+      <el-icon class="header_icon_item" name="close" @click.native="close"/>
       <div v-show="type==='online'" style="display: flex;align-items: center;">
         <!-- <el-icon class="header_icon_item" name="share" @click.native="onCommand('share')"/> -->
-        <img style="width: 28px;margin-right: 36px;" class="header_icon_item" src="../../assets/img/slices/daochuicon.png" alt="" srcset="" @click="onCommand('share')">
-        <img style="width: 28px;margin-right: 36px;" class="header_icon_item" src="../../assets/img/slices/fenxiangicon.png" alt="" srcset="" @click="onCommand('share')">
+        <img style="width: 28px;margin-right: 36px;" class="header_icon_item"
+             src="../../assets/img/slices/daochuicon.png" alt="" srcset="" @click="onCommand('share')">
+        <img style="width: 28px;margin-right: 36px;" class="header_icon_item"
+             src="../../assets/img/slices/fenxiangicon.png" alt="" srcset="" @click="onCommand('share')">
         <!-- <el-icon class="header_icon_item" name="share" style="margin-left: calc(20px);"
                  @click.native="onCommand('share')"/> -->
-        <el-button style="background-color:#FF946B;border-radius: 4px;border: none;color: #ffffff;padding: 9px 34px;font-size: 16px;margin-left: 14px;" @click="onCommand('edit')">
+        <el-button
+            style="background-color:#FF946B;border-radius: 4px;border: none;color: #ffffff;padding: 9px 34px;font-size: 16px;margin-left: 14px;"
+            @click="onCommand('edit')">
           修改
         </el-button>
       </div>
@@ -27,7 +32,7 @@
             <template v-for="(picture,i) of item.pictures">
               <div class="detail_pictures-item" :key="i">
                 <div class="detail_pictures-item_pic_wrap">
-                  <el-image :src="picture.src" />
+                  <el-image :src="picture.src"/>
                 </div>
                 <p>{{ picture.name }}</p>
               </div>
@@ -37,17 +42,23 @@
       </div>
     </template>
     <template v-else>
-      <div style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center; background-color:rgba(255,255,255,0.15);backdrop-filter: blur(50px);">
-        <div style="padding: calc(80px) calc(75px);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
-          <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')" style="width: calc(210px);" />
+      <div
+          style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center; background-color:rgba(255,255,255,0.15);backdrop-filter: blur(50px);">
+        <div
+            style="padding: calc(80px) calc(75px);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
+          <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')" style="width: calc(210px);"/>
           <p style="margin-top: calc(75px);font-size: calc(20px);">
             暂不支持在线预览，请下载后查看</p>
-          <el-button style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px);border: none;color: #ffffff;padding: 9px 34px;font-size: 16px;" @click="onCommand('download')">
+          <el-button
+              style="background-color:#FF946B;border-radius: 4px;margin-top: calc(20px);border: none;color: #ffffff;padding: 9px 34px;font-size: 16px;"
+              @click="onCommand('download')">
             下载
           </el-button>
         </div>
       </div>
     </template>
+    <!-- 弹窗背景图片设置 -->
+    <div style="display: none;" v-html="dialogStyleHtml"></div>
   </el-dialog>
 </template>
 
@@ -60,6 +71,14 @@ export default {
       active: false,
       type: "online",
       planDetail: {},
+      dialogStyleHtml: `
+        <style>
+        .ProductDesignItemPlanDetailDialog{
+            background-size: 1380px 100%;
+            background-position: center;
+            background-image: url('${require('@/assets/img/shoppingMall/design/ProductDesignItemPlanDetailDialog-bg.png')}');
+        }
+      </style>`
     };
   },
   methods: {
@@ -158,17 +177,17 @@ export default {
 }
 
 .ProductDesignItemPlanDetailDialog
-  .detail_pictures-item
-  > .detail_pictures-item_pic_wrap {
+.detail_pictures-item
+> .detail_pictures-item_pic_wrap {
   position: relative;
   height: 0;
   padding-bottom: 100%;
 }
 
 .ProductDesignItemPlanDetailDialog
-  .detail_pictures-item
-  > .detail_pictures-item_pic_wrap
-  > .el-image {
+.detail_pictures-item
+> .detail_pictures-item_pic_wrap
+> .el-image {
   position: absolute;
   top: 0;
   left: 0;
