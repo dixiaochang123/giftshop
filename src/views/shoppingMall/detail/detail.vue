@@ -78,7 +78,7 @@
               <div class="workmanship-box">
                 <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index">
                   <img :src="item.url" :class="{'activeItem' : item.index === workmanshipActive}">
-                  <div class="img-item-desc img-item-desc1">
+                  <div class="img-item-desc">
                     <span>丝绒（胶浆）</span>
                   </div>
                 </span>
@@ -792,7 +792,7 @@ export default {
     margin-bottom: 16px;
     text-align: center;
     cursor: pointer;
-    border-radius: 32px;
+    border-radius: 52px;
     // border: 3px solid;
     padding: 8px 0;
     font-size: 22px;
@@ -808,11 +808,11 @@ export default {
     );
     span {
       padding: 8px 0;
-      width: calc(100% - 4px);
+      // width: calc(100% - 4px);
       height: 52px;
       line-height: 52px;
       margin: 0 auto;
-      border-radius: 32px;
+      border-radius: 52px;
       display: block;
       background: #fff;
     }
