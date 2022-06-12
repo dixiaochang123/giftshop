@@ -1,7 +1,7 @@
 <template>
     <div class="text-box">
         <div class="text-inner">
-            <div class="item" v-for="item in textContent">
+            <div class="item" v-for="item in textContent" :key="item">
                 <div class="item-img">
                     <vue-drag-resize parentLimitation v-if="item.remark">{{item.remark}}</vue-drag-resize>
                 </div>
@@ -9,7 +9,7 @@
                     <div class="item-btn">
                         <span>文字一</span>
                         <div>
-                            <i class="el-icon-refresh-right"></i>
+                            <i style="margin-right:16px;" class="el-icon-refresh-right"></i>
                             <a>还原</a>
                         </div>
                     </div>
@@ -68,6 +68,7 @@ export default {
                 background-color: #fff;
                 margin-bottom: rpx2multiple(28);
                 position: relative;
+                font-size: 18px;
             }
 
             .item-control {
@@ -76,6 +77,7 @@ export default {
                     justify-content: space-between;
                     padding-bottom: rpx2multiple(15);
                     color: #73757D;
+                    font-size: 18px;
                 }
             }
         }
