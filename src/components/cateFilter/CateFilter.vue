@@ -38,6 +38,9 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
+import {
+  productCatalogueList
+} from "@/request/modules/index.js";
 export default {
   name: 'CateFilter',
   props: {
@@ -79,6 +82,11 @@ export default {
       activeSecondName: '',
       activeThreeName: '',
     }
+  },
+  mounted() {
+    productCatalogueList({}).then(res=>{
+      console.log(7777777)
+    }).catch(error=>console.log(error))
   },
   methods: {
     ...mapActions(["setProductNav"]),

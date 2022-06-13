@@ -7,7 +7,11 @@ const baseURL = config[process.env.NODE_ENV].baseUrl
 const service = axios.create({
   baseURL,
   // withCredentials: true,
-  timeout: 3600000
+  timeout: 50000000,
+  header: {
+    'Content-Type': 'application/x-www-form-urlencoded', //必须设置,冲掉默认设置的application/json;charset=UTF-8
+    "Accept": "application/json, text/plain, */*",
+  },
 })
 
 // 请求拦截器

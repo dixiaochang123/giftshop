@@ -7,7 +7,7 @@
 		</div>
 
 		<!--类型-->
-		<div class="page_type" style="border-bottom: none;height: auto;">
+		<div class="page_type page_type11" style="border-bottom: none;height: auto;">
 			<div class="container">
 				<div class="type_name" style="color: #2D2E33;font-weight: 500;">{{title}}</div>
 
@@ -16,13 +16,16 @@
 			<div class="container">
 				<div class="navtab">
 					<ul>
-						<li @click="tabqh(1)" :class="{active:tabbq==1}"> 周年庆</li>
+						<li v-for="(item,index) in navtab[title]" :key="item" @click="tabqh(index)" :class="{active:tabbq==index}">{{item}}</li>
+
+
+						<!-- <li @click="tabqh(1)" :class="{active:tabbq==1}"> 周年庆</li>
 						<li @click="tabqh(2)" :class="{active:tabbq==2}">生日纪念</li>
 						<li @click="tabqh(3)" :class="{active:tabbq==3}">入职纪念</li>
 						<li @click="tabqh(4)" :class="{active:tabbq==4}">新婚庆贺</li>
 						<li @click="tabqh(5)" :class="{active:tabbq==5}">亲子主题</li>
 						<li @click="tabqh(6)" :class="{active:tabbq==6}">颁奖典礼</li>
-						<li @click="tabqh(7)" :class="{active:tabbq==7}">员工关怀</li>
+						<li @click="tabqh(7)" :class="{active:tabbq==7}">员工关怀</li> -->
 
 					</ul>
 				</div>
@@ -68,7 +71,7 @@
 		data() {
 			return {
 				bgcolor:true,
-				tabbq: 1,
+				tabbq: 0,
 				categories: Categories,
 				title:'',
 				options: [{
@@ -88,7 +91,17 @@
 					label: '价格从高到低'
 				}],
 				value: '',
-				orderQuantity: 100
+				orderQuantity: 100,
+				navtab:{
+					'节日庆典':['春节','中秋节','端午节','重阳节','儿童节','妇女节','圣诞节','教师节','程序员节'],
+					'公司福利':['周年庆','生日纪念','入职纪念','新婚庆贺','亲子主题','颁奖典礼','员工关怀'],
+					'IP衍生':['公仔','T恤','钥匙扣','毯子','抱枕','手机壳'],
+					'活动物资':['外宣活动','司庆活动'],
+					'企业周边':['文化衫','包装袋','工牌','伴手礼'],
+					'日常办公':['笔记本','书写笔','桌面收纳'],
+					'商务礼赠':['日常拜访','高端礼赠'],
+					'价格分区':['1-100','100-300','300-500','500以上'],
+				}
 			}
 		},
 		mounted() {
@@ -120,7 +133,15 @@
 	@import "../../../assets/css/shoppingMall/vaseDetail";
 
 	.cate-filter {
-		margin-top: rpx2multiple(96);
+		// margin-top: rpx2multiple(96);
+		width: 100%;
+		//min-height: 176px;
+		position: fixed;
+		top: 96px;
+		z-index: 1000;
+	}
+	.page_type11 {
+		margin-top: rpx2multiple(276);
 	}
 
 	.product-list {

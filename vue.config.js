@@ -23,10 +23,10 @@ module.exports = {
         },
         proxy: {
 
-          '/api': {
+          '/': {
             target: mockUrl,
             pathRewrite: {
-              '^/api': '/'
+              '^/': '/'
             },
             secure: false,
             changeOrigin: true

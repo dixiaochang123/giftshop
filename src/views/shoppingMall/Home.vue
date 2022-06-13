@@ -35,7 +35,7 @@
         </el-col>
         <el-col :span="6">
           <div class="grid-content bg-purple">
-            <div class="ygfl" style="cursor: pointer;" @click="gotozhuanti('员工福利')"></div>
+            <div class="ygfl" style="cursor: pointer;" @click="gotozhuanti('公司福利')"></div>
           </div>
         </el-col>
         <el-col :span="6">

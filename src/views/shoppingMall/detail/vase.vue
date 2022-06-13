@@ -112,7 +112,12 @@ export default {
 <style lang="scss" scoped>
 @import "../../../assets/css/shoppingMall/vaseDetail";
 .cate-filter {
-    margin-top: rpx2multiple(96);
+    // margin-top: rpx2multiple(96);
+ width: 100%;
+  //min-height: 176px;
+  position: fixed;
+  top: 96px;
+  z-index: 1000;
 }
 .product-list {
   margin-bottom: 20px;
