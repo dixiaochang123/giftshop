@@ -559,11 +559,14 @@ export default {
 </style>
 <style>
 .search-header-popover-class {
-  background: linear-gradient(98deg, rgba(255, 255, 255, 0) 0%, #ffeee7 100%);
+  background: linear-gradient(98deg, rgba(255, 255, 255, 0.5) 0%, #ffeee7 100%);
   padding: 27px;
   min-width: 554px;
   margin-left: -50px !important;
   margin-top: 40px !important;
+  box-shadow: 0px 37px 52px 0px rgba(129, 135, 150, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
 }
 
 .search-header-popover-class.hidden {
