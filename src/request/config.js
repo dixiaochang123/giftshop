@@ -6,8 +6,8 @@ module.exports = {
       mockUrl: 'http://101.200.36.128:4038',
     },
     'production': {
-      baseUrl: 'www.tongtanggift.com',
-      mockUrl: 'www.tongtanggift.com'
+      baseUrl: 'https://shop.tongtanggift.com',
+      mockUrl: 'https://shop.tongtanggift.com'
     }
   }
   
