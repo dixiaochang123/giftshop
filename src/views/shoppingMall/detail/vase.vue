@@ -117,14 +117,7 @@ export default {
         .catch((error) => console.log(error));
     },
     productPage(pageNum) {
-      // let data = {
-      //   data: { 
-      //     catalogueId: this.productId 
-      //   },
-      //   pageNum: pageNum || 1,
-      //   pageSize: 10,
-      // };
-      let data = {"data":{"catalogueId":this.productId },"pageNum":1,"pageSize":20}
+      let data = {"data":{"catalogueId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
       productPage(data)
         .then((res) => {
           let { code, data } = res.data;

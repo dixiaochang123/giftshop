@@ -35,9 +35,9 @@
             @mouseout="outHandler"
           ></div>
           <div class="tro_list">
-            <span v-for="item in smallImg" :key="item.id">
-              <a href="#" :title="item.title">
-                <img :src="item.url" @mouseenter="getIndex(item.url)">
+            <span v-for="item in smallImg" :key="item">
+              <a href="javaScript:void(0);">
+                <img :src="item" @mouseenter="getIndex(item)">
               </a>
             </span>
           </div>
@@ -45,15 +45,15 @@
         </div>
         <div class="intro">
           <div class="intro_title">
-            <h3>愿时光停在花礼盒定制</h3>
-            <h5>愿时光停在花礼盒定制</h5>
+            <h3>{{productList.name}}</h3>
+            <h5>{{productList.productDescription}}</h5>
             <!-- <h3 class="price">&yen;17.96</h3> -->
             <h5 class="reference-price">
              <span>参考价格</span><span class="borderspan" style="width:520px;"></span>
               </h5>
           </div>
           <div class="intro-price">
-            <div class="intro-price-item" v-for="(item, index) in priceList" :key="index">
+            <div class="intro-price-item" v-for="(item) in priceList" :key="item">
               <div class="product-number">{{item.number}}个</div>
               <div class="Split-line"><span></span></div>
               <div class="product-price">￥{{item.price}}</div>
@@ -64,22 +64,22 @@
             <div class="proIntro-material">
               <span class="type-name">材质</span>
               <div class="material-item-box">
-                <span v-for="(item, index) in materialList" @click="handleMaterial(item,index)" :key="index" class="material-item" :class="{'activeItem': item.id === materialActive}">{{item.name}}</span>
+                <span v-for="(item, index) in productListMC.name" @click="handleMaterial(item,index)" :key="index" class="material-item" :class="{'activeItem': index === materialActive}">{{item}}</span>
               </div>
             </div>
             <div class="proIntro-size">
               <span class="type-name">尺寸</span>
               <div class="size-item-box">
-                <span v-for="(item, index) in sizeList" :key="index" @click="handleSize(item,index)" class="size-item" :class="{'activeItem' : item.id === sizeActive}">{{item.name}}</span>
+                <span v-for="(item, index) in productListSize.name" :key="index" @click="handleSize(item,index)" class="size-item" :class="{'activeItem' : index === sizeActive}">{{item}}</span>
               </div>
             </div>
             <div class="workmanship">
               <span class="type-name" style="margin-left:0">工艺</span>
               <div class="workmanship-box">
-                <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index">
-                  <img :src="item.url" :class="{'activeItem' : item.index === workmanshipActive}">
+                <span class="workmanship-box-item" v-for="(item,index) in productListCraft" @click="handleWorkmanship(item,index)" :key="item.id">
+                  <img :src="item.fileName" :class="{'activeItem' : index === workmanshipActive}">
                   <div class="img-item-desc">
-                    <span>丝绒（胶浆）</span>
+                    <span>{{item.name}}</span>
                   </div>
                 </span>
                 <!-- <span class="workmanship-box-item" v-for="item in smallImg" @click="handleWorkmanship(item,index)" :key="item.index" :class="{'activeItem' : item.index === workmanshipActive}">
@@ -90,7 +90,7 @@
             <div class="proIntro-packing">
               <span class="type-name">包装</span>
               <div class="packing-item-box">
-                <span v-for="(item, index) in packingList" :key="index" class="packing-item" @click="handlePacking(item,index)" :class="{'activeItem' : item.id === packingActive}">{{item.name}}</span>
+                <span v-for="(item, index) in productListPackage.name" :key="index" class="packing-item" @click="handlePacking(item,index)" :class="{'activeItem' : index === packingActive}">{{item}}</span>
               </div>
             </div>
             <!-- <p>数量 库存数量<span>1456</span>件</p> -->
@@ -101,8 +101,9 @@
             <div class="checking-number">
               <span class="type-name">数量</span>
               <div class="checking-number-box">
-                <el-input-number size="small" v-model="num" @change="handleChange" :min="100" label="描述文字"></el-input-number>
+                <el-input-number size="small" :step="step" v-model="num" @change="handleChange" :min="100" label="描述文字"></el-input-number>
               </div>
+              <p style="color: #73757D;">{{step}}个起订</p>
             </div>
             <div class="Unit-Price">
               <span class="type-name" style="margin-right: 50px">实际单价</span>
@@ -175,7 +176,8 @@
             <el-tabs type="card" v-model="activeName">
               <el-tab-pane label="商品介绍" name="first">
                 <div class="product-data">
-                  <div class="product-data-box">
+                  <p>产品详情</p>
+                  <div v-if="false" class="product-data-box">
                     <div>
                       <p class="first_p"><span>长度</span><span>20cm</span></p>
                       <p><span>材质</span><span>玻璃</span></p>
@@ -190,8 +192,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="pro_img" v-for="item in 3" :key="item.id">
-                  <img src="../../../assets/img/shoppingMall/detail/det07.jpg" alt="">
+                <div class="pro_img" v-for="item in smallImg" :key="item">
+                  <img :src="item" alt="">
                 </div>
               </el-tab-pane>
             </el-tabs>
@@ -218,6 +220,7 @@
 </template>
 
 <script>
+import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage } from "@/request/modules/index.js";
 import { mapActions, mapGetters } from "vuex";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
 // import _ from "lodash";
@@ -258,35 +261,17 @@ export default {
     return {
       dialogOnlineDesign: false,
       bigImg: require("../../../assets/img/shoppingMall/detail/proBig02.jpg"),
-      num: 1,
+      bigImg: '',
+      num: 100,
       activeName: "first",
       unitPrice: 30,
       totalPrice: 3000,
+      step:100,
       materialActive: null,
       workmanshipActive: null,
       sizeActive: null,
       packingActive: null,
       priceList: [
-        {
-          number: "100~200",
-          price: "30.00",
-        },
-        {
-          number: "100~200",
-          price: "30.00",
-        },
-        {
-          number: "100~200",
-          price: "30.00",
-        },
-        {
-          number: "100~200",
-          price: "30.00",
-        },
-        {
-          number: "100~200",
-          price: "30.00",
-        },
       ],
       materialList: [
         {
@@ -333,6 +318,13 @@ export default {
       r_img: {},
       topShow: false,
       rShow: false,
+
+      productId:'',
+      productList:{},
+      productListMC:{},
+      productListSize:{},
+      productListCraft:{},
+      productListPackage:{},
     };
   },
   computed: {
@@ -340,22 +332,106 @@ export default {
   },
   mounted() {
     console.log(this.ProductNav);
+    this.productId = this.$route.query.id;
+    this.productPage();
+    this.productMaterialPage();
+    this.productSizePage();
+    this.productCraftPage();
+    this.productPackagePage();
   },
   methods: {
+    productPage(pageNum) {
+      let data = {"data":{"id":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      productPage(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            try {
+              
+              this.smallImg = !!data.records[0] && data.records[0].filesList[0].fileName.split(",")
+              this.bigImg = !!this.smallImg && this.smallImg[0]
+  
+              let priceListNumber = !!data.records[0] && data.records[0].sectionNum.split("-");
+              let priceListPrice = !!data.records[0] && data.records[0].sectionPrice.split("-");
+              this.unitPrice = priceListPrice[0];
+              this.totalPrice = this.unitPrice * this.num
+              this.priceList = !!priceListNumber && priceListNumber.map((item,index)=>{
+                return {
+                   number: item,
+                   price:  priceListPrice[index],
+                }
+              })
+  
+              this.productList = !!data.records && data.records[0];
+            } catch (error) {
+              
+            }
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    productMaterialPage(pageNum) {
+      let data = {"data":{"productId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      productMaterialPage(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            let records = data.records[0];
+            records.name = records.name.split('+');
+            this.productListMC = data.records[0];
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    productSizePage(pageNum) {
+      let data = {"data":{"productId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      productSizePage(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            let records = data.records[0];
+            records.name = records.name.split('*');
+            this.productListSize = data.records[0];
+            console.log(data)
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    productCraftPage(pageNum) {
+      let data = {"data":{"productId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      productCraftPage(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            let records = data.records;
+            this.productListCraft = records;
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    productPackagePage(pageNum) {
+      let data = {"data":{"productId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      productPackagePage(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            let records = data.records[0];
+            records.name = records.name.split('+');
+            this.productListPackage = data.records[0];
+            console.log(data)
+          }
+        })
+        .catch((error) => console.log(error));
+    },
     //判断选中数量是否>5,超过5就提示
     handleChange(value) {
       console.log(value);
-      if (value >= 100 && value <= 200) {
-        this.unitPrice = 30;
-      } else if (value >= 201 && value <= 500) {
-        this.unitPrice = 29;
-      } else if (value >= 501 && value <= 1000) {
-        this.unitPrice = 28;
-      } else if (value >= 1001 && value <= 5000) {
-        this.unitPrice = 27;
-      } else if (value >= 5001) {
-        this.unitPrice = 26;
-      }
+      this.priceList.map(item=>{
+        if(value>=item.number) {
+          this.unitPrice = item.price;
+
+        }
+      })
       this.totalPrice = this.unitPrice * value;
       // if (value == 5){
       //     this.$notify({
@@ -367,16 +443,17 @@ export default {
     },
     handleMaterial(item, index) {
       console.log(this.materialActive);
-      this.materialActive = item.id;
+      this.materialActive = index;
     },
     handleSize(item, index) {
-      this.sizeActive = item.id;
+      this.sizeActive = index;
     },
     handleWorkmanship(item, index) {
-      this.workmanshipActive = item.index;
+      this.workmanshipActive = index;
+      console.log(index,this.workmanshipActive)
     },
     handlePacking(item, index) {
-      this.packingActive = item.id;
+      this.packingActive = index;
     },
     //点击小图片时将图片路径赋值给大图
     getIndex(smallImg) {
@@ -699,12 +776,14 @@ export default {
 }
 .workmanship-box-item {
   width: rpx2multiple(216);
-  width: rpx2multiple(216);
+  height: rpx2multiple(216);
   display: inline-block;
   position: relative;
   cursor: pointer;
   overflow: hidden;
   margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
   img {
     width: 100%;
     height: 100%;
@@ -736,8 +815,12 @@ export default {
 }
 .checking-number {
   margin-top: 30px;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
   .checking-number-box {
     display: inline-block;
+    
   }
 }
 .Production-time {
@@ -912,5 +995,8 @@ export default {
     border-color: #ff946b;
     background-color: #ffffff;
   }
+}
+/deep/ .el-input--small {
+    font-size: 18px;
 }
 </style>
