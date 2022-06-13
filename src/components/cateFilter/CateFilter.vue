@@ -18,7 +18,7 @@
       </div>
       <div class="cate-filter-second" v-if="showCateSecond">
         <div :class="['cate-filter-second__item', {active: activeSecond === index}]"
-             v-for="(item, index) in categories[activeFirst].children"
+             v-for="(item, index) in categories[activeFirst].list"
              :key="index"
              @mouseenter="onMouseEnterSecondItem($event, item,index)">
           <div class="name">{{ item.name }}</div>
@@ -26,7 +26,7 @@
       </div>
       <div class="cate-filter-three" v-if="showCateThree">
         <div :class="['cate-filter-three__item', {active: activeThree === index}]"
-             v-for="(item, index) in categories[activeFirst].children[activeSecond].children"
+             v-for="(item, index) in categories[activeFirst].list[activeSecond].list"
              :key="index"
              @mouseenter="onMouseEnterThreeItem($event, index)"
              @click="onClickThreeItem($event, item, index)">
@@ -38,9 +38,6 @@
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
-import {
-  productCatalogueList
-} from "@/request/modules/index.js";
 export default {
   name: 'CateFilter',
   props: {
@@ -59,14 +56,14 @@ export default {
     ...mapGetters(["ProductNav"]),
     showCateSecond() {
       try {
-        return this.categories[this.activeFirst].children.length
+        return this.categories[this.activeFirst].list.length
       } catch (e) {
         return false;
       }
     },
     showCateThree() {
       try {
-        return this.categories[this.activeFirst].children[this.activeSecond].children.length
+        return this.categories[this.activeFirst].list[this.activeSecond].list.length
       } catch (e) {
         return false;
       }
@@ -84,17 +81,15 @@ export default {
     }
   },
   mounted() {
-    productCatalogueList({}).then(res=>{
-      console.log(7777777)
-    }).catch(error=>console.log(error))
+    console.log(this.categories) 
   },
   methods: {
     ...mapActions(["setProductNav"]),
     onMouseEnterFirstItem(e,item, index) {
-      // console.log('onMouseEnterFirstItem', e, index)
+      console.log('onMouseEnterFirstItem', e, item,index)
       this.activeFirst = index;
       this.activeSecond = 0;
-      this.activeSecondName = item.children[0].name
+      this.activeSecondName = item.list[0].name
       this.activeThree = -1;
       this.activeFirstName = item.name
     },

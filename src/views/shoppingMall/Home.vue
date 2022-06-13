@@ -158,13 +158,15 @@
 <script>
 import CateFilter from "@/components/cateFilter/CateFilter";
 import Categories from "@/components/cateFilter/categories.js";
-
+import {
+  productCatalogueList
+} from "@/request/modules/index.js";
 export default {
   name: "Home",
   components: {CateFilter},
   data() {
     return {
-      categories: Categories,
+      categories: [],
       carouselHeight: "776",
       activeindex: 0,
       specialtab: ['季节限定', '暖心防疫', '轻松户外', '风格系列']
@@ -172,6 +174,7 @@ export default {
   },
   computed: {},
   mounted() {
+    this.productCatalogueList();
     //根据窗口宽度设置轮播图高度
     this.resizeCarouselHeight();
     window.onresize = () => {
@@ -179,6 +182,23 @@ export default {
     };
   },
   methods: {
+    productCatalogueList() {
+      productCatalogueList({data:{}}).then(res=>{
+      let {code,data} = res.data;
+      if(code==200) {
+        data.map(item=>{
+          Categories.map(k=>{
+            if(k.name==item.name) {
+              item['icon'] = k.icon
+              item['activeIcon'] = k.activeIcon
+            }
+          })
+        })
+        this.categories = data;
+        console.log(code,this.categories )
+      }
+    }).catch(error=>console.log(error))
+    },
     viewGoodsDetail() {
       //TODO: 传入id
       this.$router.push({

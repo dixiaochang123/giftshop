@@ -107,7 +107,7 @@ export default [
         ]
     },
     {
-        name: '家居办公',
+        name: '日用办公',
         icon: require('@~/img/slices/icon-ry (2).png'),
         activeIcon: require('@~/img/slices/icon-ry-1 (2).png'),
         children: [
