@@ -8,12 +8,15 @@ import DevicePixelRatio from "./devicePixelRatio.js";
 export default {
   name: "app",
   components: {},
-  // created() {
-  //   new DevicePixelRatio().init();
-  // },
-  // mounted() {
-  //   new DevicePixelRatio().init();
-  // },
+  created() {
+    new DevicePixelRatio().init();
+    console.log('App created',DevicePixelRatio)
+  },
+  mounted() {
+    new DevicePixelRatio().init();
+    console.log('App mounted',DevicePixelRatio)
+
+  },
 };
 </script>
 
