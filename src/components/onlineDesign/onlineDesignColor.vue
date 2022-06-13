@@ -1,13 +1,19 @@
 <template>
 <div class="color-box">
     <slider ref="slider" :options="options" @slide="slide" @tap="onTap">
-        <slideritem @click="changeSlide(index)" v-for="(item, index) in 4" :key="index">
-            <img src="../../assets/img/slices/banner-1.png"
+        <slideritem @click="changeSlide(index)" v-for="(item, index) in productOnlineDialogInfoColor" :key="index">
+            <img :src="item.fileName"
              alt="">
         </slideritem>
     </slider>
     <div class="color-btn">
-        <div class="item" :class="current == 0 ? 'active' : ''" @click="changeSlide(0)">
+        <div v-for="(item,index) in productOnlineDialogInfoColor" :key="item.id" class="item" :class="current == index ? 'active' : ''" @click="changeSlide(index)">
+            <div class="i-btn">
+                <i :style="`background-color: rgb(${item.color});`"></i>
+            </div>
+            <p>{{item.groupingType}}</p>
+        </div>
+        <!-- <div class="item" :class="current == 0 ? 'active' : ''" @click="changeSlide(0)">
             <div class="i-btn">
                 <i style="background-color: #fff;"></i>
             </div>
@@ -26,7 +32,7 @@
         <div class="item" :class="current == 3 ? 'active' : ''" @click="changeSlide(3)">
             <div class="i-btn"><i style="background-color: #90E3CF;"></i></div>
             <p>绿色</p>
-        </div>
+        </div> -->
         <el-popover placement="right" trigger="hover" content="请联系客服">
             <div class="item" slot="reference">
                  <div class="i-btn"><i style="background-color: #BCBEC6;"></i></div>
@@ -48,6 +54,7 @@ export default {
         slider,
         slideritem
     },
+    props:["productOnlineDialogInfoColor"],
     data() {
         return {
             current: 0,
@@ -56,6 +63,9 @@ export default {
                 pagination: false,
             }
         }
+    },
+    mounted() {
+
     },
     methods: {
         changeSlide(index) {

@@ -1,9 +1,9 @@
 <template>
     <div class="text-box">
         <div class="text-inner">
-            <div class="item" v-for="item in textContent" :key="item">
+            <div class="item" v-for="item in productOnlineDialogInfoText" :key="item">
                 <div class="item-img">
-                    <vue-drag-resize parentLimitation v-if="item.remark">{{item.remark}}</vue-drag-resize>
+                    <vue-drag-resize parentLimitation v-if="item.remark">{{item.textDescription}}</vue-drag-resize>
                 </div>
                 <div class="item-control">
                     <div class="item-btn">
@@ -13,7 +13,7 @@
                             <a>还原</a>
                         </div>
                     </div>
-                    <el-input v-model.trim="item.remark" show-word-limit type="textarea" :maxlength="item.maxlength" tabindex></el-input>
+                    <el-input v-model.trim="item.textDescription" show-word-limit type="textarea" :maxlength="item.maxlength" tabindex></el-input>
                 </div>
             </div>
         </div>
@@ -26,6 +26,7 @@ export default {
     components: {
         VueDragResize
     },
+    props:['productOnlineDialogInfoText'],
     data() {
         return {
             textContent:[{remark:'静待花开静待花开静待花开静待花开静待花开',maxlength:16},{remark:'静待花开',maxlength:4},{remark:'静待花开',maxlength:4},{remark:'静待花开',maxlength:4}]

@@ -42,3 +42,10 @@ export function productPackagePage(data) {
         data: data
     })
 }
+export function productOnlineDesign(data) {
+    return request({
+        url: `/productOnlineDesign/list`,
+        method: 'POST',
+        data: data
+    })
+}

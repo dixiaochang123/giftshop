@@ -16,19 +16,19 @@
                 <div class="online-body">
                     <!-- 颜色 -->
                     <template v-if="activeindex==0">
-                        <onlineDesignColor></onlineDesignColor>
+                        <onlineDesignColor :productOnlineDialogInfoColor="productOnlineDialogInfoColor"></onlineDesignColor>
                     </template>
                     <!-- 文字 -->
-                    <template v-if="activeindex==1">
-                        <onlineDesignText></onlineDesignText>
+                    <template v-if="activeindex==1" >
+                        <onlineDesignText :productOnlineDialogInfoText="productOnlineDialogInfoText"></onlineDesignText>
                     </template>
                     <!-- logo -->
                     <template v-if="activeindex==2">
-                        <onlineDesignLogo></onlineDesignLogo>
+                        <onlineDesignLogo :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesignLogo>
                     </template>
                     <!-- 图案 -->
                     <template v-if="activeindex==3">
-                        <onlineDesignPic></onlineDesignPic>
+                        <onlineDesignPic :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesignPic>
                     </template>
                     <!-- 暂不支持 -->
                     <div class="noorder-box" v-if="1==2">
@@ -70,14 +70,31 @@ export default {
         onlineDesignLogo,
         onlineDesignPic
     },
-    props:['dialogOnlineDesign'],
+    props:['dialogOnlineDesign','productOnlineDialogInfo'],
     data() {
         return {
             activeindex: 0,
             specialtab: ['颜色', '文字', 'LOGO', '图案'],
             isShowModel: true,
-            dialogSave: false
+            dialogSave: false,
+            productOnlineDialogInfoColor:[],
+            productOnlineDialogInfoText:[],
         }
+    },
+    watch:{
+        productOnlineDialogInfo(val) {
+            let productOnlineDialogInfoColor = val.list.filter(item=>item.typeId==1);
+            let productOnlineDialogInfoText = val.list.filter(item=>item.typeId==1);
+            productOnlineDialogInfoColor.map(item=>{
+                item['color'] = item.color.replace(/-/g, ',')
+            })
+            this.productOnlineDialogInfoColor = productOnlineDialogInfoColor
+            this.productOnlineDialogInfoText = productOnlineDialogInfoText
+            console.log('this.productOnlineDialogInfoText',this.productOnlineDialogInfoText)
+
+
+        }
+
     },
     methods: {
         //关闭在线设计

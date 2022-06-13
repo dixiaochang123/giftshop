@@ -127,17 +127,17 @@
           <div class="proIntro-Design">
             <span class="reference-price">我的设计</span>
             <div class="proIntro-Design-imgs">
-              <div class="workmanship-box-item" style="margin-top:30px;" v-for="(item,index) in smallImgcopy" :key="item.index">
+              <div class="workmanship-box-item" style="margin-top:30px;" v-for="(item,index) in productOnline" :key="item.id">
                 <!-- <a href="#" :title="item.title"> -->
-                  <img :src="item.url">
+                  <img :src="item.fileName">
                 <!-- </a> -->
                 <div class="img-item-desc">
-                  <span>方案一</span>
+                  <span>{{item.name}}</span>
                   <!-- <i style="color:#ffffff;" class="el-icon-more"></i> -->
                   <el-dropdown trigger="click" style="cursor: pointer;" @command="jumpOrderPage">
                     <i style="color:#ffffff;" class="el-icon-more"></i>
                     <el-dropdown-menu slot="dropdown" placement="bottom">
-                      <el-dropdown-item icon="el-icon-edit" :command="{index:index,type:'edit'}">编辑</el-dropdown-item>
+                      <el-dropdown-item icon="el-icon-edit" :command="{index:index,type:'edit',data:item}">编辑</el-dropdown-item>
                       <el-dropdown-item icon="el-icon-delete" :command="{index:index,type:'deleted'}">删除</el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>
@@ -215,12 +215,12 @@
         </div>
       </div>
     </div>
-    <onlineDesign :dialogOnlineDesign="dialogOnlineDesign"></onlineDesign>
+    <onlineDesign :dialogOnlineDesign="dialogOnlineDesign" :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesign>
   </div>
 </template>
 
 <script>
-import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage } from "@/request/modules/index.js";
+import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage,productOnlineDesign } from "@/request/modules/index.js";
 import { mapActions, mapGetters } from "vuex";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
 // import _ from "lodash";
@@ -325,6 +325,8 @@ export default {
       productListSize:{},
       productListCraft:{},
       productListPackage:{},
+      productOnline:{},
+      productOnlineDialogInfo:{}
     };
   },
   computed: {
@@ -338,6 +340,7 @@ export default {
     this.productSizePage();
     this.productCraftPage();
     this.productPackagePage();
+    this.productOnlineDesign();
   },
   methods: {
     productPage(pageNum) {
@@ -418,7 +421,21 @@ export default {
             let records = data.records[0];
             records.name = records.name.split('+');
             this.productListPackage = data.records[0];
-            console.log(data)
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    productOnlineDesign(pageNum) {
+      let data = {"data":{"productId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      productOnlineDesign(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            this.productOnline = data;
+            // let records = data.records[0];
+            // records.name = records.name.split('+');
+            // this.productListPackage = data.records[0];
+            console.log(11,data)
           }
         })
         .catch((error) => console.log(error));
@@ -468,6 +485,8 @@ export default {
     jumpOrderPage(command) {
       console.log(command);
       if (command.type == "edit") {
+        this.productOnlineDialogInfo = command.data;
+        console.log(this.productOnlineDialogInfo)
         this.dialogOnlineDesign = true;
       } else {
         this.$confirm("确定要删除该方案吗?", "提示", {
