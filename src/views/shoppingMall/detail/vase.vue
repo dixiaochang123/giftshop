@@ -221,8 +221,8 @@ export default {
     border: 1px solid #fff;
     transition: all 0.5s;
     .product-content {
-      width: 256px;
-      height: 256px;
+      // width: 256px;
+      // height: 256px;
       .product-img {
         // border-radius: 12px;
         overflow: hidden;
