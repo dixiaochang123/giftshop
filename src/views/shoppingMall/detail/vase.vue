@@ -18,23 +18,23 @@
       </el-breadcrumb>
     </div>
     <div class="container product-list">
-      <div class="page_type"><span class="sxs">筛选</span><span class="result-num">共256个内容</span></div>
+      <div class="page_type"><span class="sxs">筛选</span><span class="result-num">共{{total}}个内容</span></div>
       <div class="type_list">
         <div class="product-box">
-          <div class="product-item" v-for="item in 15" :key="item.id">
-            <router-link to="/shoppingMall/detail/detail">
+          <div class="product-item" v-for="item in productList" :key="item.id">
+            <router-link :to="{path:'/shoppingMall/detail/detail',query:{id:item.id}}">
               <div class="product-content">
                 <div class="product-img">
-                  <img class="bgimg" style="width: 100%" src="../../../assets/img/shoppingMall/detail/vase01.jpg" alt="">
-                  <img class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
+                  <img class="bgimg" :src="item.url" alt="">
+                  <img v-if="item.isOnlineDesign==0" class="zoomicon" src="../../../assets/img/slices/radus.png" alt="">
                 </div>
                 <div class="product-desc">
                   <p style="padding-top:20px;">
-                    <span style="font-size: 22px">¥ {{`108`}}</span>
-                    <span style="font-size: 14px;" class="product-orderQuantity">{{orderQuantity}}起订</span>
+                    <span style="font-size: 22px">¥ {{item.sectionPrice}}</span>
+                    <span style="font-size: 14px;" class="product-orderQuantity">{{item.minNum}}起订</span>
                   </p>
-                  <span style="font-size: 22px;">
-                    创意现代简约
+                  <span :title="item.name" style="width:90%;font-size: 22px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display:inline-block;">
+                    {{item.name}}
                   </span>
                 </div>
               </div>
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <el-pagination class="product-pagination" background layout="prev, pager, next,jumper" :total="1000">
+      <el-pagination @current-change="handleCurrentChange" class="product-pagination" background layout="prev, pager, next,jumper" :page-size="10" :total="total">
       </el-pagination>
     </div>
     <fast-detail ref="FastDetail"></fast-detail>
@@ -53,14 +53,12 @@
 import FastDetail from "./fastDetailModal";
 import CateFilter from "@/components/cateFilter/CateFilter";
 import Categories from "@/components/cateFilter/categories.js";
-import {
-  productCatalogueList
-} from "@/request/modules/index.js";
+import { productCatalogueList, productPage } from "@/request/modules/index.js";
 export default {
   components: { FastDetail, CateFilter },
   data() {
     return {
-      bgcolor:true,
+      bgcolor: true,
       categories: Categories,
       carouselHeight: "500px",
       options: [
@@ -87,28 +85,66 @@ export default {
       ],
       value: "",
       orderQuantity: 100,
+      catalogueId: "",
+      productId: "",
+      productList: [],
+      total: 1,
     };
   },
   mounted() {
     this.productCatalogueList();
+    this.productId = this.$route.query.id;
+    this.productPage();
   },
   methods: {
     productCatalogueList() {
-      productCatalogueList({data:{}}).then(res=>{
-      let {code,data} = res.data;
-      if(code==200) {
-        data.map(item=>{
-          Categories.map(k=>{
-            if(k.name==item.name) {
-              item['icon'] = k.icon
-              item['activeIcon'] = k.activeIcon
-            }
-          })
+      productCatalogueList({ data: {} })
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            data.map((item) => {
+              Categories.map((k) => {
+                if (k.name == item.name) {
+                  item["icon"] = k.icon;
+                  item["activeIcon"] = k.activeIcon;
+                }
+              });
+            });
+            this.categories = data;
+            console.log(code, this.categories);
+          }
         })
-        this.categories = data;
-        console.log(code,this.categories )
-      }
-    }).catch(error=>console.log(error))
+        .catch((error) => console.log(error));
+    },
+    productPage(pageNum) {
+      // let data = {
+      //   data: { 
+      //     catalogueId: this.productId 
+      //   },
+      //   pageNum: pageNum || 1,
+      //   pageSize: 10,
+      // };
+      let data = {"data":{"catalogueId":this.productId },"pageNum":1,"pageSize":20}
+      productPage(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            data.records.map((item, index) => {
+              let url = item.filesList[0].fileName.split(",")[0];
+              let sectionPrice = item.sectionPrice.split("-")[0];
+              item["url"] = url;
+              item["sectionPrice"] = sectionPrice;
+            });
+
+            this.productList = data.records;
+            this.total = data.total;
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+      this.productPage(val);
     },
     //快速浏览
     showDetail() {
@@ -117,14 +153,15 @@ export default {
     // 选择了某个第三级分类
     onChooseCategory(data, index) {
       console.log(data, index);
-      // alert(`您选择了分类${data.name}，三级索引${index}`);
-      console.log(data, index);
       this.$router.push({
         name: "VaseDetail",
         query: {
           ...data,
         },
       });
+      console.log(data, index);
+      this.productId = data.id;
+      this.productPage();
     },
   },
 };
@@ -134,8 +171,8 @@ export default {
 <style lang="scss" scoped>
 @import "../../../assets/css/shoppingMall/vaseDetail";
 .cate-filter {
-    // margin-top: rpx2multiple(96);
- width: 100%;
+  // margin-top: rpx2multiple(96);
+  width: 100%;
   //min-height: 176px;
   position: fixed;
   top: 96px;
@@ -191,17 +228,21 @@ export default {
     border: 1px solid #fff;
     transition: all 0.5s;
     .product-content {
+      width: 256px;
+      height: 256px;
       .product-img {
         // border-radius: 12px;
-        // overflow: hidden;
+        overflow: hidden;
         position: relative;
         .bgimg {
           border-radius: 8px;
           overflow: hidden;
+          width: 256px;
+          height: 256px;
         }
         .zoomicon {
-          width:rpx2multiple(42);
-          height:rpx2multiple(42);
+          width: rpx2multiple(42);
+          height: rpx2multiple(42);
           position: absolute;
           right: -5px;
           bottom: -5px;

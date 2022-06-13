@@ -110,10 +110,12 @@ export default {
       this.activeThree = -1;
     },
     onClickThreeItem(e, category, index) {
+      console.log(e, category, index)
       let data = {
         activeFirstName :this.activeFirstName,
         activeSecondName: this.activeSecondName,
         activeThreeName: category.name,
+        id:category.id
       }
       this.setProductNav(data)
       this.$emit('choose', data, index)
