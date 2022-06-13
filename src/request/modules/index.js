@@ -14,3 +14,10 @@ export function productCatalogueList(data) {
         data: data
     })
 }
+export function productPage(data) {
+    return request({
+        url: `/product/page`,
+        method: 'POST',
+        data: data
+    })
+}
