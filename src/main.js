@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import DevicePixelRatio from "./devicePixelRatio.js";
 new DevicePixelRatio().init();
-cosnole.log('mainjs',DevicePixelRatio)
+console.log('mainjs',DevicePixelRatio,new DevicePixelRatio())
 //element 组件
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
