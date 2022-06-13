@@ -53,6 +53,9 @@
 import FastDetail from "./fastDetailModal";
 import CateFilter from "@/components/cateFilter/CateFilter";
 import Categories from "@/components/cateFilter/categories.js";
+import {
+  productCatalogueList
+} from "@/request/modules/index.js";
 export default {
   components: { FastDetail, CateFilter },
   data() {
@@ -86,8 +89,27 @@ export default {
       orderQuantity: 100,
     };
   },
-  mounted() {},
+  mounted() {
+    this.productCatalogueList();
+  },
   methods: {
+    productCatalogueList() {
+      productCatalogueList({data:{}}).then(res=>{
+      let {code,data} = res.data;
+      if(code==200) {
+        data.map(item=>{
+          Categories.map(k=>{
+            if(k.name==item.name) {
+              item['icon'] = k.icon
+              item['activeIcon'] = k.activeIcon
+            }
+          })
+        })
+        this.categories = data;
+        console.log(code,this.categories )
+      }
+    }).catch(error=>console.log(error))
+    },
     //快速浏览
     showDetail() {
       this.$refs.FastDetail.show();
