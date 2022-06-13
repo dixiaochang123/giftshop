@@ -11,12 +11,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'animate.css';
 
 //百度地图
-import BaiduMap from 'vue-baidu-map'
+// import BaiduMap from 'vue-baidu-map'
 
 Vue.use(ElementUI)
-Vue.use(BaiduMap,{
-  ak:'YOU_APP_kEY'
-})
+// Vue.use(BaiduMap,{
+//   ak:'YOU_APP_kEY'
+// })
 Vue.config.productionTip = false
 
 new Vue({
