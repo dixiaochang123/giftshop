@@ -124,8 +124,11 @@ export default {
 
 .on-lineDesign {
     .onlineBox-container {
-        background-color: #fff;
-        background-image: linear-gradient(-180deg,rgba(0,0,0,.08),rgba(255,255,255,1));
+        // background-color: #fff;
+        // background-image: linear-gradient(-180deg,rgba(0,0,0,.08),rgba(255,255,255,1));
+        background-color: rgba($color: #ffffff, $alpha: 0.9);
+        // opacity: 0.15;
+        backdrop-filter: blur(50px);
         min-height: 100vh;
         height: 100%;
         width: inherit;

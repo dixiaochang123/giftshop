@@ -43,7 +43,7 @@
     </template>
     <template v-else>
       <div
-          style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center; background-color:rgba(255,255,255,0.15);backdrop-filter: blur(50px);">
+          style="width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;">
         <div
             style="padding: calc(80px) calc(75px);display: flex;align-items: center;flex-direction: column;border: 1px solid #7ea3da;border-radius: calc(23px / 1.124780316344464);background-color:#ffffff;">
           <el-image :src="require('@/assets/img/shoppingMall/design/preview.png')" style="width: calc(210px);"/>
@@ -58,7 +58,7 @@
       </div>
     </template>
     <!-- 弹窗背景图片设置 -->
-    <div style="display: none;" v-html="dialogStyleHtml"></div>
+    <!-- <div style="display: none;" v-html="dialogStyleHtml"></div> -->
   </el-dialog>
 </template>
 
@@ -116,7 +116,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*background: rgba(255, 255, 255, 0.15);*/
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(50px);
 }
 
 .ProductDesignItemPlanDetailDialog .el-dialog__header {
