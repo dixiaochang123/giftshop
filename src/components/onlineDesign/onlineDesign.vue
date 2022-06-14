@@ -75,8 +75,8 @@ export default {
         return {
             open:true,
             activeindex: 0,
-            // specialtab: ['颜色', '文字', 'LOGO', '图案'],
-            specialtab: ['颜色', '正面', '背面'],
+            specialtab: ['颜色', '文字', 'LOGO', '图案'],
+            // specialtab: ['颜色', '正面', '背面'],
             isShowModel: true,
             dialogSave: false,
             productOnlineDialogInfoColor:[],
