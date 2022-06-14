@@ -15,21 +15,21 @@
                 </div>
                 <div class="online-body">
                     <!-- 颜色 -->
-                    <template v-if="activeindex==0">
-                        <onlineDesignColor :productOnlineDialogInfoColor="productOnlineDialogInfoColor"></onlineDesignColor>
-                    </template>
+                    <!-- <template v-if="activeindex==0"> -->
+                        <onlineDesignColor v-show="activeindex==0" ref="onlineDesignColor" :productOnlineDialogInfoColor="productOnlineDialogInfoColor"></onlineDesignColor>
+                    <!-- </template> -->
                     <!-- 文字 -->
-                    <template v-if="activeindex==1" >
-                        <onlineDesignText :productOnlineDialogInfoText="productOnlineDialogInfoText"></onlineDesignText>
-                    </template>
+                    <!-- <template v-if="activeindex==1" > -->
+                        <onlineDesignText v-show="activeindex==1" ref="onlineDesignText" :productOnlineDialogInfoText="productOnlineDialogInfoText"></onlineDesignText>
+                    <!-- </template> -->
                     <!-- logo -->
-                    <template v-if="activeindex==2">
-                        <onlineDesignLogo :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesignLogo>
-                    </template>
+                    <!-- <template v-if="activeindex==2"> -->
+                        <onlineDesignLogo v-show="activeindex==2" ref="onlineDesignLogo" :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesignLogo>
+                    <!-- </template> -->
                     <!-- 图案 -->
-                    <template v-if="activeindex==3">
-                        <onlineDesignPic :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesignPic>
-                    </template>
+                    <!-- <template v-if="activeindex==3"> -->
+                        <onlineDesignPic v-show="activeindex==3" :productOnlineDialogInfo="productOnlineDialogInfo"></onlineDesignPic>
+                    <!-- </template> -->
                     <!-- 暂不支持 -->
                     <div class="noorder-box" v-if="1==2">
                         <img src="~@/assets/img/slices/no-surport.png" alt="">
@@ -76,7 +76,7 @@ export default {
             open:true,
             activeindex: 0,
             specialtab: ['颜色', '文字', 'LOGO', '图案'],
-            // specialtab: ['颜色', '正面', '背面'],
+            specialtab: ['颜色', '正面', '背面'],
             isShowModel: true,
             dialogSave: false,
             productOnlineDialogInfoColor:[],
@@ -105,7 +105,9 @@ export default {
             //this.isShowModel = false
         },
         save() {
-            this.$parent.closeOnlineBox()
+            // console.log(this.$refs.onlineDesignColor.heheh())
+            this.$refs.onlineDesignColor.heheh()
+            // this.$parent.closeOnlineBox()
         },
         notSave() {
             this.dialogSave = false;

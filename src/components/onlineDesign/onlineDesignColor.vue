@@ -44,7 +44,7 @@
 </template>
 
 <script>
-// import html2canvas from 'html2canvas'
+
 import {
     slider,
     slideritem
@@ -79,6 +79,9 @@ export default {
         onTap(slide) {
             console.log(slide)
             // this.current = slide.currentPage
+        },
+        heheh() {
+            console.log('我是子组件')
         }
     }
 }

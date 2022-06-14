@@ -64,7 +64,7 @@
             <div class="proIntro-material">
               <span class="type-name">材质</span>
               <div class="material-item-box">
-                <span v-for="(item, index) in productListMC.name" @click="handleMaterial(item,index)" :key="index" class="material-item" :class="{'activeItem': index === materialActive}">{{item}}</span>
+                <span v-for="(item, index) in productListMC" @click="handleMaterial(item,index)" :key="index" class="material-item" :class="{'activeItem': index === materialActive}">{{item.name}}</span>
               </div>
             </div>
             <div class="proIntro-size">
@@ -90,7 +90,7 @@
             <div class="proIntro-packing">
               <span class="type-name">包装</span>
               <div class="packing-item-box">
-                <span v-for="(item, index) in productListPackage.name" :key="index" class="packing-item" @click="handlePacking(item,index)" :class="{'activeItem' : index === packingActive}">{{item}}</span>
+                <span v-for="(item, index) in productListPackage" :key="index" class="packing-item" @click="handlePacking(item,index)" :class="{'activeItem' : index === packingActive}">{{item.name}}</span>
               </div>
             </div>
             <!-- <p>数量 库存数量<span>1456</span>件</p> -->
@@ -127,7 +127,7 @@
           <div class="proIntro-Design">
             <span class="reference-price">我的设计</span>
             <div class="proIntro-Design-imgs">
-              <div class="workmanship-box-item" style="margin-top:30px;" v-for="(item,index) in productOnline" :key="item.id">
+              <div @click="handleclickjumpOrderPage(item,index)" :class="[jumpOrderPageAcive==index ? 'active':'','workmanship-box-item']" style="margin-top:30px;" v-for="(item,index) in productOnline" :key="item.id">
                 <!-- <a href="#" :title="item.title"> -->
                   <img :src="item.fileName">
                 <!-- </a> -->
@@ -319,6 +319,7 @@ export default {
       r_img: {},
       topShow: false,
       rShow: false,
+      jumpOrderPageAcive:0,
 
       productId:'',
       productList:{},
@@ -382,9 +383,9 @@ export default {
         .then((res) => {
           let { code, data } = res.data;
           if (code == 200) {
-            let records = data.records[0];
-            records.name = records.name.split('+');
-            this.productListMC = data.records[0];
+            let records = data.records;
+            // records.name = records.name.split('+');
+            this.productListMC = records;
           }
         })
         .catch((error) => console.log(error));
@@ -422,9 +423,9 @@ export default {
         .then((res) => {
           let { code, data } = res.data;
           if (code == 200) {
-            let records = data.records[0];
-            records.name = records.name.split('+');
-            this.productListPackage = data.records[0];
+            let records = data.records;
+            // records.name = records.name.split('+');
+            this.productListPackage = records;
           }
         })
         .catch((error) => console.log(error));
@@ -485,6 +486,9 @@ export default {
     },
     closeOnlineBox() {
       this.dialogOnlineDesign = false;
+    },
+    handleclickjumpOrderPage(item,index) {
+      this.jumpOrderPageAcive = index;
     },
     jumpOrderPage(command) {
       console.log(command);
@@ -826,6 +830,10 @@ export default {
   margin-right: 20px;
   margin-bottom: 20px;
   position: relative;
+  &.active {
+    border-radius: 12px;
+    border: 2px solid #FF946B;
+  }
   img {
     width: 100%;
     height: 100%;
