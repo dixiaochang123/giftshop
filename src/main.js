@@ -9,7 +9,8 @@ console.log('mainjs',DevicePixelRatio,new DevicePixelRatio())
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import 'animate.css';
-
+// 去除警告
+Vue.config.silent= true
 //百度地图
 // import BaiduMap from 'vue-baidu-map'
 

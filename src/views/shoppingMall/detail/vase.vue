@@ -12,9 +12,9 @@
     <div class="Breadcrumb">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }" style="font-size: 16px;color: #73757D">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>{{this.$route.query.activeFirstName}}</el-breadcrumb-item>
-        <el-breadcrumb-item>{{this.$route.query.activeSecondName}}</el-breadcrumb-item>
-        <el-breadcrumb-item>{{this.$route.query.activeThreeName}}</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="!$route.query.search">{{this.$route.query.activeFirstName}}</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="!$route.query.search">{{this.$route.query.activeSecondName}}</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="!$route.query.search">{{this.$route.query.activeThreeName}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="container product-list">
@@ -91,6 +91,18 @@ export default {
       total: 1,
     };
   },
+  watch: {
+    $route: {
+      handler(val) {
+        console.log(val)
+        if(!!val.query.search) {
+          this.productPage()
+
+        }
+        
+      }
+    }
+  },
   mounted() {
     this.productCatalogueList();
     this.productId = this.$route.query.id;
@@ -117,7 +129,8 @@ export default {
         .catch((error) => console.log(error));
     },
     productPage(pageNum) {
-      let data = {"data":{"catalogueId":this.productId },"pageNum":pageNum || 1,"pageSize":10}
+      let search = this.$route.query.search
+      let data = {"data":{"catalogueId":this.productId,"searchKeyword": search },"pageNum":pageNum || 1,"pageSize":10}
       productPage(data)
         .then((res) => {
           let { code, data } = res.data;

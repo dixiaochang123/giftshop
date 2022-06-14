@@ -133,7 +133,8 @@
 export default {
   name: "Ordercenter",
   props: {
-    filterPanelActive: Boolean
+    filterPanelActive: Boolean,
+    OrderInfo:Object
   },
   data() {
     return {
@@ -220,6 +221,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.OrderInfo)
   },
   methods: {
     viewDesign(item) {

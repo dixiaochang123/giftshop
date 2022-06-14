@@ -18,27 +18,34 @@
         </div>
         <div class="spqdnr">
           <div class="spxx" style="width: 500px;">
-            <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg" style="border-radius: 4px;"/>
+            <img :src="OrderInfo.productFile" style="border-radius: 4px;"/>
             <div class="info">
-              <div class="name">愿时光停在花</div>
+              <div class="name">{{OrderInfo.productName}}</div>
               <div class="js">母亲节真诚礼至特别巨献妈妈的礼物</div>
             </div>
           </div>
-          <div style="width: 220px;text-align: center;font-size: 18px;">￥30.00</div>
-          <div style="width: 220px;text-align: center;font-size: 18px;">100</div>
-          <div style="width: 220px;text-align: center;font-size: 18px;">￥00.00</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">￥{{OrderInfo.unitPrice}}</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">{{OrderInfo.num}}</div>
+          <div style="width: 220px;text-align: center;font-size: 18px;">￥{{'15'}}</div>
           <div style="font-size: 28px;font-weight: 500;color: #2D2E33;width: 220px;text-align: center;font-size: 18px;">
-            ￥3000.00元
+            ￥{{OrderInfo.price}}元
           </div>
         </div>
       </div>
       <div class="psfs">
         <div class="tit title" style="margin: 0;">配送方式</div>
-        <el-select v-model="psfs"></el-select>
+        <el-select v-model="psfs">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
 
         <div class="tit2" style="font-size: 24px;">
           <span style="margin-right: 24px;">运费:</span>
-          <span>¥0.00</span>
+          <span>¥15</span>
         </div>
       </div>
 
@@ -46,13 +53,9 @@
         设计方案
       </div>
       <div class="sjfa">
-        <div class="lb" :class="{'sjfa-lb-active':sjfaLbActiveIndex===0}" @click="sjfaLbActiveIndex=0">
-          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
-          <div class="tt">方案1</div>
-        </div>
-        <div class="lb" :class="{'sjfa-lb-active':sjfaLbActiveIndex===1}" @click="sjfaLbActiveIndex=1">
-          <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
-          <div class="tt">方案2</div>
+        <div v-for="(item,index) in productOnline" :key="item.id" class="lb" :class="{'sjfa-lb-active':sjfaLbActiveIndex===index}" @click="handleClickActive(index)">
+          <img :src="item.fileName"/>
+          <div class="tt">{{item.name}}</div>
         </div>
       </div>
 
@@ -81,33 +84,25 @@
         <div class="sj">15258888888</div>
         <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
       </div>
-      <div class="shrxx" :class="{'shrxx-active':zffs===2}">
-        <div class="dx" @click="zffs=2" :class="{'dx-active':zffs===2}">
-          <span class="el-checkbox__inner"></span>
-        </div>
-        <div>喵大人</div>
-        <div class="sj">15258888888</div>
-        <div class="dzxx">北京市昌平区沙河镇宏福苑小区1号楼9单元309</div>
-      </div>
 
       <div class="liyan">
         <div class="title" style="margin-top: 0;">留言</div>
-        <textarea></textarea>
+        <textarea v-model="textarea"></textarea>
       </div>
       <div class="jgyf">
         <div class="jg">
           <div class="t1">商品金额</div>
-          <div class="t2">¥3000.00元</div>
+          <div class="t2">¥{{OrderInfo.unitPrice}}元</div>
         </div>
         <div class="jg">
           <div class="t1">运费</div>
-          <div class="t2">¥0.00元</div>
+          <div class="t2">¥15元</div>
         </div>
       </div>
       <div class="fkxx">
         <div class="jg">
           <div class="t1">总计</div>
-          <div class="t2">¥3000.00元</div>
+          <div class="t2">¥{{OrderInfo.price}}元</div>
         </div>
         <div class="jsxx">
           <span style="margin-right: 18px;color: #73757D;">寄送至</span>
@@ -122,18 +117,74 @@
 </template>
 
 <script>
-
+import { mapActions, mapGetters } from "vuex";
+import { productOnlineDesign, productOrderUpdate } from "@/request/modules/index.js";
 export default {
   name: 'order',
   data() {
     return {
-      psfs: "",
+      options: [{
+          value: '中通',
+          label: '中通'
+        }, {
+          value: '顺丰',
+          label: '顺丰'
+        }, {
+          value: '速运',
+          label: '速运'
+        }],
+        psfs: '顺丰',
       zffs: 1,
-      sjfaLbActiveIndex: 0
+      sjfaLbActiveIndex: 0,
+      productOnline:[],
+      textarea:''
     };
   },
+  computed: {
+    ...mapGetters(['OrderInfo']),
+  },
+  mounted() {
+    this.productOnlineDesign();
+  },
   methods: {
+    productOnlineDesign(pageNum) {
+      let data = {"data":{"productId":this.$route.query.id },"pageNum": 1,"pageSize":10}
+      productOnlineDesign(data)
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            this.productOnline = data;
+            // let records = data.records[0];
+            // records.name = records.name.split('+');
+            // this.productListPackage = data.records[0];
+            console.log(11,data)
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    handleClickActive(index) {
+      this.sjfaLbActiveIndex = index;
+    },
     submitOrder() {
+      let data = {
+      "consignee": "喵大人",
+      "consigneeAddress": "北京市昌平区沙河镇宏福苑小区1号楼9单元309",
+      "consigneeMobile": "15258888888",
+      "deliveryDate": "2022-06-20",
+      "designFile": this.productOnline[0].fileName,
+      "distributionMethod": this.psfs,
+      "freight": 15,
+      "id": this.$route.query.id,
+      "num": this.OrderInfo.num,
+      "orderNo": this.OrderInfo.orderNo,
+      "price": this.OrderInfo.unitPrice,
+      "status": 1,
+      "stayMessage": this.textarea
+    }
+      productOrderUpdate(data).then(res=>{
+
+
+      }).catch(error=>console.log(error))
       //TODO: 根据ids生产订单，跳转支付页
       this.$router.push({
         path: "/shoppingMall/payment/payment"

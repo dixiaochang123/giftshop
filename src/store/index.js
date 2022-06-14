@@ -7,11 +7,13 @@ Vue.use(Vuex);     //Vuex大写!!!
 export default new Vuex.Store({
   state: {
     ProductNav: JSON.parse(sessionStorage.getItem('ProductNav')) ? JSON.parse(sessionStorage.getItem('ProductNav')) : null,
+    OrderInfo: JSON.parse(sessionStorage.getItem('OrderInfo')) ? JSON.parse(sessionStorage.getItem('OrderInfo')) : {},
     isEdit:false,
   },
   getters: {
     ProductNav: state => state.ProductNav,
     isEdit: state => state.isEdit,
+    OrderInfo: state => state.OrderInfo,
   },
   mutations: {
     SETPRODUCTNAV(state, data) {
@@ -22,6 +24,10 @@ export default new Vuex.Store({
       // sessionStorage.setItem('isEdit', JSON.stringify(data));
       state.isEdit = data
     },
+    ORDERINFOSAVE(state, data) {
+      sessionStorage.setItem('OrderInfo', JSON.stringify(data));
+      state.OrderInfo = data
+    },
   },
   actions: {
     setProductNav({ commit }, data) {
@@ -29,6 +35,9 @@ export default new Vuex.Store({
     },
     setEdit({ commit }, data) {
       commit("SETEDIT", data)
+    },
+    OrderInfoSave({ commit }, data) {
+      commit("ORDERINFOSAVE", data)
     },
   },
   modules: {

@@ -23,7 +23,7 @@
                 </template>
               </div>
             </el-autocomplete>
-            <div style="cursor: pointer;" class="icon-search"></div>
+            <div style="cursor: pointer;" class="icon-search" @click="handlesearch"></div>
           </div>
           <div style="cursor: pointer;" v-if="!searchShow" class="icon-search" @click="handleSearchsToggle(true)"></div>
         </div>
@@ -153,9 +153,15 @@ export default {
   },
   watch: {
     $route: {
-      handler() {
-        this.searchShow = false;
-        this.hotsearch = "";
+      handler(val) {
+        console.log(val)
+        if(val.name== "VaseDetail") {
+
+        } else {
+
+          this.searchShow = false;
+          this.hotsearch = "";
+        }
       }
     }
   },
@@ -254,6 +260,15 @@ export default {
         });
       }
     },
+    handlesearch() {
+      console.log(this.hotsearch)
+      this.$router.push({
+        name:'VaseDetail',
+        query:{
+          search:this.hotsearch
+        }
+      })
+    }
   },
 };
 </script>

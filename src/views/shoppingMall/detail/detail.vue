@@ -70,7 +70,7 @@
             <div class="proIntro-size">
               <span class="type-name">尺寸</span>
               <div class="size-item-box">
-                <span v-for="(item, index) in productListSize.name" :key="index" @click="handleSize(item,index)" class="size-item" :class="{'activeItem' : index === sizeActive}">{{item}}</span>
+                <span v-for="(item, index) in productListSize" :key="index" @click="handleSize(item,index)" class="size-item" :class="{'activeItem' : index === sizeActive}">{{item.name}}</span>
               </div>
             </div>
             <div class="workmanship">
@@ -120,7 +120,7 @@
             <div class="Production-time">
               <span class="type-name" style="margin-right: 50px">生产时间</span>
               <div class="Production-time-box">
-                <span>付款后15个工作日内完成生产</span>
+                <span>付款后{{productList.duration}}个工作日内完成生产</span>
               </div>
             </div>
           </div>
@@ -154,13 +154,13 @@
             </div>
             <div class="add-cart-box">
               <span style="padding-right:10px;">
-                <el-button size="medium" @click="gotoOrder">立即下单</el-button>
+                <el-button size="medium" @click="gotoOrder(1)">立即下单</el-button>
               </span>
               <span style="padding-right:10px;">
                 <el-button size="medium" icon="el-icon-shopping-cart-2" @click="gotoMycart">加入购物车</el-button>
               </span>
               <span>
-                <el-button size="medium" @click="gotoOrder">打样</el-button>
+                <el-button size="medium" @click="gotoOrder(0)">打样</el-button>
               </span>
             </div>
             <!-- <span style="padding-right:30px;"><el-button>加入购物车</el-button></span>
@@ -192,7 +192,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="pro_img" v-for="item in smallImg" :key="item">
+                <div class="pro_img" v-for="item in smallSubImg" :key="item">
                   <img :src="item" alt="">
                 </div>
               </el-tab-pane>
@@ -220,7 +220,7 @@
 </template>
 
 <script>
-import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage,productOnlineDesign } from "@/request/modules/index.js";
+import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage,productOnlineDesign,productOrderAdd } from "@/request/modules/index.js";
 import { mapActions, mapGetters } from "vuex";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
 // import _ from "lodash";
@@ -312,6 +312,7 @@ export default {
         },
       ],
       smallImg: lodash.cloneDeep(smallImg),
+      smallSubImg: lodash.cloneDeep(smallImg),
       smallImgcopy: lodash.cloneDeep(smallImg),
       // 放大镜效果
       topStyle: { transform: "" },
@@ -343,6 +344,7 @@ export default {
     this.productOnlineDesign();
   },
   methods: {
+    ...mapActions(["OrderInfoSave"]),
     productPage(pageNum) {
       let data = {"data":{"id":this.productId },"pageNum":pageNum || 1,"pageSize":10}
       productPage(data)
@@ -352,6 +354,7 @@ export default {
             try {
               
               this.smallImg = !!data.records[0] && data.records[0].filesList[0].fileName.split(",")
+              this.smallSubImg = !!data.records[0] && data.records[0].filesList[1].fileName.split(",")
               this.bigImg = !!this.smallImg && this.smallImg[0]
   
               let priceListNumber = !!data.records[0] && data.records[0].sectionNum.split("-");
@@ -392,10 +395,11 @@ export default {
         .then((res) => {
           let { code, data } = res.data;
           if (code == 200) {
-            let records = data.records[0];
-            records.name = records.name.split('*');
-            this.productListSize = data.records[0];
-            console.log(data)
+            let records = data.records;
+            // console.log(records)
+            // records.name = records.name.split('*');
+            this.productListSize = records;
+            console.log(33333333,records)
           }
         })
         .catch((error) => console.log(error));
@@ -532,10 +536,28 @@ export default {
           });
         });
     },
-    gotoOrder() {
-      this.$router.push({
-        name:'Order'
-      })
+    gotoOrder(isProofing) {
+      let data = {
+        "isProofing": isProofing,
+        "num": this.num,
+        "price": this.totalPrice,
+        "productFile": this.smallImg[0],
+        "productId": this.productId,
+        "productName": this.productList.name,
+        "unitPrice": this.unitPrice
+      }
+      productOrderAdd(data).then(res=>{
+        let { code, data } = res.data;
+          if (code == 200) {
+            this.OrderInfoSave(data)
+            this.$router.push({
+              name:'Order',
+              query:{
+                id:this.$route.query.id
+              }
+            })
+          }
+      }).catch(error=>console.log(error))
     },
     gotoMycart() {
       this.$router.push({

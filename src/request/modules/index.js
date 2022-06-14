@@ -49,3 +49,17 @@ export function productOnlineDesign(data) {
         data: data
     })
 }
+export function productOrderAdd(data) {
+    return request({
+        url: `/productOrder/add`,
+        method: 'POST',
+        data: data
+    })
+}
+export function productOrderUpdate(data) {
+    return request({
+        url: `/productOrder/update`,
+        method: 'POST',
+        data: data
+    })
+}
