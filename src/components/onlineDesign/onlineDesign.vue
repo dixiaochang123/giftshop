@@ -9,7 +9,7 @@
                         <img src="~@/assets/img/slices/close-icon.png" alt="">
                     </div>
                     <div class="tab-list-2-1">
-                        <div @click="activeindex = index" v-for="(item, index) in specialtab" :key="item" :class="[index == activeindex ? 'active' : '']">{{ item }}</div>
+                        <div @click="activeindex = index" v-for="(item, index) in specialtab" :key="item" :class="[index == activeindex ? 'active' : '',!open?'disabled':'']">{{ item }}</div>
                     </div>
                     <el-button class="form-btn" @click="save">保存</el-button>
                 </div>
@@ -73,8 +73,10 @@ export default {
     props:['dialogOnlineDesign','productOnlineDialogInfo'],
     data() {
         return {
+            open:true,
             activeindex: 0,
-            specialtab: ['颜色', '文字', 'LOGO', '图案'],
+            // specialtab: ['颜色', '文字', 'LOGO', '图案'],
+            specialtab: ['颜色', '正面', '背面'],
             isShowModel: true,
             dialogSave: false,
             productOnlineDialogInfoColor:[],
@@ -303,4 +305,7 @@ export default {
         }
     }
 }
+ .disabled{
+    pointer-events:none
+ }
 </style>

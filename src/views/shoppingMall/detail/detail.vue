@@ -553,7 +553,8 @@ export default {
             this.$router.push({
               name:'Order',
               query:{
-                id:this.$route.query.id
+                id:this.$route.query.id,
+                deliveryDate:isProofing==0?this.productList.duration:this.productList.proofingDuration
               }
             })
           }
