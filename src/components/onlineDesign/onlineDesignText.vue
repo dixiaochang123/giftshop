@@ -3,10 +3,10 @@
     <div class="text-inner">
       <div class="item">
         <div class="item-img" ref="canvas">
-          <img class="img" :src="productOnlineDialogInfoPandC1.url" alt="">
-          <vue-drag-resize h="100" x="170" y="200" parentLimitation v-show="remark">{{remark}}</vue-drag-resize>
-          <vue-drag-resize x="200" y="270" parentLimitation v-show="LogoContent[0].imgUrl" w="120" h="120">
-            <img :src="LogoContent[0].imgUrl" alt="" width="100%" height="100%">
+          <img class="img" v-if="productOnlineDialogInfoPandC1.url" :src="productOnlineDialogInfoPandC1.url" alt="">
+          <vue-drag-resize h="100" x="170" y="200" parentLimitation v-if="remark">{{remark}}</vue-drag-resize>
+          <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent[0].imgUrl" w="120" h="120">
+            <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl" alt="" width="100%" height="100%">
           </vue-drag-resize>
         </div>
         <div>
@@ -68,7 +68,7 @@ export default {
   props: ["productOnlineDialogInfoPandC1"],
   data() {
     return {
-      remark: "静待花开静待花开静待花开静待花开静待花开",
+      remark: "",
       maxlength: 16,
       LogoContent: [
         {
@@ -89,13 +89,11 @@ export default {
         useCORS: true,
       }).then((canvas) => {
         let dataurl = canvas.toDataURL('image/jpg');
-        // let blob = self.base64ToBlob(dataurl);
-        // let fileOfBlob = new File([blob],'截图.jpg'); // 重命名了
+        let blob = self.base64ToBlob(dataurl);
+        let fileOfBlob = new File([blob],'截图.jpg'); // 重命名了
         // console.log(fileOfBlob)
         var formData = new FormData();
-         formData.append('file', dataurl)
-        // formData.append('userId', 123)
-        // formData.append('pathName', 'pdf')
+         formData.append('file', fileOfBlob)
         this.uploadImgByForm(formData);
       });
     },

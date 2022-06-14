@@ -177,10 +177,31 @@ export default {
     onCommand(command) {
       switch (command) {
         case "account":
-        case "address":
-        case "invoice":
           this.$router.push({
             path: "/shoppingMall/user/userCenter2",
+            query: {
+              current: {
+                account: 0,
+                address: 1,
+                invoice: 2,
+              }[command],
+            },
+          });
+          
+        case "address":
+          this.$router.push({
+            path: "/shoppingMall/user/userCenter2/addressDetails",
+            query: {
+              current: {
+                account: 0,
+                address: 1,
+                invoice: 2,
+              }[command],
+            },
+          });
+        case "invoice":
+          this.$router.push({
+            path: "/shoppingMall/user/userCenter2/invoiceDetails",
             query: {
               current: {
                 account: 0,

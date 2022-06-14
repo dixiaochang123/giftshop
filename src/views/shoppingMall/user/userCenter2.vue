@@ -32,6 +32,32 @@ export default {
             current: 0
         }
     },
+    watch:{
+        $route: {
+        handler(val) {
+            console.log(val)
+            if(!!val.query && val.query.current==0) {
+                this.$router.push(`/shoppingMall/user/userCenter2/`)
+                this.current =val.query.current
+            }
+            if(!!val.query && val.query.current==1) {
+                this.$router.push(`/shoppingMall/user/userCenter2/addressDetails`)
+                this.current =val.query.current
+
+            }
+            if(!!val.query && val.query.current==2) {
+                this.$router.push(`/shoppingMall/user/userCenter2/invoiceDetails`)
+                this.current =val.query.current
+
+            }
+            // if(!!val.query.search) {
+            // this.productPage()
+
+            // }
+            
+        }
+        }
+    },
     mounted() {
         this.current = this.$route.query.current || 0
     },

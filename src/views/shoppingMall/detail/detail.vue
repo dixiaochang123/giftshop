@@ -124,7 +124,7 @@
               </div>
             </div>
           </div>
-          <div class="proIntro-Design">
+          <div class="proIntro-Design" v-if="productList.isOnlineDesign!==0">
             <span class="reference-price">我的设计</span>
             <div class="proIntro-Design-imgs">
               <div @click="handleclickjumpOrderPage(item,index)" :class="[jumpOrderPageAcive==index ? 'active':'','workmanship-box-item']" style="margin-top:30px;" v-for="(item,index) in productOnline" :key="item.id">
@@ -146,8 +146,8 @@
             </div>
           </div>
           <div class="add-cart">
-            <div v-if="false" class="add-Design">加入“我的设计”并联系客服定制方案</div>
-            <div class="continue-Design" @click="openOnlineBox">
+            <div v-if="productList.isOnlineDesign!==0" style="width: 498px;height: 52px;line-height: 40px;font-size: 22px;"  class="add-Design">加入“我的设计”并联系客服定制方案</div>
+            <div v-else class="continue-Design" @click="openOnlineBox">
               <span>
                 继续设计
               </span>

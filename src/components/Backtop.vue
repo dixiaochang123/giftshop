@@ -5,13 +5,13 @@
           <div></div>
           <p>联系客服</p>
         </div>
-      <el-tooltip effect="light" content="电话: 12345678901" popper-class="backtop-item-popper-class" placement="left">
+      <el-tooltip effect="light" content="电话：（+86）183 1089 7920" popper-class="backtop-item-popper-class" placement="left">
         <div class="phon">
           <div></div>
           <p>联系电话</p>
         </div>
       </el-tooltip>
-      <el-tooltip effect="light" content="账号: 12345678901" popper-class="backtop-item-popper-class" placement="left">
+      <el-tooltip effect="light" content="账号：183 1089 7920" popper-class="backtop-item-popper-class" placement="left">
         <div class="feishu">
           <div></div>
           <p>飞书账号</p>
