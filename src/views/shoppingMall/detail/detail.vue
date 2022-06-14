@@ -220,7 +220,7 @@
 </template>
 
 <script>
-import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage,productOnlineDesign,productOrderAdd } from "@/request/modules/index.js";
+import { productPage,productMaterialPage,productSizePage,productCraftPage,productPackagePage,productOnlineDesign,productOrderAdd,productOnlineDesignFindTwoList } from "@/request/modules/index.js";
 import { mapActions, mapGetters } from "vuex";
 import onlineDesign from "@/components/onlineDesign/onlineDesign";
 // import _ from "lodash";
@@ -482,6 +482,12 @@ export default {
       this.bigImg = smallImg;
     },
     openOnlineBox() {
+      this.productOnlineDialogInfo = this.productOnline;
+      // let groupingType = !!this.productOnline?this.productOnline[this.jumpOrderPageAcive].groupingType:null;
+      // if(groupingType) {
+
+      //   this.productOnlineDesignFindTwoList(groupingType)
+      // }
       this.dialogOnlineDesign = true;
     },
     closeOnlineBox() {
@@ -493,7 +499,7 @@ export default {
     jumpOrderPage(command) {
       console.log(command);
       if (command.type == "edit") {
-        this.productOnlineDialogInfo = command.data;
+        this.productOnlineDialogInfo = this.productOnline;
         console.log(this.productOnlineDialogInfo)
         this.dialogOnlineDesign = true;
       } else {
@@ -516,6 +522,17 @@ export default {
             });
           });
       }
+    },
+    productOnlineDesignFindTwoList(groupingType){
+      productOnlineDesignFindTwoList({
+        "groupingType": groupingType,
+        "productId": this.productId
+      }).then(res=>{
+        if (code == 200) {
+            console.log(data)
+        }
+      }).catch(error=>console.log(error))
+
     },
     editProgramme(data) {
       this.dialogOnlineDesign = true;

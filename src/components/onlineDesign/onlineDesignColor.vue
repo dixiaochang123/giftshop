@@ -54,7 +54,7 @@ export default {
         slider,
         slideritem
     },
-    props:["productOnlineDialogInfoColor"],
+    props:["productOnlineDialogInfoColor","slidechange"],
     data() {
         return {
             current: 0,
@@ -75,6 +75,10 @@ export default {
         },
         slide(slide) {
             this.current = slide.currentPage
+            // this.productOnlineDialogInfoColor[this.current]
+            console.log(slide,this.productOnlineDialogInfoColor[this.current].groupingType)
+            let groupingType = this.productOnlineDialogInfoColor[this.current].groupingType
+            this.$emit('slidechange',groupingType)
         },
         onTap(slide) {
             console.log(slide)

@@ -63,3 +63,17 @@ export function productOrderUpdate(data) {
         data: data
     })
 }
+export function productOnlineDesignFindTwoList(data) {
+    return request({
+        url: `/productOnlineDesign/findTwoList`,
+        method: 'POST',
+        data: data
+    })
+}
+export function uploadFile(data) {
+    return request({
+        url: `/hzld-file/file/uploadFile`,
+        method: 'POST',
+        data: data
+    })
+}

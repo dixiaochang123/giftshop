@@ -62,6 +62,7 @@
 </template>
 
 <script>
+	import { productCatalogueList, productPage } from "@/request/modules/index.js";
 	import CateFilter from "@/components/cateFilter/CateFilter";
 	import Categories from "@/components/cateFilter/categories.js";
 	export default {
@@ -106,8 +107,28 @@
 		},
 		mounted() {
 			this.title = this.$route.query.title
+			this.productCatalogueList();
 		},
 		methods: {
+			productCatalogueList() {
+      productCatalogueList({ data: {} })
+        .then((res) => {
+          let { code, data } = res.data;
+          if (code == 200) {
+            data.map((item) => {
+              Categories.map((k) => {
+                if (k.name == item.name) {
+                  item["icon"] = k.icon;
+                  item["activeIcon"] = k.activeIcon;
+                }
+              });
+            });
+            this.categories = data;
+            console.log(code, this.categories);
+          }
+        })
+        .catch((error) => console.log(error));
+    },
 		//tab切换
 			tabqh(zhi){
 				this.tabbq=zhi

@@ -3,9 +3,9 @@
     <div class="text-inner">
       <div class="item">
         <div class="item-img" ref="canvas">
-          <img class="img" src="https://image.tongtanggift.com/oss/cxkj/b-T恤-潮流款-在线设计\设计图/黑色正面底图.jpg" alt="">
-          <vue-drag-resize h="100" x="170" y="200" parentLimitation v-if="remark">{{remark}}</vue-drag-resize>
-          <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent[0].imgUrl" w="120" h="120">
+          <img class="img" :src="productOnlineDialogInfoPandC1.url" alt="">
+          <vue-drag-resize h="100" x="170" y="200" parentLimitation v-show="remark">{{remark}}</vue-drag-resize>
+          <vue-drag-resize x="200" y="270" parentLimitation v-show="LogoContent[0].imgUrl" w="120" h="120">
             <img :src="LogoContent[0].imgUrl" alt="" width="100%" height="100%">
           </vue-drag-resize>
         </div>
@@ -57,12 +57,15 @@
 </template>
 
 <script>
+import { uploadFile } from "@/request/modules/index.js";
+import $ from "jquery";
 import html2Canvas from "html2canvas";
 import VueDragResize from "vue-drag-resize";
 export default {
   components: {
     VueDragResize,
   },
+  props: ["productOnlineDialogInfoPandC1"],
   data() {
     return {
       remark: "静待花开静待花开静待花开静待花开静待花开",
@@ -73,6 +76,7 @@ export default {
           fileList: [],
         },
       ],
+      imgUrl: "",
     };
   },
   methods: {
@@ -81,11 +85,48 @@ export default {
       this.LogoContent[index].imgUrl = URL.createObjectURL(file.raw);
     },
     html2CanvasChange() {
-      html2Canvas(this.$refs.canvas,{
-        useCORS:true
-      }).then(function (canvas) {
-        let pageData = canvas.toDataURL("image/png", 1.0);
-        console.log(pageData);
+      html2Canvas(this.$refs.canvas, {
+        useCORS: true,
+      }).then((canvas) => {
+        let dataurl = canvas.toDataURL('image/jpg');
+        // let blob = self.base64ToBlob(dataurl);
+        // let fileOfBlob = new File([blob],'截图.jpg'); // 重命名了
+        // console.log(fileOfBlob)
+        var formData = new FormData();
+         formData.append('file', dataurl)
+        // formData.append('userId', 123)
+        // formData.append('pathName', 'pdf')
+        this.uploadImgByForm(formData);
+      });
+    },
+    base64ToBlob(code) {
+      let parts = code.split(";base64,");
+      let contentType = parts[0].split(":")[1];
+      let raw = window.atob(parts[1]);
+      let rawLength = raw.length;
+      let uInt8Array = new Uint8Array(rawLength);
+      for (let i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+      }
+      return new window.Blob([uInt8Array], {
+        type: contentType,
+        name: "file_" + new Date().getTime() + ".jpg",
+      });
+    },
+    uploadImgByForm(formData, callBack) {
+      console.log(formData);
+      // var formData = new FormData();
+      // formData.append('file', file);
+      $.ajax({
+        url: "https://shop.tongtanggift.com/hzld-file/file/uploadFile ",
+        type: "POST",
+        data: formData,
+        processData: false, // 告诉jQuery不要去处理发送的数据
+        contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+        success: function (response, status, xhr) {
+          console.log(response);
+          callBack(response);
+        },
       });
     },
   },
