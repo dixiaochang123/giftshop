@@ -1,10 +1,9 @@
 <template>
   <div class="text-box">
-    <img :src="url" alt="">
     <div class="text-inner">
       <div class="item">
         <div class="item-img" ref="canvas">
-          <img crossorigin="anonymous" class="img" v-if="productOnlineDialogInfoPandC1.url" :src="productOnlineDialogInfoPandC1.url" alt="">
+          <img class="img" v-if="productOnlineDialogInfoPandC1.url" :src="productOnlineDialogInfoPandC1.url" alt="">
           <!-- <img class="img" v-if="productOnlineDialogInfoPandC1.url" src="../../assets/img/slices/2.png" alt=""> -->
           <vue-drag-resize h="100" x="170" y="200" parentLimitation v-if="remark">{{remark}}</vue-drag-resize>
           <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent[0].imgUrl" w="120" h="120">
@@ -109,7 +108,6 @@ export default {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (response, status, xhr) {
           console.log(response);
-          callBack(response);
         },
       });
     },

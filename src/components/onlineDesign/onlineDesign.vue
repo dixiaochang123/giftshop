@@ -133,7 +133,7 @@ export default {
               productOnlineDialogInfoPandC1.directoryLocation +
               "/" +
               productOnlineDialogInfoPandC1.fileName
-            ).replace(/\\/g, "/");
+            ).replace(/\\/g, "/")+ '?time=' + new Date().valueOf();
             this.productOnlineDialogInfoPandC1 = productOnlineDialogInfoPandC1;
             // 背面
             let productOnlineDialogInfoPandC2 = dataArray[0].filter(
@@ -144,7 +144,7 @@ export default {
               productOnlineDialogInfoPandC2.directoryLocation +
               "/" +
               productOnlineDialogInfoPandC2.fileName
-            ).replace(/\\/g, "/");
+            ).replace(/\\/g, "/")+ '?time=' + new Date().valueOf();
             this.productOnlineDialogInfoPandC2 = productOnlineDialogInfoPandC2;
             console.log(this.productOnlineDialogInfoPandC2);
           }

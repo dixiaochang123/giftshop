@@ -1,6 +1,5 @@
 <template>
   <div class="text-box">
-    <img :src="url" alt="">
     <div class="text-inner">
       <div class="item">
         <div class="item-img" ref="canvas">
@@ -8,7 +7,8 @@
           <!-- <img class="img" v-if="productOnlineDialogInfoPandC2.url" src="../../assets/img/slices/2.png" alt=""> -->
           <vue-drag-resize h="100" x="170" y="200" parentLimitation v-if="remark">{{remark}}</vue-drag-resize>
           <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent[0].imgUrl" w="120" h="120">
-            <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl" crossOrigin="anonymous" alt="" width="100%" height="100%">
+            <!-- <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl"  crossorigin="https://image.tongtanggift.com" alt="" width="100%" height="100%"> -->
+            <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl"  crossorigin="anonymous" alt="" width="100%" height="100%">
           </vue-drag-resize>
         </div>
         <div>
@@ -108,7 +108,6 @@ export default {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (response, status, xhr) {
           console.log(response);
-          callBack(response);
         },
       });
     },
