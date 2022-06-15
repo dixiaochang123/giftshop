@@ -197,11 +197,18 @@ export default {
     }
   }
 }
+@font-face {
+	font-family: 'DOUYU';
+	src: url('../../assets/css/字魂4551号-元气满满体.ttf');
+	font-weight: normal;
+	font-style: normal;
+  color:rgb(209,102,46)
+}
 /deep/ .content-container {
   font-size: 18px;
   line-height: 100px;
   text-align: center;
-  font-family: PingFangSC-Regular, PingFang SC;
+  font-family: DOUYU;
 }
 /deep/ .el-textarea__inner {
   width: 311px;
