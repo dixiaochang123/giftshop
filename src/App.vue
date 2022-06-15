@@ -13,7 +13,7 @@ export default {
     console.log('App created',DevicePixelRatio)
   },
   mounted() {
-    new DevicePixelRatio().init();
+    // new DevicePixelRatio().init();
     console.log('App mounted',DevicePixelRatio)
     window.onresize = () => {
         return (() => {
