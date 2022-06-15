@@ -12,7 +12,7 @@
           </vue-drag-resize>
           <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent1[0].imgUrl" w="120" h="120">
             <!-- <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl"  crossorigin="https://image.tongtanggift.com" alt="" width="100%" height="100%"> -->
-            <img v-if="LogoContent[0].imgUrl" :src="LogoContent1[0].imgUrl"  crossorigin="anonymous" alt="" width="100%" height="100%">
+            <img v-if="LogoContent1[0].imgUrl" :src="LogoContent1[0].imgUrl"  crossorigin="anonymous" alt="" width="100%" height="100%">
           </vue-drag-resize>
         </div>
         <div>
