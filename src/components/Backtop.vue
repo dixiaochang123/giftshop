@@ -58,7 +58,7 @@ $height: 350px;
 }
 
 .backtop {
-  width: rpx2multiple(88);
+  width: rpx2multiple(64);
   position: fixed;
   right: 50px;
   bottom: 50px;
@@ -75,7 +75,7 @@ $height: 350px;
   > div {
     text-align: center;
     margin: 0 auto;
-    width: rpx2multiple(60);
+    width: rpx2multiple(48);
     border-bottom: solid 1px rgba($color: #7395dc, $alpha: 0.3);
     cursor: pointer;
 
@@ -90,8 +90,8 @@ $height: 350px;
 
   .kefu {
     > div {
-      width: rpx2multiple(36);
-      height: rpx2multiple(36);
+      width: rpx2multiple(30);
+      height: rpx2multiple(30);
       background: url("../assets/img/slices/kefu.png") no-repeat center center;
       background-size: 100% 100%;
     }
@@ -111,8 +111,8 @@ $height: 350px;
 
   .phon {
     > div {
-      width: rpx2multiple(36);
-      height: rpx2multiple(36);
+      width: rpx2multiple(30);
+      height: rpx2multiple(30);
       background: url("../assets/img/slices/phon.png") no-repeat center center;
       background-size: 100% 100%;
     }
@@ -132,8 +132,8 @@ $height: 350px;
 
   .feishu {
     > div {
-      width: rpx2multiple(36);
-      height: rpx2multiple(36);
+      width: rpx2multiple(30);
+      height: rpx2multiple(30);
       background: url("../assets/img/slices/feishu.png") no-repeat center center;
       background-size: 100% 100%;
     }
@@ -153,8 +153,8 @@ $height: 350px;
 
   .caozuo {
     > div {
-      width: rpx2multiple(36);
-      height: rpx2multiple(36);
+      width: rpx2multiple(30);
+      height: rpx2multiple(30);
       background: url("../assets/img/slices/caozuo.png") no-repeat center center;
       background-size: 100% 100%;
     }
@@ -187,21 +187,21 @@ $height: 350px;
 
 .backtop_icon {
   width: 100%;
-  height: rpx2multiple(88);
+  height: rpx2multiple(64);
   background: #ffffff;
   border-radius: rpx2multiple(8);
   border: 1px solid #7395dc;
   display: flex;
   justify-content: center;
   align-content: center;
-  padding-top: rpx2multiple(25);
+  padding-top: rpx2multiple(18);
   box-sizing: border-box;
-  margin-top: rpx2multiple(20);
+  margin-top: rpx2multiple(12);
   cursor: pointer;
 
   div {
-    width: rpx2multiple(36);
-    height: rpx2multiple(36);
+    width: rpx2multiple(30);
+    height: rpx2multiple(30);
     background: url("../assets/img/slices/top.png") no-repeat center center;
     background-size: 100% 100%;
   }
