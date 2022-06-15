@@ -59,7 +59,10 @@
 </template>
 
 <script>
-import { productOnlineDesignFindTwoList ,uploadFile } from "@/request/modules/index.js";
+import {
+  productOnlineDesignFindTwoList,
+  uploadFile,
+} from "@/request/modules/index.js";
 import onlineDesignColor from "@/components/onlineDesign/onlineDesignColor";
 import onlineDesignText from "@/components/onlineDesign/onlineDesignText";
 import onlineDesignLogo from "@/components/onlineDesign/onlineDesignLogo";
@@ -76,7 +79,7 @@ export default {
     return {
       open: true,
       activeindex: 0,
-    //   specialtab: ["颜色", "文字", "LOGO", "图案"],
+      //   specialtab: ["颜色", "文字", "LOGO", "图案"],
       specialtab: ["颜色", "正面", "背面"],
       isShowModel: true,
       dialogSave: false,
@@ -101,9 +104,8 @@ export default {
       //this.isShowModel = false
     },
     save() {
-       
       this.$refs.onlineDesignText.html2CanvasChange();
-      this.$refs.onlineDesignLogo.html2CanvasChange();
+      // this.$refs.onlineDesignLogo.html2CanvasChange();
       // this.$parent.closeOnlineBox()
     },
     notSave() {
@@ -111,7 +113,7 @@ export default {
       this.$parent.closeOnlineBox();
     },
     slidechange(groupingType) {
-        this.productOnlineDesignFindTwoList(groupingType)
+      this.productOnlineDesignFindTwoList(groupingType);
     },
     productOnlineDesignFindTwoList(groupingType) {
       productOnlineDesignFindTwoList({
@@ -119,15 +121,32 @@ export default {
         productId: this.$route.query.id,
       })
         .then((res) => {
-            let {code,data} = res.data;
+          let { code, data } = res.data;
           if (code == 200) {
-              let dataArray = Object.values(data)
-            let productOnlineDialogInfoPandC1 = dataArray[1].filter(item=>item.typeId==1)[0];
-            productOnlineDialogInfoPandC1['url'] =('https://image.tongtanggift.com/oss/cxkj/'+productOnlineDialogInfoPandC1.directoryLocation+'/'+productOnlineDialogInfoPandC1.fileName).replace(/\\/g, "/")
+            let dataArray = Object.values(data);
+            // 正面
+            let productOnlineDialogInfoPandC1 = dataArray[1].filter(
+              (item) => item.typeId == 1
+            )[0];
+            productOnlineDialogInfoPandC1["url"] = (
+              "https://image.tongtanggift.com/oss/cxkj/" +
+              productOnlineDialogInfoPandC1.directoryLocation +
+              "/" +
+              productOnlineDialogInfoPandC1.fileName
+            ).replace(/\\/g, "/");
             this.productOnlineDialogInfoPandC1 = productOnlineDialogInfoPandC1;
-
-            this.productOnlineDialogInfoPandC2 = dataArray[0].filter(item=>item.typeId==1)[0];
-            console.log(this.productOnlineDialogInfoPandC1);
+            // 背面
+            let productOnlineDialogInfoPandC2 = dataArray[0].filter(
+              (item) => item.typeId == 1
+            )[0];
+            productOnlineDialogInfoPandC2["url"] = (
+              "https://image.tongtanggift.com/oss/cxkj/" +
+              productOnlineDialogInfoPandC2.directoryLocation +
+              "/" +
+              productOnlineDialogInfoPandC2.fileName
+            ).replace(/\\/g, "/");
+            this.productOnlineDialogInfoPandC2 = productOnlineDialogInfoPandC2;
+            console.log(this.productOnlineDialogInfoPandC2);
           }
         })
         .catch((error) => console.log(error));

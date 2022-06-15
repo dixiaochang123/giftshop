@@ -1,12 +1,14 @@
 <template>
   <div class="text-box">
+    <img :src="url" alt="">
     <div class="text-inner">
       <div class="item">
         <div class="item-img" ref="canvas">
           <img class="img" v-if="productOnlineDialogInfoPandC2.url" :src="productOnlineDialogInfoPandC2.url" alt="">
+          <!-- <img class="img" v-if="productOnlineDialogInfoPandC2.url" src="../../assets/img/slices/2.png" alt=""> -->
           <vue-drag-resize h="100" x="170" y="200" parentLimitation v-if="remark">{{remark}}</vue-drag-resize>
           <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent[0].imgUrl" w="120" h="120">
-            <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl" alt="" width="100%" height="100%">
+            <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl" crossOrigin="anonymous" alt="" width="100%" height="100%">
           </vue-drag-resize>
         </div>
         <div>
@@ -77,6 +79,7 @@ export default {
         },
       ],
       imgUrl: "",
+      url: "",
     };
   },
   methods: {
@@ -86,37 +89,20 @@ export default {
     },
     html2CanvasChange() {
       html2Canvas(this.$refs.canvas, {
-        useCORS: true,
+        useCORS: true /*使用跨域*/,
       }).then((canvas) => {
-        let dataurl = canvas.toDataURL('image/jpg');
-        let blob = self.base64ToBlob(dataurl);
-        let fileOfBlob = new File([blob],'截图.jpg'); // 重命名了
-        // console.log(fileOfBlob)
+        let dataurl = canvas.toDataURL("image/jpg");
+        let file = this.base64toFile(dataurl, "file");
         var formData = new FormData();
-         formData.append('file', fileOfBlob)
+        formData.append("file", file);
+        this.url = dataurl;
         this.uploadImgByForm(formData);
       });
     },
-    base64ToBlob(code) {
-      let parts = code.split(";base64,");
-      let contentType = parts[0].split(":")[1];
-      let raw = window.atob(parts[1]);
-      let rawLength = raw.length;
-      let uInt8Array = new Uint8Array(rawLength);
-      for (let i = 0; i < rawLength; ++i) {
-        uInt8Array[i] = raw.charCodeAt(i);
-      }
-      return new window.Blob([uInt8Array], {
-        type: contentType,
-        name: "file_" + new Date().getTime() + ".jpg",
-      });
-    },
-    uploadImgByForm(formData, callBack) {
-      console.log(formData);
-      // var formData = new FormData();
-      // formData.append('file', file);
+    uploadImgByForm(formData) {
+      console.log(formData, formData.getAll("file"));
       $.ajax({
-        url: "https://shop.tongtanggift.com/hzld-file/file/uploadFile ",
+        url: "https://shop.tongtanggift.com/hzld-file/file/uploadFile",
         type: "POST",
         data: formData,
         processData: false, // 告诉jQuery不要去处理发送的数据
@@ -125,6 +111,20 @@ export default {
           console.log(response);
           callBack(response);
         },
+      });
+    },
+    base64toFile(dataurl, filename = "file") {
+      let arr = dataurl.split(",");
+      let mime = arr[0].match(/:(.*?);/)[1];
+      let suffix = mime.split("/")[1];
+      let bstr = atob(arr[1]);
+      let n = bstr.length;
+      let u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new File([u8arr], `${filename}.${suffix}`, {
+        type: mime,
       });
     },
   },
