@@ -200,6 +200,8 @@ export default {
 /deep/ .content-container {
   font-size: 18px;
   line-height: 100px;
+  text-align: center;
+  font-family: PingFangSC-Regular, PingFang SC;
 }
 /deep/ .el-textarea__inner {
   width: 311px;
