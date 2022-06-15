@@ -166,6 +166,9 @@ export default {
       this.sjfaLbActiveIndex = index;
     },
     submitOrder() {
+      this.$router.push({
+        path: "/shoppingMall/payment/payment"
+      });
       let data = {
       "consignee": "喵大人",
       "consigneeAddress": "北京市昌平区沙河镇宏福苑小区1号楼9单元309",

@@ -123,7 +123,7 @@
         </div>
 
       </div>
-      <div class="tjdd">确认付款</div>
+      <div class="tjdd" @click="save">确认付款</div>
     </div>
   </div>
 </template>
@@ -200,6 +200,11 @@ export default {
       } else {
         if (index < 6) this.ipt[index].focus()
       }
+    },
+    save() {
+      this.$router.push({
+        name:'Ordercenter'
+      })
     }
 
 
