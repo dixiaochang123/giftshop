@@ -93,7 +93,7 @@ export default {
         let fileOfBlob = new File([blob],'截图.jpg'); // 重命名了
         // console.log(fileOfBlob)
         var formData = new FormData();
-         formData.append('file', fileOfBlob)
+         formData.append('base64Imager', fileOfBlob)
         this.uploadImgByForm(formData);
       });
     },
@@ -116,7 +116,7 @@ export default {
       // var formData = new FormData();
       // formData.append('file', file);
       $.ajax({
-        url: "https://shop.tongtanggift.com/hzld-file/file/uploadFile ",
+        url: "https://shop.tongtanggift.com/hzld-file/file/base64Imager",
         type: "POST",
         data: formData,
         processData: false, // 告诉jQuery不要去处理发送的数据

@@ -68,7 +68,7 @@
         <div style="width:12%">我的设计</div>
         <div style="width:12%">操作</div>
       </div>
-      <div class="tables" v-for="(item,index) in tableData" :key="index" style="display: inline-block;height: 307px;">
+      <div :class="[item.checked?'tables_hover':'', 'tables']" v-for="(item,index) in tableData" :key="index" style="display: inline-block;height: 307px;">
         <div class="ddtop">
           <el-checkbox v-model="item.checked" @change="handleCheckedCitiesChange" style="font-size: 18px;">
           </el-checkbox>
@@ -391,10 +391,32 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
+  // &:hover {
+  //   box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
+  //   border: 1px solid #7395dc;
+  //   .header_1 {
+  //     cursor: pointer;
+  //   }
+  // }
+  &.tables_hover {
+    box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
+    border: 1px solid #7395dc;
+
+    // .dayang {
+    //   background: #7395DC;
+    //   border-radius: 4px;
+    //   border: 1px solid #7395DC;
+    //   color: #ffffff;
+
+    // }
+  }
 
   &:hover {
     box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
     border: 1px solid #7395dc;
+    .header_1 {
+      cursor: pointer;
+    }
 
     .dayang {
       background: #7395dc;

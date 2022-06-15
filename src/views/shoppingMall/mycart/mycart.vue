@@ -286,6 +286,13 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
+  &:hover {
+    box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);
+    border: 1px solid #7395dc;
+    .header_1 {
+      cursor: pointer;
+    }
+  }
 
   &.tables_hover {
     box-shadow: 0px 8px 31px 0px rgba(178, 187, 206, 0.45);

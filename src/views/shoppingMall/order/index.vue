@@ -61,7 +61,7 @@
 
 
       <div class="title" style="display: flex;align-items: center;justify-content: space-between;">
-        <span>收获人信息</span>
+        <span>收货人信息</span>
         <div class="dz">
           <div class="qhdz">切换地址</div>
           <div class="dzgl" @click="dzglhandleclick">地址管理</div>
