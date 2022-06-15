@@ -10,10 +10,14 @@
             <!-- <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl"  crossorigin="https://image.tongtanggift.com" alt="" width="100%" height="100%"> -->
             <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl"  crossorigin="anonymous" alt="" width="100%" height="100%">
           </vue-drag-resize>
+          <vue-drag-resize x="200" y="270" parentLimitation v-if="LogoContent1[0].imgUrl" w="120" h="120">
+            <!-- <img v-if="LogoContent[0].imgUrl" :src="LogoContent[0].imgUrl"  crossorigin="https://image.tongtanggift.com" alt="" width="100%" height="100%"> -->
+            <img v-if="LogoContent[0].imgUrl" :src="LogoContent1[0].imgUrl"  crossorigin="anonymous" alt="" width="100%" height="100%">
+          </vue-drag-resize>
         </div>
         <div>
           <div class="item-control">
-            <span class="span">文字一</span>
+            <span class="span">文字</span>
             <el-input :autosize="{ minRows: 3, maxRows: 5}" v-model.trim="remark" show-word-limit type="textarea" :maxlength="maxlength" tabindex></el-input>
           </div>
           <div class="item-control1" v-for="(item, index) in LogoContent" :key="index">
@@ -30,25 +34,25 @@
                 </div>
               </el-upload>
               <div class="tips">
-                *注：LOGO尺寸为212*212px，格式为png
+                *注：请上传png格式，且尺寸不低于68
               </div>
             </div>
           </div>
-          <div class="item-control1" v-for="(item, index) in LogoContent" :key="index">
+          <div class="item-control1" v-for="(item, index) in LogoContent1" :key="index">
             <span class="span">LOGO</span>
             <div>
 
               <div class="upload-img" v-if="item.imgUrl" :style="{ 'background-image': 'url(' + item.imgUrl + ')' }">
                 <i class="el-icon-close" @click="item.imgUrl = ''"></i>
               </div>
-              <el-upload accept="png" v-else action="##" :show-file-list="false" :limit="1" :on-change="(file, fileList) => uploadLogo(file, fileList, index)" :file-list="item.fileList" :auto-upload="false">
+              <el-upload accept="png" v-else action="##" :show-file-list="false" :limit="1" :on-change="(file, fileList) => uploadLogo1(file, fileList, index)" :file-list="item.fileList" :auto-upload="false">
                 <div class="upload-box">
                   <i class="el-icon-picture-outline"></i>
                   <span>LOGO 2</span>
                 </div>
               </el-upload>
               <div class="tips">
-                *注：LOGO尺寸为212*212px，格式为png
+                *注：请上传png格式，且尺寸不低于68
               </div>
             </div>
           </div>
@@ -77,6 +81,12 @@ export default {
           fileList: [],
         },
       ],
+      LogoContent1: [
+        {
+          imgUrl: "",
+          fileList: [],
+        },
+      ],
       imgUrl: "",
       url: "",
     };
@@ -85,6 +95,10 @@ export default {
     uploadLogo(file, fileList, index) {
       console.log(file, fileList, index);
       this.LogoContent[index].imgUrl = URL.createObjectURL(file.raw);
+    },
+    uploadLogo1(file, fileList, index) {
+      console.log(file, fileList, index);
+      this.LogoContent1[index].imgUrl = URL.createObjectURL(file.raw);
     },
     html2CanvasChange() {
       html2Canvas(this.$refs.canvas, {

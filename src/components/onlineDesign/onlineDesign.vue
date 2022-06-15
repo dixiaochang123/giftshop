@@ -105,7 +105,7 @@ export default {
     },
     save() {
       this.$refs.onlineDesignText.html2CanvasChange();
-      // this.$refs.onlineDesignLogo.html2CanvasChange();
+      this.$refs.onlineDesignLogo.html2CanvasChange();
       // this.$parent.closeOnlineBox()
     },
     notSave() {
