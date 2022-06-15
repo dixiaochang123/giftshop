@@ -150,7 +150,7 @@
             <div v-if="productList.isOnlineDesign!==0" style="width: 498px;height: 52px;line-height: 40px;font-size: 22px;"  class="add-Design">加入“我的设计”并联系客服定制方案</div>
             <div v-else class="continue-Design" @click="openOnlineBox">
               <span>
-                {{!!productOnline?'继续设计':'开始设计'}}
+                {{productOnline.length?'继续设计':'开始设计'}}
               </span>
             </div>
             <div class="add-cart-box">
