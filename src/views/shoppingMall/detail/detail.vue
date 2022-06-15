@@ -125,7 +125,7 @@
             </div>
           </div>
           <!-- <div class="proIntro-Design" v-if="productList.isOnlineDesign!==0"> -->
-          <div class="proIntro-Design">
+          <div class="proIntro-Design" v-if="productOnline.length">
             <span class="reference-price">我的设计</span>
             <div class="proIntro-Design-imgs">
               <div @click="handleclickjumpOrderPage(item,index)" :class="[jumpOrderPageAcive==index ? 'active':'','workmanship-box-item']" style="margin-top:30px;" v-for="(item,index) in productOnline" :key="item.id">
@@ -441,7 +441,7 @@ export default {
             // let records = data.records[0];
             // records.name = records.name.split('+');
             // this.productListPackage = data.records[0];
-            console.log(11,data)
+            console.log(11,data,this.productOnline)
           }
         })
         .catch((error) => console.log(error));
