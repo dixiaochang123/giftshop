@@ -77,3 +77,10 @@ export function uploadFile(data) {
         data: data
     })
 }
+export function productUserFiles(data) {
+    return request({
+        url: `/productUserFiles/add`,
+        method: 'POST',
+        data: data
+    })
+}

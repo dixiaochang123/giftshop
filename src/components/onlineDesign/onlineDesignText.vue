@@ -66,6 +66,7 @@
 import $ from "jquery";
 import html2Canvas from "html2canvas";
 import VueDragResize from "vue-drag-resize";
+import { productUserFiles } from "@/request/modules/index.js";
 export default {
   components: {
     VueDragResize,
@@ -122,7 +123,14 @@ export default {
         contentType: false, // 告诉jQuery不要去设置Content-Type请求头
         success: function (response, status, xhr) {
           console.log(response);
-        },
+          productUserFiles({
+            "fileName": response.data,
+            "productId": this.$route.query.id
+          }).then(res=>{
+            console.log(this)
+            this.$parent.$parent.notSave()
+          }).catch(error=>console.log(error))
+        }.bind(this),
       });
     },
     base64toFile(dataurl, filename = "file") {

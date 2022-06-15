@@ -493,6 +493,7 @@ export default {
     },
     closeOnlineBox() {
       this.dialogOnlineDesign = false;
+      this.productOnlineDesign();
     },
     handleclickjumpOrderPage(item,index) {
       this.jumpOrderPageAcive = index;
