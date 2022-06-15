@@ -24,11 +24,11 @@
             <!-- </template> -->
             <!-- logo -->
             <!-- <template v-if="activeindex==2"> -->
-            <!-- <onlineDesignLogo v-show="activeindex==2" ref="onlineDesignLogo" :productOnlineDialogInfoPandC2="productOnlineDialogInfoPandC2"></onlineDesignLogo> -->
+            <onlineDesignLogo v-show="activeindex==2" ref="onlineDesignLogo" :productOnlineDialogInfoPandC2="productOnlineDialogInfoPandC2"></onlineDesignLogo>
             <!-- </template> -->
             <!-- 图案 -->
             <!-- <template v-if="activeindex==3"> -->
-            <onlineDesignPic v-show="activeindex==2"></onlineDesignPic>
+            <!-- <onlineDesignPic v-show="activeindex==2"></onlineDesignPic> -->
             <!-- </template> -->
             <!-- 暂不支持 -->
             <div class="noorder-box" v-if="1==2">
@@ -103,6 +103,7 @@ export default {
     save() {
        
       this.$refs.onlineDesignText.html2CanvasChange();
+      this.$refs.onlineDesignLogo.html2CanvasChange();
       // this.$parent.closeOnlineBox()
     },
     notSave() {
