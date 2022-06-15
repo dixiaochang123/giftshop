@@ -199,6 +199,7 @@ export default {
 }
 /deep/ .content-container {
   font-size: 18px;
+  line-height: 100px;
 }
 /deep/ .el-textarea__inner {
   width: 311px;
