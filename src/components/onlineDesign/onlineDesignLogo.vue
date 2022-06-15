@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import { uploadFile } from "@/request/modules/index.js";
 import $ from "jquery";
 import html2Canvas from "html2canvas";
 import VueDragResize from "vue-drag-resize";
